@@ -4,7 +4,7 @@
 %bcond_with	i18n	# disable i18n (26MB less to download)
 #
 %define		_state		snapshots
-%define		_ver		1.3
+%define		_ver		1.3.90
 %define		_snap		040510
 %define		artsver		13:1.2.0
 %define		_packager	adgor	
