@@ -37,7 +37,7 @@ BuildRequires:	perl-base
 BuildRequires:	python-devel >= 2.2
 %{?with_apidocs:BuildRequires:  qt-doc}
 BuildRequires:	rpmbuild(macros) >= 1.129
-BuildRequires:	unsermake >= 040511
+#BuildRequires:	unsermake >= 040511
 BuildRequires:	wv2-devel >= 0.0.7
 BuildRequires:	zlib-devel
 Requires:	wv2 >= 0.0.7
