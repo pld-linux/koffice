@@ -151,10 +151,10 @@ KOffice.
 Arquivos requeridos por todos os softwares koffice.
 
 %package karbon
-Summary:        KOffice - Karbon
-Summary(pl):    KOffice - Karbon
-Group:          X11/Applications
-Requires:       %{name}-common = %{epoch}:%{version}-%{release}
+Summary:	KOffice - Karbon
+Summary(pl):	KOffice - Karbon
+Group:		X11/Applications
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 #karbon has changed its named (again) to curt therefore in the future:
 Obsoletes:	koffice-krayon
 
@@ -181,25 +181,21 @@ KChart jest aplikacj± s³u¿±c± do generowania wykresów.
 %description kchart -l pt_BR
 Gerador de diagramas do KOffice.
 
-#%%package kexi
-#Summary:        KOffice - Kexi
-#Summary(pl):    KOffice - Kexi
-#Group:          X11/Applications
-#Requires:       %{name}-common = %{epoch}:%{version}-%{release}
-#Requires:	mysql-libs
+#%%package kexi #Summary: KOffice - Kexi #Summary(pl): KOffice - Kexi
+#Group: X11/Applications #Requires: %{name}-common =
+%{epoch}:%{version}-%{release} #Requires: mysql-libs
 
-#%%description kexi 
-#Kexi is KOffice part for using database system such as mysql.
+#%%description kexi #Kexi is KOffice part for using database system
+such as mysql.
 
-#%%description kexi -l pl
-#Kexi jest aplikacj± s³u¿±c± do korzystania z systemów baz danych
-#takich jak mysql.
+#%%description kexi -l pl #Kexi jest aplikacj± s³u¿±c± do korzystania
+z systemów baz danych #takich jak mysql.
 
 %package  kformula
-Summary:        KOffice - kformula
-Summary(pl):    KOffice - kformula
-Group:          X11/Applications
-Requires:       %{name}-common = %{epoch}:%{version}-%{release}
+Summary:	KOffice - kformula
+Summary(pl):	KOffice - kformula
+Group:		X11/Applications
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kformula
 KFormula is KOffice part for creating formulas, equations, etc...
@@ -238,34 +234,28 @@ jest mo¿liwe poprzez architekturê skryptów i wtyczek Kivio.
 %description kivio -l pt_BR
 Editor de fluxogramas do KOffice.
 
-#%package krita
-#Summary:	KOffice - Krita
-#Summary(pl):	KOffice - Krita
-#Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
-#Group:		X11/Applications
-#Requires:	%{name}-common = %{epoch}:%{version}-%{release}
-#Obsoletes:	koffice-killustrator
+#%package krita #Summary: KOffice - Krita #Summary(pl): KOffice -
+Krita #Summary(pt_BR): Ferramenta de desenho vetorial do KOffice
+#Group: X11/Applications #Requires: %{name}-common =
+%{epoch}:%{version}-%{release} #Obsoletes: koffice-killustrator
 
-#%description krita
-#Krita is the vector drawing program for the K Desktop Environment.
-#The aim of the Kontour project is the development of a freely
-#available vector-based drawing application similar to Corel Draw or
-#Adobe Illustrator.
-#
-#Krita was formerly known as KIllustrator but due to blackmail made
-#by Adobe lawyers it has to be renamed.
+#%description krita #Krita is the vector drawing program for the K
+Desktop Environment. #The aim of the Kontour project is the
+development of a freely #available vector-based drawing application
+similar to Corel Draw or #Adobe Illustrator. # #Krita was formerly
+known as KIllustrator but due to blackmail made #by Adobe lawyers it
+has to be renamed.
 
-#%description krita -l pl
-#Krita jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
-#KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni
-#funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
-#lub Adobe Illustrator.
+#%description krita -l pl #Krita jest programem do tworzenia grafiki
+wektorowej dla ¶rodowiska #KDE. Celem przy¶wiecaj±cym programistom
+jest stworzenie w pe³ni #funkcjonalnego programu do grafiki wektorowej
+podobnego do Corel Draw #lub Adobe Illustrator.
 
 #Krita wczesniej by³ znany jako KIlustrator ale developerzy zostali
 #zmuszeni szanta¿em przez prawników Adobe do zmiany nazwy.
 
-#%description krita -l pt_BR
-#Ferramenta de desenho vetorial do KOffice.
+#%description krita -l pt_BR #Ferramenta de desenho vetorial do
+KOffice.
 
 %package kpresenter
 Summary:	KOffice - KPresenter
@@ -462,7 +452,7 @@ Pliki umiêdzynarodawiaj±ce dla kworda.
 %if %{with i18n}
 %setup -q -a1
 %else
-%setup -q 
+%setup -q
 %endif
 %patch0 -p1
 
@@ -482,26 +472,26 @@ cd %{name}-i18n-%{version}
 %{__make}
 
 %install
-#rm -rf $RPM_BUILD_ROOT
+rm -rf $RPM_BUILD_ROOT
 
-##%{__make} install \
-#	DESTDIR=$RPM_BUILD_ROOT \
-#	kde_htmldir=%{_kdedocdir}
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	kde_htmldir=%{_kdedocdir}
 
-#install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
+install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
 
-#mv $RPM_BUILD_ROOT{%{_datadir}/applnk/Office/*,%{_desktopdir}/kde}
+mv $RPM_BUILD_ROOT{%{_applnkdir}/Office/*,%{_desktopdir}/kde}
 
-#install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
+install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
-##%if %{with i18n}
+%if %{with i18n}
 
-#cd %{name}-i18n-%{version}
-##%{__make} install \
-#	DESTDIR=$RPM_BUILD_ROOT \
-#	kde_htmldir=%{_kdedocdir}
-#cd ..
-##%endif 
+cd %{name}-i18n-%{version}
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT \
+	kde_htmldir=%{_kdedocdir}
+cd ..
+%endif
 
 %find_lang kchart		--with-kde
 %find_lang kformula		--with-kde
@@ -615,14 +605,23 @@ rm -rf $RPM_BUILD_ROOT
 
 %if %{with i18n}
 %files  common-i18n     -f koffice.lang
+%defattr(644,root,root,755)
 %files  karbon-i18n     -f karbon.lang
+%defattr(644,root,root,755)
 %files  kchart-i18n     -f kchart.lang
+%defattr(644,root,root,755)
 %files  kformula-i18n   -f kformula.lang
+%defattr(644,root,root,755)
 %files  kivio-i18n      -f kivio.lang
+%defattr(644,root,root,755)
 %files  kpresenter-i18n -f kpresenter.lang
+%defattr(644,root,root,755)
 %files  kspread-i18n    -f kspread.lang
+%defattr(644,root,root,755)
 %files  kugar-i18n      -f kugar.lang
+%defattr(644,root,root,755)
 %files  kword-i18n      -f kword.lang
+%defattr(644,root,root,755)
 %endif
 
 %files devel
@@ -675,7 +674,7 @@ rm -rf $RPM_BUILD_ROOT
 #%{_libdir}/libkexiextendedwidgets.la
 #%attr(755,root,root) %{_libdir}/libkexiextendedwidgets.so.*.*.*
 #%{_libdir}/libkexisql.la
-#%attr(755,root,root) %{_libdir}/libkexisql.so.*.*.* 
+#%attr(755,root,root) %{_libdir}/libkexisql.so.*.*.*
 %{_libdir}/libkformula.la
 %attr(755,root,root) %{_libdir}/libkformula.so.*.*.*
 %{_libdir}/libkochart.la
@@ -783,7 +782,7 @@ rm -rf $RPM_BUILD_ROOT
 #%defattr(644,root,root,755)
 #%attr(755,root,root) %{_bindir}/kexi*
 ##%{_libdir}/kexi.la
-##%attr(755,root,root) %{_libdir}/kexi.so 
+##%attr(755,root,root) %{_libdir}/kexi.so
 #%{_libdir}/kde3/*kexi*.la
 #%attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
 #%{_datadir}/apps/kexi
