@@ -1,7 +1,7 @@
 
-%define		_state		snapshots
-%define		_ver		1.2.94
-%define		_snap		031204
+%define		_state		unstable
+%define		_ver		1.2.95
+%define		_snap		%{nil}
 %define		artsver		12:1.2.0.%{_snap}
 
 Summary:	KOffice - powerful office suite for KDE
@@ -11,16 +11,18 @@ Summary(ru):	îÁÂÏÒ ÏÆÆÉÓÎÙÈ ÐÒÏÇÒÁÍÍ ÄÌÑ KDE
 Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
-Version:	%{_ver}.%{_snap}
+# Version:	%{_ver}.%{_snap}
+Version:	%{_ver}
 Release:	1
 Epoch:		5
 License:	GPL
 Group:		X11/Applications
-#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}.tar.bz2
-Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	3bae96f313c9bbe908a4189c636c1a13
+# ftp://ftp.kde.org/pub/kde/unstable/koffice-1.2.95/src
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
+# Source0-md5:	a738120fed3f68316700f5f05317ac7a
+#Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
 Patch0:		%{name}-vcategories.patch
-Patch1:		%{name}-mysql_includes.patch
+#Patch1:		%{name}-mysql_includes.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
@@ -174,19 +176,19 @@ KChart jest aplikacj± s³u¿±c± do generowania wykresów.
 %description kchart -l pt_BR
 Gerador de diagramas do KOffice.
 
-%package kexi
-Summary:        KOffice - Kexi
-Summary(pl):    KOffice - Kexi
-Group:          X11/Applications
-Requires:       %{name}-common = %{epoch}:%{version}-%{release}
-Requires:	mysql-libs
+#%%package kexi
+#Summary:        KOffice - Kexi
+#Summary(pl):    KOffice - Kexi
+#Group:          X11/Applications
+#Requires:       %{name}-common = %{epoch}:%{version}-%{release}
+#Requires:	mysql-libs
 
-%description kexi 
-Kexi is KOffice part for using database system such as mysql.
+#%%description kexi 
+#Kexi is KOffice part for using database system such as mysql.
 
-%description kexi -l pl
-Kexi jest aplikacj± s³u¿±c± do korzystania z systemów baz danych
-takich jak mysql.
+#%%description kexi -l pl
+#Kexi jest aplikacj± s³u¿±c± do korzystania z systemów baz danych
+#takich jak mysql.
 
 %package  kformula
 Summary:        KOffice - kformula
@@ -226,34 +228,34 @@ pomoc± jêzyka skryptowego.
 %description kivio -l pt_BR
 Editor de fluxogramas do KOffice.
 
-%package krita
-Summary:	KOffice - Krita
-Summary(pl):	KOffice - Krita
-Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
-Group:		X11/Applications
-Requires:	%{name}-common = %{epoch}:%{version}-%{release}
-Obsoletes:	koffice-killustrator
+#%package krita
+#Summary:	KOffice - Krita
+#Summary(pl):	KOffice - Krita
+#Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
+#Group:		X11/Applications
+#Requires:	%{name}-common = %{epoch}:%{version}-%{release}
+#Obsoletes:	koffice-killustrator
 
-%description krita
-Krita is the vector drawing program for the K Desktop Environment.
-The aim of the Kontour project is the development of a freely
-available vector-based drawing application similar to Corel Draw or
-Adobe Illustrator.
+#%description krita
+#Krita is the vector drawing program for the K Desktop Environment.
+#The aim of the Kontour project is the development of a freely
+#available vector-based drawing application similar to Corel Draw or
+#Adobe Illustrator.
+#
+#Krita was formerly known as KIllustrator but due to blackmail made
+#by Adobe lawyers it has to be renamed.
 
-Krita was formerly known as KIllustrator but due to blackmail made
-by Adobe lawyers it has to be renamed.
+#%description krita -l pl
+#Krita jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
+#KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni
+#funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
+#lub Adobe Illustrator.
 
-%description krita -l pl
-Krita jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
-KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni
-funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
-lub Adobe Illustrator.
+#Krita wczesniej by³ znany jako KIlustrator ale developerzy zostali
+#zmuszeni szanta¿em przez prawników Adobe do zmiany nazwy.
 
-Krita wczesniej by³ znany jako KIlustrator ale developerzy zostali
-zmuszeni szanta¿em przez prawników Adobe do zmiany nazwy.
-
-%description krita -l pt_BR
-Ferramenta de desenho vetorial do KOffice.
+#%description krita -l pt_BR
+#Ferramenta de desenho vetorial do KOffice.
 
 %package kpresenter
 Summary:	KOffice - KPresenter
@@ -328,9 +330,10 @@ równie¿ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 Processador de texto do KOffice.
 
 %prep
-%setup -q -n %{name}-%{_snap}
+#%%setup -q -n %{name}-%{_snap}
+%setup -q -n %{name}-%{_ver}
 %patch0 -p1
-%patch1 -p1
+#%%patch1 -p1
 
 %build
 
@@ -390,13 +393,13 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/*
 %{_libdir}/libkdchart.so
 #%{_libdir}/libkdgantt.so
-%{_libdir}/libkexicore.so
-%{_libdir}/libkexidatatable.so
-%{_libdir}/libkexidb.so
-%{_libdir}/libkexidbparser.so
+#%{_libdir}/libkexicore.so
+#%{_libdir}/libkexidatatable.so
+#%{_libdir}/libkexidb.so
+#%{_libdir}/libkexidbparser.so
 #%{_libdir}/libkexiextendedwidgets.so
 #%{_libdir}/libkexiimportwizard.so
-%{_libdir}/libkexisql.so
+#%{_libdir}/libkexisql.so
 #%{_libdir}/libkformeditor.so
 %{_libdir}/libkformula.so
 %{_libdir}/libkochart.so
@@ -422,18 +425,18 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/koshell.so
 %{_libdir}/libkdchart.la
 %attr(755,root,root) %{_libdir}/libkdchart.so.*.*.*
-%{_libdir}/libkexicore.la
-%attr(755,root,root) %{_libdir}/libkexicore.so.*.*.*
-%{_libdir}/libkexidatatable.la
-%attr(755,root,root) %{_libdir}/libkexidatatable.so.*.*.*
-%{_libdir}/libkexidb.la
-%attr(755,root,root) %{_libdir}/libkexidb.so.*.*.*
-%{_libdir}/libkexidbparser.la
-%attr(755,root,root) %{_libdir}/libkexidbparser.so.*.*.*
-%{_libdir}/libkexiextendedwidgets.la
-%attr(755,root,root) %{_libdir}/libkexiextendedwidgets.so.*.*.*
-%{_libdir}/libkexisql.la
-%attr(755,root,root) %{_libdir}/libkexisql.so.*.*.* 
+#%{_libdir}/libkexicore.la
+#%attr(755,root,root) %{_libdir}/libkexicore.so.*.*.*
+#%{_libdir}/libkexidatatable.la
+#%attr(755,root,root) %{_libdir}/libkexidatatable.so.*.*.*
+#%{_libdir}/libkexidb.la
+#%attr(755,root,root) %{_libdir}/libkexidb.so.*.*.*
+#%{_libdir}/libkexidbparser.la
+#%attr(755,root,root) %{_libdir}/libkexidbparser.so.*.*.*
+#%{_libdir}/libkexiextendedwidgets.la
+#%attr(755,root,root) %{_libdir}/libkexiextendedwidgets.so.*.*.*
+#%{_libdir}/libkexisql.la
+#%attr(755,root,root) %{_libdir}/libkexisql.so.*.*.* 
 %{_libdir}/libkformula.la
 %attr(755,root,root) %{_libdir}/libkformula.so.*.*.*
 %{_libdir}/libkochart.la
@@ -537,22 +540,22 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*x*/apps/kchart.png
 %{_mandir}/man1/kchart.1*
 
-%files kexi
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kexi*
-#%{_libdir}/kexi.la
-#%attr(755,root,root) %{_libdir}/kexi.so 
-%{_libdir}/kde3/*kexi*.la
-%attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
-%{_datadir}/apps/kexi
-%{_datadir}/config/kexirc
-%{_datadir}/config/magic/kexi.magic
-%{_datadir}/mimelnk/application/x-kexiproject-shortcut.desktop
-%{_datadir}/mimelnk/application/x-kexiproject-sqlite.desktop
-%{_datadir}/services/kexi*
-%{_desktopdir}/kde/kexi.desktop
-%{_mandir}/man1/kexi.1*
-%{_mandir}/man1/kformdesigner.1*
+#%%files kexi
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/kexi*
+##%{_libdir}/kexi.la
+##%attr(755,root,root) %{_libdir}/kexi.so 
+#%{_libdir}/kde3/*kexi*.la
+#%attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
+#%{_datadir}/apps/kexi
+#%{_datadir}/config/kexirc
+#%{_datadir}/config/magic/kexi.magic
+#%{_datadir}/mimelnk/application/x-kexiproject-shortcut.desktop
+#%{_datadir}/mimelnk/application/x-kexiproject-sqlite.desktop
+#%{_datadir}/services/kexi*
+#%{_desktopdir}/kde/kexi.desktop
+#%{_mandir}/man1/kexi.1*
+#%{_mandir}/man1/kformdesigner.1*
 
 %files kformula -f kformula.lang
 %defattr(644,root,root,755)
@@ -621,24 +624,24 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/kpresenter.1*
 %{_mandir}/man1/kprconverter.pl.1*
 
-%files krita
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/krita
-%{_libdir}/kde3/*krita*.la
-%attr(755,root,root) %{_libdir}/kde3/*krita*.so
-%{_libdir}/*krita*.la
-%attr(755,root,root) %{_libdir}/*krita*.so
-%{_libdir}/kde3/*magick*port.la
-%attr(755,root,root) %{_libdir}/kde3/*magick*port.so
-%{_libdir}/libkisp_example.la
-%attr(755,root,root) %{_libdir}/libkisp_example.so
-%dir %{_datadir}/apps/krayon
-%dir %{_datadir}/apps/krayon/plugins
-%{_datadir}/apps/krayon/plugins/example.kisplugin
-%{_datadir}/apps/krita
-%{_datadir}/services/krita_magick_import.desktop
-%{_datadir}/templates/Illustration.desktop
-%{_desktopdir}/kde/krita.desktop
+#%files krita
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/krita
+#%{_libdir}/kde3/*krita*.la
+#%attr(755,root,root) %{_libdir}/kde3/*krita*.so
+#%{_libdir}/*krita*.la
+#%attr(755,root,root) %{_libdir}/*krita*.so
+#%{_libdir}/kde3/*magick*port.la
+#%attr(755,root,root) %{_libdir}/kde3/*magick*port.so
+#%{_libdir}/libkisp_example.la
+#%attr(755,root,root) %{_libdir}/libkisp_example.so
+#%dir %{_datadir}/apps/krayon
+#%dir %{_datadir}/apps/krayon/plugins
+#%{_datadir}/apps/krayon/plugins/example.kisplugin
+#%{_datadir}/apps/krita
+#%{_datadir}/services/krita_magick_import.desktop
+#%{_datadir}/templates/Illustration.desktop
+#%{_desktopdir}/kde/krita.desktop
 
 %files kspread -f kspread.lang
 %defattr(644,root,root,755)
