@@ -34,7 +34,7 @@ BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
 BuildRequires:	aspell-devel >= 0.50.2
 BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel >= 9:3.1.94.%{_snap}
+BuildRequires:	kdelibs-devel >= 9:3.2
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
@@ -111,7 +111,7 @@ Summary:	KOffice - common files and libraries
 Summary(pl):	KOffice - wspólne pliki i biblioteki
 Summary(pt_BR):	Arquivos requeridos por todos os softwares koffice
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:3.1.92.%{_snap}
+Requires:	kdebase-core >= 9:3.2
 
 %description common
 KOffice is an integrated office suite for K Desktop Environment.
@@ -234,28 +234,33 @@ jest mo¿liwe poprzez architekturê skryptów i wtyczek Kivio.
 %description kivio -l pt_BR
 Editor de fluxogramas do KOffice.
 
-#%package krita #Summary: KOffice - Krita #Summary(pl): KOffice -
-Krita #Summary(pt_BR): Ferramenta de desenho vetorial do KOffice
-#Group: X11/Applications #Requires: %{name}-common =
-%{epoch}:%{version}-%{release} #Obsoletes: koffice-killustrator
+#%package krita
+#Summary:	KOffice - Krita
+#Summary(pl):	KOffice - Krita
+#Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
+#Group:		X11/Applications
+#Requires:	%{name}-common = %{epoch}:%{version}-%{release}
+#Obsoletes:	koffice-killustrator
 
-#%description krita #Krita is the vector drawing program for the K
-Desktop Environment. #The aim of the Kontour project is the
-development of a freely #available vector-based drawing application
-similar to Corel Draw or #Adobe Illustrator. # #Krita was formerly
-known as KIllustrator but due to blackmail made #by Adobe lawyers it
-has to be renamed.
+#%description krita
+#Krita is the vector drawing program for the K Desktop Environment.
+#The aim of the Kontour project is the development of a freely
+#available vector-based drawing application similar to Corel Draw or
+#Adobe Illustrator.
+#Krita was formerly known as KIllustrator but due to blackmail made
+#by Adobe lawyers it has to be renamed.
 
-#%description krita -l pl #Krita jest programem do tworzenia grafiki
-wektorowej dla ¶rodowiska #KDE. Celem przy¶wiecaj±cym programistom
-jest stworzenie w pe³ni #funkcjonalnego programu do grafiki wektorowej
-podobnego do Corel Draw #lub Adobe Illustrator.
+#%description krita -l pl
+#Krita jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
+#KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni
+#funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
+#lub Adobe Illustrator.
 
 #Krita wczesniej by³ znany jako KIlustrator ale developerzy zostali
 #zmuszeni szanta¿em przez prawników Adobe do zmiany nazwy.
 
-#%description krita -l pt_BR #Ferramenta de desenho vetorial do
-KOffice.
+#%description krita -l pt_BR
+#Ferramenta de desenho vetorial do KOffice.
 
 %package kpresenter
 Summary:	KOffice - KPresenter
@@ -334,8 +339,7 @@ Summary:	Internationalization and localization files for koffice-common
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla koffice-common
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core >= 9:3.1.92.%{_snap}
-
+Requires:	kdebase-core >= 9:3.2
 
 %description common-i18n
 Internationalization and localization files for koffice-common.
