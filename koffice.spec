@@ -176,7 +176,8 @@ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
 
-%configure
+%configure \
+	--enable-final
 
 %{__make} 
 
