@@ -3,6 +3,7 @@
 # Conditional build:
 # _with_pixmapsubdirs - leave different depth/resolution icons 
 #
+
 %define 	no_compress_doc 1
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potÍøny pakiet biurowy dla KDE
@@ -11,8 +12,8 @@ Summary(ru):	Ó¡¬œ“ œ∆∆…”ŒŸ» –“œ«“¡ÕÕ ƒÃ— KDE
 Summary(uk):	Ó¡¬¶“ œ∆¶”Œ…» –“œ«“¡Õ ƒÃ— KDE
 Summary(zh_CN):	KDE µƒ∞Ïπ´”¶”√»Ìº˛ºØ°£
 Name:		koffice
-Version:	1.2
-Release:	6
+Version:	1.2.1
+Release:	1
 Epoch:		4
 License:	GPL
 Group:		X11/Applications
@@ -82,7 +83,7 @@ Pakiet miÍdzy innymi zawiera:
 # koffice-devel
 %package devel
 Summary:	KOffice - header files
-Summary(es):	Header files for compiling applications that use koffice libraries.
+Summary(es):	Header files for compiling applications that use koffice libraries
 Summary(pl):	KOffice - pliki nag≥Ûwkowe
 Summary(pt_BR):	Arquivos de inclus„o necess·rios ‡ compilaÁ„o de aplicaÁıes que usem as bibliotecas do koffice
 Group:		X11/Development/Libraries
@@ -502,7 +503,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libolefilter.??
 %attr(755,root,root) %{_libdir}/libkwmf.??
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(755,root,root) %{_libdir}/libkdchart.la
+%{_libdir}/libkdchart.la
 %{_applnkdir}/Office/koshell.desktop
 %{_applnkdir}/Office/Misc/kformula.desktop
 %{_datadir}/servicetypes/*
@@ -684,7 +685,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kudesigner
 %attr(755,root,root) %{_bindir}/kugar
 %attr(755,root,root) %{_libdir}/libkugar*.??
-%attr(755,root,root) %{_libdir}/straight_connector.ksp
 %{_applnkdir}/Office/Presentation/kugar.desktop
 %{_applnkdir}/Office/Misc/kudesigner.desktop
 %{_datadir}/apps/kudesigner
