@@ -459,6 +459,7 @@ Pliki umiêdzynarodawiaj±ce dla kworda.
 %setup -q
 %endif
 %patch0 -p1
+%patch1 -p1
 
 %build
 ##%{__make} -f admin/Makefile.common cvs
