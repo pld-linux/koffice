@@ -1,14 +1,7 @@
-# TODO: kformula to separate package
-#
-# Conditional build:
-# _with_mysql
-# Todo:
-# check what changes take place if compiled with qsa and aspell
-# check reqs
 
 %define		_state		snapshots
-%define		_ver		1.2.93
-%define		_snap		031024
+%define		_ver		1.2.94
+%define		_snap		031105
 
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
@@ -18,15 +11,16 @@ Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
 Version:	%{_ver}.%{_snap}
-Release:	2
+Release:	1
 Epoch:		5
 License:	GPL
 Group:		X11/Applications
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	ddd5b0aa1f15bc44c2b9327eefb55b4a
+# Source0-md5:	3dce45bf28c45e333b19bb82a3cde0b0
 Patch0:		%{name}-vcategories.patch
 Patch1:		%{name}-mysql_includes.patch
+Patch2:		%{name}-fix-kexi_plugins_tables_makefile_am.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	fam-devel
@@ -41,14 +35,10 @@ BuildRequires:	libtiff-devel
 BuildRequires:	mysql-devel
 BuildRequires:	perl
 BuildRequires:	python-devel >= 2.2
+BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	zlib-devel
 Requires:	wv2 >= 0.0.7
-
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define		_htmldir	%{_docdir}/kde/HTML
-
-%define		no_install_post_chrpath		1
 
 %description
 KOffice is an integrated office suite for K Desktop Environment.
@@ -340,12 +330,17 @@ Processador de texto do KOffice.
 %setup -q -n %{name}-%{_snap}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 
-%{__make} -f Makefile.cvs
+%{__make} -f admin/Makefile.common cvs
 
-%configure
+export DO_NOT_COMPILE="$DO_NOT_COMPILE kdgantt"
+
+%configure \
+	--disable-rpath \
+	--enable-final
 
 %{__make}
 
@@ -355,7 +350,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_appsdir=%{_applnkdir} \
-	kde_htmldir=%{_htmldir}
+	kde_htmldir=%{_kdedocdir}
 
 install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
 
@@ -421,9 +416,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/koshell.so
 %{_libdir}/libkdchart.la
 %attr(755,root,root) %{_libdir}/libkdchart.so.*.*.*
-# Conflicts with kdepim-korganizer
-#%{_libdir}/libkdgantt.la
-#%attr(755,root,root) %{_libdir}/libkdgantt.so.*.*.*
 %{_libdir}/libkexicore.la
 %attr(755,root,root) %{_libdir}/libkexicore.so.*.*.*
 %{_libdir}/libkexidatatable.la
@@ -434,10 +426,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkexidbparser.so.*.*.*
 %{_libdir}/libkexiextendedwidgets.la
 %attr(755,root,root) %{_libdir}/libkexiextendedwidgets.so.*.*.*
-#%{_libdir}/libkexiimportwizard.la
-#%attr(755,root,root) %{_libdir}/libkexiimportwizard.so.*.*.*
-#%{_libdir}/libkformeditor.la
-#%attr(755,root,root) %{_libdir}/libkformeditor.so.*.*.*
 %{_libdir}/libkexisql.la
 %attr(755,root,root) %{_libdir}/libkexisql.so.*.*.* 
 %{_libdir}/libkformula.la
@@ -486,8 +474,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libxslt*port*.so
 %{_libdir}/kde3/libkounavailpart.la
 %attr(755,root,root) %{_libdir}/kde3/libkounavailpart.so
-#%{_libdir}/kde3/liblatexparser.la
-#%attr(755,root,root) %{_libdir}/kde3/liblatexparser.so
 %{_libdir}/kde3/libolefilter.la
 %attr(755,root,root) %{_libdir}/kde3/libolefilter.so
 %{_datadir}/servicetypes/*
@@ -548,41 +534,17 @@ rm -rf $RPM_BUILD_ROOT
 %files kexi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kexi*
-#%attr(755,root,root) %{_bindir}/kformdesigner
 %{_libdir}/kexi.la
 %attr(755,root,root) %{_libdir}/kexi.so 
 %{_libdir}/kde3/*kexi*.la
 %attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
-#%{_libdir}/kde3/containers.la
-#%attr(755,root,root) %{_libdir}/kde3/containers.so
 %{_datadir}/apps/kexi
-#%{_datadir}/apps/kformdesigner
 %{_datadir}/config/kexirc
-#%{_desktopdir}/kformdesigner.desktop
+%{_datadir}/config/magic/kexi.magic
+%{_datadir}/mimelnk/application/x-kexiproject-shortcut.desktop
+%{_datadir}/mimelnk/application/x-kexiproject-sqlite.desktop
 %{_datadir}/services/kexi*
-#%{_datadir}/services/kformeditor
 %{_desktopdir}/kde/kexi.desktop
-#%{_iconsdir}/*/*/*/kexi.png
-#%{_iconsdir}/*/*/*/button.png
-#%{_iconsdir}/*/*/*/form_edit.png
-#%{_iconsdir}/*/*/*/lineedit.png
-#%{_iconsdir}/*/*/*/relation.png
-#%{_iconsdir}/*/*/*/state_edit.png
-#%{_iconsdir}/*/*/*/state_sql.png
-#%{_iconsdir}/*/*/*/db.png
-#%{_iconsdir}/*/*/*/form.png
-#%{_iconsdir}/*/*/*/forms.png
-#%{_iconsdir}/*/*/*/queries.png
-#%{_iconsdir}/*/*/*/query.png
-#%{_iconsdir}/*/*/*/report.png
-#%{_iconsdir}/*/*/*/reports.png
-#%{_iconsdir}/*/*/*/table.png
-#%{_iconsdir}/*/*/*/tables.png
-#%{_iconsdir}/*/*/*/state_view.png
-#%{_iconsdir}/*/*/*/frame.png
-#%{_iconsdir}/*/*/*/label.png
-#%{_iconsdir}/*/*/*/tabwidget.png
-#%{_iconsdir}/*/*/*/urlrequest.png
 %{_mandir}/man1/kexi.1*
 %{_mandir}/man1/kformdesigner.1*
 
@@ -600,7 +562,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/actions/brac*.png
 %{_iconsdir}/*/*/actions/frac.png
 %{_iconsdir}/*/*/actions/ins*.png
-#%{_iconsdir}/*/*/actions/key.png
 %{_iconsdir}/*/*/actions/rem*.png
 %{_iconsdir}/*/*/actions/int.png
 %{_iconsdir}/*/*/actions/[lr]su[bp].png
@@ -612,7 +573,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/actions/onetwomatrix.png
 %{_iconsdir}/*/*/actions/multiline.png
 %{_iconsdir}/*/*/actions/over.png
-#%{_iconsdir}/*/*/actions/scripting.png
 %{_iconsdir}/*/*/actions/under.png
 %{_iconsdir}/*/*/apps/kformula.png
 %{_mandir}/man1/kformula.1*
@@ -624,8 +584,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/*kivio*.so
 %{_libdir}/kde3/*kivio*.la
 %attr(755,root,root) %{_libdir}/kde3/*kivio*.so
-#%{_libdir}/kde3/sml_connector.la
-#%attr(755,root,root) %{_libdir}/kde3/sml_connector.so
 %{_libdir}/kde3/straight_connector.la
 %attr(755,root,root) %{_libdir}/kde3/straight_connector.so
 %{_datadir}/apps/kivio
@@ -673,10 +631,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/krayon/plugins/example.kisplugin
 %{_datadir}/apps/krita
 %{_datadir}/services/krita_magick_import.desktop
-#%{_datadir}/templates/.source/Illustration.kil
 %{_datadir}/templates/Illustration.desktop
 %{_desktopdir}/kde/krita.desktop
-#%{_mandir}/man1/krita.1*
 
 %files kspread -f kspread.lang
 %defattr(644,root,root,755)
@@ -698,7 +654,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/libopencalc*port.la
 %attr(755,root,root) %{_libdir}/kde3/libopencalc*port.so
 %{_datadir}/apps/kspread
-#%{_datadir}/mimelnk/text/x-gnumeric.desktop
 %{_datadir}/services/kspread*.desktop
 %{_datadir}/templates/.source/SpreadSheet.ksp
 %{_datadir}/templates/SpreadSheet.desktop
@@ -723,10 +678,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kudesigner
 %{_datadir}/apps/kugar
 %{_datadir}/services/kugar_kugar_import.desktop
-#%{_iconsdir}/*/*/*/kudesigner.png
 %{_iconsdir}/*/*/*/kugar.png
-# conflicts with kdelibs
-#%{_iconsdir}/*/*/mimetypes/kugardata.png
+%{_iconsdir}/*/*/mimetypes/kugardata.png
 %{_mandir}/man1/kudesigner.1*
 %{_mandir}/man1/kugar.1*
 
@@ -764,8 +717,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libwml*port.so
 %{_libdir}/kde3/libkspelltool.la
 %attr(755,root,root) %{_libdir}/kde3/libkspelltool.so
-#%{_libdir}/kde3/liblatex*port.la
-#%attr(755,root,root) %{_libdir}/kde3/liblatex*port.so
 %{_libdir}/kde3/librtf*port.la
 %attr(755,root,root) %{_libdir}/kde3/librtf*port.so
 %{_libdir}/kde3/libthesaurustool.la
@@ -778,8 +729,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libkword*.so
 %{_libdir}/kde3/liboowriter*port.la
 %attr(755,root,root) %{_libdir}/kde3/liboowriter*port.so
-#%{_libdir}/kde3/libmsword*port.la
-#%attr(755,root,root) %{_libdir}/kde3/libmsword*port.so
 %{_datadir}/apps/kword
 %{_datadir}/apps/thesaurus
 %{_datadir}/apps/xsltfilter/export/kword/xslfo/*.xsl
