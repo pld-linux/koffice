@@ -18,7 +18,7 @@ Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
 Version:	%{_ver}.%{_snap}
-Release:	1
+Release:	2
 Epoch:		5
 License:	GPL
 Group:		X11/Applications
@@ -26,7 +26,9 @@ Group:		X11/Applications
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
 # Source0-md5:	ddd5b0aa1f15bc44c2b9327eefb55b4a
 Patch0:		%{name}-vcategories.patch
+Patch1:		%{name}-mysql_includes.patch
 URL:		http://www.koffice.org/
+BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	fam-devel
 BuildRequires:	wv2-devel >= 0.0.7
 BuildRequires:	gettext-devel
@@ -36,7 +38,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtiff-devel
-BuildRequires:	ImageMagick-c++-devel
+BuildRequires:	mysql-devel >= 4.0.16
 BuildRequires:	perl
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	zlib-devel
@@ -337,6 +339,7 @@ Processador de texto do KOffice.
 %prep
 %setup -q -n %{name}-%{_snap}
 %patch0 -p1
+%patch1 -p1
 
 %build
 
