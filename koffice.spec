@@ -17,7 +17,7 @@ Summary(uk):	Ó¡¬¶“ œ∆¶”Œ…» –“œ«“¡Õ ƒÃ— KDE
 Summary(zh_CN):	KDE µƒ∞Ïπ´”¶”√»Ìº˛ºØ°£
 Name:		koffice
 Version:	%{_ver}.%{_snap}
-Release:	0.1
+Release:	1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
@@ -522,7 +522,7 @@ cd -
 
 install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
 
-mv $RPM_BUILD_ROOT{%{_datadir}/applnk/Office/*,%{_desktopdir}/kde}
+mv $RPM_BUILD_ROOT{%{_datadir}/applnk/{Office,Utilities}/*,%{_desktopdir}/kde}
 
 install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
@@ -668,6 +668,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %{_libdir}/libkarbonbase.so
+%{_libdir}/libkarboncommon.so
 %{_libdir}/libkdchart.so
 #%{_libdir}/libkdgantt.so
 %{_libdir}/libkexicore.so
@@ -680,7 +681,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkexipropertyeditor.so
 %{_libdir}/libkexirelationsview.so
 %{_libdir}/libkexisql.so
-#%{_libdir}/libkformeditor.so
+%{_libdir}/libkformeditor.so
 %{_libdir}/libkformula.so
 %{_libdir}/libkiviocommon.so
 %{_libdir}/libkochart.so
@@ -688,11 +689,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkofficeui.so
 %{_libdir}/libkopainter.so
 %{_libdir}/libkoscript.so
-%{_libdir}/libkospell.so
+#%{_libdir}/libkospell.so
 %{_libdir}/libkotext.so
 %{_libdir}/libkowmf.so
+%{_libdir}/libkspreadcommon.so
 %{_libdir}/libkstore.so
-%{_libdir}/libkugar.so
+%{_libdir}/libkugarlib.so
 %{_libdir}/libkwmailmerge_interface.so
 %{_libdir}/libkwmf.so
 %{_libdir}/libkwordexportfilters.so
@@ -712,6 +714,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/koshell
 %{_libdir}/libkarbonbase.la
 %attr(755,root,root) %{_libdir}/libkarbonbase.so.2.0.0
+%{_libdir}/libkarboncommon.la
+%attr(755,root,root) %{_libdir}/libkarboncommon.so.*.*.*
 %{_libdir}/libkdchart.la
 %attr(755,root,root) %{_libdir}/libkdchart.so.*.*.*
 %{_libdir}/libkdeinit_koshell.la
@@ -734,6 +738,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkexirelationsview.so.0.0.0
 %{_libdir}/libkexisql.la
 %attr(755,root,root) %{_libdir}/libkexisql.so.*.*.*
+%{_libdir}/libkformeditor.la
+%attr(755,root,root) %{_libdir}/libkformeditor.so.*.*.*
 %{_libdir}/libkformula.la
 %attr(755,root,root) %{_libdir}/libkformula.so.*.*.*
 %{_libdir}/libkiviocommon.la
@@ -748,16 +754,18 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkopainter.so.*.*.*
 %{_libdir}/libkoscript.la
 %attr(755,root,root) %{_libdir}/libkoscript.so.*.*.*
-%{_libdir}/libkospell.la
-%attr(755,root,root) %{_libdir}/libkospell.so.*.*.*
+#%{_libdir}/libkospell.la
+#%attr(755,root,root) %{_libdir}/libkospell.so.*.*.*
 %{_libdir}/libkotext.la
 %attr(755,root,root) %{_libdir}/libkotext.so.*.*.*
 %{_libdir}/libkowmf.la
 %attr(755,root,root) %{_libdir}/libkowmf.so.*.*.*
+%{_libdir}/libkspreadcommon.la
+%attr(755,root,root) %{_libdir}/libkspreadcommon.so.*.*.*
 %{_libdir}/libkstore.la
 %attr(755,root,root) %{_libdir}/libkstore.so.*.*.*
-%{_libdir}/libkugar.la
-%attr(755,root,root) %{_libdir}/libkugar.so.*.*.*
+#%{_libdir}/libkugar.la
+%attr(755,root,root) %{_libdir}/libkugarlib.so.*.*.*
 %{_libdir}/libkwmailmerge_interface.la
 %attr(755,root,root) %{_libdir}/libkwmailmerge_interface.so.*.*.*
 %{_libdir}/libkwmf.la
@@ -853,8 +861,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/kexi.so
 %{_libdir}/kde3/kexidb_mysqldriver.la
 %attr(755,root,root) %{_libdir}/kde3/kexidb_mysqldriver.so
+%{_libdir}/kde3/kexidb_pqxxsqldriver.la
+%attr(755,root,root) %{_libdir}/kde3/kexidb_pqxxsqldriver.so
 %{_libdir}/kde3/kexidb_sqlitedriver.la
 %attr(755,root,root) %{_libdir}/kde3/kexidb_sqlitedriver.so
+%{_libdir}/kde3/kexihandler_form.la
+%attr(755,root,root) %{_libdir}/kde3/kexihandler_form.so
 %{_libdir}/kde3/kexihandler_query.la
 %attr(755,root,root) %{_libdir}/kde3/kexihandler_query.so
 %{_libdir}/kde3/kexihandler_relation.la
@@ -869,10 +881,20 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kexi*
 %{_desktopdir}/kde/kexi.desktop
 %{_iconsdir}/*/*/*/kexi.png
+%{_iconsdir}/crystalsvg/scalable/apps/kexi.svgz
 %{_iconsdir}/crystalsvg/32x32/mimetypes/kexiproject_shortcut.png
 %{_iconsdir}/crystalsvg/32x32/mimetypes/kexiproject_sqlite.png
 #%{_mandir}/man1/kexi.1*
 #%{_mandir}/man1/kformdesigner.1*
+# Separate?
+%attr(755,root,root) %{_bindir}/kformdesigner
+%{_libdir}/kde3/containers.la
+%attr(755,root,root) %{_libdir}/kde3/containers.so
+%{_libdir}/kde3/stdwidgets.la
+%attr(755,root,root) %{_libdir}/kde3/stdwidgets.so
+%{_datadir}/apps/kformdesigner
+%{_datadir}/services/kformeditor
+%{_desktopdir}/kde/kformdesigner.desktop
 
 %files kformula -f kformula_en.lang
 %defattr(644,root,root,755)
@@ -1026,6 +1048,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kthesaurus
 %attr(755,root,root) %{_bindir}/kword
+%{_libdir}/libkdeinit_kthesaurus.la
+%attr(755,root,root) %{_libdir}/libkdeinit_kthesaurus.so
 %{_libdir}/libkdeinit_kword.la
 %attr(755,root,root) %{_libdir}/libkdeinit_kword.so
 %{_libdir}/kde3/kword.la
@@ -1034,6 +1058,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkwmailmerge*.so
 %{_libdir}/libkword*export*.la
 %attr(755,root,root) %{_libdir}/libkword*export*.so
+%{_libdir}/kde3/kthesaurus.la
+%attr(755,root,root) %{_libdir}/kde3/kthesaurus.so
 %{_libdir}/kde3/kwmailmerge*.la
 %attr(755,root,root) %{_libdir}/kde3/kwmailmerge*.so
 %{_libdir}/kde3/libabiword*port.la
@@ -1056,8 +1082,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libpdfimport.so
 %{_libdir}/kde3/libwml*port.la
 %attr(755,root,root) %{_libdir}/kde3/libwml*port.so
-%{_libdir}/kde3/libkspelltool.la
-%attr(755,root,root) %{_libdir}/kde3/libkspelltool.so
+#%{_libdir}/kde3/libkspelltool.la
+#%attr(755,root,root) %{_libdir}/kde3/libkspelltool.so
 %{_libdir}/kde3/librtf*port.la
 %attr(755,root,root) %{_libdir}/kde3/librtf*port.so
 %{_libdir}/kde3/libthesaurustool.la
@@ -1074,7 +1100,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/thesaurus
 %{_datadir}/apps/xsltfilter/export/kword/xslfo/*.xsl
 %{_datadir}/services/kwmailmerge_kabc.desktop
-%{_datadir}/services/kspelltool.desktop
+#%{_datadir}/services/kspelltool.desktop
 %{_datadir}/services/kword*.desktop
 %{_datadir}/services/kwserialletter*
 %{_datadir}/services/thesaurustool.desktop
