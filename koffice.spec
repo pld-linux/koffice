@@ -1,17 +1,16 @@
-%define	ver	1.1
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
 Summary(pt_BR):	Suíte de aplicativos office para o KDE
 Name:		koffice
-Version:	1.1
-Release:	6
+Version:	1.1.1
+Release:	1
 Epoch:		4
 License:	GPL
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
-Source0:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{ver}/src/%{name}-%{ver}.tar.bz2
-Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{ver}/src/%{name}-i18n-%{ver}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
+Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
 URL:		http://www.koffice.org/
 BuildRequires:	kdelibs-devel >= 2.1.1
 BuildRequires:	libstdc++-devel
@@ -21,6 +20,7 @@ BuildRequires:	zlib-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
+BuildRequires:	gettext-devel
 BuildRequires:	perl
 BuildRequires:	python-devel >= 2.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -323,7 +323,7 @@ Gerador de relatórios do KOffice.
 ######################## end descriptions ########################
 
 %prep
-%setup -q -n %{name}-%{ver} -a1
+%setup -q -n %{name}-%{version} -a1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
@@ -338,7 +338,7 @@ CXXFLAGS="-D_GNU_SOURCE $RPM_OPT_FLAGS -fno-check-new"
 
 %{__make} 
 
-cd %{name}-i18n-%{ver}
+cd %{name}-i18n-%{version}
 %configure2_13
 
 %{__make}
@@ -367,29 +367,52 @@ install kchart/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 install kformula/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 install koshell/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office
 
-cd %{name}-i18n-%{ver}
+cd %{name}-i18n-%{version}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 cd ..
 
+# These seem to not be used by anything...
+%find_lang krayon --with-kde
+%find_lang kocryptfilter --with-kde
+%find_lang kformviewer --with-kde
+%find_lang spell_tool --with-kde
+%find_lang kdiagramm --with-kde
+%find_lang kimage --with-kde
+%find_lang kimageshop --with-kde
+%find_lang kohtml --with-kde
+
+# These are used ;)
 %find_lang kontour --with-kde
 %find_lang kpresenter --with-kde
+%find_lang kpresenterkwordfilter --with-kde
+cat kpresenterkwordfilter.lang >> kpresenter.lang
+%find_lang krayon --with-kde
 %find_lang kspread --with-kde
 %find_lang kspreadcalc_calc --with-kde
+%find_lang kspreadqprofilter --with-kde
 %find_lang csvfilter --with-kde
-cat kspreadcalc_calc.lang csvfilter.lang >> kspread.lang
+cat kspreadcalc_calc.lang kspreadqprofilter.lang csvfilter.lang >> kspread.lang
 %find_lang kword --with-kde
+%find_lang kwordhtmlfilter --with-kde
+%find_lang kwordlatexfilter --with-kde
+cat kwordhtmlfilter.lang kwordlatexfilter.lang >> kword.lang
 %find_lang kivio --with-kde
 %find_lang kugar --with-kde
 %find_lang kchart --with-kde
+
 %find_lang koshell --with-kde
-%find_lang koffice --with-kde
 %find_lang graphite --with-kde
+# This one seem unused.
+%find_lang kimageshop --with-kde
+%find_lang koffice --with-kde
 %find_lang kformula --with-kde
 %find_lang kscan_plugin --with-kde
 # Not sure if it is the right place.
 %find_lang example --with-kde
+%find_lang olefilterswinword97filter --with-kde
 cat koshell.lang graphite.lang koffice.lang kformula.lang kscan_plugin.lang example.lang \
+	olefilterswinword97filter.lang \
 	> common.lang
 
 %clean
@@ -497,7 +520,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde2/libapplixgraphicimport.??
 %attr(755,root,root) %{_libdir}/kde2/libmsodimport.??
 %attr(755,root,root) %{_libdir}/kde2/libwmfimport.??
-%attr(755,root,root) %{_libdir}/kde2/libkprkword.??
 %attr(755,root,root) %{_libdir}/kde2/libsvgimport.??
 %attr(755,root,root) %{_libdir}/kde2/libsvgexport.??
 %attr(755,root,root) %{_libdir}/kde2/libxfigimport.??
@@ -526,6 +548,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kprconverter.pl
 %attr(755,root,root) %{_libdir}/kpresenter.??
 %attr(755,root,root) %{_libdir}/kde2/libkpresenterpart.??
+%attr(755,root,root) %{_libdir}/kde2/libkprkword.??
 %{_datadir}/apps/kpresenter
 %{_datadir}/mimelnk/application/x-kpresenter.desktop
 %{_datadir}/templates/.source/Presentation.kpt
