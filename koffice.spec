@@ -111,7 +111,6 @@ Summary:	KOffice - common files and libraries
 Summary(pl):	KOffice - wspólne pliki i biblioteki
 Summary(pt_BR):	Arquivos requeridos por todos os softwares koffice
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:3.2
 
 %description common
 KOffice is an integrated office suite for K Desktop Environment.
