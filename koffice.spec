@@ -30,7 +30,7 @@ URL:		http://www.koffice.org/
 BuildRequires:	fam-devel
 BuildRequires:	wv2-devel >= 0.0.7
 BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel >= 8:3.2
+BuildRequires:	kdelibs-devel >= 9:3.1.90.030726
 BuildRequires:	libart_lgpl-devel >= 2.3.8
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
