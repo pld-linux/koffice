@@ -67,11 +67,11 @@ Requires:	%{name}-common = %{version}
 This package includes the header files you will need to compile
 applications that use koffice libraries.
 
-%description -l pl devel
+%description devel -l pl
 Ten pakiet zawiera pliki nag³ówkowe, których bêdziesz potrzebowa³ aby
 skompilowaæ programy u¿ywaj±ce bibliotek KOffice.
 
-%description -l pt_BR devel
+%description devel -l pt_BR
 Arquivos de inclusão necessários à compilação de aplicações que usem
 as bibliotecas do koffice.
 
@@ -130,7 +130,7 @@ KOffice contains:
 Package contains common files and libraries needs by KOffice
 applications.
 
-%description -l pl common
+%description common -l pl
 KOffice jest zintegrowanym pakietem biurowym dla ¶rodowiska KDE.
 Pakiet miêdzy innymi zawiera:
 - KWord - procesor tekstu
@@ -147,7 +147,7 @@ Pakiet miêdzy innymi zawiera:
 Pakiet zawiera wspólne pliki i biblioteki wymagane przez aplikacje
 KOffoce.
 
-%description -l pt_BR common
+%description common -l pt_BR
 Arquivos requeridos por todos os softwares koffice.
 
 # koffice-kchart
@@ -162,10 +162,10 @@ Requires:	%{name}-common = %{version}
 KChart is KOffice part for generating diagrams from data, e.g. pie and
 bar charts.
 
-%description -l pl kchart
+%description kchart -l pl
 KChart jest aplikacj± s³u¿±c± do generowania wykresów.
 
-%description -l pt_BR kchart
+%description kchart -l pt_BR
 Gerador de diagramas do KOffice.
 
 # koffice-kontour (f. k. a. koffice-killustrator)
@@ -185,7 +185,7 @@ Adobe Illustrator.
 Kontour was formerly known as KIllustrator but due to blackmail made
 by Adobe lawyers it has to be renamed.
 
-%description -l pl kontour
+%description kontour -l pl
 Kontour jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
 KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni
 funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
@@ -194,7 +194,7 @@ lub Adobe Illustrator.
 Kontour wczesniej by³ znany jako KIlustrator ale developerzy zostali
 zmuszeni szantarzem przez prawników Adobe do zmiany nazwy.
 
-%description -l pt_BR kontour
+%description kontour -l pt_BR
 Ferramenta de desenho vetorial do KOffice.
 
 # koffice-kpresenter
@@ -209,7 +209,7 @@ KPresenter is a presentation application of the KOffice, similar to MS
 PowerPoint in the windows world. You can use it for doing screen
 presentations or transparencies.
 
-%description -l pl kpresenter
+%description kpresenter -l pl
 KPresenter jest aplikacj± KOffice do tworzenia prezentacji, podobn± do
 MS PowerPoint. Mo¿esz u¿yæ jej do tworzenia wizualnych prezentacji.
 
@@ -224,10 +224,10 @@ Requires:	%{name}-common = %{version}
 %description kspread
 KSpread is the spread sheet of the KOffice, similar to MS Excel.
 
-%description -l pl kspread
+%description kspread -l pl
 KSpread jest arkuszem kalkulacyjnym, podobnym do MS Excel.
 
-%description -l pt_BR kspread
+%description kspread -l pt_BR
 Planilha eletrônica do KOffice.
 
 # koffice-kword
@@ -243,11 +243,11 @@ KWord is a FrameMaker-like wordprocessor application for KOffice. So
 it can be used for DTP, but also for "normal" wordprocessing (like
 writing letters, reports, etc.).
 
-%description -l pl kword
+%description kword -l pl
 KWord jest ramkowym procesorem tekstu. Mo¿e byæ u¿yty do DTP, ale
 równie¿ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 
-%description -l pt_BR kword
+%description kword -l pt_BR
 Processador de texto do KOffice.
 
 # koffice-ivio
@@ -269,12 +269,12 @@ network and let it explore and map out the network for you. All this
 is possible through the scripting/plugin architecture Kivio will
 possess.
 
-%description -l pl kivio
+%description kivio -l pl
 Kivio jest programem typu flowcharting. Kivio dostarcza
 najpotrzebniejsze funkcje ale wszystkie obiekty mo¿na rozszerzaæ za
 pomoc± jêzyka skryptowego.
 
-%description -l pt_BR kivio
+%description kivio -l pt_BR
 Editor de fluxogramas do KOffice.
 
 # koffice-kugar
@@ -291,13 +291,13 @@ be viewed and printed. It includes a standalone report application can
 embed the report viewing functionality and that reports can be viewed
 using the Konqueror browser.
 
-%description -l pl kugar
+%description kugar -l pl
 Kugar jest narzêdziem KDE do generowania raportów o jako¶ci
 biznesowej, które mog± byæ przegl±dane oraz drukowane. Dodatkowo
 do³±czony jest program który mo¿e byæ do³±czony do raportu
 umo¿liwiaj±c ogl±danie raportu w przegl±darce Konqueror.
 
-%description -l pt_BR kugar
+%description kugar -l pt_BR
 Gerador de relatórios do KOffice.
 
 ######################## end descriptions ########################
@@ -316,7 +316,7 @@ CXXFLAGS="-D_GNU_SOURCE %{rpmcflags} -fno-check-new"
 	--with-xinerama \
 	--disable-rpath
 
-%{__make} 
+%{__make}
 
 cd %{name}-i18n-%{version}
 %configure2_13
