@@ -13,7 +13,7 @@ Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}-kde3/src/%{name}-%{version}-kde3.tar.bz2
 Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}-kde3/src/%{name}-i18n-%{version}.tar.bz2
 Patch0:		%{name}-fix-change-custom-variable-value.patch
-Patch1:		%{name}-fix-kpresenter-mem-leak.patch
+#Patch1:		%{name}-fix-kpresenter-mem-leak.patch
 Patch2:		%{name}-zh-langname.patch
 Patch3:		%{name}-desktop.fixes.patch
 URL:		http://www.koffice.org/
@@ -322,7 +322,7 @@ Gerador de relatórios do KOffice.
 %prep
 %setup -q -n %{name}-%{version} -a1
 %patch0 -p1
-%patch1 -p1
+#%patch1 -p1
 %patch2 -p1
 %patch3 -p1
 
