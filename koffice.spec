@@ -6,7 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/KDE/Applications
 Group(pl):	X11/KDE/Aplikacje
-Source0:	ftp://ftp.kde.org/pub/kde/unstable/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/unstable/distribution/2.0Beta5/tar/src/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-applnkdir.patch
 URL:		http://koffice.kde.org/
 BuildPrereq:	kdelibs-devel = %{version}
@@ -219,10 +219,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/koscript
 %attr(755,root,root) %{_bindir}/koshell
 %attr(755,root,root) %{_bindir}/kprconverter.pl
-%attr(755,root,root) %{_libdir}/koshell.so
-%{_libdir}/koshell.la
-%attr(755,root,root) %{_libdir}/libolefilter.so
-%{_libdir}/libolefilter.la
+%attr(755,root,root) %{_libdir}/koshell.??
+%attr(755,root,root) %{_libdir}/libolefilter.??
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_datadir}/apps/koffice
 %{_htmldir}/en/doc/*
@@ -238,20 +236,13 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/*.h
-%{_libdir}/libkformula.la
-%{_libdir}/libkodocinfopropspage.la
-%{_libdir}/libkofficecore.la
-%{_libdir}/libkofficeui.la
-%{_libdir}/libkoml.la
-%{_libdir}/libkoscript.la
-%{_libdir}/libkstore.la
-%{_libdir}/libkformula.so
-%{_libdir}/libkodocinfopropspage.so
-%{_libdir}/libkofficecore.so
-%{_libdir}/libkofficeui.so
-%{_libdir}/libkoml.so
-%{_libdir}/libkoscript.so
-%{_libdir}/libkstore.so
+%attr(755,root,root) %{_libdir}/libkformula.??
+%attr(755,root,root) %{_libdir}/libkodocinfopropspage.??
+%attr(755,root,root) %{_libdir}/libkofficecore.??
+%attr(755,root,root) %{_libdir}/libkofficeui.??
+%attr(755,root,root) %{_libdir}/libkoml.??
+%attr(755,root,root) %{_libdir}/libkoscript.??
+%attr(755,root,root) %{_libdir}/libkstore.??
 
 #################################
 # koffice-kchart
@@ -259,10 +250,8 @@ rm -rf $RPM_BUILD_ROOT
 %files kchart
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kchart
-%attr(755,root,root) %{_libdir}/kchart.so
-%{_libdir}/kchart.la
-%attr(755,root,root) %{_libdir}/libkchartpart.so
-%{_libdir}/libkchartpart.la
+%attr(755,root,root) %{_libdir}/kchart.??
+%attr(755,root,root) %{_libdir}/libkchartpart.??
 %{_datadir}/apps/kchart
 %{_applnkdir}/Office/Misc/kchart.desktop
 %{_datadir}/mimelnk/application/x-kchart.desktop
@@ -275,10 +264,8 @@ rm -rf $RPM_BUILD_ROOT
 %files killustrator
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/killustrator
-%attr(755,root,root) %{_libdir}/killustrator.so
-%{_libdir}/killustrator.la
-%attr(755,root,root) %{_libdir}/libkillustratorpart.so
-%{_libdir}/libkillustratorpart.la
+%attr(755,root,root) %{_libdir}/killustrator.??
+%attr(755,root,root) %{_libdir}/libkillustratorpart.??
 %{_datadir}/apps/killustrator
 %{_htmldir}/en/killustrator
 %{_applnkdir}/Graphics/killustrator.desktop
@@ -292,10 +279,8 @@ rm -rf $RPM_BUILD_ROOT
 %files kpresenter
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kpresenter
-%attr(755,root,root) %{_libdir}/kpresenter.so
-%{_libdir}/kpresenter.la
-%attr(755,root,root) %{_libdir}/libkpresenterpart.so
-%{_libdir}/libkpresenterpart.la
+%attr(755,root,root) %{_libdir}/kpresenter.??
+%attr(755,root,root) %{_libdir}/libkpresenterpart.??
 %{_datadir}/apps/kpresenter
 %{_htmldir}/en/kpresenter
 %{_applnkdir}/Office/Presentations/kpresenter.desktop
@@ -310,12 +295,9 @@ rm -rf $RPM_BUILD_ROOT
 %files kspread
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kspread
-%attr(755,root,root) %{_libdir}/kspread.so
-%{_libdir}/kspread.la
-%attr(755,root,root) %{_libdir}/libkspreadpart.so
-%{_libdir}/libkspreadpart.la
-%attr(755,root,root) %{_libdir}/libkspreadcalc.so
-%{_libdir}/libkspreadcalc.la
+%attr(755,root,root) %{_libdir}/kspread.??
+%attr(755,root,root) %{_libdir}/libkspreadpart.??
+%attr(755,root,root) %{_libdir}/libkspreadcalc.??
 %{_datadir}/apps/kspread
 %{_applnkdir}/Office/Spreadsheets/kspread.desktop
 %{_datadir}/mimelnk/application/x-kspread.desktop
@@ -331,26 +313,16 @@ rm -rf $RPM_BUILD_ROOT
 %files kword
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kword
-%attr(755,root,root) %{_libdir}/kword.so
-%{_libdir}/kword.la
-%attr(755,root,root) %{_libdir}/libkwordpart.so
-%{_libdir}/libkwordpart.la
-%attr(755,root,root) %{_libdir}/libasciiexport.so
-%{_libdir}/libasciiexport.la
-%attr(755,root,root) %{_libdir}/libasciiimport.so
-%{_libdir}/libasciiimport.la
-%attr(755,root,root) %{_libdir}/libcsvexport.so
-%{_libdir}/libcsvexport.la
-%attr(755,root,root) %{_libdir}/libcsvimport.so
-%{_libdir}/libcsvimport.la
-%attr(755,root,root) %{_libdir}/libcsvfilterdia.so
-%{_libdir}/libcsvfilterdia.la
-%attr(755,root,root) %{_libdir}/libhtmlexport.so
-%{_libdir}/libhtmlexport.la
-%attr(755,root,root) %{_libdir}/libhtmlimport.so
-%{_libdir}/libhtmlimport.la
-%attr(755,root,root) %{_libdir}/libkspelltool.so
-%{_libdir}/libkspelltool.la
+%attr(755,root,root) %{_libdir}/kword.??
+%attr(755,root,root) %{_libdir}/libkwordpart.??
+%attr(755,root,root) %{_libdir}/libasciiexport.??
+%attr(755,root,root) %{_libdir}/libasciiimport.??
+%attr(755,root,root) %{_libdir}/libcsvexport.??
+%attr(755,root,root) %{_libdir}/libcsvimport.??
+%attr(755,root,root) %{_libdir}/libcsvfilterdia.??
+%attr(755,root,root) %{_libdir}/libhtmlexport.??
+%attr(755,root,root) %{_libdir}/libhtmlimport.??
+%attr(755,root,root) %{_libdir}/libkspelltool.??
 %{_datadir}/apps/kword
 %{_htmldir}/en/kword
 %{_applnkdir}/Office/Wordprocessors/kword.desktop
