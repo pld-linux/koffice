@@ -1,0 +1,1460 @@
+diff -uNr koffice-1.1.orig/example/example.desktop koffice-1.1/example/example.desktop
+--- koffice-1.1.orig/example/example.desktop	Sun Aug  5 09:43:15 2001
++++ koffice-1.1/example/example.desktop	Wed Oct 17 19:13:39 2001
+@@ -43,8 +43,8 @@
+ Name[uk]=Приклад
+ Name[vi]=Ví dụ 
+ Name[wa]=Egzimpe
+-Name[zh_CN.GB2312]=例子
+-Name[zh_TW.Big5]=範例
++Name[zh_CN]=例子
++Name[zh_TW]=範例
+ Exec=example
+ X-KDE-Library=libexamplepart
+ MimeType=application/x-example
+diff -uNr koffice-1.1.orig/filters/kocrypt/kspread_crypto_export.desktop koffice-1.1/filters/kocrypt/kspread_crypto_export.desktop
+--- koffice-1.1.orig/filters/kocrypt/kspread_crypto_export.desktop	Sun Aug  5 09:43:40 2001
++++ koffice-1.1/filters/kocrypt/kspread_crypto_export.desktop	Wed Oct 17 19:13:40 2001
+@@ -32,7 +32,7 @@
+ Name[tr]=KSpread Belge Şifreleme Katmanı
+ Name[uk]=Шар кодування документу KSpread
+ Name[vi]=Tầng mã khoá các văn bản KSpread 
+-Name[zh_CN.GB2312]=KSpread 文档加密层
++Name[zh_CN]=KSpread 文档加密层
+ Export=application/x-kspread-crypt
+ Import=application/x-kspread
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kocrypt/kspread_crypto_import.desktop koffice-1.1/filters/kocrypt/kspread_crypto_import.desktop
+--- koffice-1.1.orig/filters/kocrypt/kspread_crypto_import.desktop	Sun Aug  5 09:44:02 2001
++++ koffice-1.1/filters/kocrypt/kspread_crypto_import.desktop	Wed Oct 17 19:13:40 2001
+@@ -32,7 +32,7 @@
+ Name[tr]=KSpread Belge Şifre Çözme Katmanı
+ Name[uk]=Шар розкодовування документу KSpread
+ Name[vi]=Tầng mã hoá các văn bản KSpread 
+-Name[zh_CN.GB2312]=KSpread 文档解密层
++Name[zh_CN]=KSpread 文档解密层
+ Export=application/x-kspread
+ Import=application/x-kspread-crypt
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kocrypt/kword_crypto_export.desktop koffice-1.1/filters/kocrypt/kword_crypto_export.desktop
+--- koffice-1.1.orig/filters/kocrypt/kword_crypto_export.desktop	Sun Aug  5 09:44:25 2001
++++ koffice-1.1/filters/kocrypt/kword_crypto_export.desktop	Wed Oct 17 19:13:40 2001
+@@ -32,7 +32,7 @@
+ Name[tr]=KWord Belge Şifreleme Katmanı
+ Name[uk]=Шар кодування документу KWord
+ Name[vi]=Tầng mã hoá các văn bản KWord 
+-Name[zh_CN.GB2312]=KWord 文档加密层
++Name[zh_CN]=KWord 文档加密层
+ Export=application/x-kword-crypt
+ Import=application/x-kword
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kocrypt/kword_crypto_import.desktop koffice-1.1/filters/kocrypt/kword_crypto_import.desktop
+--- koffice-1.1.orig/filters/kocrypt/kword_crypto_import.desktop	Sun Aug  5 09:44:49 2001
++++ koffice-1.1/filters/kocrypt/kword_crypto_import.desktop	Wed Oct 17 19:13:40 2001
+@@ -32,7 +32,7 @@
+ Name[tr]=KWord Belge Şifre Çözme Katmanı
+ Name[uk]=Шар розкодовування документу KWord
+ Name[vi]=Tầng giải mã các văn bản KWord 
+-Name[zh_CN.GB2312]=KWord 文档解密层
++Name[zh_CN]=KWord 文档解密层
+ Export=application/x-kword
+ Import=application/x-kword-crypt
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kocrypt/x-kspread-crypt.desktop koffice-1.1/filters/kocrypt/x-kspread-crypt.desktop
+--- koffice-1.1.orig/filters/kocrypt/x-kspread-crypt.desktop	Sun Aug  5 09:45:22 2001
++++ koffice-1.1/filters/kocrypt/x-kspread-crypt.desktop	Wed Oct 17 19:13:40 2001
+@@ -32,7 +32,7 @@
+ Comment[tr]=KSpread Şifrelenmiş
+ Comment[uk]=Закодований KSpread
+ Comment[vi]=Đã giải mã KSpread 
+-Comment[zh_CN.GB2312]=解密 KSpread
++Comment[zh_CN]=解密 KSpread
+ Icon=kspread
+ Type=MimeType
+ Patterns=
+diff -uNr koffice-1.1.orig/filters/kocrypt/x-kword-crypt.desktop koffice-1.1/filters/kocrypt/x-kword-crypt.desktop
+--- koffice-1.1.orig/filters/kocrypt/x-kword-crypt.desktop	Sun Aug  5 09:45:45 2001
++++ koffice-1.1/filters/kocrypt/x-kword-crypt.desktop	Wed Oct 17 19:13:40 2001
+@@ -32,7 +32,7 @@
+ Comment[tr]=KWord Şifrelenmiş
+ Comment[uk]=Закодований KWord
+ Comment[vi]=Đã giải mã KWord 
+-Comment[zh_CN.GB2312]=解密 KWord
++Comment[zh_CN]=解密 KWord
+ Icon=kword
+ Type=MimeType
+ Patterns=
+diff -uNr koffice-1.1.orig/filters/kontour/applixgraphics/killustrator_applixgraphic_import.desktop koffice-1.1/filters/kontour/applixgraphics/killustrator_applixgraphic_import.desktop
+--- koffice-1.1.orig/filters/kontour/applixgraphics/killustrator_applixgraphic_import.desktop	Sun Aug  5 09:46:08 2001
++++ koffice-1.1/filters/kontour/applixgraphics/killustrator_applixgraphic_import.desktop	Wed Oct 17 19:13:41 2001
+@@ -33,8 +33,8 @@
+ Name[tr]=KIllustrator Applixgraphics Alma Süzgeci
+ Name[uk]=Фільтр імпорту KIllustrator Applixgraphics
+ Name[vi]=Trình lọc nhập vào các file đồ hoạ KIllustrator Applix 
+-Name[zh_CN.GB2312]=KIllustrator Applix 图形导入过滤程序
+-Name[zh_TW.Big5]=KIllustrator Applix 圖檔匯入過濾器
++Name[zh_CN]=KIllustrator Applix 图形导入过滤程序
++Name[zh_TW]=KIllustrator Applix 圖檔匯入過濾器
+ Export=application/x-kontour
+ Import=application/x-applixgraphic
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kontour/latex/kontour_latex_export.desktop koffice-1.1/filters/kontour/latex/kontour_latex_export.desktop
+--- koffice-1.1.orig/filters/kontour/latex/kontour_latex_export.desktop	Sun Aug  5 09:46:31 2001
++++ koffice-1.1/filters/kontour/latex/kontour_latex_export.desktop	Wed Oct 17 19:13:42 2001
+@@ -31,7 +31,7 @@
+ Name[ta]=Kontour LATEX ²üÚÁ¾¢ ÅÊ¸ðÊ
+ Name[tr]=Kontour LATEX Verme Süzgeci
+ Name[uk]=Фільтр експорту LATEX для Kontour
+-Name[zh_CN.GB2312]=Kontour LATEX 导出过滤程序
++Name[zh_CN]=Kontour LATEX 导出过滤程序
+ Export=text/x-tex
+ Import=application/x-kontour
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kontour/msod/killustrator_msod_import.desktop koffice-1.1/filters/kontour/msod/killustrator_msod_import.desktop
+--- koffice-1.1.orig/filters/kontour/msod/killustrator_msod_import.desktop	Sun Aug  5 09:46:54 2001
++++ koffice-1.1/filters/kontour/msod/killustrator_msod_import.desktop	Wed Oct 17 19:13:43 2001
+@@ -35,8 +35,8 @@
+ Name[tr]=KIllustrator MS Office Çizim Alma Süzgeci
+ Name[uk]=Фільтр імпорту MS Office для KIllustrator
+ Name[vi]=Trình lọc nhập vào KIllustrator MS Office Drawing 
+-Name[zh_CN.GB2312]=KIllustrator MS Office 图片导入过滤程序
+-Name[zh_TW.Big5]=KIllustrator MS office 繪圖匯入過濾器
++Name[zh_CN]=KIllustrator MS Office 图片导入过滤程序
++Name[zh_TW]=KIllustrator MS office 繪圖匯入過濾器
+ Export=application/x-kontour
+ Import=image/x-msod
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kontour/msod/x-msod.desktop koffice-1.1/filters/kontour/msod/x-msod.desktop
+--- koffice-1.1.orig/filters/kontour/msod/x-msod.desktop	Sun Aug  5 09:47:18 2001
++++ koffice-1.1/filters/kontour/msod/x-msod.desktop	Wed Oct 17 19:13:43 2001
+@@ -35,5 +35,5 @@
+ Comment[tr]=MS Office Çizimi
+ Comment[uk]=Малюнок MS Office
+ Comment[vi]=Trình vẽ MS Office 
+-Comment[zh_CN.GB2312]=MS Office 图片
+-Comment[zh_TW.Big5]=MS Office 繪圖
++Comment[zh_CN]=MS Office 图片
++Comment[zh_TW]=MS Office 繪圖
+diff -uNr koffice-1.1.orig/filters/kontour/svg/killustrator_svg_export.desktop koffice-1.1/filters/kontour/svg/killustrator_svg_export.desktop
+--- koffice-1.1.orig/filters/kontour/svg/killustrator_svg_export.desktop	Sun Aug  5 09:47:41 2001
++++ koffice-1.1/filters/kontour/svg/killustrator_svg_export.desktop	Wed Oct 17 19:13:44 2001
+@@ -33,7 +33,7 @@
+ Name[tr]=Killustrator için SVG verme süzgeci
+ Name[uk]=Фільтр експорту SVG для Killustrator
+ Name[vi]=Trình lọc xuất ra SVG cho Killustrator 
+-Name[zh_CN.GB2312]=Killustrator 的 SVG 导出过滤程序
++Name[zh_CN]=Killustrator 的 SVG 导出过滤程序
+ Export=image/x-svg
+ Import=application/x-kontour
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kontour/svg/killustrator_svg_import.desktop koffice-1.1/filters/kontour/svg/killustrator_svg_import.desktop
+--- koffice-1.1.orig/filters/kontour/svg/killustrator_svg_import.desktop	Sun Aug  5 09:48:04 2001
++++ koffice-1.1/filters/kontour/svg/killustrator_svg_import.desktop	Wed Oct 17 19:13:44 2001
+@@ -31,7 +31,7 @@
+ Name[tr]=KIllustrator SVG Alma Süzgeci
+ Name[uk]=Фільтр імпорту SVG для KIllustrator
+ Name[vi]=Trình lọc nhập vào cho KIllustrator SVG 
+-Name[zh_CN.GB2312]=KIllustrator SVG 导入过滤程序
++Name[zh_CN]=KIllustrator SVG 导入过滤程序
+ Export=application/x-kontour
+ Import=image/x-svg
+ Implemented=kodocument
+diff -uNr koffice-1.1.orig/filters/kontour/svg/x-svg.desktop koffice-1.1/filters/kontour/svg/x-svg.desktop
+--- koffice-1.1.orig/filters/kontour/svg/x-svg.desktop	Thu Aug  9 08:05:28 2001
++++ koffice-1.1/filters/kontour/svg/x-svg.desktop	Wed Oct 17 19:13:44 2001
+@@ -28,4 +28,4 @@
+ Comment[tr]=Yeniden Boyutlandırılabilir Vektör Grafikler
+ Comment[uk]=Масштабована векторна графіка
+ Comment[vi]=Đồ hoạ véc-tơ tỉ lệ được (scalable) 
+-Comment[zh_CN.GB2312]=可缩放向量图
++Comment[zh_CN]=可缩放向量图
+diff -uNr koffice-1.1.orig/filters/kontour/wmf/killustrator_wmf_import.desktop koffice-1.1/filters/kontour/wmf/killustrator_wmf_import.desktop
+--- koffice-1.1.orig/filters/kontour/wmf/killustrator_wmf_import.desktop	Sun Aug  5 09:48:51 2001
++++ koffice-1.1/filters/kontour/wmf/killustrator_wmf_import.desktop	Wed Oct 17 19:13:45 2001
+@@ -36,8 +36,8 @@
+ Name[tr]=KIllustrator WMF Alma Süzgeci
+ Name[uk]=Фільтр імпорту WMF для KIllustrator
+ Name[vi]=Trình lọc nhập vào cho KIllustrator WMF 
+-Name[zh_CN.GB2312]=KIllustrator WMF 导入过滤程序
+-Name[zh_TW.Big5]=KIllustrator WMF 匯入過濾器
++Name[zh_CN]=KIllustrator WMF 导入过滤程序
++Name[zh_TW]=KIllustrator WMF 匯入過濾器
+ Export=application/x-kontour
+ Import=image/x-wmf
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kontour/wmf/x-wmf.desktop koffice-1.1/filters/kontour/wmf/x-wmf.desktop
+--- koffice-1.1.orig/filters/kontour/wmf/x-wmf.desktop	Sun Aug  5 09:49:14 2001
++++ koffice-1.1/filters/kontour/wmf/x-wmf.desktop	Wed Oct 17 19:13:45 2001
+@@ -30,4 +30,4 @@
+ Comment[sv]=Windows metafil
+ Comment[ta]=Windows Meta§¸¡ôÒ
+ Comment[uk]=Мета-файл Windows
+-Comment[zh_TW.Big5]=Windows MetaFile 影像
++Comment[zh_TW]=Windows MetaFile 影像
+diff -uNr koffice-1.1.orig/filters/kontour/xfig/killustrator_xfig_import.desktop koffice-1.1/filters/kontour/xfig/killustrator_xfig_import.desktop
+--- koffice-1.1.orig/filters/kontour/xfig/killustrator_xfig_import.desktop	Sun Aug  5 09:49:36 2001
++++ koffice-1.1/filters/kontour/xfig/killustrator_xfig_import.desktop	Wed Oct 17 19:13:45 2001
+@@ -33,7 +33,7 @@
+ Name[tr]=KIllustrator XFig Alma Süzgeci
+ Name[uk]=Фільтр імпорту XFig для KIllustrator
+ Name[vi]=Trình nhập vào KIllustrator XFig 
+-Name[zh_CN.GB2312]=KIllustrator XFig 导入过滤程序
++Name[zh_CN]=KIllustrator XFig 导入过滤程序
+ Export=application/x-kontour
+ Import=image/x-xfig
+ Implemented=kodocument
+diff -uNr koffice-1.1.orig/filters/kontour/xfig/x-xfig.desktop koffice-1.1/filters/kontour/xfig/x-xfig.desktop
+--- koffice-1.1.orig/filters/kontour/xfig/x-xfig.desktop	Sun Aug  5 09:49:59 2001
++++ koffice-1.1/filters/kontour/xfig/x-xfig.desktop	Wed Oct 17 19:13:45 2001
+@@ -37,4 +37,4 @@
+ Comment[tr]=XFig Dosyası
+ Comment[uk]=Файл XFig
+ Comment[vi]=File XFig 
+-Comment[zh_CN.GB2312]=XFMail 邮件程序
++Comment[zh_CN]=XFMail 邮件程序
+diff -uNr koffice-1.1.orig/filters/kpresenter/kword/kprkword.desktop koffice-1.1/filters/kpresenter/kword/kprkword.desktop
+--- koffice-1.1.orig/filters/kpresenter/kword/kprkword.desktop	Sun Aug  5 09:50:21 2001
++++ koffice-1.1/filters/kpresenter/kword/kprkword.desktop	Wed Oct 17 19:13:45 2001
+@@ -32,7 +32,7 @@
+ Name[tr]=KPresenter->KWord Süzgeci
+ Name[uk]=Фільтр KPresenter->KWord
+ Name[vi]=Trình lọc KPresenter->KWord 
+-Name[zh_CN.GB2312]=KPresenter PowerPoint 97 过滤程序
++Name[zh_CN]=KPresenter PowerPoint 97 过滤程序
+ Import=application/x-kpresenter
+ Export=application/x-kword
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kspread/applixspread/kspread_applixspread_import.desktop koffice-1.1/filters/kspread/applixspread/kspread_applixspread_import.desktop
+--- koffice-1.1.orig/filters/kspread/applixspread/kspread_applixspread_import.desktop	Sun Aug  5 09:50:43 2001
++++ koffice-1.1/filters/kspread/applixspread/kspread_applixspread_import.desktop	Wed Oct 17 19:13:46 2001
+@@ -34,8 +34,8 @@
+ Name[tr]=KSpread Applix Hesap Çizelgesi Alma Süzgeci
+ Name[uk]=Фільтр імпорту Applix Spreadsheet для KSpread
+ Name[vi]=Trình lọc nhập vào các file KSpread Applix Spreadsheet 
+-Name[zh_CN.GB2312]=KSpread Applix 电子表单导入过滤程序
+-Name[zh_TW.Big5]=KSpread Applix 試算表匯入過濾器
++Name[zh_CN]=KSpread Applix 电子表单导入过滤程序
++Name[zh_TW]=KSpread Applix 試算表匯入過濾器
+ Export=application/x-kspread
+ Import=application/x-applixspread
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kspread/csv/kspread_csv_export.desktop koffice-1.1/filters/kspread/csv/kspread_csv_export.desktop
+--- koffice-1.1.orig/filters/kspread/csv/kspread_csv_export.desktop	Sun Aug  5 09:51:06 2001
++++ koffice-1.1/filters/kspread/csv/kspread_csv_export.desktop	Wed Oct 17 19:13:47 2001
+@@ -43,8 +43,8 @@
+ Name[tr]=KSpread için CSV Verme Süzgeci
+ Name[uk]=Фільтр експорту CSV для KSpread
+ Name[vi]=Trình lọc nhập vào CSV cho KSpread 
+-Name[zh_CN.GB2312]=KSpread 的 CSV 导出过滤程序
+-Name[zh_TW.Big5]=KSpread 的 CVS 匯出過濾器
++Name[zh_CN]=KSpread 的 CSV 导出过滤程序
++Name[zh_TW]=KSpread 的 CVS 匯出過濾器
+ Export=text/x-csv,text/plain
+ Import=application/x-kspread
+ Implemented=kodocument
+diff -uNr koffice-1.1.orig/filters/kspread/csv/kspread_csv_import.desktop koffice-1.1/filters/kspread/csv/kspread_csv_import.desktop
+--- koffice-1.1.orig/filters/kspread/csv/kspread_csv_import.desktop	Sun Aug  5 09:51:29 2001
++++ koffice-1.1/filters/kspread/csv/kspread_csv_import.desktop	Wed Oct 17 19:13:47 2001
+@@ -43,8 +43,8 @@
+ Name[tr]=KSpread için CSV Alma Süzgeci
+ Name[uk]=Фільтр імпорту CSV для KSpread
+ Name[vi]=Trình lọc nhập vào CSV cho KSpread 
+-Name[zh_CN.GB2312]=KSpread 的 CSV 导入过滤程序
+-Name[zh_TW.Big5]=KSpread 的 CSV 匯入過濾器
++Name[zh_CN]=KSpread 的 CSV 导入过滤程序
++Name[zh_TW]=KSpread 的 CSV 匯入過濾器
+ Export=application/x-kspread
+ Import=text/x-csv,text/plain
+ Implemented=kodocument
+diff -uNr koffice-1.1.orig/filters/kspread/csv/x-csv.desktop koffice-1.1/filters/kspread/csv/x-csv.desktop
+--- koffice-1.1.orig/filters/kspread/csv/x-csv.desktop	Sun Aug  5 09:51:52 2001
++++ koffice-1.1/filters/kspread/csv/x-csv.desktop	Wed Oct 17 19:13:47 2001
+@@ -46,5 +46,5 @@
+ Comment[tr]=Virgülle ayrılmış değerler içeren metin dosyası
+ Comment[uk]=Текстовий файл, значення розділені комами
+ Comment[vi]=File văn bản có các giá trị được ngăn cách bằng các dấu phảy 
+-Comment[zh_CN.GB2312]=用逗号分隔值的文本文件
+-Comment[zh_TW.Big5]=以逗點分隔值的文字檔
++Comment[zh_CN]=用逗号分隔值的文本文件
++Comment[zh_TW]=以逗點分隔值的文字檔
+diff -uNr koffice-1.1.orig/filters/kspread/gnumeric/kspread_gnumeric_export.desktop koffice-1.1/filters/kspread/gnumeric/kspread_gnumeric_export.desktop
+--- koffice-1.1.orig/filters/kspread/gnumeric/kspread_gnumeric_export.desktop	Sun Aug  5 09:52:15 2001
++++ koffice-1.1/filters/kspread/gnumeric/kspread_gnumeric_export.desktop	Wed Oct 17 19:13:47 2001
+@@ -30,7 +30,7 @@
+ Name[sv]=GNUmeric-exportfilter för Kspread
+ Name[tr]=KSpread için GNUmeric Verme Süzgeci
+ Name[uk]=Фільтр експорту GNUmeric для KSpread
+-Name[zh_CN.GB2312]=KSpread 的 GNUmeric 导出过滤程序
++Name[zh_CN]=KSpread 的 GNUmeric 导出过滤程序
+ Export=application/x-gnumeric
+ ExportDescription=GNUMERIC
+ Import=application/x-kspread
+diff -uNr koffice-1.1.orig/filters/kspread/gnumeric/kspread_gnumeric_import.desktop koffice-1.1/filters/kspread/gnumeric/kspread_gnumeric_import.desktop
+--- koffice-1.1.orig/filters/kspread/gnumeric/kspread_gnumeric_import.desktop	Sun Aug  5 09:52:38 2001
++++ koffice-1.1/filters/kspread/gnumeric/kspread_gnumeric_import.desktop	Wed Oct 17 19:13:47 2001
+@@ -31,7 +31,7 @@
+ Name[sv]=GNUmeric-importfilter för Kspread
+ Name[tr]=KSpread için GNUMERIC Alma Süzgeci
+ Name[uk]=Фільтр імпорту GNUMERIC для KSpread
+-Name[zh_CN.GB2312]=KSpread 的 GNUmeric 导入过滤程序
++Name[zh_CN]=KSpread 的 GNUmeric 导入过滤程序
+ Export=application/x-kspread
+ ExportDescription=KSpread
+ Import=application/x-gnumeric
+diff -uNr koffice-1.1.orig/filters/kspread/gnumeric/x-gnumeric.desktop koffice-1.1/filters/kspread/gnumeric/x-gnumeric.desktop
+--- koffice-1.1.orig/filters/kspread/gnumeric/x-gnumeric.desktop	Sun Aug  5 09:53:01 2001
++++ koffice-1.1/filters/kspread/gnumeric/x-gnumeric.desktop	Wed Oct 17 19:13:47 2001
+@@ -34,4 +34,4 @@
+ Comment[ta]=GNUmeric Å¢Ã¢¾¡û
+ Comment[tr]=GNUmeric Hesap Çizelgesi
+ Comment[uk]=Електронна таблиця GNUmeric
+-Comment[zh_CN.GB2312]=GNUmeric 电子表格
++Comment[zh_CN]=GNUmeric 电子表格
+diff -uNr koffice-1.1.orig/filters/kspread/html/kspread_html_export.desktop koffice-1.1/filters/kspread/html/kspread_html_export.desktop
+--- koffice-1.1.orig/filters/kspread/html/kspread_html_export.desktop	Sun Aug  5 09:53:22 2001
++++ koffice-1.1/filters/kspread/html/kspread_html_export.desktop	Wed Oct 17 19:13:48 2001
+@@ -31,7 +31,7 @@
+ Name[ta]=KSpread ­ü¸¡É HTML ²üÚÁ¾¢ ÅÊ¸ðÊ
+ Name[tr]=KSpread için HTML Verme Süzgeci
+ Name[uk]=Фільтр експорту HTML для KSpread
+-Name[zh_CN.GB2312]=KSpread 的 HTML 导出过滤程序
++Name[zh_CN]=KSpread 的 HTML 导出过滤程序
+ Export=text/html
+ Import=application/x-kspread
+ Implemented=kodocument
+diff -uNr koffice-1.1.orig/filters/kspread/qpro/kspread_qpro_import.desktop koffice-1.1/filters/kspread/qpro/kspread_qpro_import.desktop
+--- koffice-1.1.orig/filters/kspread/qpro/kspread_qpro_import.desktop	Sun Aug  5 09:53:46 2001
++++ koffice-1.1/filters/kspread/qpro/kspread_qpro_import.desktop	Wed Oct 17 19:13:49 2001
+@@ -33,7 +33,7 @@
+ Name[tr]=KSpread için Quattro Pro Alma Süzgeci
+ Name[uk]=Фільтр імпорту Quattro Pro для KSpread
+ Name[vi]=Trình lọc nhập vào file Quattro cho KSpread 
+-Name[zh_CN.GB2312]=KSpread 的 Quattro Pro 导入过滤程序
++Name[zh_CN]=KSpread 的 Quattro Pro 导入过滤程序
+ Export=application/x-kspread
+ ExportDescription=KSpread
+ Import=application/x-quattropro
+diff -uNr koffice-1.1.orig/filters/kspread/qpro/x-quattropro.desktop koffice-1.1/filters/kspread/qpro/x-quattropro.desktop
+--- koffice-1.1.orig/filters/kspread/qpro/x-quattropro.desktop	Sun Aug  5 09:54:09 2001
++++ koffice-1.1/filters/kspread/qpro/x-quattropro.desktop	Wed Oct 17 19:13:49 2001
+@@ -36,4 +36,4 @@
+ Comment[tr]=Quattro Pro dosyası
+ Comment[uk]=Файл Quattro Pro
+ Comment[vi]=File Quattro Pro 
+-Comment[zh_CN.GB2312]=Quattro Pro 文件
++Comment[zh_CN]=Quattro Pro 文件
+diff -uNr koffice-1.1.orig/filters/kword/abiword/kword_abiword_export.desktop koffice-1.1/filters/kword/abiword/kword_abiword_export.desktop
+--- koffice-1.1.orig/filters/kword/abiword/kword_abiword_export.desktop	Sun Aug  5 09:54:32 2001
++++ koffice-1.1/filters/kword/abiword/kword_abiword_export.desktop	Wed Oct 17 19:13:50 2001
+@@ -36,8 +36,8 @@
+ Name[tr]=KWord AbiWord Alma Süzgeci
+ Name[uk]=Фільтр експорту AbiWord для KWord
+ Name[vi]=Trình lọc xuất ra file KWord AbiWord 
+-Name[zh_CN.GB2312]=KWord AbiWord 导出过滤程序
+-Name[zh_TW.Big5]=KWord AbiWord 匯出過濾器
++Name[zh_CN]=KWord AbiWord 导出过滤程序
++Name[zh_TW]=KWord AbiWord 匯出過濾器
+ Export=application/x-abiword
+ Import=application/x-kword
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kword/abiword/kword_abiword_import.desktop koffice-1.1/filters/kword/abiword/kword_abiword_import.desktop
+--- koffice-1.1.orig/filters/kword/abiword/kword_abiword_import.desktop	Sun Aug  5 09:54:56 2001
++++ koffice-1.1/filters/kword/abiword/kword_abiword_import.desktop	Wed Oct 17 19:13:50 2001
+@@ -36,8 +36,8 @@
+ Name[tr]=KWord AbiWord Kayıt Süzgeci
+ Name[uk]=Фільтр імпорту AbiWord для KWord
+ Name[vi]=Trình lọc nhập vào các file KWord AbiWord 
+-Name[zh_CN.GB2312]=KWord AbiWord 导入过滤程序
+-Name[zh_TW.Big5]=KWord AbiWord 匯入過濾器
++Name[zh_CN]=KWord AbiWord 导入过滤程序
++Name[zh_TW]=KWord AbiWord 匯入過濾器
+ Export=application/x-kword
+ Import=application/x-abiword
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kword/abiword/x-abiword.desktop koffice-1.1/filters/kword/abiword/x-abiword.desktop
+--- koffice-1.1.orig/filters/kword/abiword/x-abiword.desktop	Sun Aug  5 09:55:18 2001
++++ koffice-1.1/filters/kword/abiword/x-abiword.desktop	Wed Oct 17 19:13:50 2001
+@@ -36,8 +36,8 @@
+ Comment[uk]=Новий документ AbiWord
+ Comment[vi]=Tài liệu AbiWord 
+ Comment[wa]=Documint Abiword
+-Comment[zh_CN.GB2312]=AbiWord 文档
+-Comment[zh_TW.Big5]=AbiWord 文件
++Comment[zh_CN]=AbiWord 文档
++Comment[zh_TW]=AbiWord 文件
+ Icon=kword
+ MimeType=application/x-abiword
+ Patterns=*.abw;*.ABW;*.abw.gz;*.ABW.GZ;*.zabw;*.ZABW;
+diff -uNr koffice-1.1.orig/filters/kword/applixword/kword_applixword_import.desktop koffice-1.1/filters/kword/applixword/kword_applixword_import.desktop
+--- koffice-1.1.orig/filters/kword/applixword/kword_applixword_import.desktop	Sun Aug  5 09:55:40 2001
++++ koffice-1.1/filters/kword/applixword/kword_applixword_import.desktop	Wed Oct 17 19:13:51 2001
+@@ -34,8 +34,8 @@
+ Name[tr]=KWord Applixword Alma Süzgeci
+ Name[uk]=Фільтр імпорту Applixword для KWord
+ Name[vi]=Trình lọc nhập vào các file KWord Applixword 
+-Name[zh_CN.GB2312]=KWord Applixword 导入过滤程序
+-Name[zh_TW.Big5]=KWord Applixword 匯入過濾器
++Name[zh_CN]=KWord Applixword 导入过滤程序
++Name[zh_TW]=KWord Applixword 匯入過濾器
+ Export=application/x-kword
+ Import=application/x-applixword
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kword/ascii/kword_ascii_export.desktop koffice-1.1/filters/kword/ascii/kword_ascii_export.desktop
+--- koffice-1.1.orig/filters/kword/ascii/kword_ascii_export.desktop	Sun Aug  5 09:56:02 2001
++++ koffice-1.1/filters/kword/ascii/kword_ascii_export.desktop	Wed Oct 17 19:13:51 2001
+@@ -42,8 +42,8 @@
+ Name[tr]=KWord Ascii Alma Süzgeci
+ Name[uk]=Фільтр експорту ASCII для KWord
+ Name[vi]=Trình lọc xuất ra file KWord Ascii 
+-Name[zh_CN.GB2312]=KWord Ascii 导出过滤程序
+-Name[zh_TW.Big5]=KWord Ascii 匯出過濾器
++Name[zh_CN]=KWord Ascii 导出过滤程序
++Name[zh_TW]=KWord Ascii 匯出過濾器
+ Export=text/plain
+ Import=application/x-kword
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kword/ascii/kword_ascii_import.desktop koffice-1.1/filters/kword/ascii/kword_ascii_import.desktop
+--- koffice-1.1.orig/filters/kword/ascii/kword_ascii_import.desktop	Sun Aug  5 09:56:24 2001
++++ koffice-1.1/filters/kword/ascii/kword_ascii_import.desktop	Wed Oct 17 19:13:51 2001
+@@ -42,8 +42,8 @@
+ Name[tr]=KWord Ascii Verme Süzgeci
+ Name[uk]=Фільтр імпорту ASCII для KWord
+ Name[vi]=Trình lọc nhập vào các file KWord Ascii 
+-Name[zh_CN.GB2312]=KWord Ascii 导入过滤程序
+-Name[zh_TW.Big5]=KWord Ascii 匯入過濾器
++Name[zh_CN]=KWord Ascii 导入过滤程序
++Name[zh_TW]=KWord Ascii 匯入過濾器
+ Export=application/x-kword
+ Import=text/plain
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kword/docbook/kword_docbook_export.desktop koffice-1.1/filters/kword/docbook/kword_docbook_export.desktop
+--- koffice-1.1.orig/filters/kword/docbook/kword_docbook_export.desktop	Sun Aug  5 09:56:46 2001
++++ koffice-1.1/filters/kword/docbook/kword_docbook_export.desktop	Wed Oct 17 19:13:51 2001
+@@ -37,8 +37,8 @@
+ Name[tr]=KWord SGML DocBook Verme Süzgeci
+ Name[uk]=Фільтр експорту SGML DocBook для KWord
+ Name[vi]=Trình lọc xuất file file KWord SGML DocBook 
+-Name[zh_CN.GB2312]=KWord SGML DocBook 导出过滤程序
+-Name[zh_TW.Big5]=KWord SGML DocBook 匯出過濾器
++Name[zh_CN]=KWord SGML DocBook 导出过滤程序
++Name[zh_TW]=KWord SGML DocBook 匯出過濾器
+ Export=text/sgml
+ Import=application/x-kword
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kword/html/kword_html_export.desktop koffice-1.1/filters/kword/html/kword_html_export.desktop
+--- koffice-1.1.orig/filters/kword/html/kword_html_export.desktop	Sun Aug  5 09:57:08 2001
++++ koffice-1.1/filters/kword/html/kword_html_export.desktop	Wed Oct 17 19:13:52 2001
+@@ -42,8 +42,8 @@
+ Name[tr]=KWord HTML Verme Süzgeci
+ Name[uk]=Фільтр експорту ASCII для KWord
+ Name[vi]=Trình lọc xuất ra file KWord HTML 
+-Name[zh_CN.GB2312]=KWord HTML 导出过滤程序
+-Name[zh_TW.Big5]=KWord HTML 匯出過濾器
++Name[zh_CN]=KWord HTML 导出过滤程序
++Name[zh_TW]=KWord HTML 匯出過濾器
+ Import=application/x-kword
+ Export=text/html
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kword/html/kword_html_import.desktop koffice-1.1/filters/kword/html/kword_html_import.desktop
+--- koffice-1.1.orig/filters/kword/html/kword_html_import.desktop	Sun Aug  5 09:57:30 2001
++++ koffice-1.1/filters/kword/html/kword_html_import.desktop	Wed Oct 17 19:13:52 2001
+@@ -42,8 +42,8 @@
+ Name[tr]=KWord HTML Alma Filtresi
+ Name[uk]=Фільтр імпорту ASCII для KWord
+ Name[vi]=Trình lọc xuất ra file HTML 
+-Name[zh_CN.GB2312]=KWord HTML 导入过滤程序
+-Name[zh_TW.Big5]=KWord HTML 匯入過濾器
++Name[zh_CN]=KWord HTML 导入过滤程序
++Name[zh_TW]=KWord HTML 匯入過濾器
+ Export=application/x-kword
+ Import=text/html
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kword/latex/kword_latex_export.desktop koffice-1.1/filters/kword/latex/kword_latex_export.desktop
+--- koffice-1.1.orig/filters/kword/latex/kword_latex_export.desktop	Sun Aug  5 09:57:52 2001
++++ koffice-1.1/filters/kword/latex/kword_latex_export.desktop	Wed Oct 17 19:13:53 2001
+@@ -41,8 +41,8 @@
+ Name[tr]=KWord LATEX Verme Süzgeci
+ Name[uk]=Фільтр експорту LATEX для KWord
+ Name[vi]=Trình lọc xuất ra file KWord LATEX 
+-Name[zh_CN.GB2312]=KWord LATEX 导出过滤程序
+-Name[zh_TW.Big5]=KWord LaTeX 匯出過濾器
++Name[zh_CN]=KWord LATEX 导出过滤程序
++Name[zh_TW]=KWord LaTeX 匯出過濾器
+ ServiceTypes=KOfficeFilter
+ Type=Service
+ X-KDE-Library=liblatexexport
+diff -uNr koffice-1.1.orig/filters/kword/latex/kword_latex_import.desktop koffice-1.1/filters/kword/latex/kword_latex_import.desktop
+--- koffice-1.1.orig/filters/kword/latex/kword_latex_import.desktop	Sun Aug  5 09:58:13 2001
++++ koffice-1.1/filters/kword/latex/kword_latex_import.desktop	Wed Oct 17 19:13:53 2001
+@@ -47,8 +47,8 @@
+ Name[tr]=KWord HTML Alma Filtresi
+ Name[uk]=Фільтр імпорту ASCII для KWord
+ Name[vi]=Trình lọc xuất ra file HTML 
+-Name[zh_CN.GB2312]=KWord HTML 导入过滤程序
+-Name[zh_TW.Big5]=KWord HTML 匯入過濾器
++Name[zh_CN]=KWord HTML 导入过滤程序
++Name[zh_TW]=KWord HTML 匯入過濾器
+ ServiceTypes=KOfficeFilter
+ Type=Service
+ X-KDE-Library=libhtmlimport
+diff -uNr koffice-1.1.orig/filters/kword/latex/x-latex.desktop koffice-1.1/filters/kword/latex/x-latex.desktop
+--- koffice-1.1.orig/filters/kword/latex/x-latex.desktop	Sun Aug  5 09:58:37 2001
++++ koffice-1.1/filters/kword/latex/x-latex.desktop	Wed Oct 17 19:13:54 2001
+@@ -42,8 +42,8 @@
+ Comment[tr]=Virgülle ayrılmış değerler içeren metin dosyası
+ Comment[uk]=Текстовий файл, значення розділені комами
+ Comment[vi]=File văn bản có các giá trị được ngăn cách bằng các dấu phảy 
+-Comment[zh_CN.GB2312]=用逗号分隔值的文本文件
+-Comment[zh_TW.Big5]=以逗點分隔值的文字檔
++Comment[zh_CN]=用逗号分隔值的文本文件
++Comment[zh_TW]=以逗點分隔值的文字檔
+ Icon=latex
+ MimeType=text/x-latex
+ Patterns=*.latex;*.tex;
+diff -uNr koffice-1.1.orig/filters/kword/rtf/export/ki_rtf_export.desktop koffice-1.1/filters/kword/rtf/export/ki_rtf_export.desktop
+--- koffice-1.1.orig/filters/kword/rtf/export/ki_rtf_export.desktop	Sun Aug  5 09:58:59 2001
++++ koffice-1.1/filters/kword/rtf/export/ki_rtf_export.desktop	Wed Oct 17 19:13:54 2001
+@@ -33,7 +33,7 @@
+ Name[tr]=KIllustrator RTF verme Süzgeci
+ Name[uk]=Фільтр експорту RTF для KIllustrator
+ Name[vi]=Trình lọc xuất ra file Killustrator RTF 
+-Name[zh_CN.GB2312]=KIllustrator RTF 导出过滤程序
++Name[zh_CN]=KIllustrator RTF 导出过滤程序
+ Export=text/rtf
+ ExportDescription=RTF
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/kword/rtf/export/kword_rtf_export.desktop koffice-1.1/filters/kword/rtf/export/kword_rtf_export.desktop
+--- koffice-1.1.orig/filters/kword/rtf/export/kword_rtf_export.desktop	Sun Aug  5 09:59:20 2001
++++ koffice-1.1/filters/kword/rtf/export/kword_rtf_export.desktop	Wed Oct 17 19:13:55 2001
+@@ -35,8 +35,8 @@
+ Name[tr]=KWord RTF Verme Süzgeci
+ Name[uk]=Фільтр експорту RTF для KWord
+ Name[vi]=Trình lọc nhập vào file KWord RTF 
+-Name[zh_CN.GB2312]=KWord RTF 导出过滤程序
+-Name[zh_TW.Big5]=KWord RTF 匯出過濾器
++Name[zh_CN]=KWord RTF 导出过滤程序
++Name[zh_TW]=KWord RTF 匯出過濾器
+ Export=text/rtf
+ ExportDescription=RTF
+ Import=application/x-kword
+diff -uNr koffice-1.1.orig/filters/kword/rtf/import/kword_rtf_import.desktop koffice-1.1/filters/kword/rtf/import/kword_rtf_import.desktop
+--- koffice-1.1.orig/filters/kword/rtf/import/kword_rtf_import.desktop	Sun Aug  5 09:59:43 2001
++++ koffice-1.1/filters/kword/rtf/import/kword_rtf_import.desktop	Wed Oct 17 19:13:55 2001
+@@ -34,7 +34,7 @@
+ Name[tr]=KWord RTF Alma Süzgeci
+ Name[uk]=Фільтр експорту RTF для KWord
+ Name[vi]=Trình lọc nhập vào file KWord RTF 
+-Name[zh_CN.GB2312]=KWord RTF 导入过滤程序
++Name[zh_CN]=KWord RTF 导入过滤程序
+ Import=text/rtf
+ ImportDescription=RTF
+ Export=application/x-kword
+diff -uNr koffice-1.1.orig/filters/olefilters/excel97/ole_excel97_import.desktop koffice-1.1/filters/olefilters/excel97/ole_excel97_import.desktop
+--- koffice-1.1.orig/filters/olefilters/excel97/ole_excel97_import.desktop	Sun Aug  5 10:00:13 2001
++++ koffice-1.1/filters/olefilters/excel97/ole_excel97_import.desktop	Wed Oct 17 19:13:56 2001
+@@ -41,8 +41,8 @@
+ Name[tr]=KSpread Excel 97 Süzgeci
+ Name[uk]=Фільтр MS Excel 97 для KSpread
+ Name[vi]=Trình lọc file KSpread EXcel 97 
+-Name[zh_CN.GB2312]=KSpread Excel 97 过滤程序
+-Name[zh_TW.Big5]=KSpread Excel 97 過濾器
++Name[zh_CN]=KSpread Excel 97 过滤程序
++Name[zh_TW]=KSpread Excel 97 過濾器
+ Export=application/x-kspread
+ Import=application/vnd.ms-excel,application/msexcel
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/olefilters/powerpoint97/ole_powerpoint97_import.desktop koffice-1.1/filters/olefilters/powerpoint97/ole_powerpoint97_import.desktop
+--- koffice-1.1.orig/filters/olefilters/powerpoint97/ole_powerpoint97_import.desktop	Sun Aug  5 10:00:35 2001
++++ koffice-1.1/filters/olefilters/powerpoint97/ole_powerpoint97_import.desktop	Wed Oct 17 19:13:57 2001
+@@ -41,8 +41,8 @@
+ Name[tr]=KPresenter PowerPoint 97 Süzgeci
+ Name[uk]=Фільтр MS PowerPoint 97 для KSpread
+ Name[vi]=Trình lọc KPresenter PowerPoint 97 
+-Name[zh_CN.GB2312]=KPresenter PowerPoint 97 过滤程序
+-Name[zh_TW.Big5]=KPresenter PowerPoint 97 過濾器
++Name[zh_CN]=KPresenter PowerPoint 97 过滤程序
++Name[zh_TW]=KPresenter PowerPoint 97 過濾器
+ Export=application/x-kpresenter
+ Import=application/mspowerpoint
+ Implemented=file
+diff -uNr koffice-1.1.orig/filters/olefilters/winword97/ole_winword97_import.desktop koffice-1.1/filters/olefilters/winword97/ole_winword97_import.desktop
+--- koffice-1.1.orig/filters/olefilters/winword97/ole_winword97_import.desktop	Sun Aug  5 10:00:57 2001
++++ koffice-1.1/filters/olefilters/winword97/ole_winword97_import.desktop	Wed Oct 17 19:13:58 2001
+@@ -41,8 +41,8 @@
+ Name[tr]=KWord WinWord 97 Süzgeci
+ Name[uk]=Фільтр MS WinWord 97 для KSpreadComment
+ Name[vi]=Trình lọc KWord WinWord 97 
+-Name[zh_CN.GB2312]=KWord WinWord 97 过滤程序
+-Name[zh_TW.Big5]=KWord WinWord 97 過濾器
++Name[zh_CN]=KWord WinWord 97 过滤程序
++Name[zh_TW]=KWord WinWord 97 過濾器
+ Export=application/x-kword
+ Import=application/vnd.ms-word,application/msword
+ Implemented=file
+diff -uNr koffice-1.1.orig/kformula/kformula.desktop koffice-1.1/kformula/kformula.desktop
+--- koffice-1.1.orig/kformula/kformula.desktop	Tue Aug 14 13:20:07 2001
++++ koffice-1.1/kformula/kformula.desktop	Wed Oct 17 19:14:06 2001
+@@ -43,7 +43,7 @@
+ Comment[ta]=Ýò¾¢Ãò ¦¾¡ÌôÀ¡Ç÷
+ Comment[tr]=Formül Düzenleyici
+ Comment[uk]=Редактор формул
+-Comment[zh_CN.GB2312]=公式编辑器
++Comment[zh_CN]=公式编辑器
+ MimeType=application/x-kformula
+ Type=Application
+ Icon=kformula
+diff -uNr koffice-1.1.orig/kivio/kiviopart/kivio.desktop koffice-1.1/kivio/kiviopart/kivio.desktop
+--- koffice-1.1.orig/kivio/kiviopart/kivio.desktop	Tue Aug 14 13:20:08 2001
++++ koffice-1.1/kivio/kiviopart/kivio.desktop	Wed Oct 17 19:14:12 2001
+@@ -34,7 +34,7 @@
+ Comment[sv]=Flödesscheman och diagram
+ Comment[tr]=Akış çizgesi ve Diagramı İşlemleri
+ Comment[uk]=Діаграми та блок-схеми
+-Comment[zh_CN.GB2312]=流程图和图表
++Comment[zh_CN]=流程图和图表
+ X-KDE-Library=libkiviopart
+ MimeType=application/x-kivio
+ Type=Application
+diff -uNr koffice-1.1.orig/kivio/plugins/kivioconnectortool/kivioconnectortool.desktop koffice-1.1/kivio/plugins/kivioconnectortool/kivioconnectortool.desktop
+--- koffice-1.1.orig/kivio/plugins/kivioconnectortool/kivioconnectortool.desktop	Sun Aug  5 10:03:20 2001
++++ koffice-1.1/kivio/plugins/kivioconnectortool/kivioconnectortool.desktop	Wed Oct 17 19:14:22 2001
+@@ -37,7 +37,7 @@
+ Name[tr]=Kivio için bağlantı aracı
+ Name[uk]=Засіб з'єднання для Kivio
+ Name[vi]=Trình nối cho Kivio 
+-Name[zh_CN.GB2312]=Kivio 连接件工具
+-Name[zh_TW.Big5]=Kivio 的連結工具
++Name[zh_CN]=Kivio 连接件工具
++Name[zh_TW]=Kivio 的連結工具
+ Type=Service
+ ServiceTypes=KPlugin
+diff -uNr koffice-1.1.orig/kivio/plugins/kivioselecttool/kivioselecttool.desktop koffice-1.1/kivio/plugins/kivioselecttool/kivioselecttool.desktop
+--- koffice-1.1.orig/kivio/plugins/kivioselecttool/kivioselecttool.desktop	Sun Aug  5 10:03:43 2001
++++ koffice-1.1/kivio/plugins/kivioselecttool/kivioselecttool.desktop	Wed Oct 17 19:14:21 2001
+@@ -37,7 +37,7 @@
+ Name[tr]=Kivio için seçim aracı
+ Name[uk]=Засіб вибору для Kivio
+ Name[vi]=Trình chọn cho Kivio 
+-Name[zh_CN.GB2312]=Kivio 选择工具
+-Name[zh_TW.Big5]=Kivio 的選擇工具
++Name[zh_CN]=Kivio 选择工具
++Name[zh_TW]=Kivio 的選擇工具
+ Type=Service
+ ServiceTypes=KPlugin
+diff -uNr koffice-1.1.orig/kivio/plugins/kiviotexttool/kiviotexttool.desktop koffice-1.1/kivio/plugins/kiviotexttool/kiviotexttool.desktop
+--- koffice-1.1.orig/kivio/plugins/kiviotexttool/kiviotexttool.desktop	Sun Aug  5 10:04:07 2001
++++ koffice-1.1/kivio/plugins/kiviotexttool/kiviotexttool.desktop	Wed Oct 17 19:14:23 2001
+@@ -35,7 +35,7 @@
+ Name[tr]=Kivio için metin aracı
+ Name[uk]=Текстовий засіб для Kivio
+ Name[vi]=Công cụ văn bản cho Kivio 
+-Name[zh_CN.GB2312]=Kivio 文字工具
+-Name[zh_TW.Big5]=Kivio 的文字工具
++Name[zh_CN]=Kivio 文字工具
++Name[zh_TW]=Kivio 的文字工具
+ Type=Service
+ ServiceTypes=KPlugin
+diff -uNr koffice-1.1.orig/kivio/plugins/kiviozoomtool/kiviozoomtool.desktop koffice-1.1/kivio/plugins/kiviozoomtool/kiviozoomtool.desktop
+--- koffice-1.1.orig/kivio/plugins/kiviozoomtool/kiviozoomtool.desktop	Sun Aug  5 10:04:31 2001
++++ koffice-1.1/kivio/plugins/kiviozoomtool/kiviozoomtool.desktop	Wed Oct 17 19:14:24 2001
+@@ -37,7 +37,7 @@
+ Name[tr]=Kivio için büyütme aracı
+ Name[uk]=Засіб масштабування для Kivio
+ Name[vi]=Công cụ phóngto/thu nhỏ cho Kivio 
+-Name[zh_CN.GB2312]=Kivio 缩放工具
+-Name[zh_TW.Big5]=Kivio 的縮放工具
++Name[zh_CN]=Kivio 缩放工具
++Name[zh_TW]=Kivio 的縮放工具
+ Type=Service
+ ServiceTypes=KPlugin
+diff -uNr koffice-1.1.orig/kontour/kontour.desktop koffice-1.1/kontour/kontour.desktop
+--- koffice-1.1.orig/kontour/kontour.desktop	Tue Aug 14 13:20:26 2001
++++ koffice-1.1/kontour/kontour.desktop	Wed Oct 17 19:14:32 2001
+@@ -37,7 +37,7 @@
+ Comment[tr]=Çizimler
+ Comment[uk]=Креслення
+ Comment[vi]=Vẽ-đồ hoạ 
+-Comment[zh_CN.GB2312]=绘图
++Comment[zh_CN]=绘图
+ MimeType=application/x-kontour
+ Type=Application
+ Icon=kontour
+diff -uNr koffice-1.1.orig/kontour/templates/Simple/.directory koffice-1.1/kontour/templates/Simple/.directory
+--- koffice-1.1.orig/kontour/templates/Simple/.directory	Sun Aug  5 10:05:05 2001
++++ koffice-1.1/kontour/templates/Simple/.directory	Wed Oct 17 19:14:33 2001
+@@ -40,5 +40,5 @@
+ Name[uk]=Простий
+ Name[vi]=Đơn giản 
+ Name[wa]=Simpe
+-Name[zh_CN.GB2312]=简单
++Name[zh_CN]=简单
+ X-KDE-DefaultTab=true
+diff -uNr koffice-1.1.orig/kontour/templates/Simple/Plain.desktop koffice-1.1/kontour/templates/Simple/Plain.desktop
+--- koffice-1.1.orig/kontour/templates/Simple/Plain.desktop	Sun Aug  5 10:05:38 2001
++++ koffice-1.1/kontour/templates/Simple/Plain.desktop	Wed Oct 17 19:14:33 2001
+@@ -43,5 +43,5 @@
+ Name[ta]=º¡¾¡Ã½
+ Name[tr]=Düz
+ Name[vi]=Dễ hiểu 
+-Name[zh_CN.GB2312]=普通
++Name[zh_CN]=普通
+ Icon=.icon/Plain.png
+diff -uNr koffice-1.1.orig/koshell/koshell.desktop koffice-1.1/koshell/koshell.desktop
+--- koffice-1.1.orig/koshell/koshell.desktop	Sun Aug  5 10:06:16 2001
++++ koffice-1.1/koshell/koshell.desktop	Wed Oct 17 19:14:34 2001
+@@ -43,8 +43,8 @@
+ Name[tr]=KOffice Çalışma Ortamı
+ Name[uk]=Робочій простір KOffice
+ Name[vi]=Không gian làm việc KOffice 
+-Name[zh_CN.GB2312]=KOffice 工作空间
+-Name[zh_TW.Big5]=KOffice 工作表
++Name[zh_CN]=KOffice 工作空间
++Name[zh_TW]=KOffice 工作表
+ Exec=koshell
+ DocPath=koshell/index.html
+ Comment=KOffice Multi-Document Window
+@@ -91,8 +91,8 @@
+ Comment[tr]=KOffice Çoklu Belge Penceresi
+ Comment[uk]=Вікно KOffice з декількома документами
+ Comment[vi]=Cửa sổ nhiều-văn bản cho KOffice 
+-Comment[zh_CN.GB2312]=KOffice 多文档窗口
+-Comment[zh_TW.Big5]=KOffice 多文件視窗
++Comment[zh_CN]=KOffice 多文档窗口
++Comment[zh_TW]=KOffice 多文件視窗
+ Type=Application
+ Icon=koshell
+ KDE-X-StartupNotify=true
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Arrows/.directory koffice-1.1/kpresenter/autoforms/Arrows/.directory
+--- koffice-1.1.orig/kpresenter/autoforms/Arrows/.directory	Sun Aug  5 10:10:34 2001
++++ koffice-1.1/kpresenter/autoforms/Arrows/.directory	Wed Oct 17 19:14:39 2001
+@@ -37,5 +37,5 @@
+ Name[uk]=Стрілки
+ Name[vi]=Mũi tên 
+ Name[wa]=Fretches
+-Name[zh_CN.GB2312]=箭头
+-Name[zh_TW.Big5]=指標
++Name[zh_CN]=箭头
++Name[zh_TW]=指標
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowDown.desktop koffice-1.1/kpresenter/autoforms/Arrows/ArrowDown.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowDown.desktop	Sun Aug  5 10:07:07 2001
++++ koffice-1.1/kpresenter/autoforms/Arrows/ArrowDown.desktop	Wed Oct 17 19:14:39 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=Aşağı ok
+ Name[uk]=Стрілка вниз
+ Name[vi]=Mũi tên xuống 
+-Name[zh_CN.GB2312]=下箭头
+-Name[zh_TW.Big5]=指標向下
++Name[zh_CN]=下箭头
++Name[zh_TW]=指標向下
+ Icon=.icon/ArrowDown.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowLeft.desktop koffice-1.1/kpresenter/autoforms/Arrows/ArrowLeft.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowLeft.desktop	Sun Aug  5 10:07:30 2001
++++ koffice-1.1/kpresenter/autoforms/Arrows/ArrowLeft.desktop	Wed Oct 17 19:14:39 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=Sol ok
+ Name[uk]=Стрілка ліворуч
+ Name[vi]=Mũi tên trái 
+-Name[zh_CN.GB2312]=左箭头
+-Name[zh_TW.Big5]=指標向左
++Name[zh_CN]=左箭头
++Name[zh_TW]=指標向左
+ Icon=.icon/ArrowLeft.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowLeftDown.desktop koffice-1.1/kpresenter/autoforms/Arrows/ArrowLeftDown.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowLeftDown.desktop	Sun Aug  5 10:08:12 2001
++++ koffice-1.1/kpresenter/autoforms/Arrows/ArrowLeftDown.desktop	Wed Oct 17 19:14:39 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=Sol/aşağı ok
+ Name[uk]=Стрілка ліворуч/вниз
+ Name[vi]=Mũi tên trái/xuống 
+-Name[zh_CN.GB2312]=左下箭头
+-Name[zh_TW.Big5]=指標向左/向下
++Name[zh_CN]=左下箭头
++Name[zh_TW]=指標向左/向下
+ Icon=.icon/ArrowLeftDown.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowLeftUp.desktop koffice-1.1/kpresenter/autoforms/Arrows/ArrowLeftUp.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowLeftUp.desktop	Sun Aug  5 10:08:39 2001
++++ koffice-1.1/kpresenter/autoforms/Arrows/ArrowLeftUp.desktop	Wed Oct 17 19:14:39 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=Sol/yukarı ok
+ Name[uk]=Стрілка ліворуч/вгору
+ Name[vi]=Mũi tên trái/lên 
+-Name[zh_CN.GB2312]=左上箭头
+-Name[zh_TW.Big5]=指標向左/向上
++Name[zh_CN]=左上箭头
++Name[zh_TW]=指標向左/向上
+ Icon=.icon/ArrowLeftUp.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowRight.desktop koffice-1.1/kpresenter/autoforms/Arrows/ArrowRight.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowRight.desktop	Sun Aug  5 10:09:00 2001
++++ koffice-1.1/kpresenter/autoforms/Arrows/ArrowRight.desktop	Wed Oct 17 19:14:39 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=Sağ ok
+ Name[uk]=Стрілка праворуч
+ Name[vi]=Mũi tên phải 
+-Name[zh_CN.GB2312]=右箭头
+-Name[zh_TW.Big5]=指標向右
++Name[zh_CN]=右箭头
++Name[zh_TW]=指標向右
+ Icon=.icon/ArrowRight.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowRightDown.desktop koffice-1.1/kpresenter/autoforms/Arrows/ArrowRightDown.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowRightDown.desktop	Sun Aug  5 10:09:23 2001
++++ koffice-1.1/kpresenter/autoforms/Arrows/ArrowRightDown.desktop	Wed Oct 17 19:14:39 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=Sağ/aşağı ok
+ Name[uk]=Стрілка праворуч/донизу
+ Name[vi]=Mũi tên phải/xuống 
+-Name[zh_CN.GB2312]=右下箭头
+-Name[zh_TW.Big5]=指標向右/向下
++Name[zh_CN]=右下箭头
++Name[zh_TW]=指標向右/向下
+ Icon=.icon/ArrowRightDown.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowRightUp.desktop koffice-1.1/kpresenter/autoforms/Arrows/ArrowRightUp.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowRightUp.desktop	Sun Aug  5 10:09:47 2001
++++ koffice-1.1/kpresenter/autoforms/Arrows/ArrowRightUp.desktop	Wed Oct 17 19:14:40 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=Sağ/yukarı ok
+ Name[uk]=Стрілка праворуч/вгору
+ Name[vi]=Mũi ten phải/lên 
+-Name[zh_CN.GB2312]=右上箭头
+-Name[zh_TW.Big5]=指標向右/向上
++Name[zh_CN]=右上箭头
++Name[zh_TW]=指標向右/向上
+ Icon=.icon/ArrowRightUp.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowUp.desktop koffice-1.1/kpresenter/autoforms/Arrows/ArrowUp.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Arrows/ArrowUp.desktop	Sun Aug  5 10:10:11 2001
++++ koffice-1.1/kpresenter/autoforms/Arrows/ArrowUp.desktop	Wed Oct 17 19:14:40 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=Yukarı ok
+ Name[uk]=Стрілка вгору
+ Name[vi]=Mũi tên xuống 
+-Name[zh_CN.GB2312]=上箭头
+-Name[zh_TW.Big5]=指標向上
++Name[zh_CN]=上箭头
++Name[zh_TW]=指標向上
+ Icon=.icon/ArrowUp.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Connections/.directory koffice-1.1/kpresenter/autoforms/Connections/.directory
+--- koffice-1.1.orig/kpresenter/autoforms/Connections/.directory	Sun Aug  5 10:15:58 2001
++++ koffice-1.1/kpresenter/autoforms/Connections/.directory	Wed Oct 17 19:14:40 2001
+@@ -37,5 +37,5 @@
+ Name[uk]=З'єднання
+ Name[vi]=Các liên kết 
+ Name[wa]=Raloyaedjes
+-Name[zh_CN.GB2312]=连接
+-Name[zh_TW.Big5]=連結
++Name[zh_CN]=连接
++Name[zh_TW]=連結
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Connections/Connection1.desktop koffice-1.1/kpresenter/autoforms/Connections/Connection1.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Connections/Connection1.desktop	Sun Aug  5 10:12:13 2001
++++ koffice-1.1/kpresenter/autoforms/Connections/Connection1.desktop	Wed Oct 17 19:14:40 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=1. Bağlantı
+ Name[uk]=З'єднання 01
+ Name[vi]=Liên kết 01 
+-Name[zh_CN.GB2312]=连接 01
+-Name[zh_TW.Big5]=連結 01
++Name[zh_CN]=连接 01
++Name[zh_TW]=連結 01
+ Icon=.icon/Connection1.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Connections/Connection10.desktop koffice-1.1/kpresenter/autoforms/Connections/Connection10.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Connections/Connection10.desktop	Sun Aug  5 10:11:04 2001
++++ koffice-1.1/kpresenter/autoforms/Connections/Connection10.desktop	Wed Oct 17 19:14:40 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=10. Bağlantı
+ Name[uk]=З'єднання 10
+ Name[vi]=Liên kết 10 
+-Name[zh_CN.GB2312]=连接 10
+-Name[zh_TW.Big5]=連結 10
++Name[zh_CN]=连接 10
++Name[zh_TW]=連結 10
+ Icon=.icon/Connection10.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Connections/Connection11.desktop koffice-1.1/kpresenter/autoforms/Connections/Connection11.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Connections/Connection11.desktop	Sun Aug  5 10:11:26 2001
++++ koffice-1.1/kpresenter/autoforms/Connections/Connection11.desktop	Wed Oct 17 19:14:40 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=11. Bağlantı
+ Name[uk]=З'єднання 11
+ Name[vi]=Liên kết 11 
+-Name[zh_CN.GB2312]=连接 11
+-Name[zh_TW.Big5]=連結 11
++Name[zh_CN]=连接 11
++Name[zh_TW]=連結 11
+ Icon=.icon/Connection11.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Connections/Connection12.desktop koffice-1.1/kpresenter/autoforms/Connections/Connection12.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Connections/Connection12.desktop	Sun Aug  5 10:11:51 2001
++++ koffice-1.1/kpresenter/autoforms/Connections/Connection12.desktop	Wed Oct 17 19:14:40 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=12. Bağlantı
+ Name[uk]=З'єднання 12
+ Name[vi]=Liên kết 12 
+-Name[zh_CN.GB2312]=连接 12
+-Name[zh_TW.Big5]=連結 12
++Name[zh_CN]=连接 12
++Name[zh_TW]=連結 12
+ Icon=.icon/Connection12.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Connections/Connection2.desktop koffice-1.1/kpresenter/autoforms/Connections/Connection2.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Connections/Connection2.desktop	Sun Aug  5 10:12:37 2001
++++ koffice-1.1/kpresenter/autoforms/Connections/Connection2.desktop	Wed Oct 17 19:14:40 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=2. Bağlantı
+ Name[uk]=З'єднання 02
+ Name[vi]=Liên kết 02 
+-Name[zh_CN.GB2312]=连接 02
+-Name[zh_TW.Big5]=連結 02
++Name[zh_CN]=连接 02
++Name[zh_TW]=連結 02
+ Icon=.icon/Connection2.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Connections/Connection3.desktop koffice-1.1/kpresenter/autoforms/Connections/Connection3.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Connections/Connection3.desktop	Sun Aug  5 10:13:00 2001
++++ koffice-1.1/kpresenter/autoforms/Connections/Connection3.desktop	Wed Oct 17 19:14:41 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=3. Bağlantı
+ Name[uk]=З'єднання 03
+ Name[vi]=Liên kết 03 
+-Name[zh_CN.GB2312]=连接 03
+-Name[zh_TW.Big5]=連結 03
++Name[zh_CN]=连接 03
++Name[zh_TW]=連結 03
+ Icon=.icon/Connection3.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Connections/Connection4.desktop koffice-1.1/kpresenter/autoforms/Connections/Connection4.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Connections/Connection4.desktop	Sun Aug  5 10:13:22 2001
++++ koffice-1.1/kpresenter/autoforms/Connections/Connection4.desktop	Wed Oct 17 19:14:41 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=4. Bağlantı
+ Name[uk]=З'єднання 04
+ Name[vi]=Liên kết 04 
+-Name[zh_CN.GB2312]=连接 04
+-Name[zh_TW.Big5]=連結 04
++Name[zh_CN]=连接 04
++Name[zh_TW]=連結 04
+ Icon=.icon/Connection4.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Connections/Connection5.desktop koffice-1.1/kpresenter/autoforms/Connections/Connection5.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Connections/Connection5.desktop	Sun Aug  5 10:13:47 2001
++++ koffice-1.1/kpresenter/autoforms/Connections/Connection5.desktop	Wed Oct 17 19:14:41 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=5. Bağlantı
+ Name[uk]=З'єднання 05
+ Name[vi]=Liên kết 05 
+-Name[zh_CN.GB2312]=连接 05
+-Name[zh_TW.Big5]=連結 05
++Name[zh_CN]=连接 05
++Name[zh_TW]=連結 05
+ Icon=.icon/Connection5.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Connections/Connection6.desktop koffice-1.1/kpresenter/autoforms/Connections/Connection6.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Connections/Connection6.desktop	Sun Aug  5 10:14:22 2001
++++ koffice-1.1/kpresenter/autoforms/Connections/Connection6.desktop	Wed Oct 17 19:14:41 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=6. Bağlantı
+ Name[uk]=З'єднання 06
+ Name[vi]=Liên kết 06 
+-Name[zh_CN.GB2312]=连接 06
+-Name[zh_TW.Big5]=連結 06
++Name[zh_CN]=连接 06
++Name[zh_TW]=連結 06
+ Icon=.icon/Connection6.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Connections/Connection7.desktop koffice-1.1/kpresenter/autoforms/Connections/Connection7.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Connections/Connection7.desktop	Sun Aug  5 10:14:45 2001
++++ koffice-1.1/kpresenter/autoforms/Connections/Connection7.desktop	Wed Oct 17 19:14:41 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=7. Bağlantı
+ Name[uk]=З'єднання 07
+ Name[vi]=Liên kết 07 
+-Name[zh_CN.GB2312]=连接 07
+-Name[zh_TW.Big5]=連結 07
++Name[zh_CN]=连接 07
++Name[zh_TW]=連結 07
+ Icon=.icon/Connection7.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Connections/Connection8.desktop koffice-1.1/kpresenter/autoforms/Connections/Connection8.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Connections/Connection8.desktop	Sun Aug  5 10:15:08 2001
++++ koffice-1.1/kpresenter/autoforms/Connections/Connection8.desktop	Wed Oct 17 19:14:41 2001
+@@ -38,6 +38,6 @@
+ Name[tr]=8. Bağlantı
+ Name[uk]=З'єднання 08
+ Name[vi]=Liên kết 08 
+-Name[zh_CN.GB2312]=连接 08
+-Name[zh_TW.Big5]=連結 08
++Name[zh_CN]=连接 08
++Name[zh_TW]=連結 08
+ Icon=.icon/Connection8.png
+diff -uNr koffice-1.1.orig/kpresenter/autoforms/Connections/Connection9.desktop koffice-1.1/kpresenter/autoforms/Connections/Connection9.desktop
+--- koffice-1.1.orig/kpresenter/autoforms/Connections/Connection9.desktop	Sun Aug  5 10:15:35 2001
++++ koffice-1.1/kpresenter/autoforms/Connections/Connection9.desktop	Wed Oct 17 19:14:41 2001
+@@ -39,6 +39,6 @@
+ Name[uk]=З'єднання 09
+ Name[vi]=Liên kết 09 
+ Name[wa]=Raloyaedje 09
+-Name[zh_CN.GB2312]=连接 09
+-Name[zh_TW.Big5]=連結 09
++Name[zh_CN]=连接 09
++Name[zh_TW]=連結 09
+ Icon=.icon/Connection9.png
+diff -uNr koffice-1.1.orig/kpresenter/kpresenter.desktop koffice-1.1/kpresenter/kpresenter.desktop
+--- koffice-1.1.orig/kpresenter/kpresenter.desktop	Tue Aug 14 13:20:51 2001
++++ koffice-1.1/kpresenter/kpresenter.desktop	Wed Oct 17 19:14:36 2001
+@@ -43,7 +43,7 @@
+ Comment[tr]=Slayt Sunumları
+ Comment[uk]=Презентації слайдів
+ Comment[vi]=Trình diễn trượt (slide) 
+-Comment[zh_CN.GB2312]=幻灯片演示
++Comment[zh_CN]=幻灯片演示
+ MimeType=application/x-kpresenter
+ Type=Application
+ Icon=kpresenter
+diff -uNr koffice-1.1.orig/kpresenter/templates/Screen/.directory koffice-1.1/kpresenter/templates/Screen/.directory
+--- koffice-1.1.orig/kpresenter/templates/Screen/.directory	Sun Aug  5 10:19:53 2001
++++ koffice-1.1/kpresenter/templates/Screen/.directory	Wed Oct 17 19:14:43 2001
+@@ -35,5 +35,5 @@
+ Name[uk]=Екран
+ Name[vi]=Màn hình 
+ Name[wa]=Waitroûle
+-Name[zh_CN.GB2312]=屏幕
++Name[zh_CN]=屏幕
+ X-KDE-DefaultTab=true
+diff -uNr koffice-1.1.orig/kpresenter/templates/Screenpresentations/.directory koffice-1.1/kpresenter/templates/Screenpresentations/.directory
+--- koffice-1.1.orig/kpresenter/templates/Screenpresentations/.directory	Sun Aug  5 10:21:41 2001
++++ koffice-1.1/kpresenter/templates/Screenpresentations/.directory	Wed Oct 17 19:14:44 2001
+@@ -40,5 +40,5 @@
+ Name[tr]=Ekransunumları
+ Name[uk]=Представлення екрана
+ Name[vi]=Trình diễn màn hình 
+-Name[zh_CN.GB2312]=屏幕演示
+-Name[zh_TW.Big5]=螢幕保護程式設定
++Name[zh_CN]=屏幕演示
++Name[zh_TW]=螢幕保護程式設定
+diff -uNr koffice-1.1.orig/kpresenter/templates/Screenpresentations/Gradient-Blue-Red.desktop koffice-1.1/kpresenter/templates/Screenpresentations/Gradient-Blue-Red.desktop
+--- koffice-1.1.orig/kpresenter/templates/Screenpresentations/Gradient-Blue-Red.desktop	Sun Aug  5 10:22:04 2001
++++ koffice-1.1/kpresenter/templates/Screenpresentations/Gradient-Blue-Red.desktop	Wed Oct 17 19:14:44 2001
+@@ -45,6 +45,6 @@
+ Name[tr]=Mavi-Kırmızı Geçiş
+ Name[uk]=Градієнт синій-червоний
+ Name[vi]=Građien Xanh-Đỏ
+-Name[zh_CN.GB2312]=有蓝到红渐变
+-Name[zh_TW.Big5]=漸層 藍-紅
++Name[zh_CN]=有蓝到红渐变
++Name[zh_TW]=漸層 藍-紅
+ Icon=.icon/Gradient-Blue-Red.png
+diff -uNr koffice-1.1.orig/kpresenter/templates/Screenpresentations/Plain.desktop koffice-1.1/kpresenter/templates/Screenpresentations/Plain.desktop
+--- koffice-1.1.orig/kpresenter/templates/Screenpresentations/Plain.desktop	Sun Aug  5 10:22:26 2001
++++ koffice-1.1/kpresenter/templates/Screenpresentations/Plain.desktop	Wed Oct 17 19:14:44 2001
+@@ -43,5 +43,5 @@
+ Name[ta]=º¡¾¡Ã½
+ Name[tr]=Düz
+ Name[vi]=Dễ hiểu 
+-Name[zh_CN.GB2312]=普通
++Name[zh_CN]=普通
+ Icon=.icon/Plain.png
+diff -uNr koffice-1.1.orig/kpresenter/templates/Screenpresentations/SnowyMountains.desktop koffice-1.1/kpresenter/templates/Screenpresentations/SnowyMountains.desktop
+--- koffice-1.1.orig/kpresenter/templates/Screenpresentations/SnowyMountains.desktop	Sun Aug  5 10:22:48 2001
++++ koffice-1.1/kpresenter/templates/Screenpresentations/SnowyMountains.desktop	Wed Oct 17 19:14:44 2001
+@@ -33,7 +33,7 @@
+ Name[tr]=Karlı Dağlar
+ Name[uk]=Засніжені гори
+ Name[vi]=Núi tuyết 
+-Name[zh_CN.GB2312]=白雪山峰
++Name[zh_CN]=白雪山峰
+ Type=Link
+ URL=.source/SnowyMountains.kpt
+ X-KDE-Hidden=false
+diff -uNr koffice-1.1.orig/kpresenter/templates/Screenpresentations/TotallyNewProduct.desktop koffice-1.1/kpresenter/templates/Screenpresentations/TotallyNewProduct.desktop
+--- koffice-1.1.orig/kpresenter/templates/Screenpresentations/TotallyNewProduct.desktop	Sun Aug  5 10:23:14 2001
++++ koffice-1.1/kpresenter/templates/Screenpresentations/TotallyNewProduct.desktop	Wed Oct 17 19:14:44 2001
+@@ -33,7 +33,7 @@
+ Name[tr]=Tamamen Yeni Ürün
+ Name[uk]=Повністю новий товар
+ Name[vi]=Sản phẩm hoàn toàn mới 
+-Name[zh_CN.GB2312]=新产品
++Name[zh_CN]=新产品
+ Type=Link
+ URL=.source/TotallyNewProduct.kpt
+ X-KDE-Hidden=false
+diff -uNr koffice-1.1.orig/kpresenter/templates/common_desktop/OneColumnPortrait.desktop koffice-1.1/kpresenter/templates/common_desktop/OneColumnPortrait.desktop
+--- koffice-1.1.orig/kpresenter/templates/common_desktop/OneColumnPortrait.desktop	Sun Aug  5 10:17:11 2001
++++ koffice-1.1/kpresenter/templates/common_desktop/OneColumnPortrait.desktop	Wed Oct 17 19:14:45 2001
+@@ -33,7 +33,7 @@
+ Name[tr]=Tek Sütun Portre
+ Name[uk]=Портрет в Один стовпчик
+ Name[vi]=Chân dung một cột 
+-Name[zh_CN.GB2312]=单列肖像
++Name[zh_CN]=单列肖像
+ Type=Link
+ URL=.source/OneColumnPortrait.kpt
+ X-KDE-Hidden=false
+diff -uNr koffice-1.1.orig/kpresenter/templates/common_desktop/TitlePortrait.desktop koffice-1.1/kpresenter/templates/common_desktop/TitlePortrait.desktop
+--- koffice-1.1.orig/kpresenter/templates/common_desktop/TitlePortrait.desktop	Sun Aug  5 10:17:36 2001
++++ koffice-1.1/kpresenter/templates/common_desktop/TitlePortrait.desktop	Wed Oct 17 19:14:45 2001
+@@ -33,7 +33,7 @@
+ Name[tr]=Başlık Portresi
+ Name[uk]=Портрет заголовоком
+ Name[vi]=Tên chân dung 
+-Name[zh_CN.GB2312]=标题肖像
++Name[zh_CN]=标题肖像
+ Type=Link
+ URL=.source/TitlePortrait.kpt
+ X-KDE-Hidden=false
+diff -uNr koffice-1.1.orig/kpresenter/templates/common_desktop/TwoColumnLandscape.desktop koffice-1.1/kpresenter/templates/common_desktop/TwoColumnLandscape.desktop
+--- koffice-1.1.orig/kpresenter/templates/common_desktop/TwoColumnLandscape.desktop	Sun Aug  5 10:18:03 2001
++++ koffice-1.1/kpresenter/templates/common_desktop/TwoColumnLandscape.desktop	Wed Oct 17 19:14:45 2001
+@@ -37,8 +37,8 @@
+ Name[uk]=Два стовпчики
+ Name[vi]=Hai cột 
+ Name[wa]=Deus colones
+-Name[zh_CN.GB2312]=两列
+-Name[zh_TW.Big5]=兩個欄位
++Name[zh_CN]=两列
++Name[zh_TW]=兩個欄位
+ Type=Link
+ URL=.source/TwoColumnLandscape.kpt
+ X-KDE-Hidden=false
+diff -uNr koffice-1.1.orig/kpresenter/templates/common_desktop/TwoColumnPortrait.desktop koffice-1.1/kpresenter/templates/common_desktop/TwoColumnPortrait.desktop
+--- koffice-1.1.orig/kpresenter/templates/common_desktop/TwoColumnPortrait.desktop	Sun Aug  5 10:18:38 2001
++++ koffice-1.1/kpresenter/templates/common_desktop/TwoColumnPortrait.desktop	Wed Oct 17 19:14:45 2001
+@@ -33,7 +33,7 @@
+ Name[tr]=İki Sütun Portre
+ Name[uk]=Портрет в два стовпчики
+ Name[vi]=Chân dung hai cột 
+-Name[zh_CN.GB2312]=两列肖像
++Name[zh_CN]=两列肖像
+ Type=Link
+ URL=.source/TwoColumnPortrait.kpt
+ X-KDE-Hidden=false
+diff -uNr koffice-1.1.orig/kpresenter/templates/common_desktop/emptyPortrait.desktop koffice-1.1/kpresenter/templates/common_desktop/emptyPortrait.desktop
+--- koffice-1.1.orig/kpresenter/templates/common_desktop/emptyPortrait.desktop	Sun Aug  5 10:16:48 2001
++++ koffice-1.1/kpresenter/templates/common_desktop/emptyPortrait.desktop	Wed Oct 17 19:14:45 2001
+@@ -33,7 +33,7 @@
+ Name[tr]=boş Portre
+ Name[uk]=Порожній портрет
+ Name[vi]=Chân dung rỗng 
+-Name[zh_CN.GB2312]=空肖像
++Name[zh_CN]=空肖像
+ Type=Link
+ URL=.source/emptyPortrait.kpt
+ X-KDE-Hidden=false
+diff -uNr koffice-1.1.orig/kspread/kspread.desktop koffice-1.1/kspread/kspread.desktop
+--- koffice-1.1.orig/kspread/kspread.desktop	Tue Aug 14 13:21:47 2001
++++ koffice-1.1/kspread/kspread.desktop	Wed Oct 17 19:14:50 2001
+@@ -39,7 +39,7 @@
+ Comment[ta]=Å¢Ã¢¾¡ð¸û
+ Comment[tr]=Hesap Çizelgeleri
+ Comment[uk]=Електронні таблиці
+-Comment[zh_CN.GB2312]=电子表格
++Comment[zh_CN]=电子表格
+ MimeType=application/x-kspread
+ Type=Application
+ Icon=kspread
+diff -uNr koffice-1.1.orig/kspread/plugins/calculator/kspreadcalc.desktop koffice-1.1/kspread/plugins/calculator/kspreadcalc.desktop
+--- koffice-1.1.orig/kspread/plugins/calculator/kspreadcalc.desktop	Sun Aug  5 10:24:22 2001
++++ koffice-1.1/kspread/plugins/calculator/kspreadcalc.desktop	Wed Oct 17 19:14:55 2001
+@@ -43,7 +43,7 @@
+ Name[tr]=KSpread için hesap makinesi eklentisi
+ Name[uk]=Калькулятор - додаток до KSpread
+ Name[vi]=Plugin máy tính cho KSpread 
+-Name[zh_CN.GB2312]=KSpread 的计算器插件
+-Name[zh_TW.Big5]=KSpread 的外掛計算機
++Name[zh_CN]=KSpread 的计算器插件
++Name[zh_TW]=KSpread 的外掛計算機
+ Type=Service
+ ServiceTypes=KPlugin
+diff -uNr koffice-1.1.orig/kugar/part/kugar.desktop koffice-1.1/kugar/part/kugar.desktop
+--- koffice-1.1.orig/kugar/part/kugar.desktop	Tue Aug 14 13:21:48 2001
++++ koffice-1.1/kugar/part/kugar.desktop	Wed Oct 17 19:15:03 2001
+@@ -40,7 +40,7 @@
+ Comment[tr]=Rapor oluşturucu
+ Comment[uk]=Генератор звітів
+ Comment[vi]=Trình sinh báo cáo 
+-Comment[zh_CN.GB2312]=报告生成器
++Comment[zh_CN]=报告生成器
+ Terminal=0
+ ServiceTypes=KParts/ReadOnlyPart,Browser/View
+ X-KDE-Library=libkugarpart
+diff -uNr koffice-1.1.orig/kugar/part/x-kugar.desktop koffice-1.1/kugar/part/x-kugar.desktop
+--- koffice-1.1.orig/kugar/part/x-kugar.desktop	Sun Aug  5 10:25:06 2001
++++ koffice-1.1/kugar/part/x-kugar.desktop	Wed Oct 17 19:15:03 2001
+@@ -33,7 +33,7 @@
+ Comment[tr]=Kugar Veri Dosyası
+ Comment[uk]=Файл даних Kugar
+ Comment[vi]=File dữ liệu Kugar 
+-Comment[zh_CN.GB2312]=Kugar 数据文件
++Comment[zh_CN]=Kugar 数据文件
+ Icon=kugardata
+ Type=MimeType
+ Patterns=*.kud
+diff -uNr koffice-1.1.orig/kword/kword.desktop koffice-1.1/kword/kword.desktop
+--- koffice-1.1.orig/kword/kword.desktop	Tue Aug 14 13:21:48 2001
++++ koffice-1.1/kword/kword.desktop	Wed Oct 17 19:15:07 2001
+@@ -43,7 +43,7 @@
+ Comment[tr]=Kelime İşleme
+ Comment[uk]=Текстовий процесор
+ Comment[vi]=Xử lí Word 
+-Comment[zh_CN.GB2312]=字处理
++Comment[zh_CN]=字处理
+ MimeType=application/x-kword
+ Type=Application
+ Icon=kword
+diff -uNr koffice-1.1.orig/kword/templates/DTP/.directory koffice-1.1/kword/templates/DTP/.directory
+--- koffice-1.1.orig/kword/templates/DTP/.directory	Sun Aug  5 10:25:50 2001
++++ koffice-1.1/kword/templates/DTP/.directory	Wed Oct 17 19:15:12 2001
+@@ -32,4 +32,4 @@
+ Name[tr]=Sayfa yerleşimi
+ Name[uk]=Розклад сторінки
+ Name[vi]=Bố trí trang 
+-Name[zh_CN.GB2312]=页面布局
++Name[zh_CN]=页面布局
+diff -uNr koffice-1.1.orig/kword/templates/DTP/SimpleLayout.desktop koffice-1.1/kword/templates/DTP/SimpleLayout.desktop
+--- koffice-1.1.orig/kword/templates/DTP/SimpleLayout.desktop	Sun Aug  5 10:26:12 2001
++++ koffice-1.1/kword/templates/DTP/SimpleLayout.desktop	Wed Oct 17 19:15:12 2001
+@@ -45,6 +45,6 @@
+ Name[tr]=Basit Düzenek
+ Name[uk]=Проста розкладка
+ Name[vi]=Bố trí đơn giản 
+-Name[zh_CN.GB2312]=简单布局
+-Name[zh_TW.Big5]=簡單佈局
++Name[zh_CN]=简单布局
++Name[zh_TW]=簡單佈局
+ Icon=.icon/SimpleLayout.png
+diff -uNr koffice-1.1.orig/kword/templates/Wordprocessing/.directory koffice-1.1/kword/templates/Wordprocessing/.directory
+--- koffice-1.1.orig/kword/templates/Wordprocessing/.directory	Sun Aug  5 10:26:35 2001
++++ koffice-1.1/kword/templates/Wordprocessing/.directory	Wed Oct 17 19:15:12 2001
+@@ -31,5 +31,5 @@
+ Name[tr]=Metine dayalı
+ Name[uk]=Текстовий
+ Name[vi]=Chú trọng vào text 
+-Name[zh_CN.GB2312]=文本导向的
++Name[zh_CN]=文本导向的
+ X-KDE-DefaultTab=true
+diff -uNr koffice-1.1.orig/kword/templates/Wordprocessing/PlainText.desktop koffice-1.1/kword/templates/Wordprocessing/PlainText.desktop
+--- koffice-1.1.orig/kword/templates/Wordprocessing/PlainText.desktop	Sun Aug  5 10:27:20 2001
++++ koffice-1.1/kword/templates/Wordprocessing/PlainText.desktop	Wed Oct 17 19:15:13 2001
+@@ -46,6 +46,6 @@
+ Name[uk]=Простий текст
+ Name[vi]=Thuần tuý text 
+ Name[wa]=Peur tecse
+-Name[zh_CN.GB2312]=普通文本
+-Name[zh_TW.Big5]=純文字
++Name[zh_CN]=普通文本
++Name[zh_TW]=純文字
+ Icon=.icon/PlainText.png
+diff -uNr koffice-1.1.orig/kword/templates/Wordprocessing/TwoColumns.desktop koffice-1.1/kword/templates/Wordprocessing/TwoColumns.desktop
+--- koffice-1.1.orig/kword/templates/Wordprocessing/TwoColumns.desktop	Sun Aug  5 10:27:41 2001
++++ koffice-1.1/kword/templates/Wordprocessing/TwoColumns.desktop	Wed Oct 17 19:15:13 2001
+@@ -47,6 +47,6 @@
+ Name[uk]=Два стовпчики
+ Name[vi]=Hai cột 
+ Name[wa]=Deus colones
+-Name[zh_CN.GB2312]=两列
+-Name[zh_TW.Big5]=兩個欄位
++Name[zh_CN]=两列
++Name[zh_TW]=兩個欄位
+ Icon=.icon/TwoColumns.png
+diff -uNr koffice-1.1.orig/lib/kofficecore/kodocinfopropspage.desktop koffice-1.1/lib/kofficecore/kodocinfopropspage.desktop
+--- koffice-1.1.orig/lib/kofficecore/kodocinfopropspage.desktop	Sun Aug  5 10:28:04 2001
++++ koffice-1.1/lib/kofficecore/kodocinfopropspage.desktop	Wed Oct 17 19:15:21 2001
+@@ -43,7 +43,7 @@
+ Name[tr]=KOffice Belge Özellikleri Sayfası
+ Name[uk]=Сторінка властивостей документу KOffice
+ Name[vi]=Trang tính chất và thông tin của tài liệu KOffice 
+-Name[zh_CN.GB2312]=KOffice 文档基本信息和属性
+-Name[zh_TW.Big5]=KOffice 文件訊息內容頁
++Name[zh_CN]=KOffice 文档基本信息和属性
++Name[zh_TW]=KOffice 文件訊息內容頁
+ X-KDE-Library=libkodocinfopropspage
+ ServiceTypes=KPropsDlg/Plugin,application/x-kspread,application/x-kword,application/x-kpresenter,application/x-kchart,application/x-killustrator,application/x-kimageshop
+diff -uNr koffice-1.1.orig/servicetypes/kofficepart.desktop koffice-1.1/servicetypes/kofficepart.desktop
+--- koffice-1.1.orig/servicetypes/kofficepart.desktop	Sun Aug  5 10:28:27 2001
++++ koffice-1.1/servicetypes/kofficepart.desktop	Wed Oct 17 19:15:32 2001
+@@ -46,8 +46,8 @@
+ Comment[tr]=KOffice Bileşeni
+ Comment[uk]=Компонента KOffice
+ Comment[vi]=Thành phần KOffice 
+-Comment[zh_CN.GB2312]=KOffice 部件
+-Comment[zh_TW.Big5]=KOffice 元件
++Comment[zh_CN]=KOffice 部件
++Comment[zh_TW]=KOffice 元件
+ 
+ [PropertyDef::X-KDE-NativeMimeType]
+ Type=QString
+diff -uNr koffice-1.1.orig/servicetypes/kofilter.desktop koffice-1.1/servicetypes/kofilter.desktop
+--- koffice-1.1.orig/servicetypes/kofilter.desktop	Sun Aug  5 10:28:48 2001
++++ koffice-1.1/servicetypes/kofilter.desktop	Wed Oct 17 19:15:32 2001
+@@ -45,8 +45,8 @@
+ Comment[tr]=KOffice Süzgeci
+ Comment[uk]=Фільтр KOffice
+ Comment[vi]=Trình lọc KOffice 
+-Comment[zh_CN.GB2312]=KOffice 过滤程序
+-Comment[zh_TW.Big5]=KOffice 過濾器
++Comment[zh_CN]=KOffice 过滤程序
++Comment[zh_TW]=KOffice 過濾器
+ 
+ [PropertyDef::Import]
+ Type=QStringList
+diff -uNr koffice-1.1.orig/servicetypes/koplugin.desktop koffice-1.1/servicetypes/koplugin.desktop
+--- koffice-1.1.orig/servicetypes/koplugin.desktop	Sun Aug  5 10:29:11 2001
++++ koffice-1.1/servicetypes/koplugin.desktop	Wed Oct 17 19:15:32 2001
+@@ -45,8 +45,8 @@
+ Comment[tr]=KOffice Ek Yazılımı
+ Comment[uk]=Додаток KOffice
+ Comment[vi]=Plugin cho KOffice 
+-Comment[zh_CN.GB2312]=KOffice 插件
+-Comment[zh_TW.Big5]=KOffice 外掛程式
++Comment[zh_CN]=KOffice 插件
++Comment[zh_TW]=KOffice 外掛程式
+ 
+ [PropertyDef::MenuEntries]
+ Type=QStringList
+diff -uNr koffice-1.1.orig/servicetypes/kotool.desktop koffice-1.1/servicetypes/kotool.desktop
+--- koffice-1.1.orig/servicetypes/kotool.desktop	Sun Aug  5 10:29:33 2001
++++ koffice-1.1/servicetypes/kotool.desktop	Wed Oct 17 19:15:32 2001
+@@ -46,8 +46,8 @@
+ Comment[tr]=KOffice Aracı
+ Comment[uk]=Утиліта KOffice
+ Comment[vi]=Công cụ KOffice 
+-Comment[zh_CN.GB2312]=KOffice 工具
+-Comment[zh_TW.Big5]=KOffice 工具
++Comment[zh_CN]=KOffice 工具
++Comment[zh_TW]=KOffice 工具
+ 
+ [PropertyDef::Commands]
+ Type=QStringList
+diff -uNr koffice-1.1.orig/templates/Illustration.desktop koffice-1.1/templates/Illustration.desktop
+--- koffice-1.1.orig/templates/Illustration.desktop	Tue Aug 14 13:21:51 2001
++++ koffice-1.1/templates/Illustration.desktop	Wed Oct 17 19:15:32 2001
+@@ -36,8 +36,8 @@
+ Name[tr]=Örnek Belgesi
+ Name[uk]=Документ ілюстрації
+ Name[vi]=Tài liệu illustration 
+-Name[zh_CN.GB2312]=Illustrator 文档
+-Name[zh_TW.Big5]=Illustration 文件
++Name[zh_CN]=Illustrator 文档
++Name[zh_TW]=Illustration 文件
+ Comment=New KIllustrator Document
+ Comment[af]=NUWE KILLUSTRATOR DOKUMENT
+ Comment[az]=Yeni KIllustrator Sənədi
+@@ -76,8 +76,8 @@
+ Comment[tr]=Yeni KIllustrator Belgesi
+ Comment[uk]=Новий документ KIllustrator
+ Comment[vi]=Tài liệu Killustrator mới 
+-Comment[zh_CN.GB2312]=新建 KIllustrator 文档
+-Comment[zh_TW.Big5]=新的 KIllustrator 檔案
++Comment[zh_CN]=新建 KIllustrator 文档
++Comment[zh_TW]=新的 KIllustrator 檔案
+ Type=Link
+ URL=.source/Illustration.kil
+ Icon=kontour
+diff -uNr koffice-1.1.orig/templates/Presentation.desktop koffice-1.1/templates/Presentation.desktop
+--- koffice-1.1.orig/templates/Presentation.desktop	Sun Aug  5 10:30:04 2001
++++ koffice-1.1/templates/Presentation.desktop	Wed Oct 17 19:15:32 2001
+@@ -37,8 +37,8 @@
+ Name[tr]=Sunum Belgesi
+ Name[uk]=Документ презентації
+ Name[vi]=Tài liệu trình diễn (presentation) 
+-Name[zh_CN.GB2312]=演示文档
+-Name[zh_TW.Big5]=簡報文件
++Name[zh_CN]=演示文档
++Name[zh_TW]=簡報文件
+ Comment=New KPresenter Presentation Document
+ Comment[af]=NUWE KPRESENTER AANBIEDING DOKUMENT
+ Comment[az]=Yeni KPresenter Nümayiş Sənədi
+@@ -77,8 +77,8 @@
+ Comment[tr]=Yeni KPresenter Sunum Belgesi
+ Comment[uk]=Новий документ презентації KPresenter
+ Comment[vi]=Tài liệu trình diễn KPresentation mới 
+-Comment[zh_CN.GB2312]=新建 KPresenter 演示文档
+-Comment[zh_TW.Big5]=新的簡報展示軟體 KPresenter
++Comment[zh_CN]=新建 KPresenter 演示文档
++Comment[zh_TW]=新的簡報展示軟體 KPresenter
+ Type=Link
+ URL=.source/Presentation.kpt
+ Icon=kpresenter
+diff -uNr koffice-1.1.orig/templates/SpreadSheet.desktop koffice-1.1/templates/SpreadSheet.desktop
+--- koffice-1.1.orig/templates/SpreadSheet.desktop	Sun Aug  5 10:30:44 2001
++++ koffice-1.1/templates/SpreadSheet.desktop	Wed Oct 17 19:15:32 2001
+@@ -37,8 +37,8 @@
+ Name[tr]=Hesap Çizelgesi Belgesi
+ Name[uk]=Документ електронної таблиці
+ Name[vi]=Tài liệu Spread Sheet 
+-Name[zh_CN.GB2312]=电子表格文档
+-Name[zh_TW.Big5]=試算表
++Name[zh_CN]=电子表格文档
++Name[zh_TW]=試算表
+ Comment=New KSpread Document
+ Comment[af]=NUWE KSPREAD DOKUMENT
+ Comment[az]=Yeni KSpread Sənədi
+@@ -77,8 +77,8 @@
+ Comment[tr]=Yeni KSpread Belgesi
+ Comment[uk]=Новий документ KSpread
+ Comment[vi]=Tài liệu KSpread mới 
+-Comment[zh_CN.GB2312]=新建 KSpread 文档
+-Comment[zh_TW.Big5]=新的 KSpread 文件
++Comment[zh_CN]=新建 KSpread 文档
++Comment[zh_TW]=新的 KSpread 文件
+ Type=Link
+ URL=.source/SpreadSheet.ksp
+ Icon=kspread
+diff -uNr koffice-1.1.orig/templates/TextDocument.desktop koffice-1.1/templates/TextDocument.desktop
+--- koffice-1.1.orig/templates/TextDocument.desktop	Sun Aug  5 10:31:06 2001
++++ koffice-1.1/templates/TextDocument.desktop	Wed Oct 17 19:15:32 2001
+@@ -37,8 +37,8 @@
+ Name[tr]=Metin Belgesi
+ Name[uk]=Текстовий документ
+ Name[vi]=Tài liệu text 
+-Name[zh_CN.GB2312]=文本文档
+-Name[zh_TW.Big5]=文字檔案
++Name[zh_CN]=文本文档
++Name[zh_TW]=文字檔案
+ Comment=New KWord Document
+ Comment[af]=NUWE KWORD DOKUMENT
+ Comment[az]=Yeni KWord Sənədi
+@@ -77,8 +77,8 @@
+ Comment[tr]=Yeni KWord Belgesi
+ Comment[uk]=Новий документ KWord
+ Comment[vi]=Tài liệu KWord mới 
+-Comment[zh_CN.GB2312]=新建 KWord 文档
+-Comment[zh_TW.Big5]=新的 KWord 文件
++Comment[zh_CN]=新建 KWord 文档
++Comment[zh_TW]=新的 KWord 文件
+ Type=Link
+ URL=.source/TextDocument.kwt
+ Icon=kword
+diff -uNr koffice-1.1.orig/tools/spell/kspelltool.desktop koffice-1.1/tools/spell/kspelltool.desktop
+--- koffice-1.1.orig/tools/spell/kspelltool.desktop	Sun Aug  5 10:31:29 2001
++++ koffice-1.1/tools/spell/kspelltool.desktop	Wed Oct 17 19:15:33 2001
+@@ -43,8 +43,8 @@
+ Name[tr]=İmla Denetim Programı
+ Name[uk]=Утиліта перевірки правопису
+ Name[vi]=Công cụ kiểm tra chính tả 
+-Name[zh_CN.GB2312]=拼写检查工具
+-Name[zh_TW.Big5]=拼字檢查工具
++Name[zh_CN]=拼写检查工具
++Name[zh_TW]=拼字檢查工具
+ X-KDE-Library=libkspelltool
+ Type=Service
+ Commands=spellcheck
+@@ -80,7 +80,7 @@
+ Comment[tr]=İmlayı kontrol et
+ Comment[uk]=Перевірка правопису
+ Comment[vi]=Kiểm tra lỗi chính tả 
+-Comment[zh_CN.GB2312]=拼写检查
++Comment[zh_CN]=拼写检查
+ ServiceTypes=KoDataTool
+ Icon=spellcheck
+ DataType=QString
+diff -uNr koffice-1.1.orig/tools/spell/kspelltool_kword.desktop koffice-1.1/tools/spell/kspelltool_kword.desktop
+--- koffice-1.1.orig/tools/spell/kspelltool_kword.desktop	Sun Aug  5 10:31:52 2001
++++ koffice-1.1/tools/spell/kspelltool_kword.desktop	Wed Oct 17 19:15:33 2001
+@@ -43,8 +43,8 @@
+ Name[tr]=İmla Denetim Programı
+ Name[uk]=Утиліта перевірки правопису
+ Name[vi]=Công cụ kiểm tra chính tả 
+-Name[zh_CN.GB2312]=拼写检查工具
+-Name[zh_TW.Big5]=拼字檢查工具
++Name[zh_CN]=拼写检查工具
++Name[zh_TW]=拼字檢查工具
+ X-KDE-Library=libkspelltool
+ Type=Service
+ Commands=spellcheck
+@@ -81,7 +81,7 @@
+ Comment[tr]=Bu kelimenin imlasını kontrol et
+ Comment[uk]=Перевірити правопис цього слова
+ Comment[vi]=Kiểm tra lỗi chỉnh tả cho từ này 
+-Comment[zh_CN.GB2312]=检查拼写
++Comment[zh_CN]=检查拼写
+ ServiceTypes=KoDataTool
+ Icon=spellcheck
+ # This tool should only appear for single words, in KWord.
