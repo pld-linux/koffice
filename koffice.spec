@@ -288,11 +288,6 @@ rm -rf $RPM_BUILD_ROOT
 #################################
 %files common
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libasciiexport.so
-%attr(755,root,root) %{_libdir}/libasciiimport.so
-%attr(755,root,root) %{_libdir}/libhtmlexport.so
-%attr(755,root,root) %{_libdir}/libhtmlimport.so
-%attr(755,root,root) %{_libdir}/libkspelltool.so
 %attr(755,root,root) %{_libdir}/libolefilter.so
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_applnkdir}/Applications/KOffice
@@ -300,8 +295,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_htmldir}/en/doc/*
 %{_htmldir}/en/katabase
 %{_htmldir}/en/koffice
-%{_datadir}/mimelnk/application/*
-%{_datadir}/services/*
 %{_datadir}/servicetypes/*
 
 #################################
@@ -326,6 +319,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkchart.so
 %{_datadir}/apps/kchart
 %{_applnkdir}/Applications/KOffice/kchart.desktop
+%{_datadir}/mimelnk/application/x-kchart.desktop
 
 #################################
 # koffice-kgraph
@@ -336,6 +330,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkgraph.so
 %{_datadir}/apps/kgraph
 %{_applnkdir}/Applications/KOffice/kgraph.desktop
+%{_datadir}/mimelnk/application/x-kgraph.desktop
 
 #################################
 # koffice-killustrator
@@ -347,10 +342,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/killustrator
 %{_htmldir}/en/killustrator
 %{_applnkdir}/Applications/KOffice/killustrator.desktop
-%{_pixmapsdir}/locolor/16x16/apps/killustrator.png
-%{_pixmapsdir}/locolor/32x32/apps/killustrator.png
-%{_pixmapsdir}/hicolor/32x32/apps/killustrator.png
-%{_pixmapsdir}/hicolor/48x48/apps/killustrator.png
+%{_datadir}/mimelnk/application/x-killustrator.desktop
+%{_pixmapsdir}/locolor/*x*/apps/killustrator.png
+%{_pixmapsdir}/hicolor/*x*/apps/killustrator.png
 
 #################################
 # koffice-kimage
@@ -361,6 +355,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkimage.so
 %{_datadir}/apps/kimage
 %{_applnkdir}/Applications/KOffice/kimage.desktop
+%{_datadir}/mimelnk/application/x-kimage.desktop
 
 #################################
 # koffice-kimageshop
@@ -371,6 +366,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkimageshop.so
 %{_datadir}/apps/kimageshop
 %{_applnkdir}/Applications/KOffice/kimageshop.desktop
+%{_datadir}/mimelnk/application/x-kimageshop.desktop
 
 #################################
 # koffice-kpresenter
@@ -382,10 +378,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kpresenter
 %{_htmldir}/en/kpresenter
 %{_applnkdir}/Applications/KOffice/kpresenter.desktop
-%{_pixmapsdir}/locolor/16x16/apps/kpresenter.png
-%{_pixmapsdir}/locolor/32x32/apps/kpresenter.png
-%{_pixmapsdir}/hicolor/32x32/apps/kpresenter.png
-%{_pixmapsdir}/hicolor/48x48/apps/kpresenter.png
+%{_datadir}/mimelnk/application/x-kpresenter.desktop
+%{_datadir}/mimelnk/application/x-powerpoint97.desktop
+%{_datadir}/services/ole_powerpoint97_import.desktop
+%{_pixmapsdir}/locolor/*x*/apps/kpresenter.png
+%{_pixmapsdir}/hicolor/*x*/apps/kpresenter.png
 
 #################################
 # koffice-kspread
@@ -396,12 +393,12 @@ rm -rf $RPM_BUILD_ROOT
 #%attr(755,root,root) %{_libdir}/
 %{_datadir}/apps/kspread
 %{_applnkdir}/Applications/KOffice/kspread.desktop
-%{_pixmapsdir}/locolor/16x16/apps/kspread.png
-%{_pixmapsdir}/locolor/32x32/apps/kspread.png
-%{_pixmapsdir}/locolor/16x16/apps/kspreadcalc.png
-%{_pixmapsdir}/locolor/32x32/apps/kspreadcalc.png
-%{_pixmapsdir}/hicolor/32x32/apps/kspread.png
-%{_pixmapsdir}/hicolor/48x48/apps/kspread.png
+%{_datadir}/mimelnk/application/x-excel97.desktop
+%{_datadir}/mimelnk/application/x-kspread.desktop
+%{_datadir}/services/ole_excel97_import.desktop
+%{_pixmapsdir}/locolor/*x*/apps/kspread.png
+%{_pixmapsdir}/hicolor/*x*/apps/kspread.png
+%{_pixmapsdir}/locolor/*x*/apps/kspreadcalc.png
 
 #################################
 # koffice-kword
@@ -410,10 +407,21 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kword
 %attr(755,root,root) %{_libdir}/libkword.so
+%attr(755,root,root) %{_libdir}/libasciiexport.so
+%attr(755,root,root) %{_libdir}/libasciiimport.so
+%attr(755,root,root) %{_libdir}/libhtmlexport.so
+%attr(755,root,root) %{_libdir}/libhtmlimport.so
+%attr(755,root,root) %{_libdir}/libkspelltool.so
 %{_datadir}/apps/kword
 %{_htmldir}/en/kword
 %{_applnkdir}/Applications/KOffice/kword.desktop
-%{_pixmapsdir}/locolor/16x16/apps/kword.png
-%{_pixmapsdir}/locolor/32x32/apps/kword.png
-%{_pixmapsdir}/hicolor/32x32/apps/kword.png
-%{_pixmapsdir}/hicolor/48x48/apps/kword.png
+%{_datadir}/mimelnk/application/x-kword.desktop
+%{_datadir}/mimelnk/application/x-winword97.desktop
+%{_datadir}/services/kspelltool.desktop
+%{_datadir}/services/kword_ascii_export.desktop
+%{_datadir}/services/kword_ascii_import.desktop
+%{_datadir}/services/kword_html_export.desktop
+%{_datadir}/services/kword_html_import.desktop
+%{_datadir}/services/ole_winword97_import.desktop
+%{_pixmapsdir}/locolor/*x*/apps/kword.png
+%{_pixmapsdir}/hicolor/*x*/apps/kword.png
