@@ -42,7 +42,7 @@ KOffice contains:
 - KPresenter - presentations
 - Kivio - A Visio(R)-style flowcharting application
 - KChart - diagram generator
-- KIllustrator - vector drawing
+- Kontour - vector drawing
 - Krayon - A pixel-based image manipulation program like The GIMP or
   Adobe(c) Photoshop(R)
 - Kugar - A tool for generating business quality reports
@@ -56,7 +56,7 @@ Pakiet miêdzy innymi zawiera:
 - KPresenter - tworzenie prezentacji
 - Kivio - aplikacja wzorowana na Visio(R)
 - KChart - generator wykresów
-- KIllustrator - grafika wektorowa
+- Kontour - grafika wektorowa
 - Krayon - bazuj±cy na pikselach program typu GIMP czy Adobe(c)
   Photoshop(R)
 - Kugar - narzêdzie do generowania raportów jako¶ci biznesowej
@@ -109,9 +109,9 @@ Obsoletes:	koffice-i18n-Esperanto
 Obsoletes:	koffice-i18n-Spanish
 Obsoletes:	koffice-i18n-Estonian
 Obsoletes:	koffice-i18n-French
-Obsoletes:	koffice-i18n- Hebrew
+Obsoletes:	koffice-i18n-Hebrew
 Obsoletes:	koffice-i18n-Hungarian
-Obsoletes:	koffice-i18n- Icelandic
+Obsoletes:	koffice-i18n-Icelandic
 Obsoletes:	koffice-i18n-Italian
 Obsoletes:	koffice-i18n-Japanese
 Obsoletes:	koffice-i18n-Lithuanian
@@ -186,33 +186,33 @@ KChart jest aplikacj± s³u¿±c± do generowania wykresów.
 Gerador de diagramas do KOffice.
 
 # koffice-kontour (f. k. a. koffice-killustrator)
-%package kontour
-Summary:	KOffice - Kontour
-Summary(pl):	KOffice - Kontour
-Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
-Group:		X11/Applications
-Requires:	%{name}-common = %{version}
-
-%description kontour
-Kontour is the vector drawing program for the K Desktop Environment.
-The aim of the Kontour project is the development of a freely
-available vector-based drawing application similar to Corel Draw or
-Adobe Illustrator.
-
-Kontour was formerly known as KIllustrator but due to blackmail made
-by Adobe lawyers it has to be renamed.
-
-%description kontour -l pl
-Kontour jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
-KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni
-funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
-lub Adobe Illustrator.
-
-Kontour wczesniej by³ znany jako KIlustrator ale developerzy zostali
-zmuszeni szanta¿em przez prawników Adobe do zmiany nazwy.
-
-%description kontour -l pt_BR
-Ferramenta de desenho vetorial do KOffice.
+#%package kontour
+#Summary:	KOffice - Kontour
+#Summary(pl):	KOffice - Kontour
+#Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
+#Group:		X11/Applications
+#Requires:	%{name}-common = %{version}
+#
+#%description kontour
+#Kontour is the vector drawing program for the K Desktop Environment.
+#The aim of the Kontour project is the development of a freely
+#available vector-based drawing application similar to Corel Draw or
+#Adobe Illustrator.
+#
+#Kontour was formerly known as KIllustrator but due to blackmail made
+#by Adobe lawyers it has to be renamed.
+#
+#%description kontour -l pl
+#Kontour jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
+#KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni
+#funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
+#lub Adobe Illustrator.
+#
+#Kontour wczesniej by³ znany jako KIlustrator ale developerzy zostali
+#zmuszeni szanta¿em przez prawników Adobe do zmiany nazwy.
+#
+#%description kontour -l pt_BR
+#Ferramenta de desenho vetorial do KOffice.
 
 # koffice-kpresenter
 %package kpresenter
@@ -426,8 +426,8 @@ rm -rf $RPM_BUILD_ROOT
 %post kchart	-p /sbin/ldconfig
 %postun kchart	-p /sbin/ldconfig
 
-%post kontour	-p /sbin/ldconfig
-%postun kontour	-p /sbin/ldconfig
+#%post kontour	-p /sbin/ldconfig
+#%postun kontour	-p /sbin/ldconfig
 
 %post kpresenter	-p /sbin/ldconfig
 %postun kpresenter	-p /sbin/ldconfig
