@@ -1,0 +1,16 @@
+Index: kpresenter_doc.cc
+===================================================================
+RCS file: /home/kde/koffice/kpresenter/kpresenter_doc.cc,v
+retrieving revision 1.305.2.1
+retrieving revision 1.305.2.2
+diff -u -u -p -r1.305.2.1 -r1.305.2.2
+--- koffice/kpresenter/kpresenter_doc.cc	2001/12/06 10:59:08	1.305.2.1
++++ koffice/kpresenter/kpresenter_doc.cc	2002/03/07 17:17:55	1.305.2.2
+@@ -227,6 +227,7 @@ KPresenterDoc::~KPresenterDoc()
+     _backgroundList.clear();
+ 
+     delete fCollection;
++    delete dcop;
+ }
+ 
+ /*======================= make child list intern ================*/
