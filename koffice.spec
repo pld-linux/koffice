@@ -1,17 +1,19 @@
 %define	ver	1.1
 Summary:	KOffice - powerful office suite for KDE
+Summary(es):	Set of office applications for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
+Summary(pt_BR):	Suíte de aplicativos office para o KDE
 Name:		koffice
 Version:	1.1
-Release:	1
-Epoch:		2
+Release:	4
+Epoch:		3
 License:	GPL
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
-Source0:	http://ftp.kde.org/pub/kde/stable/%{name}-%{ver}/src/%{name}-%{ver}.tar.bz2
-Source1:	http://ftp.kde.org/pub/kde/stable/%{name}-%{ver}/src/%{name}-i18n-%{ver}.tar.bz2
-URL:		http://www.koffice.org
+Source0:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{ver}/src/%{name}-%{ver}.tar.bz2
+Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{ver}/src/%{name}-i18n-%{ver}.tar.bz2
+URL:		http://www.koffice.org/
 BuildRequires:	kdelibs-devel >= 2.1.1
 BuildRequires:	libstdc++-devel
 BuildRequires:	XFree86-devel
@@ -59,7 +61,9 @@ Pakiet miêdzy innymi zawiera:
 # koffice-devel
 %package devel
 Summary:	KOffice - header files
+Summary(es):	Header files for compiling applications that use koffice libraries.
 Summary(pl):	KOffice - pliki nag³ówkowe
+Summary(pt_BR):	Arquivos de inclusão necessários à compilação de aplicações que usem as bibliotecas do koffice
 Group:		X11/Development/Libraries
 Group(de):	X11/Entwicklung/Libraries
 Group(pl):	X11/Programowanie/Biblioteki
@@ -68,17 +72,56 @@ Requires:	%{name}-common = %{version}
 %description devel
 Contains header files for KOffice.
 
+%description -l es devel
+This package includes the header files you will need to compile
+applications that use koffice libraries.
+
 %description -l pl devel
 Zawiera pliki nag³ówkowe dla KOffice.
+
+%description -l pt_BR devel
+Arquivos de inclusão necessários à compilação de aplicações
+que usem as bibliotecas do koffice.
 
 # koffice-common
 %package common
 Summary:	KOffice - common files and libraries
 Summary(pl):	KOffice - wspó³dzielone pliki i biblioteki
+Summary(pt_BR):	Arquivos requeridos por todos os softwares koffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
 Requires:	kdelibs >= 2.1.1
+Obsoletes:	koffice-i18n-Azerbaijani
+Obsoletes:	koffice-i18n-Bulgarian
+Obsoletes:	koffice-i18n-Czech
+Obsoletes:	koffice-i18n-Danish
+Obsoletes:	koffice-i18n-German
+Obsoletes:	koffice-i18n-British
+Obsoletes:	koffice-i18n-Esperanto
+Obsoletes:	koffice-i18n-Spanish
+Obsoletes:	koffice-i18n-Estonian
+Obsoletes:	koffice-i18n-French
+Obsoletes:	koffice-i18n- Hebrew
+Obsoletes:	koffice-i18n-Hungarian
+Obsoletes:	koffice-i18n- Icelandic
+Obsoletes:	koffice-i18n-Italian
+Obsoletes:	koffice-i18n-Japanese
+Obsoletes:	koffice-i18n-Lithuanian
+Obsoletes:	koffice-i18n-Maltese
+Obsoletes:	koffice-i18n-Dutch
+Obsoletes:	koffice-i18n-Norwegian
+Obsoletes:	koffice-i18n-Norwegian-Nynorsk
+Obsoletes:	koffice-i18n-Polish
+Obsoletes:	koffice-i18n-Portuguese
+Obsoletes:	koffice-i18n-Brazil
+Obsoletes:	koffice-i18n-Romanian
+Obsoletes:	koffice-i18n-Russian
+Obsoletes:	koffice-i18n-Slovak
+Obsoletes:	koffice-i18n-Slovenian
+Obsoletes:	koffice-i18n-Swedish
+Obsoletes:	koffice-i18n-Tamil
+Obsoletes:	koffice-i18n-Turkish
 
 %description common
 KOffice is an integrated office suite for K Desktop Environment.
@@ -114,10 +157,14 @@ Pakiet miêdzy innymi zawiera:
 Pakiet zawiera wspólne pliki i biblioteki wymagane przez aplikacje
 KOffoce.
 
+%description -l pt_BR common
+Arquivos requeridos por todos os softwares koffice.
+
 # koffice-kchart
 %package kchart
 Summary:	KOffice - KChart
 Summary(pl):	KOffice - KChart
+Summary(pt_BR):	Gerador de diagramas do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
@@ -130,10 +177,14 @@ bar charts.
 %description -l pl kchart
 KChart jest aplikacj± s³u¿±c± do generowania wykresów.
 
+%description -l pt_BR kchart
+Gerador de diagramas do KOffice.
+
 # koffice-kontour (f. k. a. koffice-killustrator)
 %package kontour
 Summary:	KOffice - Kontour
 Summary(pl):	KOffice - Kontour
+Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
@@ -157,6 +208,9 @@ Draw lub Adobe Illustrator.
 Kontour wczesniej by³ znany jako KIlustrator ale developerzy zostali
 zmuszeni szantarzem przez prawników Adobe do zmiany nazwy.
 
+%description -l pt_BR kontour
+Ferramenta de desenho vetorial do KOffice.
+
 # koffice-kpresenter
 %package kpresenter
 Summary:	KOffice - KPresenter
@@ -179,6 +233,7 @@ MS PowerPoint. Mo¿esz u¿yæ jej do tworzenia wizualnych prezentacji.
 %package kspread
 Summary:	KOffice - KSpread
 Summary(pl):	KOffice - KSpread
+Summary(pt_BR):	Planilha eletrônica do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
@@ -190,10 +245,14 @@ KSpread is the spread sheet of the KOffice, similar to MS Excel.
 %description -l pl kspread
 KSpread jest arkuszem kalkulacyjnym, podobnym do MS Excel.
 
+%description -l pt_BR kspread
+Planilha eletrônica do KOffice.
+
 # koffice-kword
 %package kword
 Summary:	KOffice - KWord
 Summary(pl):	KOffice - KWord
+Summary(pt_BR):	Processador de texto do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
@@ -208,10 +267,14 @@ writing letters, reports, etc.).
 KWord jest ramkowym procesorem tekstu. Mo¿e byæ u¿yty do DTP, ale
 równie¿ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 
+%description -l pt_BR kword
+Processador de texto do KOffice.
+
 # koffice-ivio
 %package kivio
 Summary:	KOffice - ivio
 Summary(pl):	KOffice - ivio
+Summary(pt_BR):	Editor de fluxogramas do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
@@ -233,10 +296,14 @@ Kivio jest programem typu flowcharting. Kivio dostarcza
 najpotrzebniejsze funkcje ale wszystkie obiekty mo¿na rozszerzaæ za
 pomoc± jêzyka skryptowego.
 
+%description -l pt_BR kivio
+Editor de fluxogramas do KOffice.
+
 # koffice-kugar
 %package kugar
 Summary:	KOffice - KUgar
 Summary(pl):	KOffice - KUgar
+Summary(pt_BR):	Gerador de relatórios do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
@@ -254,6 +321,9 @@ biznesowej, które mog± byæ przegl±dane oraz drukowane. Dodatkowo
 do³±czony jest program który mo¿e byæ do³±czony do raportu
 umo¿liwiaj±c ogl±danie raportu w przegl±darce Konqueror.
 
+%description -l pt_BR kugar
+Gerador de relatórios do KOffice.
+
 ######################## end descriptions ########################
 
 %prep
@@ -262,9 +332,13 @@ umo¿liwiaj±c ogl±danie raportu w przegl±darce Konqueror.
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
+CFLAGS="-D_GNU_SOURCE $RPM_OPT_FLAGS"
+CXXFLAGS="-D_GNU_SOURCE $RPM_OPT_FLAGS -fno-check-new"
 %configure2_13 \
 	%{!?debug:--disable-debug} \
-	--enable-final
+	--enable-final \
+	--with-xinerama \
+	--disable-rpath
 
 %{__make} 
 
@@ -277,9 +351,8 @@ cd %{name}-i18n-%{ver}
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT
 
-%{__make} \
-	DESTDIR=$RPM_BUILD_ROOT \
-	install
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 rm -rf $RPM_BUILD_ROOT%{_applnkdir}
 
