@@ -1,0 +1,13 @@
+--- koffice-1.1.1/kword/kwview.cc--	Tue Jan 29 07:49:31 2002
++++ koffice-1.1.1/kword/kwview.cc	Tue Jan 29 07:49:52 2002
+@@ -1576,7 +1576,10 @@ void KWView::editCustomVars()
+ {
+     KWCustomVariablesDia dia( this, m_doc->getVariables() );
+     if(dia.exec())
++      {
+         m_doc->recalcVariables( VT_CUSTOM );
++	m_doc->setModified(true);
++      }
+ }
+ 
+ void KWView::editSerialLetterDataBase()
