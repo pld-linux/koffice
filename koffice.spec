@@ -487,7 +487,7 @@ rm -rf $RPM_BUILD_ROOT
 #%attr(755,root,root) %{_libdir}/kde3/lib[!k][!a][!r][!b][!o][!n]*export.??
 #%attr(755,root,root) %{_libdir}/kde3/lib[!k][!a][!r][!b][!o][!n]*import.??
 #%attr(755,root,root) %{_libdir}/kde3/lib[!karbon]*import.??
-%attr(755,root,root) %{_libdir}/kde3/liblibkfo*.??
+%attr(755,root,root) %{_libdir}/kde3/libkfo*.??
 %attr(755,root,root) %{_libdir}/kde3/libxslt*port*.??
 %attr(755,root,root) %{_libdir}/kde3/libkformulapart.??
 %attr(755,root,root) %{_libdir}/kde3/libkounavailpart.??
