@@ -8,7 +8,7 @@
 
 %define		_state		snapshots
 %define		_ver		1.2.91
-%define		_snap		030618
+%define		_snap		030726
 
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
@@ -24,11 +24,9 @@ License:	GPL
 Group:		X11/Applications
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	0daaceff1ab012e93d2a7a185146e492
+# Source0-md5:	6f449b0595feec05b648aeba608f31fa
 Patch0:		%{name}-vcategories.patch
 URL:		http://www.koffice.org/
-BuildRequires:	XFree86-devel
-BuildRequires:	arts-kde-devel
 BuildRequires:	fam-devel
 BuildRequires:	wv2-devel >= 0.0.7
 BuildRequires:	gettext-devel
@@ -95,7 +93,7 @@ Summary(es):	Header files for compiling applications that use koffice libraries
 Summary(pl):	KOffice - pliki nag³ówkowe
 Summary(pt_BR):	Arquivos de inclusão necessários à compilação de aplicações que usem as bibliotecas do koffice
 Group:		X11/Development/Libraries
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description devel
 This package includes the header files you will need to compile
@@ -157,7 +155,7 @@ Arquivos requeridos por todos os softwares koffice.
 Summary:        KOffice - Karbon
 Summary(pl):    KOffice - Karbon
 Group:          X11/Applications
-Requires:       %{name}-common = %{version}
+Requires:       %{name}-common = %{epoch}:%{version}-%{release}
 #karbon has changed its named (again) to curt therefore in the future:
 Obsoletes:	koffice-krayon
 
@@ -365,6 +363,7 @@ install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 %find_lang kchart		--with-kde
 %find_lang kformula		--with-kde
+%find_lang kivio		--with-kde
 %find_lang koffice-apidocs	--with-kde
 %find_lang koffice		--with-kde
 %find_lang koshell		--with-kde
@@ -379,8 +378,11 @@ cat thesaurus.lang >> kword.lang
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	common	-p /sbin/ldconfig
-%postun common	-p /sbin/ldconfig
+%post	common
+/sbin/ldconfig
+
+%postun common
+/sbin/ldconfig
 
 %files devel -f koffice-apidocs.lang
 %defattr(644,root,root,755)
@@ -391,6 +393,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkexidatatable.so
 %{_libdir}/libkexidb.so
 %{_libdir}/libkexiextendedwidgets.so
+%{_libdir}/libkexiimportwizard.so
 %{_libdir}/libkformeditor.so
 %{_libdir}/libkformula.so
 %{_libdir}/libkochart.so
@@ -427,6 +430,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkexidb.so.*.*.*
 %{_libdir}/libkexiextendedwidgets.la
 %attr(755,root,root) %{_libdir}/libkexiextendedwidgets.so.*.*.*
+%{_libdir}/libkexiimportwizard.la
+%attr(755,root,root) %{_libdir}/libkexiimportwizard.so.*.*.*
 %{_libdir}/libkformeditor.la
 %attr(755,root,root) %{_libdir}/libkformeditor.so.*.*.*
 %{_libdir}/libkformula.la
@@ -538,14 +543,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kexi*
 %attr(755,root,root) %{_bindir}/kformdesigner
+%{_libdir}/kexi.la
+%attr(755,root,root) %{_libdir}/kexi.so
 %{_libdir}/kde3/*kexi*.la
 %attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
-%{_libdir}/*kexi*.la
-%attr(755,root,root) %{_libdir}/*kexi*.so
 %{_libdir}/kde3/containers.la
 %attr(755,root,root) %{_libdir}/kde3/containers.so
 %{_datadir}/apps/kexi
 %{_datadir}/apps/kformdesigner
+%{_datadir}/config/kexirc
 %{_desktopdir}/kformdesigner.desktop
 %{_datadir}/services/kexi*
 %{_datadir}/services/kformeditor
@@ -605,15 +611,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_icondir}/*/*/apps/kformula.png
 %{_mandir}/man1/kformula.1*
 
-%files kivio
+%files kivio -f kivio.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kivio
 %{_libdir}/*kivio*.la
 %attr(755,root,root) %{_libdir}/*kivio*.so
 %{_libdir}/kde3/*kivio*.la
 %attr(755,root,root) %{_libdir}/kde3/*kivio*.so
-%{_libdir}/kde3/sml_connector.la
-%attr(755,root,root) %{_libdir}/kde3/sml_connector.so
+#%{_libdir}/kde3/sml_connector.la
+#%attr(755,root,root) %{_libdir}/kde3/sml_connector.so
 %{_libdir}/kde3/straight_connector.la
 %attr(755,root,root) %{_libdir}/kde3/straight_connector.so
 %{_datadir}/apps/kivio
@@ -638,6 +644,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/.source/Presentation.kpt
 %{_datadir}/templates/Presentation.desktop
 %{_datadir}/services/kprkword.desktop
+%{_datadir}/services/kpresenter_ooimpress_export.desktop
 %{_datadir}/services/kpresenter_ooimpress_import.desktop
 %{_desktopdir}/kpresenter.desktop
 %{_icondir}/*/*/apps/kpresenter*.png
