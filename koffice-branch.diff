@@ -1,0 +1,1314 @@
+diff -urN -x CVS koffice.orig/debian/changelog koffice/debian/changelog
+--- koffice.orig/debian/changelog	Mon Aug  2 02:19:19 2004
++++ koffice/debian/changelog	Wed Oct 27 12:37:01 2004
+@@ -1,3 +1,42 @@
++koffice (1:1.3.4-1) unstable; urgency=medium
++
++  * New upstream bugfix release.
++  * Modified the xpdf security fixes from 1.3.3-3 to use a more robust style
++    of testing that does not depend upon the level of compiler optimisation
++    (thanks to Martin Schulze).
++
++ -- Ben Burton <bab@debian.org>  Wed, 27 Oct 2004 20:27:33 +1000
++
++koffice (1:1.3.3-3) unstable; urgency=critical
++
++  * Security upload.
++  * Fixes integer overflows in KWord's PDF import filter.  This patch forms
++    part of the KDE security advisory (2004-10-21, CAN-2004-0888) relating to
++    vulnerabilities inherited from the xpdf code.
++
++ -- Ben Burton <bab@debian.org>  Mon, 25 Oct 2004 20:11:56 +1000
++
++koffice (1:1.3.3-2) unstable; urgency=medium
++
++  * Tightened shlibs files, since the library interface has changed
++    since 1.3.0 (closes: #268366).
++  * Build-conflicts with autoconf2.13, since admin/Makefile.common does not
++    operate correctly in its presence.
++
++ -- Ben Burton <bab@debian.org>  Fri, 22 Oct 2004 08:04:16 +1000
++
++koffice (1:1.3.3-1) unstable; urgency=medium
++
++  * New upstream bugfix release.
++  * Build-depends on libpaper-dev for xpdf filters.
++  * Made koffice suggest koffice-i18n (closes: #272754).  As of 1.3.3,
++    all koffice-i18n-<lang> packages provide koffice-i18n accordingly.
++  * Gnumeric export is fixed (closes: #200313).
++  * Karbon no longer locks up when importing an EPS graphic containing
++    %ALDBoundingBox (closes: #242454).
++
++ -- Ben Burton <bab@debian.org>  Sun, 17 Oct 2004 19:19:03 +1000
++
+ koffice (1:1.3.2-2) unstable; urgency=medium
+ 
+   * Rebuilt against libtiff4.
+diff -urN -x CVS koffice.orig/debian/control koffice/debian/control
+--- koffice.orig/debian/control	Mon Aug  2 02:13:14 2004
++++ koffice/debian/control	Fri Oct 22 00:11:07 2004
+@@ -2,14 +2,15 @@
+ Section: kde
+ Priority: optional
+ Maintainer: Ben Burton <bab@debian.org>
+-Build-Depends: automake1.7, debhelper (>= 4.0.0), flex, kdelibs4-dev (>= 4:3.2.0), libaspell-dev, libfontconfig1-dev, libmagick++6-dev, libmysqlclient-dev, libtiff4-dev, libwv2-dev (>= 0.1.9-0), libxml2-dev, libxslt1-dev, postgresql-dev, python2.3-dev
++Build-Depends: automake1.7, debhelper (>= 4.0.0), flex, kdelibs4-dev (>= 4:3.2.0), libaspell-dev, libfontconfig1-dev, libmagick++6-dev, libmysqlclient-dev, libpaper-dev, libtiff4-dev, libwv2-dev (>= 0.1.9-0), libxml2-dev, libxslt1-dev, postgresql-dev, python2.3-dev
++Build-Conflicts: autoconf2.13
+ Standards-Version: 3.6.1
+ 
+ Package: koffice
+ Architecture: all
+ Section: kde
+ Depends: karbon, kchart, kformula, kivio, koshell, kpresenter, kspread, kugar, kword
+-Suggests: koffice-dev, koffice-doc-html
++Suggests: koffice-i18n, koffice-dev, koffice-doc-html
+ Description: KDE Office Suite
+  KOffice is an integrated office suite for KDE, the K Desktop
+  Environment.  It offers a word processor, spreadsheet, presentation
+diff -urN -x CVS koffice.orig/debian/karbon.install koffice/debian/karbon.install
+--- koffice.orig/debian/karbon.install	Sun May  9 06:57:56 2004
++++ koffice/debian/karbon.install	Wed Oct 27 14:59:35 2004
+@@ -42,6 +42,7 @@
+ usr/lib/kde3/libwmfimport.so
+ usr/share/applnk/Office/karbon.desktop
+ usr/share/apps/karbon
++usr/share/apps/konqueror/servicemenus/karbon_konqi.desktop
+ usr/share/icons/crystalsvg/16x16/apps/karbon.png
+ usr/share/icons/crystalsvg/32x32/apps/karbon.png
+ usr/share/icons/crystalsvg/48x48/apps/karbon.png
+diff -urN -x CVS koffice.orig/debian/kchart.shlibs koffice/debian/kchart.shlibs
+--- koffice.orig/debian/kchart.shlibs	Sun Jan 18 02:39:29 2004
++++ koffice/debian/kchart.shlibs	Wed Oct 27 12:37:01 2004
+@@ -1,2 +1,2 @@
+ kchart 0 kchart
+-libkdchart 0 kchart (>= 1:1.3.0-0)
++libkdchart 0 kchart (>= 1:1.3.4-0)
+diff -urN -x CVS koffice.orig/debian/kformula.install koffice/debian/kformula.install
+--- koffice.orig/debian/kformula.install	Sun May  9 06:57:56 2004
++++ koffice/debian/kformula.install	Wed Oct 27 14:59:35 2004
+@@ -3,6 +3,7 @@
+ usr/lib/kformulamain.*
+ usr/share/applnk/Office/kformula.desktop
+ usr/share/apps/kformula
++usr/share/apps/konqueror/servicemenus/kformula_konqi.desktop
+ usr/share/doc/kde/HTML/en/kformula/*.bz2
+ usr/share/doc/kde/HTML/en/kformula/*.docbook
+ usr/share/doc/kde/HTML/en/kformula/*.png
+diff -urN -x CVS koffice.orig/debian/kivio-data.install koffice/debian/kivio-data.install
+--- koffice.orig/debian/kivio-data.install	Sun Jul 11 04:08:24 2004
++++ koffice/debian/kivio-data.install	Wed Oct 27 14:59:35 2004
+@@ -1 +1,2 @@
+ usr/share/apps/kivio
++usr/share/apps/konqueror/servicemenus/kivio_konqi.desktop
+diff -urN -x CVS koffice.orig/debian/koffice-libs.shlibs koffice/debian/koffice-libs.shlibs
+--- koffice.orig/debian/koffice-libs.shlibs	Sun Jan 18 02:39:29 2004
++++ koffice/debian/koffice-libs.shlibs	Wed Oct 27 12:37:01 2004
+@@ -1,13 +1,13 @@
+-libkformula 3 koffice-libs (>= 1:1.3.0-0)
+-libkochart 1 koffice-libs (>= 1:1.3.0-0)
+-libkofficecore 2 koffice-libs (>= 1:1.3.0-0)
+-libkofficeui 2 koffice-libs (>= 1:1.3.0-0)
+-libkopainter 1 koffice-libs (>= 1:1.3.0-0)
+-libkoscript 2 koffice-libs (>= 1:1.3.0-0)
+-libkospell 4 koffice-libs (>= 1:1.3.0-0)
+-libkotext 2 koffice-libs (>= 1:1.3.0-0)
+-libkowmf 1 koffice-libs (>= 1:1.3.0-0)
+-libkstore 2 koffice-libs (>= 1:1.3.0-0)
+-libkwmailmerge_interface 4 koffice-libs (>= 1:1.3.0-0)
+-libkwmf 2 koffice-libs (>= 1:1.3.0-0)
+-libkwordexportfilters 1 koffice-libs (>= 1:1.3.0-0)
++libkformula 3 koffice-libs (>= 1:1.3.4-0)
++libkochart 1 koffice-libs (>= 1:1.3.4-0)
++libkofficecore 2 koffice-libs (>= 1:1.3.4-0)
++libkofficeui 2 koffice-libs (>= 1:1.3.4-0)
++libkopainter 1 koffice-libs (>= 1:1.3.4-0)
++libkoscript 2 koffice-libs (>= 1:1.3.4-0)
++libkospell 4 koffice-libs (>= 1:1.3.4-0)
++libkotext 2 koffice-libs (>= 1:1.3.4-0)
++libkowmf 1 koffice-libs (>= 1:1.3.4-0)
++libkstore 2 koffice-libs (>= 1:1.3.4-0)
++libkwmailmerge_interface 4 koffice-libs (>= 1:1.3.4-0)
++libkwmf 2 koffice-libs (>= 1:1.3.4-0)
++libkwordexportfilters 1 koffice-libs (>= 1:1.3.4-0)
+diff -urN -x CVS koffice.orig/debian/kpresenter.install koffice/debian/kpresenter.install
+--- koffice.orig/debian/kpresenter.install	Sun May  9 06:57:56 2004
++++ koffice/debian/kpresenter.install	Wed Oct 27 14:59:35 2004
+@@ -10,6 +10,7 @@
+ usr/lib/kde3/libooimpressimport.la
+ usr/lib/kde3/libooimpressimport.so
+ usr/share/applnk/Office/kpresenter.desktop
++usr/share/apps/konqueror/servicemenus/kpresenter_konqi.desktop
+ usr/share/apps/kpresenter
+ usr/share/icons/crystalsvg/16x16/apps/kpresenter.png
+ usr/share/icons/crystalsvg/32x32/apps/kpresenter.png
+diff -urN -x CVS koffice.orig/debian/kspread.install koffice/debian/kspread.install
+--- koffice.orig/debian/kspread.install	Sun May  9 06:57:56 2004
++++ koffice/debian/kspread.install	Wed Oct 27 14:59:35 2004
+@@ -27,6 +27,7 @@
+ usr/lib/kde3/libqproimport.so
+ usr/lib/kspread.*
+ usr/share/applnk/Office/kspread.desktop
++usr/share/apps/konqueror/servicemenus/kspread_konqi.desktop
+ usr/share/apps/kspread
+ usr/share/icons/crystalsvg/16x16/apps/kspread.png
+ usr/share/icons/crystalsvg/32x32/apps/kspread.png
+diff -urN -x CVS koffice.orig/debian/kugar.shlibs koffice/debian/kugar.shlibs
+--- koffice.orig/debian/kugar.shlibs	Sun Jan 18 02:39:29 2004
++++ koffice/debian/kugar.shlibs	Wed Oct 27 12:37:01 2004
+@@ -1,4 +1,4 @@
+ kugar 0 kugar
+ kudesigner 0 kugar
+-libkugar 1 kugar (>= 1:1.3.0-0)
+-libkudesignercore 0 kugar (>= 1:1.3.0-0)
++libkugar 1 kugar (>= 1:1.3.4-0)
++libkudesignercore 0 kugar (>= 1:1.3.4-0)
+diff -urN -x CVS koffice.orig/debian/kword.install koffice/debian/kword.install
+--- koffice.orig/debian/kword.install	Sun May  9 06:57:56 2004
++++ koffice/debian/kword.install	Wed Oct 27 14:59:35 2004
+@@ -59,6 +59,7 @@
+ usr/lib/kde3/libwpimport.la
+ usr/lib/kde3/libwpimport.so
+ usr/share/applnk/Office/kword.desktop
++usr/share/apps/konqueror/servicemenus/kword_konqi.desktop
+ usr/share/apps/kword
+ usr/share/doc/kde/HTML/en/kword/*.bz2
+ usr/share/doc/kde/HTML/en/kword/*.docbook
+diff -urN -x CVS koffice.orig/debian/patches/modules.diff koffice/debian/patches/modules.diff
+--- koffice.orig/debian/patches/modules.diff	Sat Nov  1 01:21:18 2003
++++ koffice/debian/patches/modules.diff	Wed Oct 27 12:40:43 2004
+@@ -55,7 +55,7 @@
+  ## The executable
+ --- koffice/kpresenter/Makefile.am	2002/07/14 12:31:37	1.200
+ +++ koffice/kpresenter/Makefile.am	2002/09/08 00:33:40
+-@@ -56,7 +56,7 @@ libkpresenterpart_la_METASOURCES = AUTO
++@@ -60,7 +60,7 @@ libkpresenterpart_la_METASOURCES = AUTO
+  ## The kdeinit loadable module
+  lib_LTLIBRARIES = kpresenter.la
+  kpresenter_la_SOURCES = main.cc
+diff -urN -x CVS koffice.orig/debian/patches/xpdf.diff koffice/debian/patches/xpdf.diff
+--- koffice.orig/debian/patches/xpdf.diff	Thu Jan  1 01:00:00 1970
++++ koffice/debian/patches/xpdf.diff	Wed Oct 27 12:53:36 2004
+@@ -0,0 +1,78 @@
++--- koffice/filters/kword/pdf/xpdf/xpdf/Catalog.cc	22 Oct 2004 12:13:56 -0000	1.1.2.1
+++++ koffice/filters/kword/pdf/xpdf/xpdf/Catalog.cc	27 Oct 2004 10:51:55 -0000
++@@ -12,6 +12,7 @@
++ #pragma implementation
++ #endif
++ 
+++#include <limits.h>
++ #include <stddef.h>
++ #include "gmem.h"
++ #include "Object.h"
++@@ -63,8 +64,8 @@ Catalog::Catalog(XRef *xrefA) {
++   }
++   pagesSize = numPages0 = obj.getInt();
++   obj.free();
++-  if (pagesSize*sizeof(Page *)/sizeof(Page *) != pagesSize ||
++-      pagesSize*sizeof(Ref)/sizeof(Ref) != pagesSize) {
+++  if ((pagesSize >= INT_MAX / sizeof(Page *)) ||
+++      (pagesSize >= INT_MAX / sizeof(Ref))) {
++     error(-1, "Invalid 'pagesSize'");
++     ok = gFalse;
++     return;
++@@ -196,8 +197,8 @@ int Catalog::readPageTree(Dict *pagesDic
++       }
++       if (start >= pagesSize) {
++ 	pagesSize += 32;
++-        if (pagesSize*sizeof(Page *)/sizeof(Page *) != pagesSize ||
++-            pagesSize*sizeof(Ref)/sizeof(Ref) != pagesSize) {
+++        if ((pagesSize >= INT_MAX / sizeof(Page *)) ||
+++            (pagesSize >= INT_MAX / sizeof(Ref))) {
++           error(-1, "Invalid 'pagesSize' parameter.");
++           goto err3;
++         }
++--- koffice/filters/kword/pdf/xpdf/xpdf/XRef.cc	22 Oct 2004 12:13:56 -0000	1.1.2.1
+++++ koffice/filters/kword/pdf/xpdf/xpdf/XRef.cc	27 Oct 2004 10:51:56 -0000
++@@ -12,6 +12,7 @@
++ #pragma implementation
++ #endif
++ 
+++#include <limits.h>
++ #include <stdlib.h>
++ #include <stddef.h>
++ #include <string.h>
++@@ -76,7 +77,7 @@ XRef::XRef(BaseStream *strA, GString *ow
++ 
++   // trailer is ok - read the xref table
++   } else {
++-    if (size*sizeof(XRefEntry)/sizeof(XRefEntry) != size) {
+++    if (size >= INT_MAX / sizeof(XRefEntry)) {
++       error(-1, "Invalid 'size' inside xref table.");
++       ok = gFalse;
++       errCode = errDamaged;
++@@ -273,7 +274,7 @@ GBool XRef::readXRef(Guint *pos) {
++     // table size
++     if (first + n > size) {
++       newSize = size + 256;
++-      if (newSize*sizeof(XRefEntry)/sizeof(XRefEntry) != newSize) {
+++      if (newSize >= INT_MAX / sizeof(XRefEntry)) {
++         error(-1, "Invalid 'newSize'");
++         goto err2;
++       }
++@@ -420,7 +421,7 @@ GBool XRef::constructXRef() {
++ 	    if (!strncmp(p, "obj", 3)) {
++ 	      if (num >= size) {
++ 		newSize = (num + 1 + 255) & ~255;
++-	        if (newSize*sizeof(XRefEntry)/sizeof(XRefEntry) != newSize) {
+++	        if (newSize >= INT_MAX / sizeof(XRefEntry)) {
++ 	          error(-1, "Invalid 'obj' parameters.");
++ 	          return gFalse;
++ 	        }
++@@ -445,7 +446,7 @@ GBool XRef::constructXRef() {
++     } else if (!strncmp(p, "endstream", 9)) {
++       if (streamEndsLen == streamEndsSize) {
++ 	streamEndsSize += 64;
++-        if (streamEndsSize*sizeof(int)/sizeof(int) != streamEndsSize) {
+++        if (streamEndsSize >= INT_MAX / sizeof(int)) {
++           error(-1, "Invalid 'endstream' parameter.");
++           return gFalse;
++         }
+diff -urN -x CVS koffice.orig/debian/source.lintian-overrides koffice/debian/source.lintian-overrides
+--- koffice.orig/debian/source.lintian-overrides	Sun May  9 06:57:56 2004
++++ koffice/debian/source.lintian-overrides	Sun Oct 17 11:41:29 2004
+@@ -1,3 +1,3 @@
+ # These are bundled with all KDE source downloads.
+-koffice source: source-contains-CVS-dir
+-koffice source: cvsignore-file-in-source
++source-contains-CVS-dir
++cvsignore-file-in-source
+diff -urN -x CVS koffice.orig/filters/kpresenter/ooimpress/ooimpressexport.cc koffice/filters/kpresenter/ooimpress/ooimpressexport.cc
+--- koffice.orig/filters/kpresenter/ooimpress/ooimpressexport.cc	Sun Aug  8 14:01:45 2004
++++ koffice/filters/kpresenter/ooimpress/ooimpressexport.cc	Mon Oct 25 15:31:09 2004
+@@ -603,75 +603,90 @@
+         drawPage.setAttribute( "draw:style-name", ps );
+         drawPage.setAttribute( "draw:id", m_currentPage );
+         drawPage.setAttribute( "draw:master-page-name", m_masterPageStyle );
++        appendObjects( doccontent, objects, drawPage );
+ 
+-        // I am not sure if objects are always stored sorted so I parse all
+-        // of them to find the ones belonging to a certain page.
+-        for ( QDomNode object = objects.firstChild(); !object.isNull();
+-              object = object.nextSibling() )
+-        {
+-            QDomElement o = object.toElement();
+ 
+-            QDomElement orig = o.namedItem( "ORIG" ).toElement();
+-            float y = orig.attribute( "y" ).toFloat();
++        body.appendChild( drawPage );
++        m_currentPage++;
++    }
++}
+ 
+-            if ( y < m_pageHeight * ( m_currentPage - 1 ) ||
+-                 y >= m_pageHeight * m_currentPage )
+-                continue; // object not on current page
++void OoImpressExport::appendGroupObject( QDomDocument & doc, QDomElement & source, QDomElement & target )
++{
++    kdDebug()<<" group not implemented \n";
++    QDomElement groupElement = doc.createElement( "draw:g" );
++    QDomNode objects = source.namedItem( "OBJECTS" );
++    appendObjects( doc, objects, groupElement);
++    target.appendChild( groupElement );
++}
+ 
+-            switch( o.attribute( "type" ).toInt() )
+-            {
+-            case 0: // image
+-                appendPicture( doccontent, o, drawPage );
+-                break;
+-            case 1: // line
+-                appendLine( doccontent, o, drawPage );
+-                break;
+-            case 2: // rectangle
+-                appendRectangle( doccontent, o, drawPage );
+-                break;
+-            case 3: // circle, ellipse
+-                appendEllipse( doccontent, o, drawPage );
+-                break;
+-            case 4: // textbox
+-                appendTextbox( doccontent, o, drawPage );
+-                break;
+-            case 5:
+-                kdDebug()<<" autoform not implemented\n";
+-                break;
+-            case 6:
+-                kdDebug()<<" clipart not implemented\n";
+-                break;
+-            case 8: // pie, chord, arc
+-                appendEllipse( doccontent, o, drawPage, true );
+-                break;
+-            case 9: //part
+-                kdDebug()<<" part object not implemented \n";
+-                break;
+-            case 10:
+-                kdDebug()<<" group not implemented \n";
+-                break;
+-            case 11:
+-                kdDebug()<<" free hand not implemented\n";
+-                break;
+-            case 12: // polyline
+-                appendPolyline( doccontent, o, drawPage );
+-                break;
+-            case 13: //OT_QUADRICBEZIERCURVE = 13
+-            case 14: //OT_CUBICBEZIERCURVE = 14
+-                //todo
+-                // "draw:path"
+-                break;
+-            case 15: // polygon
+-            case 16: // close polygone
+-                appendPolyline( doccontent, o, drawPage, true /*polygon*/ );
+-                break;
+-            }
+-            ++m_objectIndex;
+-        }
++void OoImpressExport::appendObjects(QDomDocument & doccontent, QDomNode &objects, QDomElement &drawPage)
++{
++    // I am not sure if objects are always stored sorted so I parse all
++    // of them to find the ones belonging to a certain page.
++    for ( QDomNode object = objects.firstChild(); !object.isNull();
++          object = object.nextSibling() )
++    {
++        QDomElement o = object.toElement();
+ 
+-        body.appendChild( drawPage );
+-        m_currentPage++;
++        QDomElement orig = o.namedItem( "ORIG" ).toElement();
++        float y = orig.attribute( "y" ).toFloat();
++
++        if ( y < m_pageHeight * ( m_currentPage - 1 ) ||
++             y >= m_pageHeight * m_currentPage )
++            continue; // object not on current page
++
++        switch( o.attribute( "type" ).toInt() )
++        {
++        case 0: // image
++            appendPicture( doccontent, o, drawPage );
++            break;
++        case 1: // line
++            appendLine( doccontent, o, drawPage );
++            break;
++        case 2: // rectangle
++            appendRectangle( doccontent, o, drawPage );
++            break;
++        case 3: // circle, ellipse
++            appendEllipse( doccontent, o, drawPage );
++            break;
++        case 4: // textbox
++            appendTextbox( doccontent, o, drawPage );
++            break;
++        case 5:
++            kdDebug()<<" autoform not implemented\n";
++            break;
++        case 6:
++            kdDebug()<<" clipart not implemented\n";
++            break;
++        case 8: // pie, chord, arc
++            appendEllipse( doccontent, o, drawPage, true );
++            break;
++        case 9: //part
++            kdDebug()<<" part object not implemented \n";
++            break;
++        case 10:
++            appendGroupObject( doccontent, o, drawPage );
++            break;
++        case 11:
++            kdDebug()<<" free hand not implemented\n";
++            break;
++        case 12: // polyline
++            appendPolyline( doccontent, o, drawPage );
++            break;
++        case 13: //OT_QUADRICBEZIERCURVE = 13
++        case 14: //OT_CUBICBEZIERCURVE = 14
++            //todo
++            // "draw:path"
++            break;
++        case 15: // polygon
++        case 16: // close polygone
++            appendPolyline( doccontent, o, drawPage, true /*polygon*/ );
++            break;
++        }
++        ++m_objectIndex;
+     }
++
+ }
+ 
+ 
+@@ -1007,15 +1022,30 @@
+     float y1 = orig.attribute( "y" ).toFloat();
+     float x2 = size.attribute( "width" ).toFloat();
+     float y2 = size.attribute( "height" ).toFloat();
+-    float type = linetype.attribute( "value" ).toInt();
++    int type = 0;
++	if(!linetype.isNull() )
++		type = linetype.attribute( "value" ).toInt();
+     y1 -= m_pageHeight * ( m_currentPage - 1 );
+     x2 += x1;
+     y2 += y1;
+ 
+     target.setAttribute( "draw:id",  QString::number( m_objectIndex ) );
+-    target.setAttribute( "svg:x1", StyleFactory::toCM( orig.attribute( "x" ) ) );
+-    target.setAttribute( "svg:x2", QString( "%1cm" ).arg( KoUnit::toCM( x2 ) ) );
+-    if ( type == 3 ) // from left bottom to right top
++    QString xpos1 = StyleFactory::toCM( orig.attribute( "x" ) );
++    QString xpos2 = QString( "%1cm" ).arg( KoUnit::toCM( x2 ) );
++	
++	if ( type == 0 )
++	{
++        target.setAttribute( "svg:y1", QString( "%1cm" ).arg( KoUnit::toCM( y2/2.0 ) ) );
++        target.setAttribute( "svg:y2", QString( "%1cm" ).arg( KoUnit::toCM( y2/2.0 ) ) );
++	}
++    else if ( type == 1 )
++    {
++        target.setAttribute( "svg:y1", QString( "%1cm" ).arg( KoUnit::toCM( y1) ) );
++        target.setAttribute( "svg:y2", QString( "%1cm" ).arg( KoUnit::toCM( y2) ) );
++        xpos1 = QString( "%1cm" ).arg( KoUnit::toCM( x1/2.0 ) );
++        xpos2 = xpos1;
++    }
++	else if ( type == 3 ) // from left bottom to right top
+     {
+         target.setAttribute( "svg:y1", QString( "%1cm" ).arg( KoUnit::toCM( y2 ) ) );
+         target.setAttribute( "svg:y2", QString( "%1cm" ).arg( KoUnit::toCM( y1 ) ) );
+@@ -1026,6 +1056,10 @@
+         target.setAttribute( "svg:y2", QString( "%1cm" ).arg( KoUnit::toCM( y2 ) ) );
+     }
+ 
++    target.setAttribute( "svg:x1", xpos1 );
++    target.setAttribute( "svg:x2", xpos2 );
++
++
+     QString nameStr = name.attribute("objectName");
+     if( !nameStr.isEmpty() )
+       target.setAttribute( "draw:name", nameStr );
+diff -urN -x CVS koffice.orig/filters/kpresenter/ooimpress/ooimpressexport.h koffice/filters/kpresenter/ooimpress/ooimpressexport.h
+--- koffice.orig/filters/kpresenter/ooimpress/ooimpressexport.h	Wed Jul 14 13:28:36 2004
++++ koffice/filters/kpresenter/ooimpress/ooimpressexport.h	Thu Oct 21 15:01:35 2004
+@@ -64,6 +64,8 @@
+     QString pictureKey( QDomElement &element );
+     void createHelpLine( QDomNode &helpline );
+     void createAttribute( QDomNode &attributeValue );
++    void appendObjects(QDomDocument & doccontent, QDomNode &objects, QDomElement &drawPage);
++    void appendGroupObject( QDomDocument & doc, QDomElement & source, QDomElement & target );
+ 
+     int m_currentPage;
+     int m_objectIndex;
+diff -urN -x CVS koffice.orig/filters/kpresenter/ooimpress/status.html koffice/filters/kpresenter/ooimpress/status.html
+--- koffice.orig/filters/kpresenter/ooimpress/status.html	Wed Jun 23 20:19:36 2004
++++ koffice/filters/kpresenter/ooimpress/status.html	Fri Oct 22 15:24:47 2004
+@@ -141,7 +141,7 @@
+ 
+     <tr BGCOLOR="#EEEEFF">
+      <td VALIGN=TOP WIDTH=1% NOWRAP><b><font size=+1>Last update</font></b></td>
+-     <td>July 01, 2003</td>
++	 <td>Oct 22, 2004</td>
+     </tr>
+ 
+     <tr BGCOLOR="#CCCCFF">
+@@ -157,7 +157,10 @@
+       - Shadow<br>
+       - Text style (underline, sub/super script, bold, italic, strikeout, background color)<br>
+       - Paragraph style (line spacing, offset before/after paragraph, indent first/right/left, borders)<br>
+-      - Objects image<br>
++	  - Objects image<br>
++	  - Export Group Object<br>
++	  - Vertical alignment for text<br>
++	  - Text margins<br>
+      </td>
+     </tr>
+ 
+@@ -168,8 +171,6 @@
+       - Presentation settings<br>
+       - Slide transitions<br>
+       - Slide background (gradient and image)<br>
+-      - Text margins<br>
+-      - Vertical alignment for text<br>
+       - Line ends (arrows)<br>
+       - Notes<br>
+       - Sound<br>
+diff -urN -x CVS koffice.orig/filters/kpresenter/ooimpress/stylefactory.cc koffice/filters/kpresenter/ooimpress/stylefactory.cc
+--- koffice.orig/filters/kpresenter/ooimpress/stylefactory.cc	Sat Aug  7 18:55:56 2004
++++ koffice/filters/kpresenter/ooimpress/stylefactory.cc	Fri Oct 22 15:24:47 2004
+@@ -1008,7 +1008,36 @@
+     QDomNode lineend = e.namedItem( "LINEEND" );
+     QDomNode gradient = e.namedItem( "GRADIENT" );
+     QDomNode shadow = e.namedItem( "SHADOW" );
++    QDomNode textObject = e.namedItem( "TEXTOBJ" );
++    if ( !textObject.isNull() )
++    {
++        QDomElement textObjectElement = textObject.toElement();
++        if ( textObjectElement.hasAttribute( "verticalAlign" ) )
++        {
++            m_textAlignment = textObjectElement.attribute("verticalAlign");
++            if ( m_textAlignment == "center" )
++                m_textAlignment = "middle";
++        }
++        if ( textObjectElement.hasAttribute( "bleftpt" ) )
++        {
++            m_textMarginLeft = QString( "%1pt" ).arg( textObjectElement.attribute( "bleftpt" ) );
++        }
++        if ( textObjectElement.hasAttribute( "bbottompt" ) )
++        {
++            m_textMarginBottom = QString( "%1pt" ).arg( textObjectElement.attribute( "bbottompt" ) );
++        }
++        if ( textObjectElement.hasAttribute( "btoppt" ) )
++        {
++            m_textMarginTop = QString( "%1pt" ).arg( textObjectElement.attribute( "btoppt" ) );
++        }
++        if ( textObjectElement.hasAttribute( "brightpt" ) )
++        {
++            m_textMarginRight = QString( "%1pt" ).arg( textObjectElement.attribute( "brightpt" ) );
++        }
++    }
++    kdDebug()<<" alignment :"<<m_textAlignment<<endl;
+ 
++	
+     m_name = QString( "gr%1" ).arg( index );
+     if ( !pen.isNull() )
+     {
+@@ -1252,6 +1281,17 @@
+     if ( m_transparency != QString::null )
+         properties.setAttribute( "draw:transparency", m_transparency );
+ 
++    if ( m_textMarginLeft != QString::null )
++        properties.setAttribute( "fo:padding-left", m_textMarginLeft );
++    if ( m_textMarginBottom != QString::null )
++        properties.setAttribute( "fo:padding-bottom", m_textMarginBottom );
++    if ( m_textMarginTop != QString::null )
++        properties.setAttribute( "fo:padding-top", m_textMarginTop );
++    if ( m_textMarginRight != QString::null )
++        properties.setAttribute( "fo:padding-right", m_textMarginRight );
++
++    if ( m_textAlignment != QString::null )
++        properties.setAttribute( "draw:textarea-vertical-align", m_textAlignment );
+     style.appendChild( properties );
+     e.appendChild( style );
+ }
+@@ -1290,7 +1330,12 @@
+              m_marker_end == graphicStyle.m_marker_end &&
+              m_marker_end_width == graphicStyle.m_marker_end_width &&
+              m_fill_gradient_name == graphicStyle.m_fill_gradient_name &&
+-             m_transparency == graphicStyle.m_transparency);
++             m_transparency == graphicStyle.m_transparency &&
++             m_textMarginBottom == graphicStyle.m_textMarginBottom &&
++             m_textMarginTop == graphicStyle.m_textMarginTop &&
++             m_textMarginLeft == graphicStyle.m_textMarginLeft &&
++             m_textMarginRight == graphicStyle.m_textMarginRight &&
++	     m_textAlignment == graphicStyle.m_textAlignment );
+ }
+ 
+ ParagraphStyle::ParagraphStyle( QDomElement & e, const uint index )
+diff -urN -x CVS koffice.orig/filters/kpresenter/ooimpress/stylefactory.h koffice/filters/kpresenter/ooimpress/stylefactory.h
+--- koffice.orig/filters/kpresenter/ooimpress/stylefactory.h	Sat Aug  7 18:55:56 2004
++++ koffice/filters/kpresenter/ooimpress/stylefactory.h	Fri Oct 22 15:24:47 2004
+@@ -193,7 +193,8 @@
+         m_text_shadow, m_text_underline, m_font_weight, m_line_height,
+         m_text_align, m_fill, m_fill_color, m_enable_numbering, m_stroke_dash,
+         m_fill_hatch_name, m_marker_start, m_marker_start_width,
+-        m_marker_end, m_marker_end_width, m_fill_gradient_name, m_transparency;
++      m_marker_end, m_marker_end_width, m_fill_gradient_name, m_transparency, m_textAlignment,
++      m_textMarginLeft, m_textMarginBottom, m_textMarginTop, m_textMarginRight;
+ };
+ 
+ class ParagraphStyle
+diff -urN -x CVS koffice.orig/filters/kword/pdf/diffs/goo_gfile.diff koffice/filters/kword/pdf/diffs/goo_gfile.diff
+--- koffice.orig/filters/kword/pdf/diffs/goo_gfile.diff	Thu Jan  1 01:00:00 1970
++++ koffice/filters/kword/pdf/diffs/goo_gfile.diff	Sat Nov 23 15:15:14 2002
+@@ -0,0 +1,84 @@
++diff -u /home/azhyd/xpdf-2.00/goo/gfile.cc goo/gfile.cc
++--- /home/azhyd/xpdf-2.00/goo/gfile.cc	Sun Nov  3 23:15:36 2002
+++++ goo/gfile.cc	Wed Nov 20 06:43:32 2002
++@@ -443,7 +443,7 @@
++ #endif
++ }
++ 
++-GBool openTempFile(GString **name, FILE **f, char *mode, char *ext) {
+++GBool openTempFile(GString **name, FILE **f, char *mode/*, char *ext*/) {
++ #if defined(WIN32)
++   //---------- Win32 ----------
++   char *s;
++@@ -488,24 +488,24 @@
++   char *s;
++   int fd;
++ 
++-  if (ext) {
++-#if HAVE_MKSTEMPS
++-    if ((s = getenv("TMPDIR"))) {
++-      *name = new GString(s);
++-    } else {
++-      *name = new GString("/tmp");
++-    }
++-    (*name)->append("/XXXXXX")->append(ext);
++-    fd = mkstemps((*name)->getCString(), strlen(ext));
++-#else
++-    if (!(s = tmpnam(NULL))) {
++-      return gFalse;
++-    }
++-    *name = new GString(s);
++-    (*name)->append(ext);
++-    fd = open((*name)->getCString(), O_WRONLY | O_CREAT | O_EXCL, 0600);
++-#endif
++-  } else {
+++//  if (ext) {
+++//#if HAVE_MKSTEMPS
+++//    if ((s = getenv("TMPDIR"))) {
+++//      *name = new GString(s);
+++//    } else {
+++//      *name = new GString("/tmp");
+++//    }
+++//    (*name)->append("/XXXXXX")->append(ext);
+++//    fd = mkstemps((*name)->getCString(), strlen(ext));
+++//#else
+++//    if (!(s = tmpnam(NULL))) {
+++//     return gFalse;
+++//}
+++//    *name = new GString(s);
+++//    (*name)->append(ext);
+++//    fd = open((*name)->getCString(), O_WRONLY | O_CREAT | O_EXCL, 0600);
+++//#endif
+++//} else {
++ #if HAVE_MKSTEMP
++     if ((s = getenv("TMPDIR"))) {
++       *name = new GString(s);
++@@ -521,7 +521,7 @@
++     *name = new GString(s);
++     fd = open((*name)->getCString(), O_WRONLY | O_CREAT | O_EXCL, 0600);
++ #endif // HAVE_MKSTEMP
++-  }
+++//  }
++   if (fd < 0 || !(*f = fdopen(fd, mode))) {
++     delete *name;
++     return gFalse;
++diff -u /home/azhyd/xpdf-2.00/goo/gfile.h goo/gfile.h
++--- /home/azhyd/xpdf-2.00/goo/gfile.h	Sun Nov  3 23:15:36 2002
+++++ goo/gfile.h	Thu Nov 21 04:49:16 2002
++@@ -11,6 +11,7 @@
++ #ifndef GFILE_H
++ #define GFILE_H
++ 
+++#include <aconf.h>
++ #include <stdio.h>
++ #include <stdlib.h>
++ #include <stddef.h>
++@@ -83,7 +84,7 @@
++ // should be done to the returned file pointer; the file may be
++ // reopened later for reading, but not for writing.  The <mode> string
++ // should be "w" or "wb".  Returns true on success.
++-extern GBool openTempFile(GString **name, FILE **f, char *mode, char *ext);
+++extern GBool openTempFile(GString **name, FILE **f, char *mode);//, char *ext);
++ 
++ // Execute <command>.  Returns true on success.
++ extern GBool executeCommand(char *cmd);
+diff -urN -x CVS koffice.orig/filters/kword/pdf/diffs/goo_unbreak_enable-final.diff koffice/filters/kword/pdf/diffs/goo_unbreak_enable-final.diff
+--- koffice.orig/filters/kword/pdf/diffs/goo_unbreak_enable-final.diff	Thu Jan  1 01:00:00 1970
++++ koffice/filters/kword/pdf/diffs/goo_unbreak_enable-final.diff	Sat Oct 23 18:16:00 2004
+@@ -0,0 +1,114 @@
++Index: xpdf/goo/GHash.h
++===================================================================
++RCS file: /home/kde/koffice/filters/kword/pdf/xpdf/goo/GHash.h,v
++retrieving revision 1.2
++retrieving revision 1.2.2.1
++diff -u -3 -p -r1.2 -r1.2.2.1
++--- xpdf/goo/GHash.h	13 Jan 2003 14:51:16 -0000	1.2
+++++ xpdf/goo/GHash.h	21 Oct 2004 20:32:51 -0000	1.2.2.1
++@@ -11,10 +11,6 @@
++ 
++ #include <aconf.h>
++ 
++-#ifdef USE_GCC_PRAGMAS
++-#pragma interface
++-#endif
++-
++ #include "gtypes.h"
++ 
++ class GString;
++Index: xpdf/goo/GHash.cc
++===================================================================
++RCS file: /home/kde/koffice/filters/kword/pdf/xpdf/goo/GHash.cc,v
++retrieving revision 1.2
++retrieving revision 1.2.2.1
++diff -u -3 -p -r1.2 -r1.2.2.1
++--- xpdf/goo/GHash.cc	13 Jan 2003 14:51:16 -0000	1.2
+++++ xpdf/goo/GHash.cc	21 Oct 2004 20:32:51 -0000	1.2.2.1
++@@ -8,10 +8,6 @@
++ 
++ #include <aconf.h>
++ 
++-#ifdef USE_GCC_PRAGMAS
++-#pragma implementation
++-#endif
++-
++ #include "gmem.h"
++ #include "GString.h"
++ #include "GHash.h"
++Index: xpdf/goo/GString.h
++===================================================================
++RCS file: /home/kde/koffice/filters/kword/pdf/xpdf/goo/GString.h,v
++retrieving revision 1.2
++retrieving revision 1.2.2.1
++diff -u -3 -p -r1.2 -r1.2.2.1
++--- xpdf/goo/GString.h	13 Jan 2003 14:51:16 -0000	1.2
+++++ xpdf/goo/GString.h	21 Oct 2004 20:32:51 -0000	1.2.2.1
++@@ -13,10 +13,6 @@
++ 
++ #include <aconf.h>
++ 
++-#ifdef USE_GCC_PRAGMAS
++-#pragma interface
++-#endif
++-
++ #include <string.h>
++ 
++ class GString {
++Index: xpdf/goo/GList.h
++===================================================================
++RCS file: /home/kde/koffice/filters/kword/pdf/xpdf/goo/GList.h,v
++retrieving revision 1.1
++retrieving revision 1.1.2.1
++diff -u -3 -p -r1.1 -r1.1.2.1
++--- xpdf/goo/GList.h	23 Nov 2002 14:15:14 -0000	1.1
+++++ xpdf/goo/GList.h	21 Oct 2004 20:32:51 -0000	1.1.2.1
++@@ -11,10 +11,6 @@
++ 
++ #include <aconf.h>
++ 
++-#ifdef USE_GCC_PRAGMAS
++-#pragma interface
++-#endif
++-
++ #include "gtypes.h"
++ 
++ //------------------------------------------------------------------------
++Index: xpdf/goo/GList.cc
++===================================================================
++RCS file: /home/kde/koffice/filters/kword/pdf/xpdf/goo/GList.cc,v
++retrieving revision 1.1
++retrieving revision 1.1.2.1
++diff -u -3 -p -r1.1 -r1.1.2.1
++--- xpdf/goo/GList.cc	23 Nov 2002 14:15:14 -0000	1.1
+++++ xpdf/goo/GList.cc	21 Oct 2004 20:32:51 -0000	1.1.2.1
++@@ -8,10 +8,6 @@
++ 
++ #include <aconf.h>
++ 
++-#ifdef USE_GCC_PRAGMAS
++-#pragma implementation
++-#endif
++-
++ #include <string.h>
++ #include "gmem.h"
++ #include "GList.h"
++Index: xpdf/goo/GString.cc
++===================================================================
++RCS file: /home/kde/koffice/filters/kword/pdf/xpdf/goo/GString.cc,v
++retrieving revision 1.1
++retrieving revision 1.1.2.1
++diff -u -3 -p -r1.1 -r1.1.2.1
++--- xpdf/goo/GString.cc	23 Nov 2002 14:15:14 -0000	1.1
+++++ xpdf/goo/GString.cc	21 Oct 2004 20:32:51 -0000	1.1.2.1
++@@ -10,10 +10,6 @@
++ 
++ #include <aconf.h>
++ 
++-#ifdef USE_GCC_PRAGMAS
++-#pragma implementation
++-#endif
++-
++ #include <stdlib.h>
++ #include <stddef.h>
++ #include <string.h>
+diff -urN -x CVS koffice.orig/filters/kword/pdf/diffs/xpdf_TextOutputDev.diff koffice/filters/kword/pdf/diffs/xpdf_TextOutputDev.diff
+--- koffice.orig/filters/kword/pdf/diffs/xpdf_TextOutputDev.diff	Thu Jan  1 01:00:00 1970
++++ koffice/filters/kword/pdf/diffs/xpdf_TextOutputDev.diff	Sat Nov 23 15:15:14 2002
+@@ -0,0 +1,141 @@
++diff -u /home/azhyd/xpdf-2.00/xpdf/TextOutputDev.cc xpdf/TextOutputDev.cc
++--- /home/azhyd/xpdf-2.00/xpdf/TextOutputDev.cc	Thu Nov 14 04:41:00 2002
+++++ xpdf/TextOutputDev.cc	Sat Nov 23 21:01:14 2002
++@@ -46,26 +46,6 @@
++ // TextBlock
++ //------------------------------------------------------------------------
++ 
++-class TextBlock {
++-public:
++-
++-  TextBlock();
++-  ~TextBlock();
++-
++-  double xMin, xMax;
++-  double yMin, yMax;
++-  TextString *strings;		// list of strings in the block
++-  TextBlock *next;		// next block in line
++-  TextBlock *xyNext;		// next block on xyBlocks list
++-  Unicode *text;		// Unicode text of the block, including
++-				//   spaces between strings
++-  double *xRight;		// right-hand x coord of each char
++-  int len;			// total number of Unicode characters
++-  int convertedLen;		// total number of converted characters
++-  int *col;			// starting column number for each
++-				//   Unicode character
++-};
++-
++ TextBlock::TextBlock() {
++   strings = NULL;
++   next = NULL;
++@@ -90,17 +70,6 @@
++ //------------------------------------------------------------------------
++ // TextLine
++ //------------------------------------------------------------------------
++-
++-class TextLine {
++-public:
++-
++-  TextLine();
++-  ~TextLine();
++-
++-  TextBlock *blocks;
++-  TextLine *next;
++-  double yMin, yMax;
++-};
++ 
++ TextLine::TextLine() {
++   blocks = NULL;
++diff -u /home/azhyd/xpdf-2.00/xpdf/TextOutputDev.h xpdf/TextOutputDev.h
++--- /home/azhyd/xpdf-2.00/xpdf/TextOutputDev.h	Sun Nov  3 23:15:37 2002
+++++ xpdf/TextOutputDev.h	Sat Nov 23 20:59:43 2002
++@@ -24,6 +24,7 @@
++ class GString;
++ class TextBlock;
++ class TextLine;
+++class FilterPage;
++ 
++ #undef TEXTOUT_DO_SYMBOLS
++ 
++@@ -45,7 +46,7 @@
++ 
++ 
++   // Destructor.
++-  ~TextString();
+++  virtual ~TextString();
++ 
++   // Add a character to the string.
++   void addChar(GfxState *state, double x, double y,
++@@ -67,6 +68,47 @@
++ 
++   friend class TextPage;
++   friend class TextBlock;
+++  friend class FilterPage;
+++};
+++
+++
+++//------------------------------------------------------------------------
+++// TextBlock
+++//------------------------------------------------------------------------
+++
+++class TextBlock {
+++public:
+++
+++  TextBlock();
+++  ~TextBlock();
+++
+++  double xMin, xMax;
+++  double yMin, yMax;
+++  TextString *strings;		// list of strings in the block
+++  TextBlock *next;		// next block in line
+++  TextBlock *xyNext;		// next block on xyBlocks list
+++  Unicode *text;		// Unicode text of the block, including
+++				//   spaces between strings
+++  double *xRight;		// right-hand x coord of each char
+++  int len;			// total number of Unicode characters
+++  int convertedLen;		// total number of converted characters
+++  int *col;			// starting column number for each
+++				//   Unicode character
+++};
+++
+++//------------------------------------------------------------------------
+++// TextLine
+++//------------------------------------------------------------------------
+++
+++class TextLine {
+++public:
+++
+++  TextLine();
+++  ~TextLine();
+++
+++  TextBlock *blocks;
+++  TextLine *next;
+++  double yMin, yMax;
++ };
++ 
++ //------------------------------------------------------------------------
++@@ -80,14 +122,14 @@
++   TextPage(GBool rawOrderA);
++ 
++   // Destructor.
++-  ~TextPage();
+++  virtual ~TextPage();
++ 
++   // Update the current font.
++   void updateFont(GfxState *state);
++ 
++ 
++   // Begin a new string.
++-  void beginString(GfxState *state, double x0, double y0);
+++  virtual void beginString(GfxState *state, double x0, double y0);
++ 
++   // Add a character to the current string.
++   void addChar(GfxState *state, double x, double y,
++@@ -144,6 +186,7 @@
++ 
++   int nTinyChars;		// number of "tiny" chars seen so far
++ 
+++  friend class FilterPage;
++ };
++ 
++ //------------------------------------------------------------------------
+diff -urN -x CVS koffice.orig/filters/kword/pdf/diffs/xpdf_includes.diff koffice/filters/kword/pdf/diffs/xpdf_includes.diff
+--- koffice.orig/filters/kword/pdf/diffs/xpdf_includes.diff	Thu Jan  1 01:00:00 1970
++++ koffice/filters/kword/pdf/diffs/xpdf_includes.diff	Sat Nov 23 15:15:14 2002
+@@ -0,0 +1,48 @@
++diff -u /home/azhyd/xpdf-2.00/xpdf/Error.h xpdf/Error.h
++--- /home/azhyd/xpdf-2.00/xpdf/Error.h	Sun Nov  3 23:15:37 2002
+++++ xpdf/Error.h	Wed Nov 20 07:30:34 2002
++@@ -16,7 +16,7 @@
++ #endif
++ 
++ #include <stdio.h>
++-#include "config.h"
+++#include "xpdf_config.h"
++ 
++ extern void CDECL error(int pos, char *msg, ...);
++ 
++diff -u /home/azhyd/xpdf-2.00/xpdf/PDFDoc.cc xpdf/PDFDoc.cc
++--- /home/azhyd/xpdf-2.00/xpdf/PDFDoc.cc	Sun Nov  3 23:15:36 2002
+++++ xpdf/PDFDoc.cc	Wed Nov 20 07:30:55 2002
++@@ -17,7 +17,7 @@
++ #include <stddef.h>
++ #include <string.h>
++ #include "GString.h"
++-#include "config.h"
+++#include "xpdf_config.h"
++ #include "GlobalParams.h"
++ #include "Page.h"
++ #include "Catalog.h"
++diff -u /home/azhyd/xpdf-2.00/xpdf/Stream.cc xpdf/Stream.cc
++--- /home/azhyd/xpdf-2.00/xpdf/Stream.cc	Sun Nov  3 23:15:37 2002
+++++ xpdf/Stream.cc	Wed Nov 20 07:31:33 2002
++@@ -22,7 +22,7 @@
++ #include <ctype.h>
++ #include "gmem.h"
++ #include "gfile.h"
++-#include "config.h"
+++#include "xpdf_config.h"
++ #include "Error.h"
++ #include "Object.h"
++ #ifndef NO_DECRYPTION
++diff -u /home/azhyd/xpdf-2.00/xpdf/TextOutputDev.cc xpdf/TextOutputDev.cc
++--- /home/azhyd/xpdf-2.00/xpdf/TextOutputDev.cc	Thu Nov 14 04:41:00 2002
+++++ xpdf/TextOutputDev.cc	Wed Nov 20 07:31:41 2002
++@@ -19,7 +19,7 @@
++ #include <ctype.h>
++ #include "GString.h"
++ #include "gmem.h"
++-#include "config.h"
+++#include "xpdf_config.h"
++ #include "Error.h"
++ #include "GlobalParams.h"
++ #include "UnicodeMap.h"
+diff -urN -x CVS koffice.orig/filters/kword/pdf/diffs/xpdf_security_integer_overflow.diff koffice/filters/kword/pdf/diffs/xpdf_security_integer_overflow.diff
+--- koffice.orig/filters/kword/pdf/diffs/xpdf_security_integer_overflow.diff	Thu Jan  1 01:00:00 1970
++++ koffice/filters/kword/pdf/diffs/xpdf_security_integer_overflow.diff	Sat Oct 30 18:43:47 2004
+@@ -0,0 +1,102 @@
++Index: Catalog.cc
++===================================================================
++RCS file: /home/kde/koffice/filters/kword/pdf/xpdf/xpdf/Catalog.cc,v
++retrieving revision 1.1
++diff -u -p -r1.1 Catalog.cc
++--- Catalog.cc	23 Nov 2002 14:15:14 -0000	1.1
+++++ Catalog.cc	30 Oct 2004 16:34:49 -0000
++@@ -12,6 +12,7 @@
++ #pragma implementation
++ #endif
++ 
+++#include <limits.h>
++ #include <stddef.h>
++ #include "gmem.h"
++ #include "Object.h"
++@@ -63,6 +64,12 @@ Catalog::Catalog(XRef *xrefA) {
++   }
++   pagesSize = numPages0 = obj.getInt();
++   obj.free();
+++  if ((unsigned) pagesSize >= INT_MAX / sizeof(Page *) ||
+++      (unsigned) pagesSize >= INT_MAX / sizeof(Ref)) {
+++    error(-1, "Invalid 'pagesSize'");
+++    ok = gFalse;
+++    return;
+++  }
++   pages = (Page **)gmalloc(pagesSize * sizeof(Page *));
++   pageRefs = (Ref *)gmalloc(pagesSize * sizeof(Ref));
++   for (i = 0; i < pagesSize; ++i) {
++@@ -190,6 +197,11 @@ int Catalog::readPageTree(Dict *pagesDic
++       }
++       if (start >= pagesSize) {
++ 	pagesSize += 32;
+++        if ((unsigned) pagesSize >= INT_MAX / sizeof(Page *) ||
+++            (unsigned) pagesSize >= INT_MAX / sizeof(Ref)) {
+++          error(-1, "Invalid 'pagesSize' parameter.");
+++          goto err3;
+++        }
++ 	pages = (Page **)grealloc(pages, pagesSize * sizeof(Page *));
++ 	pageRefs = (Ref *)grealloc(pageRefs, pagesSize * sizeof(Ref));
++ 	for (j = pagesSize - 32; j < pagesSize; ++j) {
++Index: XRef.cc
++===================================================================
++RCS file: /home/kde/koffice/filters/kword/pdf/xpdf/xpdf/XRef.cc,v
++retrieving revision 1.1
++diff -u -p -r1.1 XRef.cc
++--- XRef.cc	23 Nov 2002 14:15:14 -0000	1.1
+++++ XRef.cc	30 Oct 2004 16:34:53 -0000
++@@ -12,6 +12,7 @@
++ #pragma implementation
++ #endif
++ 
+++#include <limits.h>
++ #include <stdlib.h>
++ #include <stddef.h>
++ #include <string.h>
++@@ -76,6 +77,12 @@ XRef::XRef(BaseStream *strA, GString *ow
++ 
++   // trailer is ok - read the xref table
++   } else {
+++    if ((unsigned) size >= INT_MAX / sizeof(XRefEntry)) {
+++      error(-1, "Invalid 'size' inside xref table.");
+++      ok = gFalse;
+++      errCode = errDamaged;
+++      return;
+++    }
++     entries = (XRefEntry *)gmalloc(size * sizeof(XRefEntry));
++     for (i = 0; i < size; ++i) {
++       entries[i].offset = 0xffffffff;
++@@ -267,6 +274,10 @@ GBool XRef::readXRef(Guint *pos) {
++     // table size
++     if (first + n > size) {
++       newSize = size + 256;
+++      if ((unsigned) newSize >= INT_MAX / sizeof(XRefEntry)) {
+++        error(-1, "Invalid 'newSize'");
+++        goto err2;
+++      }
++       entries = (XRefEntry *)grealloc(entries, newSize * sizeof(XRefEntry));
++       for (i = size; i < newSize; ++i) {
++ 	entries[i].offset = 0xffffffff;
++@@ -410,6 +421,10 @@ GBool XRef::constructXRef() {
++ 	    if (!strncmp(p, "obj", 3)) {
++ 	      if (num >= size) {
++ 		newSize = (num + 1 + 255) & ~255;
+++	        if ((unsigned) newSize >= INT_MAX / sizeof(XRefEntry)) {
+++	          error(-1, "Invalid 'obj' parameters.");
+++	          return gFalse;
+++	        }
++ 		entries = (XRefEntry *)
++ 		            grealloc(entries, newSize * sizeof(XRefEntry));
++ 		for (i = size; i < newSize; ++i) {
++@@ -431,6 +446,11 @@ GBool XRef::constructXRef() {
++     } else if (!strncmp(p, "endstream", 9)) {
++       if (streamEndsLen == streamEndsSize) {
++ 	streamEndsSize += 64;
+++        if ((unsigned) streamEndsSize >= INT_MAX / sizeof(int)) {
+++          error(-1, "Invalid 'endstream' parameter.");
+++          return gFalse;
+++        }
+++
++ 	streamEnds = (Guint *)grealloc(streamEnds,
++ 				       streamEndsSize * sizeof(int));
++       }
+diff -urN -x CVS koffice.orig/filters/kword/pdf/xpdf/xpdf/Catalog.cc koffice/filters/kword/pdf/xpdf/xpdf/Catalog.cc
+--- koffice.orig/filters/kword/pdf/xpdf/xpdf/Catalog.cc	Fri Oct 22 14:13:56 2004
++++ koffice/filters/kword/pdf/xpdf/xpdf/Catalog.cc	Sat Oct 30 18:43:47 2004
+@@ -12,6 +12,7 @@
+ #pragma implementation
+ #endif
+ 
++#include <limits.h>
+ #include <stddef.h>
+ #include "gmem.h"
+ #include "Object.h"
+@@ -63,8 +64,8 @@
+   }
+   pagesSize = numPages0 = obj.getInt();
+   obj.free();
+-  if (pagesSize*sizeof(Page *)/sizeof(Page *) != pagesSize ||
+-      pagesSize*sizeof(Ref)/sizeof(Ref) != pagesSize) {
++  if ((unsigned) pagesSize >= INT_MAX / sizeof(Page *) ||
++      (unsigned) pagesSize >= INT_MAX / sizeof(Ref)) {
+     error(-1, "Invalid 'pagesSize'");
+     ok = gFalse;
+     return;
+@@ -196,8 +197,8 @@
+       }
+       if (start >= pagesSize) {
+ 	pagesSize += 32;
+-        if (pagesSize*sizeof(Page *)/sizeof(Page *) != pagesSize ||
+-            pagesSize*sizeof(Ref)/sizeof(Ref) != pagesSize) {
++        if ((unsigned) pagesSize >= INT_MAX / sizeof(Page *) ||
++            (unsigned) pagesSize >= INT_MAX / sizeof(Ref)) {
+           error(-1, "Invalid 'pagesSize' parameter.");
+           goto err3;
+         }
+diff -urN -x CVS koffice.orig/filters/kword/pdf/xpdf/xpdf/XRef.cc koffice/filters/kword/pdf/xpdf/xpdf/XRef.cc
+--- koffice.orig/filters/kword/pdf/xpdf/xpdf/XRef.cc	Fri Oct 22 14:13:56 2004
++++ koffice/filters/kword/pdf/xpdf/xpdf/XRef.cc	Sat Oct 30 18:43:47 2004
+@@ -12,6 +12,7 @@
+ #pragma implementation
+ #endif
+ 
++#include <limits.h>
+ #include <stdlib.h>
+ #include <stddef.h>
+ #include <string.h>
+@@ -76,7 +77,7 @@
+ 
+   // trailer is ok - read the xref table
+   } else {
+-    if (size*sizeof(XRefEntry)/sizeof(XRefEntry) != size) {
++    if ((unsigned) size >= INT_MAX / sizeof(XRefEntry)) {
+       error(-1, "Invalid 'size' inside xref table.");
+       ok = gFalse;
+       errCode = errDamaged;
+@@ -273,7 +274,7 @@
+     // table size
+     if (first + n > size) {
+       newSize = size + 256;
+-      if (newSize*sizeof(XRefEntry)/sizeof(XRefEntry) != newSize) {
++      if ((unsigned) newSize >= INT_MAX / sizeof(XRefEntry)) {
+         error(-1, "Invalid 'newSize'");
+         goto err2;
+       }
+@@ -420,7 +421,7 @@
+ 	    if (!strncmp(p, "obj", 3)) {
+ 	      if (num >= size) {
+ 		newSize = (num + 1 + 255) & ~255;
+-	        if (newSize*sizeof(XRefEntry)/sizeof(XRefEntry) != newSize) {
++	        if ((unsigned) newSize >= INT_MAX / sizeof(XRefEntry)) {
+ 	          error(-1, "Invalid 'obj' parameters.");
+ 	          return gFalse;
+ 	        }
+@@ -445,7 +446,7 @@
+     } else if (!strncmp(p, "endstream", 9)) {
+       if (streamEndsLen == streamEndsSize) {
+ 	streamEndsSize += 64;
+-        if (streamEndsSize*sizeof(int)/sizeof(int) != streamEndsSize) {
++        if ((unsigned) streamEndsSize >= INT_MAX / sizeof(int)) {
+           error(-1, "Invalid 'endstream' parameter.");
+           return gFalse;
+         }
+diff -urN -x CVS koffice.orig/karbon/data/karbon.desktop koffice/karbon/data/karbon.desktop
+--- koffice.orig/karbon/data/karbon.desktop	Mon Jul 12 10:09:44 2004
++++ koffice/karbon/data/karbon.desktop	Sat Oct 16 09:11:15 2004
+@@ -25,7 +25,7 @@
+ GenericName[ms]=Grafik Boleh-skala
+ GenericName[mt]=Grafika tiddaqqas
+ GenericName[nb]=Skalerbar grafikk
+-GenericName[nl]=Schaalbare illustraties
++GenericName[nl]=Vectorafbeeldingen
+ GenericName[nn]=Skalerbar grafikk
+ GenericName[pl]=Skalowalna grafika 
+ GenericName[pt]=Imagens Escaláveis
+diff -urN -x CVS koffice.orig/karbon/data/karbonpart.desktop koffice/karbon/data/karbonpart.desktop
+--- koffice.orig/karbon/data/karbonpart.desktop	Mon Jul 12 10:09:44 2004
++++ koffice/karbon/data/karbonpart.desktop	Sat Oct 16 09:11:15 2004
+@@ -31,7 +31,7 @@
+ GenericName[ms]=Grafik Boleh-skala
+ GenericName[mt]=Grafika tiddaqqas
+ GenericName[nb]=Skalerbar grafikk
+-GenericName[nl]=Schaalbare illustraties
++GenericName[nl]=Vectorafbeeldingen
+ GenericName[nn]=Skalerbar grafikk
+ GenericName[pl]=Skalowalna grafika 
+ GenericName[pt]=Imagens Escaláveis
+diff -urN -x CVS koffice.orig/kspread/kspread_cell.cc koffice/kspread/kspread_cell.cc
+--- koffice.orig/kspread/kspread_cell.cc	Fri Jul  9 19:15:31 2004
++++ koffice/kspread/kspread_cell.cc	Thu Oct 21 23:55:37 2004
+@@ -326,6 +326,8 @@
+       m_dExtraHeight  = 0.0;
+       m_iMergedXCells = 0;
+       m_iMergedYCells = 0;
++      //refresh the layout
++      setFlag( Flag_LayoutDirty );
+       return;
+   }
+ 
+diff -urN -x CVS koffice.orig/kword/CHANGES koffice/kword/CHANGES
+--- koffice.orig/kword/CHANGES	Mon Sep 13 11:41:11 2004
++++ koffice/kword/CHANGES	Thu Oct 21 17:30:57 2004
+@@ -1,3 +1,8 @@
++Changed between 1.3.4 and 1.3.5
++===============================
++- Insert picture dialog: keep current picture if cancelling file dialog (#72827)
++- Fixes when changing properties of multiple frames at once. Allow changing "protect size" for multiple frames.
++
+ Changed between 1.3.2 and 1.3.3
+ ===============================
+ - Fix all 3 style menus for any translation (#61007)
+diff -urN -x CVS koffice.orig/kword/framedia.cc koffice/kword/framedia.cc
+--- koffice.orig/kword/framedia.cc	Mon Nov 17 19:30:00 2003
++++ koffice/kword/framedia.cc	Wed Oct 20 22:13:11 2004
+@@ -1130,7 +1130,6 @@
+         lh->setEnabled( false );
+         grp1->setEnabled( false );
+         floating->setEnabled( false );
+-        protectSize->setEnabled( false );
+     }
+ 
+     if ( isMainFrame )
+@@ -1727,7 +1726,7 @@
+         {
+             if(frame) {
+                 KWPictureFrameSet * frm=static_cast<KWPictureFrameSet *>( frame->frameSet() );
+-                if(frm->keepAspectRatio()!=cbAspectRatio->isChecked())
++                if ( frm->keepAspectRatio() != cbAspectRatio->isChecked() )
+                 {
+                     if(!macroCmd)
+                         macroCmd = new KMacroCommand( i18n("Frame Properties") );
+@@ -1891,7 +1890,9 @@
+             KWFrameSet * parentFs = fs->getGroupManager() ? fs->getGroupManager() : fs;
+ 
+             // Floating
+-            if ( floating->isChecked() && !parentFs->isFloating() )
++            if ( floating->isChecked() &&
++                 floating->state() != QButton::NoChange &&
++                 !parentFs->isFloating() )
+             {
+                 if(!macroCmd)
+                     macroCmd = new KMacroCommand( i18n("Make Frameset Inline") );
+@@ -1913,7 +1914,9 @@
+                 macroCmd->addCommand(cmdMoveFrame);
+                 macroCmd->addCommand(cmd);
+             }
+-            else if ( !floating->isChecked() && parentFs->isFloating() )
++            else if ( !floating->isChecked() &&
++                      floating->state() != QButton::NoChange &&
++                      parentFs->isFloating() )
+             {
+                 if(!macroCmd)
+                     macroCmd = new KMacroCommand( i18n("Make Frameset Non-Inline") );
+@@ -1922,7 +1925,8 @@
+                 macroCmd->addCommand(cmd);
+                 cmd->execute();
+             }
+-            if ( parentFs->isProtectSize() != protectSize->isChecked() )
++            if ( parentFs->isProtectSize() != protectSize->isChecked()
++                 && protectSize->state() != QButton::NoChange )
+             {
+                 if(!macroCmd)
+                     macroCmd = new KMacroCommand( i18n("Protect Size") );
+diff -urN -x CVS koffice.orig/kword/kwinsertpicdia.cc koffice/kword/kwinsertpicdia.cc
+--- koffice.orig/kword/kwinsertpicdia.cc	Tue Jul 15 15:52:02 2003
++++ koffice/kword/kwinsertpicdia.cc	Tue Oct 19 21:08:39 2004
+@@ -131,7 +131,9 @@
+ 
+ void KWInsertPicDia::slotChooseImage()
+ {
+-    m_picture = KWInsertPicDia::selectPictureDia( m_doc->picturePath() ) ;
++    KoPicture tmppicture = KWInsertPicDia::selectPictureDia( m_doc->picturePath() );
++    if ( !tmppicture.isNull() ) // if canceled, keep current picture (#72827)
++        m_picture = tmppicture;
+     if ( m_picture.isNull() && m_bFirst)
+     {
+         kdDebug() << "KWInsertPicDia::slotChooseImage cancelled by user." << endl;
