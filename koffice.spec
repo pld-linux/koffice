@@ -3,9 +3,9 @@
 %bcond_without	i18n	# disable i18n (26MB less to download)
 #
 %define		_state		stable
-%define		_ver		1.3.1
+%define		_ver		1.3.4
 %define		_snap		%{nil}
-%define		artsver		13:1.2.0
+%define		artsver		13:1.3.0
 
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
@@ -22,14 +22,16 @@ License:	GPL/LGPL
 Group:		X11/Applications
 # ftp://ftp.kde.org/pub/kde/unstable/koffice-1.2.95/src
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	ad68bab5753cf8d2e32a1d9e0c19495a
+# Source0-md5:	79896426542b0cf07e2e15f84946905a
+# Source0-size:	10765924
 #Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}-%{_snap}.tar.bz2
 %if %{with i18n}
 Source1:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
-# Source1-md5:	ad25c4a4edb9fc146fde63adf9f4e29e
+# Source1-md5:	6455f496f6031e810398ad6b065eb929
+# Source1-size:	27798685
 %endif
+Patch100:	%{name}-branch.diff
 Patch0:		%{name}-vcategories.patch
-Patch1:		%{name}-gcc34.patch
 Patch2:		%{name}-desktop.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
@@ -41,13 +43,15 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtiff-devel
+BuildRequires:	libxslt-devel >= 0:1.0.7
+BuildRequires:	libxml2-devel >= 0:2.4.8
 BuildRequires:	mysql-devel
 BuildRequires:	perl-base
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	rpmbuild(macros) >= 1.129
-BuildRequires:	wv2-devel >= 0.0.7
+BuildRequires:	wv2-devel >= 0.1.9
 BuildRequires:	zlib-devel
-Requires:	wv2 >= 0.0.7
+Requires:	wv2 >= 0.1.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -182,15 +186,19 @@ KChart jest aplikacj± s³u¿±c± do generowania wykresów.
 %description kchart -l pt_BR
 Gerador de diagramas do KOffice.
 
-#%%package kexi #Summary: KOffice - Kexi #Summary(pl): KOffice - Kexi
-#Group: X11/Applications #Requires: %{name}-common =
-%{epoch}:%{version}-%{release} #Requires: mysql-libs
+%package kexi 
+Summary:	KOffice - Kexi 
+Summary(pl):	KOffice - Kexi
+Group:		X11/Applications 
+Requires:	%{name}-common = %{epoch}:%{version}-%{release} 
+Requires:	mysql-libs
 
-#%%description kexi #Kexi is KOffice part for using database system
-such as mysql.
+%description kexi 
+Kexi is KOffice part for using database system such as mysql.
 
-#%%description kexi -l pl #Kexi jest aplikacj± s³u¿±c± do korzystania
-z systemów baz danych #takich jak mysql.
+%description kexi -l pl 
+Kexi jest aplikacj± s³u¿±c± do korzystania z systemów baz 
+danych #takich jak mysql.
 
 %package kformula
 Summary:	KOffice - kformula
@@ -459,12 +467,13 @@ Pliki umiêdzynarodawiaj±ce dla kworda.
 %else
 %setup -q
 %endif
+%patch100 -p1
 %patch0 -p1
-%patch1 -p1
+
 %patch2 -p1
 
 %build
-##%{__make} -f admin/Makefile.common cvs
+%{__make} -f admin/Makefile.common cvs
 cp /usr/share/automake/config.sub admin
 export DO_NOT_COMPILE="$DO_NOT_COMPILE kdgantt"
 
