@@ -38,6 +38,7 @@ BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:3.2.90
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
+BuildRequires:	libpqxx-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	mysql-devel
