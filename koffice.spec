@@ -6,7 +6,6 @@
 %define		_ver		1.3.91
 %define		_snap		040630
 %define		artsver		13:1.2.0
-%define		_packager	adgor	
 
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
@@ -20,8 +19,7 @@ Release:	1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
-Source0:	http://ep09.pld-linux.org/~%{_packager}/kde/%{name}-%{_snap}.tar.bz2
-##%% Source0-md5:	8e4c9db57f701d42f21d61651f0b03bd
+Source0:	ftp://ftp.pld-linux.org/software/kde/%{name}-%{_snap}.tar.bz2
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-vcategories.patch
 URL:		http://www.koffice.org/
