@@ -395,7 +395,7 @@ install %{SOURCE2}	$RPM_BUILD_ROOT%{_pixmapsdir}
 rm -f $RPM_BUILD_ROOT%{_pixmapsdir}/*color/??x??/apps/k{arbon,chart,formula,ivio,ontour,presenter,spread,udesigner,ugar,word}.png
 %endif
 
-install debian/*.1 $RPM_BUILD_ROOT%{_mandir}
+install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 cd %{name}-i18n-%{version}
 %{__make} install \
