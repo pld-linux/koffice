@@ -1,8 +1,10 @@
 
+%bcond_without	i18n	# disable i18n (26 mb less to download)
+
 %define		_state		stable
 %define		_ver		1.3
 %define		_snap		%{nil}
-%define		artsver		12:1.2.0.%{_snap}
+%define		artsver		13:1.2.0
 
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
@@ -21,6 +23,10 @@ Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	8e4c9db57f701d42f21d61651f0b03bd
 #Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}-%{_snap}.tar.bz2
+%if %{with i18n}
+Source1:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
+# Source1-md5:	ca89c9c944508de11ca2908eb0a851e4
+%endif
 Patch0:		%{name}-vcategories.patch
 #Patch1:		%{name}-mysql_includes.patch
 URL:		http://www.koffice.org/
@@ -332,20 +338,23 @@ Processador de texto do KOffice.
 
 %prep
 #%%setup -q -n %{name}-%{_snap}
-%setup -q -n %{name}-%{_ver}
+%setup -q -a1
 %patch0 -p1
 #%%patch1 -p1
 
 %build
+#%{__make} -f admin/Makefile.common cvs
 
-%{__make} -f admin/Makefile.common cvs
+#export DO_NOT_COMPILE="$DO_NOT_COMPILE kdgantt"
 
-export DO_NOT_COMPILE="$DO_NOT_COMPILE kdgantt"
+##configure \
+#	--disable-rpath \
+#	--enable-final
 
-%configure \
-	--disable-rpath \
-	--enable-final
+%{__make}
 
+cd %{name}-i18n-%{version}
+%configure
 %{__make}
 
 %install
@@ -360,6 +369,11 @@ install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
 mv $RPM_BUILD_ROOT{%{_datadir}/applnk/Office/*,%{_desktopdir}/kde}
 
 install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
+
+cd %{name}-i18n-%{version}
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+cd ..
 
 %find_lang kchart		--with-kde
 %find_lang kformula		--with-kde
