@@ -533,7 +533,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/.source/Illustration.kil
 %{_datadir}/templates/Illustration.desktop
 %{_applnkdir}/Graphics/kontour.desktop
-%{_applnkdir}/Graphics/killustrator.desktop
 %{_pixmapsdir}/*color/*x*/apps/kontour.png
 
 #################################
