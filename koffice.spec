@@ -14,7 +14,7 @@ Summary(zh_CN):	KDE 的办公应用软件集。
 Name:		koffice
 # Version:	%{_ver}.%{_snap}
 Version:	%{_ver}
-Release:	1
+Release:	2
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
@@ -343,11 +343,15 @@ Processador de texto do KOffice.
 
 %{__sed} -i -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
 	karbon/data/karbon.desktop
-	
 %{__sed} -i -e 's/Terminal=0/Terminal=false/' \
 	kugar/kudesigner/kudesigner.desktop \
 	kugar/part/kugar.desktop \
 	kugar/part/kugarpart.desktop
+for f in `find . -name *.desktop`; do
+	if grep -q '\[ven\]' $f; then
+		sed -i -e 's/\[ven\]/[ve]/' $f
+	fi
+done
 
 %build
 cp -f /usr/share/automake/config.sub admin
