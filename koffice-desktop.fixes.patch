@@ -1,6 +1,7 @@
---- koffice-1.1.1/kchart/kchart.desktop~	Mon Jun 17 18:42:23 2002
-+++ koffice-1.1.1/kchart/kchart.desktop	Mon Jun 17 18:42:23 2002
-@@ -46,7 +46,7 @@
+diff -ur koffice-1.2.orig/kchart/kchart.desktop koffice-1.2/kchart/kchart.desktop
+--- koffice-1.2.orig/kchart/kchart.desktop	Sat Aug 31 13:13:33 2002
++++ koffice-1.2/kchart/kchart.desktop	Fri Nov  1 01:23:38 2002
+@@ -53,7 +53,7 @@
  Exec=kchart
  X-KDE-Library=libkchartpart
  Type=Application
@@ -9,9 +10,22 @@
  MimeType=application/x-kchart
  ServiceTypes=KOfficePart,KParts/ReadOnlyPart,KParts/ReadWritePart,KOfficeChart
  X-KDE-NativeMimeType=application/x-kchart
---- koffice-1.1.1/kivio/kiviopart/kivio.desktop~	Mon Jun 17 18:47:01 2002
-+++ koffice-1.1.1/kivio/kiviopart/kivio.desktop	Mon Jun 17 18:47:01 2002
-@@ -38,6 +38,6 @@
+diff -ur koffice-1.2.orig/kformula/kformula.desktop koffice-1.2/kformula/kformula.desktop
+--- koffice-1.2.orig/kformula/kformula.desktop	Sat Aug 31 13:13:34 2002
++++ koffice-1.2/kformula/kformula.desktop	Fri Nov  1 01:23:38 2002
+@@ -62,7 +62,7 @@
+ GenericName[zu]=Umhleli we Formula
+ MimeType=application/x-kformula
+ Type=Application
+-Icon=kformula
++Icon=kformula.png
+ ServiceTypes=KOfficePart,KParts/ReadOnlyPart,KParts/ReadWritePart
+ X-KDE-NativeMimeType=application/x-kformula
+ X-DCOP-ServiceType=Multi
+diff -ur koffice-1.2.orig/kivio/kiviopart/kivio.desktop koffice-1.2/kivio/kiviopart/kivio.desktop
+--- koffice-1.2.orig/kivio/kiviopart/kivio.desktop	Sat Aug 31 13:13:34 2002
++++ koffice-1.2/kivio/kiviopart/kivio.desktop	Fri Nov  1 01:23:38 2002
+@@ -52,7 +52,7 @@
  X-KDE-Library=libkiviopart
  MimeType=application/x-kivio
  Type=Application
@@ -19,66 +33,63 @@
 +Icon=kivio.png
  ServiceTypes=KOfficePart,KParts/ReadOnlyPart,KParts/ReadWritePart
  X-KDE-NativeMimeType=application/x-kivio
---- koffice-1.1.1/kformula/kformula.desktop~	Mon Jun 17 18:48:02 2002
-+++ koffice-1.1.1/kformula/kformula.desktop	Mon Jun 17 18:48:02 2002
-@@ -46,6 +46,6 @@
- Comment[zh_CN]=公式编辑器
- MimeType=application/x-kformula
+ X-DCOP-ServiceType=Multi
+diff -ur koffice-1.2.orig/koshell/koshell.desktop koffice-1.2/koshell/koshell.desktop
+--- koffice-1.2.orig/koshell/koshell.desktop	Sat Aug 31 13:13:34 2002
++++ koffice-1.2/koshell/koshell.desktop	Fri Nov  1 01:23:38 2002
+@@ -90,6 +90,6 @@
+ GenericName[zh_CN]=办公套件
+ GenericName[zh_TW]=辦公軟體程式集
  Type=Application
--Icon=kformula
-+Icon=kformula.png
- ServiceTypes=KOfficePart,KParts/ReadOnlyPart,KParts/ReadWritePart
- X-KDE-NativeMimeType=application/x-kformula
---- koffice-1.1.1/kpresenter/kpresenter.desktop~	Mon Jun 17 18:48:57 2002
-+++ koffice-1.1.1/kpresenter/kpresenter.desktop	Mon Jun 17 18:48:57 2002
-@@ -46,7 +46,7 @@
- Comment[zh_CN]=幻灯片演示
- MimeType=application/x-kpresenter
+-Icon=koshell
++Icon=koshell.png
+ X-KDE-StartupNotify=true
+ X-DCOP-ServiceType=Multi
+diff -ur koffice-1.2.orig/kpresenter/kpresenter.desktop koffice-1.2/kpresenter/kpresenter.desktop
+--- koffice-1.2.orig/kpresenter/kpresenter.desktop	Sat Aug 31 13:13:35 2002
++++ koffice-1.2/kpresenter/kpresenter.desktop	Fri Nov  1 01:23:38 2002
+@@ -60,7 +60,7 @@
+ GenericName[zu]=Iziboniso Ezishibikayo
+ MimeType=application/x-kpresenter;application/mspowerpoint
  Type=Application
 -Icon=kpresenter
 +Icon=kpresenter.png
  ServiceTypes=KOfficePart,KParts/ReadOnlyPart,KParts/ReadWritePart
  X-KDE-NativeMimeType=application/x-kpresenter
  X-DCOP-ServiceType=multi
---- koffice-1.1.1/kugar/part/kugar.desktop~	Mon Jun 17 18:50:34 2002
-+++ koffice-1.1.1/kugar/part/kugar.desktop	Mon Jun 17 18:50:34 2002
-@@ -3,7 +3,7 @@
- Name[af]=KUGAR
- Name[eo]=Raportilo
- Exec=kugar
--Icon=kugar
-+Icon=kugar.png
- MimeType=application/x-kugar;
- Type=Application
- DocPath=kugar/index.html
---- koffice-1.1.1/kspread/kspread.desktop~	Mon Jun 17 18:51:45 2002
-+++ koffice-1.1.1/kspread/kspread.desktop	Mon Jun 17 18:51:45 2002
-@@ -42,7 +42,7 @@
- Comment[zh_CN]=电子表格
- MimeType=application/x-kspread
+diff -ur koffice-1.2.orig/kspread/kspread.desktop koffice-1.2/kspread/kspread.desktop
+--- koffice-1.2.orig/kspread/kspread.desktop	Sat Aug 31 13:13:43 2002
++++ koffice-1.2/kspread/kspread.desktop	Fri Nov  1 01:23:38 2002
+@@ -57,7 +57,7 @@
+ GenericName[zu]=Amakhasi alulekayo
+ MimeType=application/x-kspread;application/msexcel
  Type=Application
 -Icon=kspread
 +Icon=kspread.png
  ServiceTypes=KOfficePart,KParts/ReadOnlyPart,KParts/ReadWritePart,text/x-csv,application/x-kspread-crypt,application/x-quattropro
  X-KDE-NativeMimeType=application/x-kspread
  X-DCOP-ServiceType=multi
---- koffice-1.1.1/kword/kword.desktop~	Mon Jun 17 18:52:30 2002
-+++ koffice-1.1.1/kword/kword.desktop	Mon Jun 17 18:52:30 2002
-@@ -46,7 +46,7 @@
- Comment[zh_CN]=字处理
- MimeType=application/x-kword
+diff -ur koffice-1.2.orig/kugar/part/kugar.desktop koffice-1.2/kugar/part/kugar.desktop
+--- koffice-1.2.orig/kugar/part/kugar.desktop	Sat Aug 31 13:13:46 2002
++++ koffice-1.2/kugar/part/kugar.desktop	Fri Nov  1 01:23:38 2002
+@@ -6,7 +6,7 @@
+ Name[th]=คูการ์
+ Name[xx]=xx
+ Exec=kugar
+-Icon=kugar
++Icon=kugar.png
+ MimeType=application/x-kugar;
+ Type=Application
+ DocPath=kugar/index.html
+diff -ur koffice-1.2.orig/kword/kword.desktop koffice-1.2/kword/kword.desktop
+--- koffice-1.2.orig/kword/kword.desktop	Sat Aug 31 13:13:51 2002
++++ koffice-1.2/kword/kword.desktop	Fri Nov  1 01:26:30 2002
+@@ -59,7 +59,7 @@
+ GenericName[zu]=Uqhubekelo Lwegama
+ MimeType=application/x-kword;application/msword;text/rtf
  Type=Application
 -Icon=kword
 +Icon=kword.png
- ServiceTypes=KOfficePart,KParts/ReadOnlyPart,KParts/ReadWritePart,text/plain,application/x-kword-crypt
+ ServiceTypes=KOfficePart,KParts/ReadOnlyPart,KParts/ReadWritePart,text/plain,application/x-kword-crypt,application/x-mswrite
  X-KDE-NativeMimeType=application/x-kword
  DocPath=kword/index.html
---- koffice-1.1.1/koshell/koshell.desktop~	Mon Jun 17 18:53:15 2002
-+++ koffice-1.1.1/koshell/koshell.desktop	Mon Jun 17 18:53:15 2002
-@@ -94,5 +94,5 @@
- Comment[zh_CN]=KOffice 多文档窗口
- Comment[zh_TW]=KOffice 多文件視窗
- Type=Application
--Icon=koshell
-+Icon=koshell.png
- X-KDE-StartupNotify=true
