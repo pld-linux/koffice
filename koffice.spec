@@ -346,6 +346,7 @@ Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core >= 9:3.1.92.%{_snap}
 
+
 %description common-i18n
 Internationalization and localization files for koffice-common.
 
@@ -529,14 +530,9 @@ do
 	cat ${i}.lang >> koffice.lang
 done
 
-karbon="karbon \
-karbonepsfilter"
-
-for i in $karbon;
-do
-	%find_lang $i --with-kde
-	cat ${i}.lang >> karbon.lang
-done
+%find_lang karbon --with-kde
+%find_lang karbonepsfilter --with-kde
+cat karbonepsfilter.lang >> karbon.lang
 
 kform="kformulalatexfilter \
 kformulamathmlfilter \
