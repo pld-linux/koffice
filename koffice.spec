@@ -1,7 +1,7 @@
 
 %define		_state		snapshots
 %define		_ver		1.2.94
-%define		_snap		031105
+%define		_snap		031114
 
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
@@ -20,7 +20,7 @@ Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
 # Source0-md5:	3dce45bf28c45e333b19bb82a3cde0b0
 Patch0:		%{name}-vcategories.patch
 Patch1:		%{name}-mysql_includes.patch
-Patch2:		%{name}-fix-kexi_plugins_tables_makefile_am.patch
+Patch2:		%{name}-fix-kexi_widget_makefile_am.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	fam-devel
@@ -541,8 +541,8 @@ rm -rf $RPM_BUILD_ROOT
 %files kexi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kexi*
-%{_libdir}/kexi.la
-%attr(755,root,root) %{_libdir}/kexi.so 
+#%{_libdir}/kexi.la
+#%attr(755,root,root) %{_libdir}/kexi.so 
 %{_libdir}/kde3/*kexi*.la
 %attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
 %{_datadir}/apps/kexi
