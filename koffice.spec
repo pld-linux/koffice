@@ -5,7 +5,7 @@
 #
 %define		_state		snapshots
 %define		_ver		1.3
-%define		_snap		040509
+%define		_snap		040510
 %define		artsver		13:1.2.0
 %define		_packager	adgor	
 
@@ -479,8 +479,7 @@ Pliki umiêdzynarodawiaj±ce dla kworda.
 %patch1 -p1
 %patch2 -p1
 
-#echo "KDE_OPTIONS = nofinal" >> kexi/kexidb/parser/Makefile.am
-#echo "KDE_OPTIONS = nofinal" >> krita/ui/Makefile.am
+echo "KDE_OPTIONS = nofinal" >> kexi/kexidb/parser/Makefile.am
 
 %build
 cp /usr/share/automake/config.sub admin
