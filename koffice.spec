@@ -195,7 +195,7 @@ funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
 lub Adobe Illustrator.
 
 Kontour wczesniej by³ znany jako KIlustrator ale developerzy zostali
-zmuszeni szantarzem przez prawników Adobe do zmiany nazwy.
+zmuszeni szanta¿em przez prawników Adobe do zmiany nazwy.
 
 %description kontour -l pt_BR
 Ferramenta de desenho vetorial do KOffice.
