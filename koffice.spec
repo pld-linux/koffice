@@ -16,7 +16,7 @@ Summary(zh_CN):	KDE 的办公应用软件集。
 Name:		koffice
 # Version:	%{_ver}.%{_snap}
 Version:	%{_ver}
-Release:	0.1
+Release:	1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
@@ -459,7 +459,11 @@ Pliki umi阣zynarodawiaj眂e dla kworda.
 
 %prep
 #%%setup -q -n %{name}-%{_snap}
+%if %{with i18n}
 %setup -q -a1
+%else
+%setup -q 
+%endif
 %patch0 -p1
 
 %build
@@ -478,26 +482,26 @@ cd %{name}-i18n-%{version}
 %{__make}
 
 %install
-rm -rf $RPM_BUILD_ROOT
+#rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir}
+##%{__make} install \
+#	DESTDIR=$RPM_BUILD_ROOT \
+#	kde_htmldir=%{_kdedocdir}
 
-install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
+#install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
 
-mv $RPM_BUILD_ROOT{%{_datadir}/applnk/Office/*,%{_desktopdir}/kde}
+#mv $RPM_BUILD_ROOT{%{_datadir}/applnk/Office/*,%{_desktopdir}/kde}
 
-install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
+#install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
-%if %{with i18n}
+##%if %{with i18n}
 
-cd %{name}-i18n-%{version}
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir}
-cd ..
-%endif 
+#cd %{name}-i18n-%{version}
+##%{__make} install \
+#	DESTDIR=$RPM_BUILD_ROOT \
+#	kde_htmldir=%{_kdedocdir}
+#cd ..
+##%endif 
 
 %find_lang kchart		--with-kde
 %find_lang kformula		--with-kde
@@ -522,7 +526,8 @@ koconverter \
 kocryptfilter \
 kounavail \
 kscan_plugin \
-xsltimportfilter"
+xsltimportfilter \
+xsltfilter"
 
 for i in $plikez;
 do
@@ -533,6 +538,8 @@ done
 %find_lang karbon --with-kde
 %find_lang karbonepsfilter --with-kde
 cat karbonepsfilter.lang >> karbon.lang
+%find_lang kudesigner --with-kde
+cat kudesigner.lang >> karbon.lang
 
 kform="kformulalatexfilter \
 kformulamathmlfilter \
@@ -574,7 +581,8 @@ kwordmswritefilter \
 kwordoowriterfilter \
 kwordpdfimport \
 olefilterswinword97filter \
-thesaurus_tool"
+thesaurus_tool \
+kwordhtmlfilter"
 
 for i in $kword;
 do
@@ -606,7 +614,7 @@ rm -rf $RPM_BUILD_ROOT
 %postun common -p /sbin/ldconfig
 
 %if %{with i18n}
-%files  common-i18n     -f common.lang
+%files  common-i18n     -f koffice.lang
 %files  karbon-i18n     -f karbon.lang
 %files  kchart-i18n     -f kchart.lang
 %files  kformula-i18n   -f kformula.lang
