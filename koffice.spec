@@ -1,8 +1,5 @@
 # TODO: kformula to separate package
 #
-# Conditional build:
-# _with_pixmapsubdirs - leave different depth/resolution icons 
-#
 
 %define 	no_compress_doc 1
 Summary:	KOffice - powerful office suite for KDE
@@ -383,20 +380,12 @@ install koshell/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office
 # create in toplevel %%{_pixmapsdir} links to icons
 for i in $RPM_BUILD_ROOT%{_pixmapsdir}/hicolor/48x48/apps/k{arbon,chart,formula,ivio,ontour,presenter,spread,ugar,word}.png
 do
-%if %{?_with_pixmapsubdirs:1}%{!?_with_pixmapsubdirs:0}
 	ln -sf `echo $i | sed "s:^$RPM_BUILD_ROOT%{_pixmapsdir}/::"` $RPM_BUILD_ROOT%{_pixmapsdir}
-%else
-	cp -af $i $RPM_BUILD_ROOT%{_pixmapsdir}
-%endif
 done
 
-install %{SOURCE2}	$RPM_BUILD_ROOT%{_pixmapsdir}
+mv $RPM_BUILD_ROOT%{_pixmapsdir}/{l,L}ocolor
 
-# leave only best-resolution icons at the top level; the other are not
-# necessary - their absence should make KDE a bit faster...
-%if %{!?_with_pixmapsubdirs:1}%{?_with_pixmapsubdirs:0}
-rm -f $RPM_BUILD_ROOT%{_pixmapsdir}/*color/??x??/apps/k{arbon,chart,formula,ivio,ontour,presenter,spread,udesigner,ugar,word}.png
-%endif
+install %{SOURCE2}	$RPM_BUILD_ROOT%{_pixmapsdir}
 
 install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
@@ -523,7 +512,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*color/*x*/actions/sum.png
 %{_pixmapsdir}/*color/*x*/actions/onetwomatrix.png
 %{_pixmapsdir}/kformula.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*color/*x*/apps/kformula.png}
+%{_pixmapsdir}/*color/*x*/apps/kformula.png
 %{_datadir}/apps/kformula
 %{_datadir}/apps/koffice
 %{_datadir}/services/clipartthumbnail.desktop
@@ -576,7 +565,7 @@ rm -rf $RPM_BUILD_ROOT
 ##%{_datadir}/templates/Presentation.desktop
 %{_applnkdir}/Graphics/karbon.desktop
 %{_pixmapsdir}/karbon.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/karbon.png}
+%{_pixmapsdir}/*/*/apps/karbon.png
 %{_mandir}/man1/karbon.1
 
 #################################
@@ -590,7 +579,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kchart
 %{_applnkdir}/Office/Misc/kchart.desktop
 %{_pixmapsdir}/kchart.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kchart*.png}
+%{_pixmapsdir}/*/*/apps/kchart*.png
 %{_mandir}/man1/kchart.1
 
 #################################
@@ -604,7 +593,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Office/Misc/kivio.desktop
 %{_datadir}/apps/kivio
 %{_pixmapsdir}/kivio.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kivio*.png}
+%{_pixmapsdir}/*/*/apps/kivio*.png
 #%{_datadir}/mimelnk/application/x-kivio.desktop
 %{_datadir}/services/kivio*.desktop
 %{_mandir}/man1/kivio.1
@@ -632,7 +621,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/Illustration.desktop
 %{_applnkdir}/Graphics/kontour.desktop
 %{_pixmapsdir}/kontour.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/*/kontour.png}
+%{_pixmapsdir}/*/*/*/kontour.png
 %{_mandir}/man1/kontour.1
 
 #################################
@@ -651,7 +640,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kprkword.desktop
 %{_applnkdir}/Office/Presentation/kpresenter.desktop
 %{_pixmapsdir}/kpresenter.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kpresenter*.png}
+%{_pixmapsdir}/*/*/apps/kpresenter*.png
 %{_mandir}/man1/kpresenter.1
 %{_mandir}/man1/kprconverter.pl.1
 
@@ -675,8 +664,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/SpreadSheet.desktop
 %{_applnkdir}/Office/Spreadsheets/kspread.desktop
 %{_pixmapsdir}/kspread.png
-%{!?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kspreadc*.png}
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kspread*.png}
+%{_pixmapsdir}/*/*/apps/kspreadc*.png
+%{_pixmapsdir}/*/*/apps/kspread*.png
 %{_mandir}/man1/kspread.1
 
 #################################
@@ -693,8 +682,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kugar
 %{_pixmapsdir}/kudesigner.png
 %{_pixmapsdir}/kugar.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kudesigner.png}
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kugar*.png}
+%{_pixmapsdir}/*/*/apps/kudesigner.png
+%{_pixmapsdir}/*/*/apps/kugar*.png
 %{_datadir}/mimelnk/application/x-kudesigner.desktop
 #%{_datadir}/mimelnk/application/x-kugar.desktop
 %{_pixmapsdir}/*/*/mimetypes/*kugar*
@@ -739,7 +728,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Office/Wordprocessors/kword.desktop
 %{_applnkdir}/Office/Wordprocessors/kwmailmerge.desktop
 %{_pixmapsdir}/kword.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kword.png}
+%{_pixmapsdir}/*/*/apps/kword.png
 %{_datadir}/apps/xsltfilter/export/kword/xslfo/*.xsl
 %{_mandir}/man1/kthesaurus.1
 %{_mandir}/man1/kword.1
