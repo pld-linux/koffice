@@ -14,7 +14,7 @@ Summary(zh_CN):	KDE 的办公应用软件集。
 Name:		koffice
 # Version:	%{_ver}.%{_snap}
 Version:	%{_ver}
-Release:	0.1
+Release:	1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
