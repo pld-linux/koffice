@@ -362,7 +362,7 @@ install kspread/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Spreadsheets
 install kword/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Wordprocessors
 install kivio/kiviopart/k*.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 install kugar/part/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Presentation
-install kugar/kudesigner/k.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
+install kugar/kudesigner/k*.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 install kchart/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 
 install kformula/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
