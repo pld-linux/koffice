@@ -273,14 +273,14 @@ umo¿liwiaj±c ogl±danie raportu w przegl±darce Konqueror.
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
-%configure \
+%configure2_13 \
 	%{!?debug:--disable-debug} \
 	--enable-final
 
 %{__make} 
 
 cd %{name}-i18n-%{ver}
-%configure
+%configure2_13
 
 # broken languages
 for lang in ja zh_TW.Big5; do
