@@ -78,7 +78,7 @@ Summary(pl):	KOffice - wspó³dzielone pliki i biblioteki
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
-Requires:	kdelibs = %{version}
+Requires:	kdelibs >= 2.1.1
 
 %description common
 Package contains common files and libraries needs by KOffice
@@ -333,6 +333,15 @@ rm -rf $RPM_BUILD_ROOT
 %post kword	-p /sbin/ldconfig
 %postun kword	-p /sbin/ldconfig
 
+%post kivio	-p /sbin/ldconfig
+%postun kivio	-p /sbin/ldconfig
+
+%post krayon	-p /sbin/ldconfig
+%postun krayon	-p /sbin/ldconfig
+
+%post kugar	-p /sbin/ldconfig
+%postun kugar	-p /sbin/ldconfig
+
 #################################
 # koffice-common
 #################################
@@ -346,9 +355,16 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde2/libkformulapart.??
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/libkwmf.??
-%attr(755,root,root) %{_libdir}/kde2/lib*export*.??
-%attr(755,root,root) %{_libdir}/kde2/lib*import*.??
-%attr(755,root,root) %{_libdir}/kde2/lib*filter*.??
+%attr(755,root,root) %{_libdir}/kde2/libabiword*.??
+%attr(755,root,root) %{_libdir}/kde2/libapplix**.??
+%attr(755,root,root) %{_libdir}/kde2/libascii*.??
+%attr(755,root,root) %{_libdir}/kde2/libdocbookexport.??
+%attr(755,root,root) %{_libdir}/kde2/libhtml*po*.??
+%attr(755,root,root) %{_libdir}/kde2/liblatexexport.??
+%attr(755,root,root) %{_libdir}/kde2/libmsodimport.??
+%attr(755,root,root) %{_libdir}/kde2/libolefilter.??
+%attr(755,root,root) %{_libdir}/kde2/librtf*po*.??
+%attr(755,root,root) %{_libdir}/kde2/libwmf*po*.??
 %attr(755,root,root) %{_libdir}/kde2/libkprkword.??
 %{_applnkdir}/Office/koshell.desktop
 %{_applnkdir}/Office/Misc/kformula.desktop
@@ -433,6 +449,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kspread
 %attr(755,root,root) %{_libdir}/kspread.??
 %attr(755,root,root) %{_libdir}/kde2/libkspread*.??
+%attr(755,root,root) %{_libdir}/kde2/libcsv*.??
 %{_datadir}/apps/kspread
 %{_datadir}/mimelnk/application/x-kspread.desktop
 %{_datadir}/services/kspread*.desktop
