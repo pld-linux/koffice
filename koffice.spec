@@ -4,7 +4,7 @@
 
 %define		_state		snapshots
 %define		_ver		1.3.90
-%define		_snap		040516
+%define		_snap		040525
 %define		artsver		13:1.2.0
 %define		_packager	adgor	
 
@@ -427,7 +427,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkexirelationsview.so
 %{_libdir}/libkexisql.so
 %{_libdir}/libkformeditor.so
-%{_libdir}/libkformula.so
+%{_libdir}/libkformulalib.so
 %{_libdir}/libkiviocommon.so
 %{_libdir}/libkochart.so
 %{_libdir}/libkofficecore.so
@@ -485,8 +485,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkexisql.so.*.*.*
 %{_libdir}/libkformeditor.la
 %attr(755,root,root) %{_libdir}/libkformeditor.so.*.*.*
-%{_libdir}/libkformula.la
-%attr(755,root,root) %{_libdir}/libkformula.so.*.*.*
+%{_libdir}/libkformulalib.la
+%attr(755,root,root) %{_libdir}/libkformulalib.so.*.*.*
 %{_libdir}/libkiviocommon.la
 %attr(755,root,root) %{_libdir}/libkiviocommon.so.*.*.*
 %{_libdir}/libkochart.la
@@ -644,8 +644,10 @@ rm -rf $RPM_BUILD_ROOT
 %files kformula -f kformula.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kformula
-#%{_libdir}/kde3/kformula*.la
-#%attr(755,root,root) %{_libdir}/kde3/kformula*.so
+%{_libdir}/libkdeinit_kformula.la
+%attr(755,root,root) %{_libdir}/libkdeinit_kformula.so
+%{_libdir}/kde3/kformula.la
+%attr(755,root,root) %{_libdir}/kde3/kformula.so
 %{_libdir}/kde3/libkfo*.la
 %attr(755,root,root) %{_libdir}/kde3/libkfo*.so
 %{_datadir}/apps/kformula
