@@ -38,7 +38,7 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtiff-devel
-BuildRequires:	mysql-devel >= 4.0.16
+BuildRequires:	mysql-devel
 BuildRequires:	perl
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	zlib-devel
