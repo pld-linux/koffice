@@ -8,7 +8,7 @@
 
 %define		_state		snapshots
 %define		_ver		1.2.93
-%define		_snap		031006
+%define		_snap		031014
 
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
@@ -24,7 +24,7 @@ License:	GPL
 Group:		X11/Applications
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	0893a7de89919107389574676013d37e
+# Source0-md5:	cb8aa556e7ca05cb04d879d1e215dea8
 Patch0:		%{name}-vcategories.patch
 URL:		http://www.koffice.org/
 BuildRequires:	fam-devel
@@ -722,7 +722,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kugar_kugar_import.desktop
 #%{_iconsdir}/*/*/*/kudesigner.png
 %{_iconsdir}/*/*/*/kugar.png
-%{_iconsdir}/*/*/mimetypes/*kugar*
+# conflicts with kdelibs
+#%{_iconsdir}/*/*/mimetypes/kugardata.png
 %{_mandir}/man1/kudesigner.1*
 %{_mandir}/man1/kugar.1*
 
