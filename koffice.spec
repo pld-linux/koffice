@@ -1,10 +1,11 @@
 #
 # Conditional build:
+%bcond_without  apidocs # do not prepare API documentation
 %bcond_with	i18n	# disable i18n (26MB less to download)
 #
 %define		_state		snapshots
 %define		_ver		1.3
-%define		_snap		040217
+%define		_snap		040327
 %define		artsver		13:1.2.0
 
 Summary:	KOffice - powerful office suite for KDE
@@ -15,7 +16,7 @@ Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
 Version:	%{_ver}.%{_snap}
-Release:	3
+Release:	1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
@@ -26,6 +27,7 @@ Source0:	%{name}.tar.bz2
 #Source1:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
 ##%% Source1-md5:	ca89c9c944508de11ca2908eb0a851e4
 Patch0:		%{name}-vcategories.patch
+Patch1:		kde-common-QTDOCDIR.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
@@ -39,6 +41,7 @@ BuildRequires:	libtiff-devel
 BuildRequires:	mysql-devel
 BuildRequires:	perl-base
 BuildRequires:	python-devel >= 2.2
+%{?with_apidocs:BuildRequires:  qt-doc}
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	wv2-devel >= 0.0.7
 BuildRequires:	zlib-devel
@@ -102,6 +105,18 @@ programów u¿ywaj±cych bibliotek KOffice.
 %description devel -l pt_BR
 Arquivos de inclusão necessários à compilação de aplicações que usem
 as bibliotecas do koffice.
+
+%package apidocs
+Summary:	API documentation
+Summary(pl):	Dokumentacja API
+Group:		Development/Docs
+Requires:	kdelibs >= 9:3.2.90
+
+%description apidocs
+API documentation.
+
+%description apidocs -l pl
+Dokumentacja API.
 
 %package common
 Summary:	KOffice - common files and libraries
@@ -459,13 +474,15 @@ Pliki umiêdzynarodawiaj±ce dla kworda.
 %setup -q -n %{name}
 %endif
 %patch0 -p1
+%patch1 -p1
+
+echo "KDE_OPTIONS = nofinal" >> kexi/kexidb/parser/Makefile.am
+echo "KDE_OPTIONS = nofinal" >> krita/ui/Makefile.am
 
 %build
 cp /usr/share/automake/config.sub admin
 
 export UNSERMAKE=/usr/share/unsermake/unsermake
-
-echo "KDE_OPTIONS = nofinal" >> kexi/kexidb/parser/Makefile.am
 
 %{__make} -f admin/Makefile.common cvs
 
@@ -477,6 +494,8 @@ export DO_NOT_COMPILE="$DO_NOT_COMPILE kdgantt"
 	--with-qt-libraries=%{_libdir}
 
 %{__make}
+
+%{?with_apidocs:%{__make} apidox}
 
 %if %{with i18n}
 cd %{name}-i18n-%{version}
@@ -491,9 +510,16 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
+# Workaround for doc caches (unsermake bug?)
+cd doc
+for i in `find . -name index.cache.bz2`; do
+	install -c -p -m 644 $i $RPM_BUILD_ROOT%{_kdedocdir}/en/$i
+done
+cd -	 
+
 install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
 
-mv $RPM_BUILD_ROOT{/usr/share/applnk/Office/*,%{_desktopdir}/kde}
+mv $RPM_BUILD_ROOT{%{_datadir}/applnk/Office/*,%{_desktopdir}/kde}
 
 install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
@@ -638,7 +664,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%lang(en) %{_kdedocdir}/en/%{name}-apidocs
 %{_libdir}/libkarbonbase.so
 %{_libdir}/libkdchart.so
 #%{_libdir}/libkdgantt.so
@@ -654,6 +679,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkexisql.so
 #%{_libdir}/libkformeditor.so
 %{_libdir}/libkformula.so
+%{_libdir}/libkiviocommon.so
 %{_libdir}/libkochart.so
 %{_libdir}/libkofficecore.so
 %{_libdir}/libkofficeui.so
@@ -669,6 +695,12 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkwordexportfilters.so
 %{_includedir}/*.h
 %{_includedir}/kword
+
+%if %{with apidocs}
+%files apidocs
+%defattr(644,root,root,755)
+%{_kdedocdir}/en/%{name}-apidocs
+%endif
 
 %files common -f koffice_en.lang
 %defattr(644,root,root,755)
@@ -701,6 +733,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkexisql.so.*.*.*
 %{_libdir}/libkformula.la
 %attr(755,root,root) %{_libdir}/libkformula.so.*.*.*
+%{_libdir}/libkiviocommon.la
+%attr(755,root,root) %{_libdir}/libkiviocommon.so.*.*.*
 %{_libdir}/libkochart.la
 %attr(755,root,root) %{_libdir}/libkochart.so.*.*.*
 %{_libdir}/libkofficecore.la
@@ -878,6 +912,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/straight_connector.la
 %attr(755,root,root) %{_libdir}/kde3/straight_connector.so
 %{_datadir}/apps/kivio
+%{_datadir}/config.kcfg/kivio.kcfg
 %{_datadir}/services/kivio*.desktop
 %{_desktopdir}/kde/kivio.desktop
 %{_iconsdir}/*/*/apps/kivio.png
@@ -918,11 +953,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/*krita*.so
 %{_libdir}/kde3/*magick*port.la
 %attr(755,root,root) %{_libdir}/kde3/*magick*port.so
-%{_libdir}/libkisp_example.la
-%attr(755,root,root) %{_libdir}/libkisp_example.so
-%dir %{_datadir}/apps/krayon
-%dir %{_datadir}/apps/krayon/plugins
-%{_datadir}/apps/krayon/plugins/example.kisplugin
+%{_libdir}/kde3/colorsfilters.la
+%attr(755,root,root) %{_libdir}/kde3/colorsfilters.so
+#%{_libdir}/libkisp_example.la
+#%attr(755,root,root) %{_libdir}/libkisp_example.so
+#%dir %{_datadir}/apps/krayon
+#%dir %{_datadir}/apps/krayon/plugins
+#%{_datadir}/apps/krayon/plugins/example.kisplugin
 %{_datadir}/apps/krita
 %{_datadir}/services/krita_magick_import.desktop
 %{_datadir}/services/kritapart.desktop
