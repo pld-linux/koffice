@@ -6,8 +6,10 @@
 # check what changes take place if compiled with qsa and aspell
 # check reqs
 
-%define		_snap		030613
-%define 	no_compress_doc 1
+%define		_state		snapshots
+%define		_ver		1.2.91
+%define		_snap		030618
+
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
 Summary(pt_BR):	Suíte de aplicativos office para o KDE
@@ -15,15 +17,14 @@ Summary(ru):	îÁÂÏÒ ÏÆÆÉÓÎÙÈ ÐÒÏÇÒÁÍÍ ÄÌÑ KDE
 Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
-Version:	1.3
-Release:	0.%{_snap}.1
-Epoch:		4
+Version:	%{_ver}.%{_snap}
+Release:	1
+Epoch:		5
 License:	GPL
 Group:		X11/Applications
-#Source0:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
-#Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	ae092c9753b2afae785f5eb668947c45
+# Source0-md5:	0daaceff1ab012e93d2a7a185146e492
 Patch0:		%{name}-vcategories.patch
 URL:		http://www.koffice.org/
 BuildRequires:	XFree86-devel
@@ -31,7 +32,7 @@ BuildRequires:	arts-kde-devel
 BuildRequires:	fam-devel
 BuildRequires:	wv2-devel >= 0.0.7
 BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel >= 3.2
+BuildRequires:	kdelibs-devel >= 8:3.2
 BuildRequires:	libart_lgpl-devel >= 2.3.8
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
@@ -171,7 +172,7 @@ Summary:	KOffice - KChart
 Summary(pl):	KOffice - KChart
 Summary(pt_BR):	Gerador de diagramas do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kchart
 KChart is KOffice part for generating diagrams from data, e.g. pie and
@@ -187,7 +188,7 @@ Gerador de diagramas do KOffice.
 Summary:        KOffice - Kexi
 Summary(pl):    KOffice - Kexi
 Group:          X11/Applications
-Requires:       %{name}-common = %{version}
+Requires:       %{name}-common = %{epoch}:%{version}-%{release}
 Requires:	mysql-libs
 
 %description kexi 
@@ -201,7 +202,7 @@ takich jak mysql.
 Summary:        KOffice - kformula
 Summary(pl):    KOffice - kformula
 Group:          X11/Applications
-Requires:       %{name}-common = %{version}
+Requires:       %{name}-common = %{epoch}:%{version}-%{release}
 
 %description kformula
 KFormula is KOffice part for creating formulas, equations, etc...
@@ -214,7 +215,7 @@ Summary:	KOffice - kivio
 Summary(pl):	KOffice - kivio
 Summary(pt_BR):	Editor de fluxogramas do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kivio
 Kivio on the surface is your everyday flowcharting program. Underneath
@@ -240,7 +241,7 @@ Summary:	KOffice - Krita
 Summary(pl):	KOffice - Krita
 Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 Obsoletes:	koffice-killustrator
 
 %description krita
@@ -268,7 +269,7 @@ Ferramenta de desenho vetorial do KOffice.
 Summary:	KOffice - KPresenter
 Summary(pl):	KOffice - KPresenter
 Group:		X11/Applications
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kpresenter
 KPresenter is a presentation application of the KOffice, similar to MS
@@ -284,7 +285,7 @@ Summary:	KOffice - KSpread
 Summary(pl):	KOffice - KSpread
 Summary(pt_BR):	Planilha eletrônica do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kspread
 KSpread is the spread sheet of the KOffice, similar to MS Excel.
@@ -300,7 +301,7 @@ Summary:	KOffice - KUgar
 Summary(pl):	KOffice - KUgar
 Summary(pt_BR):	Gerador de relatórios do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kugar
 Kugar is a KDE tool for generating business quality reports which can
@@ -322,7 +323,7 @@ Summary:	KOffice - KWord
 Summary(pl):	KOffice - KWord
 Summary(pt_BR):	Processador de texto do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kword
 KWord is a FrameMaker-like wordprocessor application for KOffice. So
@@ -480,6 +481,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libolefilter.so
 %{_datadir}/servicetypes/*
 %{_datadir}/apps/koffice
+%dir %{_datadir}/apps/kontour
+%dir %{_datadir}/apps/kontour/kpartplugins
+%{_datadir}/apps/kontour/kpartplugins/scan-kontour.rc
 %{_datadir}/apps/koshell
 %{_datadir}/services/clipartthumbnail.desktop
 %{_datadir}/services/kfile_koffice.desktop
@@ -501,26 +505,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/koconverter.1*
 %{_mandir}/man1/koscript.1*
 %{_mandir}/man1/koshell.1*
-
-### TODO ###
-
-%{_libdir}/libkisp_example.la
-%attr(755,root,root) %{_libdir}/libkisp_example.so
-%{_libdir}/kde3/containers.la
-%attr(755,root,root) %{_libdir}/kde3/containers.so
-%{_libdir}/kde3/libpdfimport.la
-%attr(755,root,root) %{_libdir}/kde3/libpdfimport.so
-%{_libdir}/kde3/sml_connector.la
-%attr(755,root,root) %{_libdir}/kde3/sml_connector.so
-%{_libdir}/kde3/straight_connector.la
-%attr(755,root,root) %{_libdir}/kde3/straight_connector.so
-
-#%{_datadir}/apps/kontour/kpartplugins/scan-kontour.rc
-%{_datadir}/apps/kontour
-#%{_datadir}/apps/krayon/plugins/example.kisplugin
-%{_datadir}/apps/krayon
-
-###
 
 %files karbon
 %defattr(644,root,root,755)
@@ -558,6 +542,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
 %{_libdir}/*kexi*.la
 %attr(755,root,root) %{_libdir}/*kexi*.so
+%{_libdir}/kde3/containers.la
+%attr(755,root,root) %{_libdir}/kde3/containers.so
 %{_datadir}/apps/kexi
 %{_datadir}/apps/kformdesigner
 %{_desktopdir}/kformdesigner.desktop
@@ -626,6 +612,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/*kivio*.so
 %{_libdir}/kde3/*kivio*.la
 %attr(755,root,root) %{_libdir}/kde3/*kivio*.so
+%{_libdir}/kde3/sml_connector.la
+%attr(755,root,root) %{_libdir}/kde3/sml_connector.so
+%{_libdir}/kde3/straight_connector.la
+%attr(755,root,root) %{_libdir}/kde3/straight_connector.so
 %{_datadir}/apps/kivio
 %{_datadir}/services/kivio*.desktop
 %{_desktopdir}/kivio.desktop
@@ -663,6 +653,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/*krita*.so
 %{_libdir}/kde3/*magick*port.la
 %attr(755,root,root) %{_libdir}/kde3/*magick*port.so
+%{_libdir}/libkisp_example.la
+%attr(755,root,root) %{_libdir}/libkisp_example.so
+%dir %{_datadir}/apps/krayon
+%dir %{_datadir}/apps/krayon/plugins
+%{_datadir}/apps/krayon/plugins/example.kisplugin
 %{_datadir}/apps/krita
 %{_datadir}/services/krita_magick_import.desktop
 #%{_datadir}/templates/.source/Illustration.kil
@@ -747,6 +742,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libpalmdoc*port.so
 %{_libdir}/kde3/libamipro*port.la
 %attr(755,root,root) %{_libdir}/kde3/libamipro*port.so
+%{_libdir}/kde3/libpdfimport.la
+%attr(755,root,root) %{_libdir}/kde3/libpdfimport.so
 %{_libdir}/kde3/libwml*port.la
 %attr(755,root,root) %{_libdir}/kde3/libwml*port.so
 %{_libdir}/kde3/libkspelltool.la
