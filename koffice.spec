@@ -8,7 +8,7 @@ Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
 Version:	1.2
-Release:	3
+Release:	4
 Epoch:		4
 License:	GPL
 Group:		X11/Applications
@@ -161,7 +161,7 @@ Summary(pl):    KOffice - Karbon
 Group:          X11/Applications
 Requires:       %{name}-common = %{version}
 #karbon has changed its named (again) to curt therefore in the future:
-Obsoletes: koffice-krayon
+Obsoletes:	koffice-krayon
 
 %description karbon
 Karbon is a vector graphics application within koffice.
@@ -221,6 +221,7 @@ Summary(pl):	KOffice - Kontour
 Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
 Group:		X11/Applications
 Requires:	%{name}-common = %{version}
+Obsoletes:	koffice-killustrator
 
 %description kontour
 Kontour is the vector drawing program for the K Desktop Environment.
@@ -431,31 +432,31 @@ cat kudesigner.lang >> kugar.lang
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post common	-p /sbin/ldconfig
+%post	common	-p /sbin/ldconfig
 %postun common	-p /sbin/ldconfig
 
-%post karbon   -p /sbin/ldconfig
-%postun karbon -p /sbin/ldconfig
+%post	karbon	-p /sbin/ldconfig
+%postun karbon	-p /sbin/ldconfig
 
-%post kchart	-p /sbin/ldconfig
+%post	kchart	-p /sbin/ldconfig
 %postun kchart	-p /sbin/ldconfig
 
-%post kontour	-p /sbin/ldconfig
+%post	kontour	-p /sbin/ldconfig
 %postun kontour	-p /sbin/ldconfig
 
-%post kpresenter	-p /sbin/ldconfig
+%post	kpresenter	-p /sbin/ldconfig
 %postun kpresenter	-p /sbin/ldconfig
 
-%post kspread	-p /sbin/ldconfig
+%post	kspread	-p /sbin/ldconfig
 %postun kspread	-p /sbin/ldconfig
 
-%post kword	-p /sbin/ldconfig
+%post	kword	-p /sbin/ldconfig
 %postun kword	-p /sbin/ldconfig
 
-%post kivio	-p /sbin/ldconfig
+%post	kivio	-p /sbin/ldconfig
 %postun kivio	-p /sbin/ldconfig
 
-%post kugar	-p /sbin/ldconfig
+%post	kugar	-p /sbin/ldconfig
 %postun kugar	-p /sbin/ldconfig
 
 #################################
@@ -542,7 +543,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/karbon
 %attr(755,root,root) %{_libdir}/karbon.??
-%attr(755,root,root) %{_libdir}/libkugar.la
 %attr(755,root,root) %{_libdir}/kde3/libkarbonpart.??
 %attr(755,root,root) %{_libdir}/kde3/libkarbon*import*
 %attr(755,root,root) %{_libdir}/kde3/libkarbon*export*
@@ -601,7 +601,6 @@ rm -rf $RPM_BUILD_ROOT
 #%attr(755,root,root) %{_libdir}/kde3/libxfigimport.??
 %{_datadir}/apps/kontour
 %{_datadir}/services/kontour*.desktop
-%{_datadir}/services/kprkword.desktop
 #%{_datadir}/mimelnk/image/x-svg.desktop
 %{_datadir}/templates/.source/Illustration.kil
 %{_datadir}/templates/Illustration.desktop
@@ -623,6 +622,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kpresenter
 %{_datadir}/templates/.source/Presentation.kpt
 %{_datadir}/templates/Presentation.desktop
+%{_datadir}/services/kprkword.desktop
 %{_applnkdir}/Office/Presentation/kpresenter.desktop
 %{_pixmapsdir}/kpresenter.png
 #%{_pixmapsdir}/*/*/apps/kpresenter*.png
@@ -702,7 +702,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/thesaurus
 %{_datadir}/services/kspelltool.desktop
 %{_datadir}/services/kword*.desktop
-%{_datadir}/services/kprkword.desktop
 %{_datadir}/services/kwserialletter*
 %{_datadir}/services/thesaurustool.desktop
 %{_datadir}/templates/.source/TextDocument.kwt
