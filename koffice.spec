@@ -27,7 +27,6 @@ BuildRequires:	libstdc++-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	perl
 BuildRequires:	python-devel >= 2.2
-BuildRequires:	qt-devel >= 2.3.0
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
