@@ -1,13 +1,13 @@
-%define		REV	20000420
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
 Name:		koffice
-Version:	2.0
-Release:	1.pre_%{REV}
+Version:	1.94
+Release:	1
 License:	GPL
 Group:		X11/KDE/Applications
 Group(pl):	X11/KDE/Aplikacje
-Source:		ftp://ftp.kde.org/pub/kde/snapshots/current/%{name}-%{REV}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/unstable/%{name}-%{version}.tar.bz2
+Patch0:		%{name}-applnkdir.patch
 URL:		http://koffice.kde.org/
 BuildPrereq:	kdelibs-devel = %{version}
 BuildPrereq:	libstdc++-devel
@@ -26,9 +26,6 @@ KOffice contains:
 * KPresenter - presentations
 * KChart - diagram generator
 * KIllustrator - vector drawing
-* KImage - image viewer
-* KImageShop - image processor
-* KGraph - technical graphs processor
 
 %description -l pl
 KOffice jest zintegrowanym pakietem biurowym dla ¶rodowiska KDE 2.0.
@@ -38,9 +35,6 @@ Pakiet miêdzy innymi zawiera:
 * KPresenter - tworzenie prezentacji
 * KChart - generator wykresów
 * KIllustrator - grafika wektorowa
-* KImage - przegl±darka rysunków
-* KImageShop - procesor rysunków
-* KGraph - procesor rysunków techniczych
 
 #################################
 # koffice-devel
@@ -92,22 +86,6 @@ charts.
 KChart jest aplikacj± s³u¿±c± do generowania wykresów.
 
 #################################
-# koffice-kgraph
-#################################
-%package kgraph
-Summary:	KOffice - KGraph
-Summary(pl):	KOffice - KGraph
-Group:		X11/KDE/Applications
-Group(pl):	X11/KDE/Aplikacje
-Requires:	%{name}-common = %{version}
-
-%description kgraph
-KGraph - graphs for engineers.
-
-%description -l pl kgraph
-KGraph - program graficzny dla in¿ynierów.
-
-#################################
 # koffice-killustrator
 #################################
 %package killustrator
@@ -126,49 +104,6 @@ vector-based drawing application similar to Corel Draw or Adobe Illustrator.
 Killustrator jest programem do tworzenia grafiki wektorowej dla ¶rodowiska KDE.
 Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni funkcjonalnego
 programu do grafiki wektorowej podobnego do Corel Draw lub Adobe Illustrator.
-
-#################################
-# koffice-kimage
-#################################
-%package kimage
-Summary:	KOffice - KImage
-Summary(pl):	KOffice - KImage
-Group:		X11/KDE/Applications
-Group(pl):	X11/KDE/Aplikacje
-Requires:	%{name}-common = %{version}
-
-%description kimage
-KImage is KOffice image viewer. It's used to embed images in other KOffice
-applications and can show all image formats that are supported by Qt and KDE.
-It can also adjust an image to a appropriate size.
-
-%description -l pl kimage
-KImage jest przegl±dark± plików graficznych. S³u¿y do wklejania rysunków w
-innych aplikacjach KOffice i mo¿e pokazaæ rysunki we szystkich formatach,
-które s± obs³ugiwane przez Qt i KDE. Program posiada równie¿ mo¿liwo¶æ
-zmiany formatu rysunku.
-
-#################################
-# koffice-kimageshop
-#################################
-%package kimageshop
-Summary:	KOffice - KImageShop
-Summary(pl):	KOffice - KImageShop
-Group:		X11/KDE/Applications
-Group(pl):	X11/KDE/Aplikacje
-Requires:	%{name}-common = %{version}
-
-%description kimageshop
-KImageShop is the image processor for the KOffice suite. It's suitable for all
-your image creation and editing needs. Perfect for making web images, touching
-up your scanned photographs, creating original art, or anything else you might 
-need.
-
-%description -l pl kimageshop
-KImageShop jest programem tworzenia i obróbki grafiki rastowej dla KOffice.
-Jest to porêczne narzêdzie do robienia grafiki dla srton WWW, obróbki
-skanowanych fotografii i tworzenia w³asnych dzie³ oraz wszystkiego 
-czego mo¿esz chcieæ.
 
 #################################
 # koffice-kpresenter
@@ -227,31 +162,33 @@ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 ######################## end descriptions ########################
 
 %prep
-%setup -q -n %{name}
+%setup -q
+%patch0 -p1
 
 %build
 %{__make} -f Makefile.cvs
-
-CXXFLAGS="$RPM_OPT_FLAGS -Wall"
-LDFLAGS="-s"
-export LDFLAGS CXXFLAGS
 %configure \
-	--enable-final \
 	--disable-path-check
 
-%{__make} -i LD_LIBRARY_PATH="/usr/X11R6/lib"
+%{__make} LD_LIBRARY_PATH="/usr/X11R6/lib"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT
 
-%{__make} -i \
+%{__make} \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_icondir=%{_pixmapsdir} \
+	kchartdir=%{_applnkdir}/Office/Misc \
+	killustratordir=%{_applnkdir}/Graphics \
+	koshelldir=%{_applnkdir}/Office/Misc \
+	kpresenterdir=%{_applnkdir}/Office/Presentations \
+	kspreaddir=%{_applnkdir}/Office/Spreadsheets \
+	kworddir=%{_applnkdir}/Office/Wordprocessors \
 	install
 
-strip --strip-unneeded $RPM_BUILD_ROOT%{_bindir}/* || :
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/*.so* || :
+# workaround (this files contains kdelib)
+rm -rf $RPM_BUILD_ROOT%{_pixmapsdir}/locolor/16x16/actions/{bottom,rotate,top,wizard}.png
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -262,17 +199,8 @@ rm -rf $RPM_BUILD_ROOT
 %post kchart	-p /sbin/ldconfig
 %postun kchart	-p /sbin/ldconfig
 
-%post kgraph	-p /sbin/ldconfig
-%postun kgraph	-p /sbin/ldconfig
-
 %post killustrator	-p /sbin/ldconfig
 %postun killustrator	-p /sbin/ldconfig
-
-%post kimage	-p /sbin/ldconfig
-%postun kimage	-p /sbin/ldconfig
-
-%post kimageshop	-p /sbin/ldconfig
-%postun kimageshop	-p /sbin/ldconfig
 
 %post kpresenter	-p /sbin/ldconfig
 %postun kpresenter	-p /sbin/ldconfig
@@ -288,14 +216,21 @@ rm -rf $RPM_BUILD_ROOT
 #################################
 %files common
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/koscript
+%attr(755,root,root) %{_bindir}/koshell
+%attr(755,root,root) %{_bindir}/kprconverter.pl
+%attr(755,root,root) %{_libdir}/koshell.so
+%{_libdir}/koshell.la
 %attr(755,root,root) %{_libdir}/libolefilter.so
+%{_libdir}/libolefilter.la
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
-%dir %{_applnkdir}/Applications/KOffice
 %{_datadir}/apps/koffice
 %{_htmldir}/en/doc/*
-%{_htmldir}/en/katabase
 %{_htmldir}/en/koffice
 %{_datadir}/servicetypes/*
+%{_datadir}/services/kodocinfopropspage.desktop
+%{_pixmapsdir}/locolor/*x*/actions/*
+%{_pixmapsdir}/hicolor/*x*/actions/*
 
 #################################
 # koffice-devel
@@ -303,11 +238,19 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %{_includedir}/*.h
-%{_libdir}/*.la
+%{_libdir}/libkformula.la
+%{_libdir}/libkodocinfopropspage.la
+%{_libdir}/libkofficecore.la
+%{_libdir}/libkofficeui.la
+%{_libdir}/libkoml.la
+%{_libdir}/libkoscript.la
+%{_libdir}/libkstore.la
+%{_libdir}/libkformula.so
+%{_libdir}/libkodocinfopropspage.so
 %{_libdir}/libkofficecore.so
 %{_libdir}/libkofficeui.so
 %{_libdir}/libkoml.so
-%{_libdir}/libkscript.so
+%{_libdir}/libkoscript.so
 %{_libdir}/libkstore.so
 
 #################################
@@ -316,21 +259,15 @@ rm -rf $RPM_BUILD_ROOT
 %files kchart
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kchart
-%attr(755,root,root) %{_libdir}/libkchart.so
+%attr(755,root,root) %{_libdir}/kchart.so
+%{_libdir}/kchart.la
+%attr(755,root,root) %{_libdir}/libkchartpart.so
+%{_libdir}/libkchartpart.la
 %{_datadir}/apps/kchart
-%{_applnkdir}/Applications/KOffice/kchart.desktop
+%{_applnkdir}/Office/Misc/kchart.desktop
 %{_datadir}/mimelnk/application/x-kchart.desktop
-
-#################################
-# koffice-kgraph
-#################################
-%files kgraph
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kgraph
-%attr(755,root,root) %{_libdir}/libkgraph.so
-%{_datadir}/apps/kgraph
-%{_applnkdir}/Applications/KOffice/kgraph.desktop
-%{_datadir}/mimelnk/application/x-kgraph.desktop
+%{_pixmapsdir}/locolor/*x*/apps/kchart.png
+%{_pixmapsdir}/hicolor/*x*/apps/kchart.png
 
 #################################
 # koffice-killustrator
@@ -338,35 +275,16 @@ rm -rf $RPM_BUILD_ROOT
 %files killustrator
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/killustrator
-%attr(755,root,root) %{_libdir}/libkillustrator.so
+%attr(755,root,root) %{_libdir}/killustrator.so
+%{_libdir}/killustrator.la
+%attr(755,root,root) %{_libdir}/libkillustratorpart.so
+%{_libdir}/libkillustratorpart.la
 %{_datadir}/apps/killustrator
 %{_htmldir}/en/killustrator
-%{_applnkdir}/Applications/KOffice/killustrator.desktop
+%{_applnkdir}/Graphics/killustrator.desktop
 %{_datadir}/mimelnk/application/x-killustrator.desktop
 %{_pixmapsdir}/locolor/*x*/apps/killustrator.png
 %{_pixmapsdir}/hicolor/*x*/apps/killustrator.png
-
-#################################
-# koffice-kimage
-#################################
-%files kimage
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kimage
-%attr(755,root,root) %{_libdir}/libkimage.so
-%{_datadir}/apps/kimage
-%{_applnkdir}/Applications/KOffice/kimage.desktop
-%{_datadir}/mimelnk/application/x-kimage.desktop
-
-#################################
-# koffice-kimageshop
-#################################
-%files kimageshop
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kimageshop
-%attr(755,root,root) %{_libdir}/libkimageshop.so
-%{_datadir}/apps/kimageshop
-%{_applnkdir}/Applications/KOffice/kimageshop.desktop
-%{_datadir}/mimelnk/application/x-kimageshop.desktop
 
 #################################
 # koffice-kpresenter
@@ -374,12 +292,14 @@ rm -rf $RPM_BUILD_ROOT
 %files kpresenter
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kpresenter
-%attr(755,root,root) %{_libdir}/libkpresenter.so
+%attr(755,root,root) %{_libdir}/kpresenter.so
+%{_libdir}/kpresenter.la
+%attr(755,root,root) %{_libdir}/libkpresenterpart.so
+%{_libdir}/libkpresenterpart.la
 %{_datadir}/apps/kpresenter
 %{_htmldir}/en/kpresenter
-%{_applnkdir}/Applications/KOffice/kpresenter.desktop
+%{_applnkdir}/Office/Presentations/kpresenter.desktop
 %{_datadir}/mimelnk/application/x-kpresenter.desktop
-%{_datadir}/mimelnk/application/x-powerpoint97.desktop
 %{_datadir}/services/ole_powerpoint97_import.desktop
 %{_pixmapsdir}/locolor/*x*/apps/kpresenter.png
 %{_pixmapsdir}/hicolor/*x*/apps/kpresenter.png
@@ -389,12 +309,17 @@ rm -rf $RPM_BUILD_ROOT
 #################################
 %files kspread
 %defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/kspread
-#%attr(755,root,root) %{_libdir}/
+%attr(755,root,root) %{_bindir}/kspread
+%attr(755,root,root) %{_libdir}/kspread.so
+%{_libdir}/kspread.la
+%attr(755,root,root) %{_libdir}/libkspreadpart.so
+%{_libdir}/libkspreadpart.la
+%attr(755,root,root) %{_libdir}/libkspreadcalc.so
+%{_libdir}/libkspreadcalc.la
 %{_datadir}/apps/kspread
-%{_applnkdir}/Applications/KOffice/kspread.desktop
-%{_datadir}/mimelnk/application/x-excel97.desktop
+%{_applnkdir}/Office/Spreadsheets/kspread.desktop
 %{_datadir}/mimelnk/application/x-kspread.desktop
+%{_datadir}/services/kspread*.desktop
 %{_datadir}/services/ole_excel97_import.desktop
 %{_pixmapsdir}/locolor/*x*/apps/kspread.png
 %{_pixmapsdir}/hicolor/*x*/apps/kspread.png
@@ -406,22 +331,32 @@ rm -rf $RPM_BUILD_ROOT
 %files kword
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kword
-%attr(755,root,root) %{_libdir}/libkword.so
+%attr(755,root,root) %{_libdir}/kword.so
+%{_libdir}/kword.la
+%attr(755,root,root) %{_libdir}/libkwordpart.so
+%{_libdir}/libkwordpart.la
 %attr(755,root,root) %{_libdir}/libasciiexport.so
+%{_libdir}/libasciiexport.la
 %attr(755,root,root) %{_libdir}/libasciiimport.so
+%{_libdir}/libasciiimport.la
+%attr(755,root,root) %{_libdir}/libcsvexport.so
+%{_libdir}/libcsvexport.la
+%attr(755,root,root) %{_libdir}/libcsvimport.so
+%{_libdir}/libcsvimport.la
+%attr(755,root,root) %{_libdir}/libcsvfilterdia.so
+%{_libdir}/libcsvfilterdia.la
 %attr(755,root,root) %{_libdir}/libhtmlexport.so
+%{_libdir}/libhtmlexport.la
 %attr(755,root,root) %{_libdir}/libhtmlimport.so
+%{_libdir}/libhtmlimport.la
 %attr(755,root,root) %{_libdir}/libkspelltool.so
+%{_libdir}/libkspelltool.la
 %{_datadir}/apps/kword
 %{_htmldir}/en/kword
-%{_applnkdir}/Applications/KOffice/kword.desktop
+%{_applnkdir}/Office/Wordprocessors/kword.desktop
 %{_datadir}/mimelnk/application/x-kword.desktop
-%{_datadir}/mimelnk/application/x-winword97.desktop
 %{_datadir}/services/kspelltool.desktop
-%{_datadir}/services/kword_ascii_export.desktop
-%{_datadir}/services/kword_ascii_import.desktop
-%{_datadir}/services/kword_html_export.desktop
-%{_datadir}/services/kword_html_import.desktop
+%{_datadir}/services/kword*.desktop
 %{_datadir}/services/ole_winword97_import.desktop
 %{_pixmapsdir}/locolor/*x*/apps/kword.png
 %{_pixmapsdir}/hicolor/*x*/apps/kword.png
