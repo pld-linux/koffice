@@ -1,0 +1,10 @@
+--- koffice-031024/kexi/kexidb/drivers/mySQL/Makefile.am.orig	2003-10-09 01:59:54.000000000 +0200
++++ koffice-031024/kexi/kexidb/drivers/mySQL/Makefile.am	2003-10-28 00:47:53.000000000 +0100
+@@ -1,6 +1,6 @@
+ kde_module_LTLIBRARIES = kexidb_mysqldriver.la
+ 
+-INCLUDES = -I$(srcdir)/../../.. $(all_includes) -I$(MYSQL_INC)
++INCLUDES = -I$(srcdir)/../../.. $(all_includes) $(MYSQL_INC)
+ 
+ kexidb_mysqldriver_la_METASOURCES = AUTO
+ 
