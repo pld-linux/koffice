@@ -329,19 +329,17 @@ kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
 CFLAGS="-D_GNU_SOURCE %{rpmcflags}"
 CXXFLAGS="-D_GNU_SOURCE %{rpmcflags} -fno-check-new"
-%configure2_13 \
+%configure \
 	%{!?debug:--disable-debug} \
 	--enable-final \
 	--with-xinerama \
 	--enable-shared \
-	--disable-static \
-	--disable-embedded \							
 	--disable-rpath
 
 %{__make}
 
 cd %{name}-i18n-%{version}
-%configure2_13
+%configure
 
 %{__make}
 
