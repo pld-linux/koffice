@@ -1,4 +1,5 @@
 # TODO: kformula to separate package
+%define 	no_compress_doc 1
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
 Summary(pt_BR):	Suíte de aplicativos office para o KDE
@@ -7,7 +8,7 @@ Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
 Version:	1.2
-Release:	1
+Release:	2
 Epoch:		4
 License:	GPL
 Group:		X11/Applications
@@ -28,7 +29,8 @@ BuildRequires:	perl
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Obsoletes:	koffice-kontour
+#Obsoletes:	koffice-kontour
+#Obsoletes:	koffice-karbon
 
 %define		_prefix		/usr/X11R6
 %define         _htmldir        /usr/share/doc/kde/HTML
@@ -167,6 +169,23 @@ KOffoce.
 %description common -l pt_BR
 Arquivos requeridos por todos os softwares koffice.
 
+# koffice-karbon
+%package karbon
+Summary:        KOffice - Karbon
+Summary(pl):    KOffice - Karbon
+Group:          X11/Applications
+Requires:       %{name}-common = %{version}
+#karbon has changed its named (again) to curt therefore in the future:
+#Obsoletes: koffice-karbon
+
+%description karbon
+Karbon is a vector graphics application within koffice.
+
+
+%description karbon -l pl
+Karbon to aplikacja koffice slu¿±ca do rysowania grafiki wektorowej,
+
+
 # koffice-kchart
 %package kchart
 Summary:	KOffice - KChart
@@ -186,34 +205,32 @@ KChart jest aplikacj± s³u¿±c± do generowania wykresów.
 Gerador de diagramas do KOffice.
 
 # koffice-kontour (f. k. a. koffice-killustrator)
-#%package kontour
-#Summary:	KOffice - Kontour
-#Summary(pl):	KOffice - Kontour
-#Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
-#Group:		X11/Applications
-#Requires:	%{name}-common = %{version}
-#
-#%description kontour
-#Kontour is the vector drawing program for the K Desktop Environment.
-#The aim of the Kontour project is the development of a freely
-#available vector-based drawing application similar to Corel Draw or
-#Adobe Illustrator.
-#
-#Kontour was formerly known as KIllustrator but due to blackmail made
-#by Adobe lawyers it has to be renamed.
-#
-#%description kontour -l pl
-#Kontour jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
-#KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni
-#funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
-#lub Adobe Illustrator.
-#
-#Kontour wczesniej by³ znany jako KIlustrator ale developerzy zostali
-#zmuszeni szanta¿em przez prawników Adobe do zmiany nazwy.
-#
-#%description kontour -l pt_BR
-#Ferramenta de desenho vetorial do KOffice.
+%package kontour
+Summary:	KOffice - Kontour
+Summary(pl):	KOffice - Kontour
+Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
+Group:		X11/Applications
+Requires:	%{name}-common = %{version}
 
+%description kontour
+Kontour is the vector drawing program for the K Desktop Environment.
+The aim of the Kontour project is the development of a freely
+available vector-based drawing application similar to Corel Draw or
+Adobe Illustrator.
+Kontour was formerly known as KIllustrator but due to blackmail made
+by Adobe lawyers it has to be renamed.
+
+%description kontour -l pl
+Kontour jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
+KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni
+funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
+lub Adobe Illustrator.
+
+Kontour wczesniej by³ znany jako KIlustrator ale developerzy zostali
+zmuszeni szanta¿em przez prawników Adobe do zmiany nazwy.
+
+%description kontour -l pt_BR
+Ferramenta de desenho vetorial do KOffice.
 # koffice-kpresenter
 %package kpresenter
 Summary:	KOffice - KPresenter
@@ -267,7 +284,7 @@ równie¿ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 %description kword -l pt_BR
 Processador de texto do KOffice.
 
-# koffice-ivio
+# koffice-kivio
 %package kivio
 Summary:	KOffice - ivio
 Summary(pl):	KOffice - ivio
@@ -371,6 +388,7 @@ install koshell/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office
 cd %{name}-i18n-%{version}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
 cd ..
 
 ##############
@@ -423,11 +441,14 @@ rm -rf $RPM_BUILD_ROOT
 %post common	-p /sbin/ldconfig
 %postun common	-p /sbin/ldconfig
 
+%post karbon   -p /sbin/ldconfig
+%postun karbon -p /sbin/ldconfig
+
 %post kchart	-p /sbin/ldconfig
 %postun kchart	-p /sbin/ldconfig
 
-#%post kontour	-p /sbin/ldconfig
-#%postun kontour	-p /sbin/ldconfig
+%post kontour	-p /sbin/ldconfig
+%postun kontour	-p /sbin/ldconfig
 
 %post kpresenter	-p /sbin/ldconfig
 %postun kpresenter	-p /sbin/ldconfig
@@ -461,8 +482,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/kodocinfopropspage.??
 %attr(755,root,root) %{_libdir}/kde3/kofficescan.??
 %attr(755,root,root) %{_libdir}/kde3/kofficethumbnail.??
-%attr(755,root,root) %{_libdir}/kde3/lib*export.??
-%attr(755,root,root) %{_libdir}/kde3/lib*import.??
+%attr(755,root,root) %{_libdir}/libkotext.??
+%attr(755,root,root) %{_libdir}/libkopainter.??
+#%attr(755,root,root) %{_libdir}/kde3/lib[!k][!a][!r][!b][!o][!n]*export.??
+#%attr(755,root,root) %{_libdir}/kde3/lib[!k][!a][!r][!b][!o][!n]*import.??
+#%attr(755,root,root) %{_libdir}/kde3/lib[!karbon]*import.??
+%attr(755,root,root) %{_libdir}/kde3/liblibkfo*.??
+%attr(755,root,root) %{_libdir}/kde3/libxslt*port*.??
 %attr(755,root,root) %{_libdir}/kde3/libkformulapart.??
 %attr(755,root,root) %{_libdir}/kde3/libkounavailpart.??
 %attr(755,root,root) %{_libdir}/kde3/liblatexparser.??
@@ -486,6 +512,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*color/*x*/actions/sqrt.png
 %{_pixmapsdir}/*color/*x*/actions/sum.png
 %{_pixmapsdir}/*color/*x*/actions/onetwomatrix.png
+%{_pixmapsdir}/*color/*x*/apps/kudesigner.png
+%{_pixmapsdir}/*color/*x*/apps/kformula.png    
 %{_datadir}/apps/kformula
 %{_datadir}/apps/koffice
 %{_datadir}/apps/kudesigner
@@ -521,6 +549,27 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkstore.??
 
 #################################
+# koffice-karbon
+#################################
+%files -f karbon.lang karbon
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/karbon
+%attr(755,root,root) %{_libdir}/karbon.??
+%attr(755,root,root) %{_libdir}/libkugar.la
+%attr(755,root,root) %{_libdir}/kde3/libkarbonpart.??
+%attr(755,root,root) %{_libdir}/kde3/libkarbon*import*
+%attr(755,root,root) %{_libdir}/kde3/libkarbon*export*
+#%{_datadir}/apps/karbon
+#%{_datadir}/templates/.source/Presentation.kpt
+##%{_datadir}/templates/Presentation.desktop
+#%{_applnkdir}/Office/Presentation/kpresenter.desktop
+%{_datadir}/services/karbon*
+
+##%{_pixmapsdir}/kpresenter.png
+%{_pixmapsdir}/*/*/apps/karbon.png
+
+
+#################################
 # koffice-kchart
 #################################
 %files -f kchart.lang kchart
@@ -536,27 +585,28 @@ rm -rf $RPM_BUILD_ROOT
 #################################
 # koffice-kontour
 #################################
-#%files -f kontour.lang kontour
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/kontour
-#%attr(755,root,root) %{_libdir}/kontour.??
-#%attr(755,root,root) %{_libdir}/kde3/libkontourpart.??
-#%attr(755,root,root) %{_libdir}/kde3/libapplixgraphicimport.??
-#%attr(755,root,root) %{_libdir}/kde3/libmsodimport.??
-#%attr(755,root,root) %{_libdir}/kde3/libwmfimport.??
-#%attr(755,root,root) %{_libdir}/kde3/libsvgimport.??
+%files -f kontour.lang kontour
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/kontour
+%attr(755,root,root) %{_libdir}/kontour.??
+%attr(755,root,root) %{_libdir}/kde3/libkontourpart.??
+%attr(755,root,root) %{_libdir}/kde3/libapplixgraphicimport.??
+%attr(755,root,root) %{_libdir}/kde3/libmsodimport.??
+%attr(755,root,root) %{_libdir}/kde3/libwmfimport.??
+#%attr(755,root,root) %{_libdir}/kde3/liblibkfo*.??
+%attr(755,root,root) %{_libdir}/kde3/libkontourrtfexport.so
+%attr(755,root,root) %{_libdir}/kde3/libtexgraphexport.so
 #%attr(755,root,root) %{_libdir}/kde3/libsvgexport.??
 #%attr(755,root,root) %{_libdir}/kde3/libxfigimport.??
-#%{_datadir}/apps/kontour
-#%{_datadir}/services/killustrator_*.desktop
-#%{_datadir}/services/kprkword.desktop
-#%{_datadir}/services/ki_rtf_export.desktop
+%{_datadir}/apps/kontour
+%{_datadir}/services/kontour*.desktop
+%{_datadir}/services/kprkword.desktop
 #%{_datadir}/mimelnk/image/x-svg.desktop
-#%{_datadir}/templates/.source/Illustration.kil
-#%{_datadir}/templates/Illustration.desktop
-#%{_applnkdir}/Graphics/kontour.desktop
-#%{_pixmapsdir}/kontour.png
-#%{_pixmapsdir}/*/*/apps/kontour*.png
+%{_datadir}/templates/.source/Illustration.kil
+%{_datadir}/templates/Illustration.desktop
+%{_applnkdir}/Graphics/kontour.desktop
+%{_pixmapsdir}/*/*/*/kontour.png
+
 
 #################################
 # koffice-kpresenter
@@ -585,8 +635,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libkspread*.??
 %attr(755,root,root) %{_libdir}/kde3/libcsv*.??
 %attr(755,root,root) %{_libdir}/kde3/libapplixspreadimport.??
-%attr(755,root,root) %{_libdir}/kde3/libgnumericimport.??
-%attr(755,root,root) %{_libdir}/kde3/libgnumericexport.??
+%attr(755,root,root) %{_libdir}/kde3/libgnumeric*port.??
+%attr(755,root,root) %{_libdir}/kde3/libdbase*port.??
 %attr(755,root,root) %{_libdir}/kde3/libqproimport.??
 %{_datadir}/apps/kspread
 #%{_datadir}/mimelnk/text/x-gnumeric.desktop
@@ -605,18 +655,25 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kthesaurus
 %attr(755,root,root) %{_bindir}/kword
 %attr(755,root,root) %{_libdir}/kword.??
+%attr(755,root,root) %{_libdir}/libkwmailmerge*.??
+%attr(755,root,root) %{_libdir}/libkwordexport*.??
 %attr(755,root,root) %{_libdir}/kde3/kwmailmerge*.??
 %attr(755,root,root) %{_libdir}/kde3/libabiword*port.??
 %attr(755,root,root) %{_libdir}/kde3/libapplixwordimport.??
 %attr(755,root,root) %{_libdir}/kde3/libascii*port.??
 %attr(755,root,root) %{_libdir}/kde3/libdocbookexport.??
 %attr(755,root,root) %{_libdir}/kde3/libhtml*port.??
+%attr(755,root,root) %{_libdir}/kde3/libpalmdoc*port.??
+%attr(755,root,root) %{_libdir}/kde3/libamipro*port.??
+%attr(755,root,root) %{_libdir}/kde3/libwml*port.??
 %attr(755,root,root) %{_libdir}/kde3/libkspelltool.??
 %attr(755,root,root) %{_libdir}/kde3/libkwordpart.??
 %attr(755,root,root) %{_libdir}/kde3/liblatexexport.??
 %attr(755,root,root) %{_libdir}/kde3/librtf*port.??
 %attr(755,root,root) %{_libdir}/kde3/libthesaurustool.??
-%attr(755,root,root) %{_libdir}/kde3/libwpimport.??
+%attr(755,root,root) %{_libdir}/kde3/libwp*port.??
+%attr(755,root,root) %{_libdir}/kde3/libmswrite*port.??
+
 %{_datadir}/apps/kword
 %{_datadir}/apps/thesaurus
 %{_datadir}/services/kspelltool.desktop
@@ -653,7 +710,8 @@ rm -rf $RPM_BUILD_ROOT
 %files -f kugar.lang kugar
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kugar
-%attr(755,root,root) %{_libdir}/libkugarpart.??
+%attr(755,root,root) %{_libdir}/libkugar*.??
+%attr(755,root,root) %{_libdir}/straight_connector.ksp
 %{_applnkdir}/Office/Presentation/kugar.desktop
 %{_datadir}/apps/kugar
 %{_pixmapsdir}/*/*/apps/kugar*.png
