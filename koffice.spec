@@ -82,7 +82,7 @@ Pakiet miêdzy innymi zawiera:
 # koffice-devel
 %package devel
 Summary:	KOffice - header files
-Summary(es):	Header files for compiling applications that use koffice libraries.
+Summary(es):	Header files for compiling applications that use koffice libraries
 Summary(pl):	KOffice - pliki nag³ówkowe
 Summary(pt_BR):	Arquivos de inclusão necessários à compilação de aplicações que usem as bibliotecas do koffice
 Group:		X11/Development/Libraries
