@@ -384,7 +384,7 @@ do
 	ln -sf `echo $i | sed "s:^$RPM_BUILD_ROOT%{_pixmapsdir}/::"` $RPM_BUILD_ROOT%{_pixmapsdir}
 %else
 	cp -af $i $RPM_BUILD_ROOT%{_pixmapsdir}
-%fi
+%endif
 done
 
 install %{SOURCE2}	$RPM_BUILD_ROOT%{_pixmapsdir}
