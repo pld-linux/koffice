@@ -28,7 +28,7 @@ Patch0:		%{name}-vcategories.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
-BuildRequires:	aspell-devel >= 0.50.2
+BuildRequires:	aspell-devel >= 2:0.50.2
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:3.2
 BuildRequires:	libjpeg-devel
