@@ -7,7 +7,7 @@
 # check reqs
 
 %define		_state		snapshots
-%define		_ver		1.2.92
+%define		_ver		1.2.93
 %define		_snap		030930
 
 Summary:	KOffice - powerful office suite for KDE
