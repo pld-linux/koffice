@@ -3,7 +3,7 @@
 %bcond_without	i18n	# disable i18n (26MB less to download)
 #
 %define		_state		stable
-%define		_ver		1.3
+%define		_ver		1.3.1
 %define		_snap		%{nil}
 %define		artsver		13:1.2.0
 
@@ -16,17 +16,17 @@ Summary(zh_CN):	KDE 的办公应用软件集。
 Name:		koffice
 # Version:	%{_ver}.%{_snap}
 Version:	%{_ver}
-Release:	2
+Release:	1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
 # ftp://ftp.kde.org/pub/kde/unstable/koffice-1.2.95/src
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	8e4c9db57f701d42f21d61651f0b03bd
+# Source0-md5:	ad68bab5753cf8d2e32a1d9e0c19495a
 #Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}-%{_snap}.tar.bz2
 %if %{with i18n}
 Source1:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
-# Source1-md5:	ca89c9c944508de11ca2908eb0a851e4
+# Source1-md5:	ad25c4a4edb9fc146fde63adf9f4e29e
 %endif
 Patch0:		%{name}-vcategories.patch
 URL:		http://www.koffice.org/
