@@ -28,7 +28,6 @@ Source1:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-i18n
 # Source1-md5:	ca89c9c944508de11ca2908eb0a851e4
 %endif
 Patch0:		%{name}-vcategories.patch
-Patch1:		%{name}-admin.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
