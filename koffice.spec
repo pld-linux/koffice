@@ -109,6 +109,7 @@ Summary:	KOffice - common files and libraries
 Summary(pl):	KOffice - wspólne pliki i biblioteki
 Summary(pt_BR):	Arquivos requeridos por todos os softwares koffice
 Group:		X11/Applications
+Requires:	kdebase-core >= 9:3.2.0
 
 %description common
 KOffice is an integrated office suite for K Desktop Environment.
@@ -533,8 +534,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/*wmf*port.la
 %attr(755,root,root) %{_libdir}/kde3/*wmf*port.so*
 %{_datadir}/apps/karbon
+%{_datadir}/apps/konqueror/servicemenus/karbon_konqi.desktop
 %{_datadir}/services/karbon*
 %{_datadir}/templates/.source/Illustration.karbon
+%{_datadir}/templates/Illustration.desktop
 %{_desktopdir}/kde/karbon.desktop
 %{_iconsdir}/*/*/apps/karbon.png
 %{_mandir}/man1/karbon.1*
@@ -547,6 +550,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/libkchartpart.la
 %attr(755,root,root) %{_libdir}/kde3/libkchartpart.so
 %{_datadir}/apps/kchart
+%{_datadir}/services/kchartpart.desktop
 %{_desktopdir}/kde/kchart.desktop
 %{_iconsdir}/*/*x*/apps/kchart.png
 %{_mandir}/man1/kchart.1*
@@ -560,6 +564,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/*kexi*.la
 %attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
 %{_datadir}/apps/kexi
+%{_datadir}/apps/konqueror/servicemenus/kexi_konqi.desktop
 %{_datadir}/config/kexirc
 %{_datadir}/config/magic/kexi.magic
 %{_datadir}/mimelnk/application/x-kexiproject-shortcut.desktop
@@ -579,6 +584,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libkfo*.so
 %{_datadir}/apps/kformula
 %{_datadir}/services/kformula*
+%{_datadir}/apps/konqueror/servicemenus/kformula_konqi.desktop
 %{_desktopdir}/kde/kformula.desktop
 %{_iconsdir}/*/*/actions/abs.png
 %{_iconsdir}/*/*/actions/brac*.png
@@ -609,6 +615,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/straight_connector.la
 %attr(755,root,root) %{_libdir}/kde3/straight_connector.so
 %{_datadir}/apps/kivio
+%{_datadir}/apps/konqueror/servicemenus/kivio_konqi.desktop
 %{_datadir}/services/kivio*.desktop
 %{_desktopdir}/kde/kivio.desktop
 %{_iconsdir}/*/*/apps/kivio.png
@@ -627,9 +634,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/libooimpress*port.la
 %attr(755,root,root) %{_libdir}/kde3/libooimpress*port.so
 %{_datadir}/apps/kpresenter
+%{_datadir}/apps/konqueror/servicemenus/kpresenter_konqi.desktop
 %{_datadir}/templates/.source/Presentation.kpt
 %{_datadir}/templates/Presentation.desktop
 %{_datadir}/services/kprkword.desktop
+%{_datadir}/services/kpresenterpart.desktop
 %{_datadir}/services/kpresenter_ooimpress_export.desktop
 %{_datadir}/services/kpresenter_ooimpress_import.desktop
 %{_desktopdir}/kde/kpresenter.desktop
@@ -650,6 +659,7 @@ rm -rf $RPM_BUILD_ROOT
 #%attr(755,root,root) %{_libdir}/libkisp_example.so
 #%dir %{_datadir}/apps/krayon
 #%dir %{_datadir}/apps/krayon/plugins
+#%{_datadir}/apps/konqueror/servicemenus/krita_konqi.desktop
 #%{_datadir}/apps/krayon/plugins/example.kisplugin
 #%{_datadir}/apps/krita
 #%{_datadir}/services/krita_magick_import.desktop
@@ -676,6 +686,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/libopencalc*port.la
 %attr(755,root,root) %{_libdir}/kde3/libopencalc*port.so
 %{_datadir}/apps/kspread
+%{_datadir}/apps/konqueror/servicemenus/kspread_konqi.desktop
 %{_datadir}/services/kspread*.desktop
 %{_datadir}/templates/.source/SpreadSheet.ksp
 %{_datadir}/templates/SpreadSheet.desktop
@@ -700,6 +711,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kudesigner
 %{_datadir}/apps/kugar
 %{_datadir}/services/kugar_kugar_import.desktop
+%{_datadir}/services/kugarpart.desktop
 %{_iconsdir}/*/*/*/kugar.png
 %{_iconsdir}/*/*/mimetypes/kugardata.png
 %{_mandir}/man1/kudesigner.1*
@@ -754,6 +766,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kword
 %{_datadir}/apps/thesaurus
 %{_datadir}/apps/xsltfilter/export/kword/xslfo/*.xsl
+%{_datadir}/apps/konqueror/servicemenus/kword_konqi.desktop
 %{_datadir}/services/kspelltool.desktop
 %{_datadir}/services/kword*.desktop
 %{_datadir}/services/kwserialletter*
