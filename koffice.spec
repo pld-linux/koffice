@@ -1,19 +1,23 @@
-%define		_prefix		/usr/X11R6
-%define		_htmldir	%{_docdir}/kde/HTML
-
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
 Name:		koffice
-Version:	2.0
+Version:	2.0.1
 Release:	1
 License:	GPL
-Group:		X11/KDE/Applications
-Group(pl):	X11/KDE/Aplikacje
-Source0:	ftp://ftp.kde.org/pub/kde/stable/2.0/distribution/tar/generic/source/%{name}-%{version}.tar.bz2
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
+Source0:	ftp://ftp.kde.org/pub/kde/stable/2.0.1/distribution/tar/generic/src/%{name}-%{version}.tar.bz2
 URL:		http://koffice.kde.org/
 BuildPreReq:	kdelibs-devel = %{version}
 BuildPreReq:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_prefix		/usr/X11R6
+%define		_htmldir	%{_docdir}/kde/HTML
+%define         _sharedir       %{_prefix}/share
+%define         _htmldir        %{_sharedir}/doc/kde/HTML
+%define         _pixmapsdir     %{_sharedir}/icons
 
 %description
 KOffice is an integrated office suite for K Desktop Environment 2.0.
@@ -39,8 +43,9 @@ Pakiet miêdzy innymi zawiera:
 %package devel
 Summary:	KOffice - header files
 Summary(pl):	KOffice - pliki nag³ówkowe
-Group:		X11/KDE/Development
-Group(pl):	X11/KDE/Programowanie
+Group:		X11/Development/Libraries
+Group(de):	X11/Entwicklung/Libraries
+Group(pl):	X11/Programowanie/Biblioteki
 Requires:	%{name}-common = %{version}
 
 %description devel
@@ -55,8 +60,9 @@ Zawiera pliki nag³ówkowe dla KOffice.
 %package common
 Summary:	KOffice - common files and libraries
 Summary(pl):	KOffice - wspó³dzielone pliki i biblioteki
-Group:		X11/KDE/Applications
-Group(pl):	X11/KDE/Aplikacje
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Requires:	kdelibs = %{version}
 
 %description common
@@ -71,8 +77,9 @@ Pakiet zawiera wspólne pliki i biblioteki wymagane przez aplikacje KOffoce.
 %package kchart
 Summary:	KOffice - KChart
 Summary(pl):	KOffice - KChart
-Group:		X11/KDE/Applications
-Group(pl):	X11/KDE/Aplikacje
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Requires:	%{name}-common = %{version}
 
 %description kchart
@@ -88,8 +95,9 @@ KChart jest aplikacj± s³u¿±c± do generowania wykresów.
 %package killustrator
 Summary:	KOffice - KIllustrator
 Summary(pl):	KOffice - KIllustrator
-Group:		X11/KDE/Applications
-Group(pl):	X11/KDE/Aplikacje
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Requires:	%{name}-common = %{version}
 
 %description killustrator
@@ -108,8 +116,9 @@ programu do grafiki wektorowej podobnego do Corel Draw lub Adobe Illustrator.
 %package kpresenter
 Summary:	KOffice - KPresenter
 Summary(pl):	KOffice - KPresenter
-Group:		X11/KDE/Applications
-Group(pl):	X11/KDE/Aplikacje
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Requires:	%{name}-common = %{version}
 
 %description kpresenter
@@ -127,8 +136,9 @@ MS PowerPoint. Mo¿esz u¿yæ jej do tworzenia wizualnych prezentacji.
 %package kspread
 Summary:	KOffice - KSpread
 Summary(pl):	KOffice - KSpread
-Group:		X11/KDE/Applications
-Group(pl):	X11/KDE/Aplikacje
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Requires:	%{name}-common = %{version}
 
 %description kspread
@@ -143,8 +153,9 @@ KSpread jest arkuszem kalkulacyjnym, podobnym do MS Excel.
 %package kword
 Summary:	KOffice - KWord
 Summary(pl):	KOffice - KWord
-Group:		X11/KDE/Applications
-Group(pl):	X11/KDE/Aplikacje
+Group:		X11/Applications
+Group(de):	X11/Applikationen
+Group(pl):	X11/Aplikacje
 Requires:	%{name}-common = %{version}
 
 %description kword
@@ -162,10 +173,6 @@ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 %setup -q
 
 %build
-%define         _sharedir       %{_prefix}/share
-%define         _htmldir        %{_sharedir}/doc/kde/HTML
-%define         _pixmapsdir     %{_sharedir}/icons
-
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
 
