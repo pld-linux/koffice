@@ -651,7 +651,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkwmf.so
 %{_libdir}/libkwordexportfilters.so
 
-%files common -f koffice.lang
+%files common -f koffice_en.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/koconverter
 %attr(755,root,root) %{_bindir}/koscript
@@ -763,7 +763,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/apps/karbon.png
 %{_mandir}/man1/karbon.1*
 
-%files kchart -f kchart.lang
+%files kchart -f kchart_en.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kchart
 %{_libdir}/kchart.la
@@ -792,7 +792,7 @@ rm -rf $RPM_BUILD_ROOT
 #%{_mandir}/man1/kexi.1*
 #%{_mandir}/man1/kformdesigner.1*
 
-%files kformula -f kformula.lang
+%files kformula -f kformula_en.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kformula
 %{_libdir}/kformula*.la
@@ -821,7 +821,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/apps/kformula.png
 %{_mandir}/man1/kformula.1*
 
-%files kivio -f kivio.lang
+%files kivio -f kivio_en.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kivio
 %{_libdir}/*kivio*.la
@@ -836,7 +836,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/apps/kivio.png
 %{_mandir}/man1/kivio.1*
 
-%files kpresenter -f kpresenter.lang
+%files kpresenter -f kpresenter_en.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kpresenter
 %attr(755,root,root) %{_bindir}/kprconverter.pl
@@ -878,7 +878,7 @@ rm -rf $RPM_BUILD_ROOT
 #%{_datadir}/templates/Illustration.desktop
 #%{_desktopdir}/kde/krita.desktop
 
-%files kspread -f kspread.lang
+%files kspread -f kspread_en.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kspread
 %{_libdir}/kspread.la
@@ -905,7 +905,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/[!l]*/*/apps/kspread*.png
 %{_mandir}/man1/kspread.1*
 
-%files kugar -f kugar.lang
+%files kugar -f kugar_en.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kudesigner
 %attr(755,root,root) %{_bindir}/kugar
@@ -927,7 +927,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/kudesigner.1*
 %{_mandir}/man1/kugar.1*
 
-%files kword -f kword.lang
+%files kword -f kword_en.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kthesaurus
 %attr(755,root,root) %{_bindir}/kword
