@@ -3,15 +3,14 @@ Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
 Summary(pt_BR):	Suíte de aplicativos office para o KDE
 Name:		koffice
 Version:	1.1.1
-Release:	4
+Release:	4.kde3
 Epoch:		4
 License:	GPL
 Group:		X11/Applications
-Source0:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}-kde3/src/%{name}-%{version}-kde3.tar.bz2
 Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
 Patch0:		%{name}-fix-change-custom-variable-value.patch
-Patch1:		%{name}-fix-crash-in-sidebar.patch
-Patch2:		%{name}-fix-kpresenter-mem-leak.patch
+# Two patches merged.
 URL:		http://www.koffice.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	gettext-devel
@@ -308,8 +307,6 @@ Gerador de relatórios do KOffice.
 %prep
 %setup -q -n %{name}-%{version} -a1
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
@@ -439,9 +436,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/filter_wrapper
 %attr(755,root,root) %{_libdir}/koshell.??
 %attr(755,root,root) %{_libdir}/kformulamain.??
-%attr(755,root,root) %{_libdir}/kde2/libkformulapart.??
-%attr(755,root,root) %{_libdir}/kde2/libolefilter.??
-%attr(755,root,root) %{_libdir}/kde2/libkofficescan.??
+%attr(755,root,root) %{_libdir}/kde3/libkformulapart.??
+%attr(755,root,root) %{_libdir}/kde3/libolefilter.??
+%attr(755,root,root) %{_libdir}/kde3/kofficescan.??
 %attr(755,root,root) %{_libdir}/libkwmf.??
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %attr(755,root,root) %{_libdir}/libkdchart.la
@@ -465,7 +462,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kformula
 %{_datadir}/services/kodocinfopropspage.desktop
 %{_datadir}/services/ole_*.desktop
-%{_datadir}/mimelnk/application/x-kformula.desktop
 
 #################################
 # koffice-devel
@@ -489,9 +485,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kchart
 %attr(755,root,root) %{_libdir}/kchart.??
-%attr(755,root,root) %{_libdir}/kde2/libkchartpart.??
+%attr(755,root,root) %{_libdir}/kde3/libkchartpart.??
 %{_datadir}/apps/kchart
-%{_datadir}/mimelnk/application/x-kchart.desktop
 %{_applnkdir}/Office/Misc/kchart.desktop
 %{_pixmapsdir}/*color/*x*/apps/kchart.png
 
@@ -502,19 +497,17 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kontour
 %attr(755,root,root) %{_libdir}/kontour.??
-%attr(755,root,root) %{_libdir}/kde2/libkontourpart.??
-%attr(755,root,root) %{_libdir}/kde2/libapplixgraphicimport.??
-%attr(755,root,root) %{_libdir}/kde2/libmsodimport.??
-%attr(755,root,root) %{_libdir}/kde2/libwmfimport.??
-%attr(755,root,root) %{_libdir}/kde2/libsvgimport.??
-%attr(755,root,root) %{_libdir}/kde2/libsvgexport.??
-%attr(755,root,root) %{_libdir}/kde2/libxfigimport.??
+%attr(755,root,root) %{_libdir}/kde3/libkontourpart.??
+%attr(755,root,root) %{_libdir}/kde3/libapplixgraphicimport.??
+%attr(755,root,root) %{_libdir}/kde3/libmsodimport.??
+%attr(755,root,root) %{_libdir}/kde3/libwmfimport.??
+%attr(755,root,root) %{_libdir}/kde3/libsvgimport.??
+%attr(755,root,root) %{_libdir}/kde3/libsvgexport.??
+%attr(755,root,root) %{_libdir}/kde3/libxfigimport.??
 %{_datadir}/apps/kontour
 %{_datadir}/services/killustrator_*.desktop
 %{_datadir}/services/kprkword.desktop
 %{_datadir}/services/ki_rtf_export.desktop
-%{_datadir}/mimelnk/application/x-kontour.desktop
-%{_datadir}/mimelnk/application/x-killustrator.desktop
 %{_datadir}/mimelnk/image/x-msod.desktop
 %{_datadir}/mimelnk/image/x-wmf.desktop
 %{_datadir}/mimelnk/image/x-xfig.desktop
@@ -533,10 +526,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kpresenter
 %attr(755,root,root) %{_bindir}/kprconverter.pl
 %attr(755,root,root) %{_libdir}/kpresenter.??
-%attr(755,root,root) %{_libdir}/kde2/libkpresenterpart.??
-%attr(755,root,root) %{_libdir}/kde2/libkprkword.??
+%attr(755,root,root) %{_libdir}/kde3/libkpresenterpart.??
+%attr(755,root,root) %{_libdir}/kde3/libkprkword.??
 %{_datadir}/apps/kpresenter
-%{_datadir}/mimelnk/application/x-kpresenter.desktop
 %{_datadir}/templates/.source/Presentation.kpt
 %{_datadir}/templates/Presentation.desktop
 %{_applnkdir}/Office/Presentation/kpresenter.desktop
@@ -549,14 +541,13 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kspread
 %attr(755,root,root) %{_libdir}/kspread.??
-%attr(755,root,root) %{_libdir}/kde2/libkspread*.??
-%attr(755,root,root) %{_libdir}/kde2/libcsv*.??
-%attr(755,root,root) %{_libdir}/kde2/libapplixspreadimport.??
-%attr(755,root,root) %{_libdir}/kde2/libgnumericimport.??
-%attr(755,root,root) %{_libdir}/kde2/libgnumericexport.??
-%attr(755,root,root) %{_libdir}/kde2/libqproimport.??
+%attr(755,root,root) %{_libdir}/kde3/libkspread*.??
+%attr(755,root,root) %{_libdir}/kde3/libcsv*.??
+%attr(755,root,root) %{_libdir}/kde3/libapplixspreadimport.??
+%attr(755,root,root) %{_libdir}/kde3/libgnumericimport.??
+%attr(755,root,root) %{_libdir}/kde3/libgnumericexport.??
+%attr(755,root,root) %{_libdir}/kde3/libqproimport.??
 %{_datadir}/apps/kspread
-%{_datadir}/mimelnk/application/x-kspread.desktop
 %{_datadir}/mimelnk/application/x-quattropro.desktop
 %{_datadir}/mimelnk/text/x-csv.desktop
 %{_datadir}/mimelnk/text/x-gnumeric.desktop
@@ -574,17 +565,17 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kword
 %attr(755,root,root) %{_libdir}/kword.??
-%attr(755,root,root) %{_libdir}/kde2/libkwordpart.??
-%attr(755,root,root) %{_libdir}/kde2/libabiword*port.??
-%attr(755,root,root) %{_libdir}/kde2/libapplixwordimport.??
-%attr(755,root,root) %{_libdir}/kde2/libascii*port.??
-%attr(755,root,root) %{_libdir}/kde2/libdocbookexport.??
-%attr(755,root,root) %{_libdir}/kde2/libhtml*port.??
-%attr(755,root,root) %{_libdir}/kde2/liblatexexport.??
-%attr(755,root,root) %{_libdir}/kde2/librtf*port.??
-%attr(755,root,root) %{_libdir}/kde2/libkspelltool.??
+%attr(755,root,root) %{_libdir}/kde3/libkwordpart.??
+%attr(755,root,root) %{_libdir}/kde3/libabiword*port.??
+%attr(755,root,root) %{_libdir}/kde3/libapplixwordimport.??
+%attr(755,root,root) %{_libdir}/kde3/libwpimport.??
+%attr(755,root,root) %{_libdir}/kde3/libascii*port.??
+%attr(755,root,root) %{_libdir}/kde3/libdocbookexport.??
+%attr(755,root,root) %{_libdir}/kde3/libhtml*port.??
+%attr(755,root,root) %{_libdir}/kde3/liblatexexport.??
+%attr(755,root,root) %{_libdir}/kde3/librtf*port.??
+%attr(755,root,root) %{_libdir}/kde3/libkspelltool.??
 %{_datadir}/apps/kword
-%{_datadir}/mimelnk/application/x-kword.desktop
 %{_datadir}/mimelnk/application/x-abiword.desktop
 %{_datadir}/services/kspelltool.desktop
 %{_datadir}/services/kword*.desktop
@@ -601,11 +592,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kivio
 %attr(755,root,root) %{_libdir}/*kivio*.??
-%attr(755,root,root) %{_libdir}/kde2/*kivio*.??
+%attr(755,root,root) %{_libdir}/kde3/*kivio*.??
 %{_applnkdir}/Office/Misc/kivio.desktop
 %{_datadir}/apps/kivio
 %{_pixmapsdir}/*color/*x*/apps/kivio.png
-%{_datadir}/mimelnk/application/x-kivio.desktop
 %{_datadir}/services/kivio*.desktop
 
 #################################
@@ -618,4 +608,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Office/Presentation/kugar.desktop
 %{_datadir}/apps/kugar
 %{_pixmapsdir}/*color/*x*/*/kugar*.png
-%{_datadir}/mimelnk/application/x-kugar.desktop
