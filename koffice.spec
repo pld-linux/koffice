@@ -472,9 +472,11 @@ export DO_NOT_COMPILE="$DO_NOT_COMPILE kdgantt"
 
 %{__make}
 
+%if %{with i18n}
 cd %{name}-i18n-%{version}
 %configure
 %{__make}
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
