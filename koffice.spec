@@ -3,7 +3,7 @@ Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
 Summary(pt_BR):	Suíte de aplicativos office para o KDE
 Name:		koffice
 Version:	1.1.1
-Release:	4.kde3
+Release:	5.kde3
 Epoch:		4
 License:	GPL
 Group:		X11/Applications
@@ -549,7 +549,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libqproimport.??
 %{_datadir}/apps/kspread
 %{_datadir}/mimelnk/application/x-quattropro.desktop
-%{_datadir}/mimelnk/text/x-csv.desktop
 %{_datadir}/mimelnk/text/x-gnumeric.desktop
 %{_datadir}/services/kspread*.desktop
 %{_datadir}/templates/.source/SpreadSheet.ksp
