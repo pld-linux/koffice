@@ -666,8 +666,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/SpreadSheet.desktop
 %{_applnkdir}/Office/Spreadsheets/kspread.desktop
 %{_pixmapsdir}/kspread.png
-%{_pixmapsdir}/[!l]*/*/apps/kspreadc*.png
-%{_pixmapsdir}/*/*/apps/kspread*.png
+%{_pixmapsdir}/[!l]*/*/apps/kspread*.png
 %{_mandir}/man1/kspread.1
 
 #################################
