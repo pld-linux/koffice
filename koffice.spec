@@ -3,8 +3,8 @@
 %bcond_without  apidocs # do not prepare API documentation
 
 %define		_state		snapshots
-%define		_ver		1.3.90
-%define		_snap		040525
+%define		_ver		1.3.91
+%define		_snap		040630
 %define		artsver		13:1.2.0
 %define		_packager	adgor	
 
@@ -20,12 +20,10 @@ Release:	1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
-Source0:	%{name}.tar.bz2
-#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
 Source0:	http://ep09.pld-linux.org/~%{_packager}/kde/%{name}-%{_snap}.tar.bz2
 ##%% Source0-md5:	8e4c9db57f701d42f21d61651f0b03bd
-Patch0:		%{name}-vcategories.patch
-Patch1:		kde-common-QTDOCDIR.patch
+Patch0:		kde-common-PLD.patch
+Patch1:		%{name}-vcategories.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
@@ -437,6 +435,7 @@ rm -rf $RPM_BUILD_ROOT
 #%{_libdir}/libkospell.so
 %{_libdir}/libkotext.so
 %{_libdir}/libkowmf.so
+%{_libdir}/libkritacommon.so
 %{_libdir}/libkspreadcommon.so
 %{_libdir}/libkstore.so
 %{_libdir}/libkugarlib.so
@@ -505,6 +504,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkotext.so.*.*.*
 %{_libdir}/libkowmf.la
 %attr(755,root,root) %{_libdir}/libkowmf.so.*.*.*
+%{_libdir}/libkritacommon.la
+%attr(755,root,root) %{_libdir}/libkritacommon.so.*.*.*
 %{_libdir}/libkspreadcommon.la
 %attr(755,root,root) %{_libdir}/libkspreadcommon.so.*.*.*
 %{_libdir}/libkstore.la
@@ -541,9 +542,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libolefilter.so
 %{_datadir}/servicetypes/*
 %{_datadir}/apps/koffice
-%dir %{_datadir}/apps/kontour
-%dir %{_datadir}/apps/kontour/kpartplugins
-%{_datadir}/apps/kontour/kpartplugins/scan-kontour.rc
 %{_datadir}/apps/koshell
 %{_datadir}/services/clipartthumbnail.desktop
 %{_datadir}/services/kfile_koffice.desktop
@@ -604,8 +602,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkdeinit_kexi.so
 %{_libdir}/kde3/kexi.la
 %attr(755,root,root) %{_libdir}/kde3/kexi.so
-%{_libdir}/kde3/kexidb_mysqldriver.la
-%attr(755,root,root) %{_libdir}/kde3/kexidb_mysqldriver.so
+#%{_libdir}/kde3/kexidb_mysqldriver.la
+#%attr(755,root,root) %{_libdir}/kde3/kexidb_mysqldriver.so
 %{_libdir}/kde3/kexidb_pqxxsqldriver.la
 %attr(755,root,root) %{_libdir}/kde3/kexidb_pqxxsqldriver.so
 %{_libdir}/kde3/kexidb_sqlitedriver.la
@@ -727,6 +725,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/*magick*port.so
 %{_libdir}/kde3/colorsfilters.la
 %attr(755,root,root) %{_libdir}/kde3/colorsfilters.so
+%{_libdir}/kde3/colorrange.la
+%attr(755,root,root) %{_libdir}/kde3/colorrange.so
+%{_libdir}/kde3/imagesize.la
+%attr(755,root,root) %{_libdir}/kde3/imagesize.so
+%{_libdir}/kde3/variations.la
+%attr(755,root,root) %{_libdir}/kde3/variations.so
 #%{_libdir}/libkisp_example.la
 #%attr(755,root,root) %{_libdir}/libkisp_example.so
 #%dir %{_datadir}/apps/krayon
