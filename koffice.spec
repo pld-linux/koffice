@@ -3,7 +3,7 @@ Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
 Name:		koffice
 Version:	%(echo %{ver} | sed -e "s#-##g")
-Release:	1
+Release:	2
 Epoch:		2
 License:	GPL
 Group:		X11/Applications
@@ -21,7 +21,7 @@ BuildRequires:	libpng-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	perl
-BuildRequires:	python-devel >= 2.0
+BuildRequires:	python-devel >= 2.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
