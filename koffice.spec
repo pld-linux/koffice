@@ -1,9 +1,8 @@
-# TODO: kformula to separate package
-#
-# Conditional build:
-# _with_pixmapsubdirs - leave different depth/resolution icons
-#
-%define 	no_compress_doc 1
+
+%define		_state		snapshots
+%define		_ver		1.2.94
+%define		_snap		031114
+
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
 Summary(pt_BR):	Suíte de aplicativos office para o KDE
@@ -11,38 +10,35 @@ Summary(ru):	îÁÂÏÒ ÏÆÆÉÓÎÙÈ ÐÒÏÇÒÁÍÍ ÄÌÑ KDE
 Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
-Version:	1.2.1
+Version:	%{_ver}.%{_snap}
 Release:	1
-Epoch:		4
+Epoch:		5
 License:	GPL
 Group:		X11/Applications
-Source0:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	6a73aa72b094ca7b7377f74a508e804e
-Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
-# Source1-md5:	d108bb02a7035e188cac9e2857903ff6
-Source2:	kudesigner.png
-Patch0:		%{name}-desktop.fixes.patch
-Patch1:		%{name}-gcc.patch
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}.tar.bz2
+Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
+# Source0-md5:	3ecd0b29c35e02037697ef9847bde3fd
+Patch0:		%{name}-vcategories.patch
+Patch1:		%{name}-mysql_includes.patch
+Patch2:		%{name}-fix-kexi_widget_makefile_am.patch
 URL:		http://www.koffice.org/
-BuildRequires:	XFree86-devel
-BuildRequires:	arts-kde-devel
+BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	fam-devel
+BuildRequires:	wv2-devel >= 0.0.7
 BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel >= 3.0.3
+BuildRequires:	kdelibs-devel >= 9:3.1.92.%{_snap}
 BuildRequires:	libart_lgpl-devel >= 2.3.8
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtiff-devel
+BuildRequires:	mysql-devel
 BuildRequires:	perl
 BuildRequires:	python-devel >= 2.2
+BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	zlib-devel
-BuildRequires:	libxslt-devel
+Requires:	wv2 >= 0.0.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
-%define         _htmldir        /usr/share/doc/kde/HTML
-
-%define		no_install_post_chrpath		1
 
 %description
 KOffice is an integrated office suite for K Desktop Environment.
@@ -82,14 +78,13 @@ Pakiet miêdzy innymi zawiera:
 (ÔÅËÓÔÏ×ÉÊ ÐÒÏÃÅÓÏÒ), KSpread (ÅÌÅËÔÒÏÎÎÁ ÔÁÂÌÉÃÑ), KPresenter
 (ÐÒÅÚÅÎÔÁÃ¦§) ÔÁ KChart (ÇÅÎÅÒÁÔÏÒ Ä¦ÁÇÒÁÍ).
 
-# koffice-devel
 %package devel
 Summary:	KOffice - header files
 Summary(es):	Header files for compiling applications that use koffice libraries
 Summary(pl):	KOffice - pliki nag³ówkowe
 Summary(pt_BR):	Arquivos de inclusão necessários à compilação de aplicações que usem as bibliotecas do koffice
 Group:		X11/Development/Libraries
-Requires:	%{name}-common = %{epoch}:%{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description devel
 This package includes the header files you will need to compile
@@ -103,26 +98,12 @@ skompilowaæ programy u¿ywaj±ce bibliotek KOffice.
 Arquivos de inclusão necessários à compilação de aplicações que usem
 as bibliotecas do koffice.
 
-# koffice-common
 %package common
 Summary:	KOffice - common files and libraries
 Summary(pl):	KOffice - wspólne pliki i biblioteki
 Summary(pt_BR):	Arquivos requeridos por todos os softwares koffice
 Group:		X11/Applications
-Requires:	kdelibs >= 2.1.1
-Obsoletes:	koffice-i18n-Azerbaijani koffice-i18n-Bulgarian
-Obsoletes:	koffice-i18n-Czech koffice-i18n-Danish koffice-i18n-German
-Obsoletes:	koffice-i18n-British koffice-i18n-Esperanto
-Obsoletes:	koffice-i18n-Spanish koffice-i18n-Estonian koffice-i18n-French
-Obsoletes:	koffice-i18n-Hebrew koffice-i18n-Hungarian
-Obsoletes:	koffice-i18n-Icelandic koffice-i18n-Italian
-Obsoletes:	koffice-i18n-Japanese koffice-i18n-Lithuanian
-Obsoletes:	koffice-i18n-Maltese koffice-i18n-Dutch koffice-i18n-Norwegian
-Obsoletes:	koffice-i18n-Norwegian-Nynorsk koffice-i18n-Polish
-Obsoletes:	koffice-i18n-Portuguese koffice-i18n-Brazil
-Obsoletes:	koffice-i18n-Romanian koffice-i18n-Russian koffice-i18n-Slovak
-Obsoletes:	koffice-i18n-Slovenian koffice-i18n-Swedish koffice-i18n-Tamil
-Obsoletes:	koffice-i18n-Turkish
+Requires:	kdebase-core >= 9:3.1.92.%{_snap}
 
 %description common
 KOffice is an integrated office suite for K Desktop Environment.
@@ -161,12 +142,11 @@ KOffice.
 %description common -l pt_BR
 Arquivos requeridos por todos os softwares koffice.
 
-# koffice-karbon
 %package karbon
-Summary:	KOffice - Karbon
-Summary(pl):	KOffice - Karbon
-Group:		X11/Applications
-Requires:	%{name}-common = %{epoch}:%{version}
+Summary:        KOffice - Karbon
+Summary(pl):    KOffice - Karbon
+Group:          X11/Applications
+Requires:       %{name}-common = %{epoch}:%{version}-%{release}
 #karbon has changed its named (again) to curt therefore in the future:
 Obsoletes:	koffice-krayon
 
@@ -176,13 +156,12 @@ Karbon is a vector graphics application within koffice.
 %description karbon -l pl
 Karbon to aplikacja koffice slu¿±ca do rysowania grafiki wektorowej,
 
-# koffice-kchart
 %package kchart
 Summary:	KOffice - KChart
 Summary(pl):	KOffice - KChart
 Summary(pt_BR):	Gerador de diagramas do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{epoch}:%{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kchart
 KChart is KOffice part for generating diagrams from data, e.g. pie and
@@ -194,13 +173,38 @@ KChart jest aplikacj± s³u¿±c± do generowania wykresów.
 %description kchart -l pt_BR
 Gerador de diagramas do KOffice.
 
-# koffice-kivio
+%package kexi
+Summary:        KOffice - Kexi
+Summary(pl):    KOffice - Kexi
+Group:          X11/Applications
+Requires:       %{name}-common = %{epoch}:%{version}-%{release}
+Requires:	mysql-libs
+
+%description kexi 
+Kexi is KOffice part for using database system such as mysql.
+
+%description kexi -l pl
+Kexi jest aplikacj± s³u¿±c± do korzystania z systemów baz danych
+takich jak mysql.
+
+%package  kformula
+Summary:        KOffice - kformula
+Summary(pl):    KOffice - kformula
+Group:          X11/Applications
+Requires:       %{name}-common = %{epoch}:%{version}-%{release}
+
+%description kformula
+KFormula is KOffice part for creating formulas, equations, etc...
+
+%description kformula -l pl
+jest aplikacj± s³u¿±c± do tworzenia wzorów, równañ, itd...
+
 %package kivio
-Summary:	KOffice - ivio
-Summary(pl):	KOffice - ivio
+Summary:	KOffice - kivio
+Summary(pl):	KOffice - kivio
 Summary(pt_BR):	Editor de fluxogramas do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{epoch}:%{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kivio
 Kivio on the surface is your everyday flowcharting program. Underneath
@@ -221,42 +225,40 @@ pomoc± jêzyka skryptowego.
 %description kivio -l pt_BR
 Editor de fluxogramas do KOffice.
 
-# koffice-kontour (f. k. a. koffice-killustrator)
-%package kontour
-Summary:	KOffice - Kontour
-Summary(pl):	KOffice - Kontour
+%package krita
+Summary:	KOffice - Krita
+Summary(pl):	KOffice - Krita
 Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{epoch}:%{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 Obsoletes:	koffice-killustrator
 
-%description kontour
-Kontour is the vector drawing program for the K Desktop Environment.
+%description krita
+Krita is the vector drawing program for the K Desktop Environment.
 The aim of the Kontour project is the development of a freely
 available vector-based drawing application similar to Corel Draw or
 Adobe Illustrator.
 
-Kontour was formerly known as KIllustrator but due to blackmail made
+Krita was formerly known as KIllustrator but due to blackmail made
 by Adobe lawyers it has to be renamed.
 
-%description kontour -l pl
-Kontour jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
+%description krita -l pl
+Krita jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
 KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni
 funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
 lub Adobe Illustrator.
 
-Kontour wczesniej by³ znany jako KIlustrator ale developerzy zostali
+Krita wczesniej by³ znany jako KIlustrator ale developerzy zostali
 zmuszeni szanta¿em przez prawników Adobe do zmiany nazwy.
 
-%description kontour -l pt_BR
+%description krita -l pt_BR
 Ferramenta de desenho vetorial do KOffice.
 
-# koffice-kpresenter
 %package kpresenter
 Summary:	KOffice - KPresenter
 Summary(pl):	KOffice - KPresenter
 Group:		X11/Applications
-Requires:	%{name}-common = %{epoch}:%{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kpresenter
 KPresenter is a presentation application of the KOffice, similar to MS
@@ -267,13 +269,12 @@ presentations or transparencies.
 KPresenter jest aplikacj± KOffice do tworzenia prezentacji, podobn± do
 MS PowerPoint. Mo¿esz u¿yæ jej do tworzenia wizualnych prezentacji.
 
-# koffice-kspread
 %package kspread
 Summary:	KOffice - KSpread
 Summary(pl):	KOffice - KSpread
 Summary(pt_BR):	Planilha eletrônica do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{epoch}:%{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kspread
 KSpread is the spread sheet of the KOffice, similar to MS Excel.
@@ -284,13 +285,12 @@ KSpread jest arkuszem kalkulacyjnym, podobnym do MS Excel.
 %description kspread -l pt_BR
 Planilha eletrônica do KOffice.
 
-# koffice-kugar
 %package kugar
 Summary:	KOffice - KUgar
 Summary(pl):	KOffice - KUgar
 Summary(pt_BR):	Gerador de relatórios do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{epoch}:%{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kugar
 Kugar is a KDE tool for generating business quality reports which can
@@ -307,13 +307,12 @@ umo¿liwiaj±c ogl±danie raportu w przegl±darce Konqueror.
 %description kugar -l pt_BR
 Gerador de relatórios do KOffice.
 
-# koffice-kword
 %package kword
 Summary:	KOffice - KWord
 Summary(pl):	KOffice - KWord
 Summary(pt_BR):	Processador de texto do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{epoch}:%{version}
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kword
 KWord is a FrameMaker-like wordprocessor application for KOffice. So
@@ -327,421 +326,427 @@ równie¿ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 %description kword -l pt_BR
 Processador de texto do KOffice.
 
-######################## end descriptions ########################
-
 %prep
-%setup -q -a1
+%setup -q -n %{name}-%{_snap}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
-kde_htmldir="%{_htmldir}"; export kde_htmldir
-kde_icondir="%{_pixmapsdir}"; export kde_icondir
-CFLAGS="-D_GNU_SOURCE %{rpmcflags}"
-CXXFLAGS="-D_GNU_SOURCE %{rpmcflags} -fno-check-new"
+
+%{__make} -f admin/Makefile.common cvs
+
+export DO_NOT_COMPILE="$DO_NOT_COMPILE kdgantt"
+
 %configure \
-	%{!?debug:--disable-debug} \
-	--enable-final \
-	--with-xinerama \
-	--enable-shared \
-	--disable-rpath
-
-%{__make}
-
-cd %{name}-i18n-%{version}
-%configure
+	--disable-rpath \
+	--enable-final
 
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_mandir}/man1
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	kde_appsdir=%{_applnkdir} \
+	kde_htmldir=%{_kdedocdir}
 
-rm -rf $RPM_BUILD_ROOT%{_applnkdir}
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Office/{Wordprocessors,Spreadsheets} \
-	$RPM_BUILD_ROOT%{_applnkdir}/Office/{Presentations,Misc} \
-	$RPM_BUILD_ROOT%{_applnkdir}/Graphics
+install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
 
-install karbon/data/karbon.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Graphics
-install kontour/kontour.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Graphics
-install kpresenter/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Presentations
-install kspread/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Spreadsheets
-install kword/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Wordprocessors
-install kivio/kiviopart/k*.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
-install kugar/part/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Presentations
-install kugar/kudesigner/k*.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
-install kchart/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
-
-install kformula/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
-install koshell/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office
-
-# icons must be located at the top %{_pixmapsdir} to be properly displeyed
-# in gnome; in KDE they work in both cases
-
-# create in toplevel %%{_pixmapsdir} links to icons
-for i in $RPM_BUILD_ROOT%{_pixmapsdir}/hicolor/48x48/apps/k{arbon,chart,formula,ivio,ontour,presenter,spread,ugar,word}.png
-do
-%if %{?_with_pixmapsubdirs:1}%{!?_with_pixmapsubdirs:0}
-	ln -sf `echo $i | sed "s:^$RPM_BUILD_ROOT%{_pixmapsdir}/::"` $RPM_BUILD_ROOT%{_pixmapsdir}
-%else
-	cp -af $i $RPM_BUILD_ROOT%{_pixmapsdir}
-%endif
-done
-
-install %{SOURCE2}	$RPM_BUILD_ROOT%{_pixmapsdir}
-
-# leave only best-resolution icons at the top level; the other are not
-# necessary - their absence should make KDE a bit faster...
-%if %{!?_with_pixmapsubdirs:1}%{?_with_pixmapsubdirs:0}
-rm -f $RPM_BUILD_ROOT%{_pixmapsdir}/*color/??x??/apps/k{arbon,chart,formula,ivio,ontour,presenter,spread,udesigner,ugar,word}.png
-%endif
+mv $RPM_BUILD_ROOT{%{_applnkdir}/Office/*,%{_desktopdir}/kde}
 
 install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
-cd %{name}-i18n-%{version}
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
-cd ..
+%find_lang kchart		--with-kde
+%find_lang kformula		--with-kde
+%find_lang kivio		--with-kde
+%find_lang koffice		--with-kde
+%find_lang koshell		--with-kde
+cat koshell.lang >> koffice.lang
+%find_lang kugar		--with-kde
+%find_lang kpresenter		--with-kde
+%find_lang kspread		--with-kde
+%find_lang kword		--with-kde
+%find_lang thesaurus		--with-kde
+cat thesaurus.lang >> kword.lang
 
-##############
-## KPRESENTER:
-%find_lang kpresenter --with-kde
-%find_lang kpresenterkwordfilter --with-kde
-cat kpresenterkwordfilter.lang >> kpresenter.lang
-
-##############
-## KSPREAD:
-%find_lang kspread --with-kde
-%find_lang kspreadcalc_calc --with-kde
-%find_lang kspreadqprofilter --with-kde
-%find_lang csvfilter --with-kde
-cat kspreadcalc_calc.lang kspreadqprofilter.lang csvfilter.lang >> kspread.lang
-
-##############
-## KWORD:
-%find_lang kword --with-kde
-programs="kthesaurus kwordasciifilter kwordhtmlexportfilter kwordhtmlfilter kwordhtmlimportfilter kwordlatexfilter kwordmswritefilter thesaurus_tool"
-for i in $programs; do
-	%find_lang $i --with-kde
-	cat $i.lang >> kword.lang
-done
-
-##############
-## COMMON:
-> common.lang
-programs="desktop_koffice example graphite kdatabase kfile_koffice kformula kformulalib kformulalatexfilter kformulapngfilter koconverter kocryptfilter koffice koshell kscan_plugin kounavail kplato krita olefilterswinword97filter xsltfilter xsltexportfilter xsltimportfilter"
-for i in $programs; do
-	%find_lang $i --with-kde
-	cat $i.lang >> common.lang
-done
-
-###############
-## OTHERS:
-%find_lang kchart --with-kde
-%find_lang kivio --with-kde
-%find_lang kugar --with-kde
-%find_lang kudesigner --with-kde
-cat kudesigner.lang >> kugar.lang
-%find_lang kontour --with-kde
-
-# will be introduced in koffice 1.3:
-%find_lang karbon --with-kde
+for f in *.lang; do
+	if grep -q %{name}-apidocs $f; then
+		grep -v %{name}-apidocs $f > $f.tmp
+		mv $f.tmp $f
+	fi	
+done	
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	common	-p /sbin/ldconfig
-%postun common	-p /sbin/ldconfig
+%post	common -p /sbin/ldconfig
 
-%post	karbon	-p /sbin/ldconfig
-%postun karbon	-p /sbin/ldconfig
+%postun common -p /sbin/ldconfig
 
-%post	kchart	-p /sbin/ldconfig
-%postun kchart	-p /sbin/ldconfig
-
-%post	kontour	-p /sbin/ldconfig
-%postun kontour	-p /sbin/ldconfig
-
-%post	kpresenter	-p /sbin/ldconfig
-%postun kpresenter	-p /sbin/ldconfig
-
-%post	kspread	-p /sbin/ldconfig
-%postun kspread	-p /sbin/ldconfig
-
-%post	kword	-p /sbin/ldconfig
-%postun kword	-p /sbin/ldconfig
-
-%post	kivio	-p /sbin/ldconfig
-%postun kivio	-p /sbin/ldconfig
-
-%post	kugar	-p /sbin/ldconfig
-%postun kugar	-p /sbin/ldconfig
-
-#################################
-# koffice-common
-#################################
-%files common -f common.lang
+%files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kformula
+%lang(en) %{_kdedocdir}/en/%{name}-apidocs
+%{_includedir}/*
+%{_libdir}/libkdchart.so
+#%{_libdir}/libkdgantt.so
+%{_libdir}/libkexicore.so
+%{_libdir}/libkexidatatable.so
+%{_libdir}/libkexidb.so
+%{_libdir}/libkexidbparser.so
+#%{_libdir}/libkexiextendedwidgets.so
+#%{_libdir}/libkexiimportwizard.so
+%{_libdir}/libkexisql.so
+#%{_libdir}/libkformeditor.so
+%{_libdir}/libkformula.so
+%{_libdir}/libkochart.so
+%{_libdir}/libkofficecore.so
+%{_libdir}/libkofficeui.so
+%{_libdir}/libkopainter.so
+%{_libdir}/libkoscript.so
+%{_libdir}/libkospell.so
+%{_libdir}/libkotext.so
+%{_libdir}/libkowmf.so
+%{_libdir}/libkstore.so
+%{_libdir}/libkugar.so
+%{_libdir}/libkwmailmerge_interface.so
+%{_libdir}/libkwmf.so
+%{_libdir}/libkwordexportfilters.so
+
+%files common -f koffice.lang
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/koconverter
 %attr(755,root,root) %{_bindir}/koscript
 %attr(755,root,root) %{_bindir}/koshell
-%attr(755,root,root) %{_libdir}/koshell.??
-%attr(755,root,root) %{_libdir}/kformulamain.??
-%attr(755,root,root) %{_libdir}/kde3/clipartthumbnail.??
-%attr(755,root,root) %{_libdir}/kde3/kfile_koffice.??
-%attr(755,root,root) %{_libdir}/kde3/kodocinfopropspage.??
-%attr(755,root,root) %{_libdir}/kde3/kofficescan.??
-%attr(755,root,root) %{_libdir}/kde3/kofficethumbnail.??
-%attr(755,root,root) %{_libdir}/libkotext.??
-%attr(755,root,root) %{_libdir}/libkopainter.??
-%attr(755,root,root) %{_libdir}/kde3/libkfo*.??
-%attr(755,root,root) %{_libdir}/kde3/libxslt*port*.??
-#%attr(755,root,root) %{_libdir}/kde3/libkformulapart.??
-%attr(755,root,root) %{_libdir}/kde3/libkounavailpart.??
-%attr(755,root,root) %{_libdir}/kde3/liblatexparser.??
-%attr(755,root,root) %{_libdir}/kde3/libolefilter.??
-%attr(755,root,root) %{_libdir}/libkwmf.??
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%{_libdir}/koshell.la
+%attr(755,root,root) %{_libdir}/koshell.so
 %{_libdir}/libkdchart.la
-%{_applnkdir}/Office/koshell.desktop
-%{_applnkdir}/Office/Misc/kformula.desktop
+%attr(755,root,root) %{_libdir}/libkdchart.so.*.*.*
+%{_libdir}/libkexicore.la
+%attr(755,root,root) %{_libdir}/libkexicore.so.*.*.*
+%{_libdir}/libkexidatatable.la
+%attr(755,root,root) %{_libdir}/libkexidatatable.so.*.*.*
+%{_libdir}/libkexidb.la
+%attr(755,root,root) %{_libdir}/libkexidb.so.*.*.*
+%{_libdir}/libkexidbparser.la
+%attr(755,root,root) %{_libdir}/libkexidbparser.so.*.*.*
+%{_libdir}/libkexiextendedwidgets.la
+%attr(755,root,root) %{_libdir}/libkexiextendedwidgets.so.*.*.*
+%{_libdir}/libkexisql.la
+%attr(755,root,root) %{_libdir}/libkexisql.so.*.*.* 
+%{_libdir}/libkformula.la
+%attr(755,root,root) %{_libdir}/libkformula.so.*.*.*
+%{_libdir}/libkochart.la
+%attr(755,root,root) %{_libdir}/libkochart.so.*.*.*
+%{_libdir}/libkofficecore.la
+%attr(755,root,root) %{_libdir}/libkofficecore.so.*.*.*
+%{_libdir}/libkofficeui.la
+%attr(755,root,root) %{_libdir}/libkofficeui.so.*.*.*
+%{_libdir}/libkopainter.la
+%attr(755,root,root) %{_libdir}/libkopainter.so.*.*.*
+%{_libdir}/libkoscript.la
+%attr(755,root,root) %{_libdir}/libkoscript.so.*.*.*
+%{_libdir}/libkospell.la
+%attr(755,root,root) %{_libdir}/libkospell.so.*.*.*
+%{_libdir}/libkotext.la
+%attr(755,root,root) %{_libdir}/libkotext.so.*.*.*
+%{_libdir}/libkowmf.la
+%attr(755,root,root) %{_libdir}/libkowmf.so.*.*.*
+%{_libdir}/libkstore.la
+%attr(755,root,root) %{_libdir}/libkstore.so.*.*.*
+%{_libdir}/libkugar.la
+%attr(755,root,root) %{_libdir}/libkugar.so.*.*.*
+%{_libdir}/libkwmailmerge_interface.la
+%attr(755,root,root) %{_libdir}/libkwmailmerge_interface.so.*.*.*
+%{_libdir}/libkwmf.la
+%attr(755,root,root) %{_libdir}/libkwmf.so.*.*.*
+%{_libdir}/libkwordexportfilters.la
+%attr(755,root,root) %{_libdir}/libkwordexportfilters.so.*.*.*
+%{_libdir}/kde3/clipartthumbnail.la
+%attr(755,root,root) %{_libdir}/kde3/clipartthumbnail.so
+%{_libdir}/kde3/kfile_koffice.la
+%attr(755,root,root) %{_libdir}/kde3/kfile_koffice.so
+%{_libdir}/kde3/kfile_ooo.la
+%attr(755,root,root) %{_libdir}/kde3/kfile_ooo.so
+%{_libdir}/kde3/kodocinfopropspage.la
+%attr(755,root,root) %{_libdir}/kde3/kodocinfopropspage.so
+%{_libdir}/kde3/kofficescan.la
+%attr(755,root,root) %{_libdir}/kde3/kofficescan.so
+%{_libdir}/kde3/kofficethumbnail.la
+%attr(755,root,root) %{_libdir}/kde3/kofficethumbnail.so
+%{_libdir}/kde3/libgenerickofilter.la
+%attr(755,root,root) %{_libdir}/kde3/libgenerickofilter.so
+%{_libdir}/kde3/libxslt*port*.la
+%attr(755,root,root) %{_libdir}/kde3/libxslt*port*.so
+%{_libdir}/kde3/libkounavailpart.la
+%attr(755,root,root) %{_libdir}/kde3/libkounavailpart.so
+%{_libdir}/kde3/libolefilter.la
+%attr(755,root,root) %{_libdir}/kde3/libolefilter.so
 %{_datadir}/servicetypes/*
-%{_pixmapsdir}/*color/*x*/actions/abs.png
-%{_pixmapsdir}/*color/*x*/actions/brac*.png
-%{_pixmapsdir}/*color/*x*/actions/frac.png
-%{_pixmapsdir}/*color/*x*/actions/ins*.png
-%{_pixmapsdir}/*color/*x*/actions/rem*.png
-%{_pixmapsdir}/*color/*x*/actions/int.png
-%{_pixmapsdir}/*color/*x*/actions/[lr]su[bp].png
-%{_pixmapsdir}/*color/*x*/actions/matrix.png
-%{_pixmapsdir}/*color/*x*/actions/paren.png
-%{_pixmapsdir}/*color/*x*/actions/prod.png
-%{_pixmapsdir}/*color/*x*/actions/sqrt.png
-%{_pixmapsdir}/*color/*x*/actions/sum.png
-%{_pixmapsdir}/*color/*x*/actions/onetwomatrix.png
-%{_pixmapsdir}/kformula.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*color/*x*/apps/kformula.png}
-%{_datadir}/apps/kformula
 %{_datadir}/apps/koffice
+%dir %{_datadir}/apps/kontour
+%dir %{_datadir}/apps/kontour/kpartplugins
+%{_datadir}/apps/kontour/kpartplugins/scan-kontour.rc
+%{_datadir}/apps/koshell
 %{_datadir}/services/clipartthumbnail.desktop
 %{_datadir}/services/kfile_koffice.desktop
-%{_datadir}/services/kformula*
+%{_datadir}/services/kfile_ooo.desktop
 %{_datadir}/services/kodocinfopropspage.desktop
 %{_datadir}/services/kofficethumbnail.desktop
 %{_datadir}/services/kounavail.desktop
 %{_datadir}/services/ole_*.desktop
 %{_datadir}/services/otherofficethumbnail.desktop
 %{_datadir}/services/xslt_*.desktop
+%{_datadir}/services/generic_filter.desktop
+%dir %{_datadir}/templates/.source
 # Conflicts with kdelibs
-#%%{_datadir}/mimelnk/image/x-msod.desktop
-#%%{_datadir}/mimelnk/image/x-wmf.desktop
-#%%{_datadir}/mimelnk/image/x-xfig.desktop
-#%%{_datadir}/mimelnk/text/x-csv.desktop
-%{_mandir}/man1/kformula.*
-%{_mandir}/man1/koconverter.*
-%{_mandir}/man1/koscript.*
-%{_mandir}/man1/koshell.*
+#%{_datadir}/mimelnk/image/x-msod.desktop
+#%{_datadir}/mimelnk/image/x-wmf.desktop
+#%{_datadir}/mimelnk/image/x-xfig.desktop
+#%{_datadir}/mimelnk/text/x-csv.desktop
+%{_desktopdir}/kde/koshell.desktop
+%{_mandir}/man1/koconverter.1*
+%{_mandir}/man1/koscript.1*
+%{_mandir}/man1/koshell.1*
 
-#################################
-# koffice-devel
-#################################
-%files devel
-%defattr(644,root,root,755)
-%{_includedir}/*.h
-%attr(755,root,root) %{_libdir}/libkformul*.??
-#%attr(755,root,root) %{_libdir}/libkodocinfopropspage.??
-%attr(755,root,root) %{_libdir}/libkochart.??
-%attr(755,root,root) %{_libdir}/libkdchart.so
-%attr(755,root,root) %{_libdir}/libkofficecore.??
-%attr(755,root,root) %{_libdir}/libkofficeui.??
-%attr(755,root,root) %{_libdir}/libkoscript.??
-%attr(755,root,root) %{_libdir}/libkstore.??
-
-#################################
-# koffice-karbon
-#################################
-%files -f karbon.lang karbon
+%files karbon
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/karbon
-%attr(755,root,root) %{_libdir}/karbon.??
-%attr(755,root,root) %{_libdir}/kde3/libkarbonpart.??
-%attr(755,root,root) %{_libdir}/kde3/libkarbon*import*
-%attr(755,root,root) %{_libdir}/kde3/libkarbon*export*
+%{_libdir}/karbon.la
+%attr(755,root,root) %{_libdir}/karbon.so
+%{_libdir}/kde3/*karbon*.la
+%attr(755,root,root) %{_libdir}/kde3/*karbon*.so*
+%{_libdir}/kde3/*wmf*port.la
+%attr(755,root,root) %{_libdir}/kde3/*wmf*port.so*
+%{_datadir}/apps/karbon
 %{_datadir}/services/karbon*
-#%%{_datadir}/apps/karbon
-#%%{_datadir}/templates/.source/Presentation.kpt
-#%%{_datadir}/templates/Presentation.desktop
-%{_applnkdir}/Graphics/karbon.desktop
-%{_pixmapsdir}/karbon.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/karbon.png}
-%{_mandir}/man1/karbon.*
+%{_datadir}/templates/.source/Illustration.karbon
+%{_desktopdir}/kde/karbon.desktop
+%{_iconsdir}/*/*/apps/karbon.png
+%{_mandir}/man1/karbon.1*
 
-#################################
-# koffice-kchart
-#################################
-%files -f kchart.lang kchart
+%files kchart -f kchart.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kchart
-%attr(755,root,root) %{_libdir}/kchart.??
-%attr(755,root,root) %{_libdir}/kde3/libkchartpart.??
+%{_libdir}/kchart.la
+%attr(755,root,root) %{_libdir}/kchart.so
+%{_libdir}/kde3/libkchartpart.la
+%attr(755,root,root) %{_libdir}/kde3/libkchartpart.so
 %{_datadir}/apps/kchart
-%{_applnkdir}/Office/Misc/kchart.desktop
-%{_pixmapsdir}/kchart.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kchart*.png}
-%{_mandir}/man1/kchart.*
+%{_desktopdir}/kde/kchart.desktop
+%{_iconsdir}/*/*x*/apps/kchart.png
+%{_mandir}/man1/kchart.1*
 
-#################################
-# koffice-kivio
-#################################
-%files -f kivio.lang kivio
+%files kexi
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/kexi*
+#%{_libdir}/kexi.la
+#%attr(755,root,root) %{_libdir}/kexi.so 
+%{_libdir}/kde3/*kexi*.la
+%attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
+%{_datadir}/apps/kexi
+%{_datadir}/config/kexirc
+%{_datadir}/config/magic/kexi.magic
+%{_datadir}/mimelnk/application/x-kexiproject-shortcut.desktop
+%{_datadir}/mimelnk/application/x-kexiproject-sqlite.desktop
+%{_datadir}/services/kexi*
+%{_desktopdir}/kde/kexi.desktop
+%{_mandir}/man1/kexi.1*
+%{_mandir}/man1/kformdesigner.1*
+
+%files kformula -f kformula.lang
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/kformula
+%{_libdir}/kformula*.la
+%attr(755,root,root) %{_libdir}/kformula*.so
+%{_libdir}/kde3/libkfo*.la
+%attr(755,root,root) %{_libdir}/kde3/libkfo*.so
+%{_datadir}/apps/kformula
+%{_datadir}/services/kformula*
+%{_desktopdir}/kde/kformula.desktop
+%{_iconsdir}/*/*/actions/abs.png
+%{_iconsdir}/*/*/actions/brac*.png
+%{_iconsdir}/*/*/actions/frac.png
+%{_iconsdir}/*/*/actions/ins*.png
+%{_iconsdir}/*/*/actions/rem*.png
+%{_iconsdir}/*/*/actions/int.png
+%{_iconsdir}/*/*/actions/[lr]su[bp].png
+%{_iconsdir}/*/*/actions/matrix.png
+%{_iconsdir}/*/*/actions/paren.png
+%{_iconsdir}/*/*/actions/prod.png
+%{_iconsdir}/*/*/actions/sqrt.png
+%{_iconsdir}/*/*/actions/sum.png
+%{_iconsdir}/*/*/actions/onetwomatrix.png
+%{_iconsdir}/*/*/actions/multiline.png
+%{_iconsdir}/*/*/actions/over.png
+%{_iconsdir}/*/*/actions/under.png
+%{_iconsdir}/*/*/apps/kformula.png
+%{_mandir}/man1/kformula.1*
+
+%files kivio -f kivio.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kivio
-%attr(755,root,root) %{_libdir}/*kivio*.??
-%attr(755,root,root) %{_libdir}/kde3/*kivio*.??
-%attr(755,root,root) %{_datadir}/apps/kivio/autoloadStencils/*.ksp
-%{_applnkdir}/Office/Misc/kivio.desktop
+%{_libdir}/*kivio*.la
+%attr(755,root,root) %{_libdir}/*kivio*.so
+%{_libdir}/kde3/*kivio*.la
+%attr(755,root,root) %{_libdir}/kde3/*kivio*.so
+%{_libdir}/kde3/straight_connector.la
+%attr(755,root,root) %{_libdir}/kde3/straight_connector.so
 %{_datadir}/apps/kivio
-%{_pixmapsdir}/kivio.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kivio*.png}
-#%%{_datadir}/mimelnk/application/x-kivio.desktop
 %{_datadir}/services/kivio*.desktop
-%{_mandir}/man1/kivio.*
+%{_desktopdir}/kde/kivio.desktop
+%{_iconsdir}/*/*/apps/kivio.png
+%{_mandir}/man1/kivio.1*
 
-#################################
-# koffice-kontour
-#################################
-%files -f kontour.lang kontour
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kontour
-%attr(755,root,root) %{_libdir}/kontour.??
-%attr(755,root,root) %{_libdir}/kde3/libkontourpart.??
-%attr(755,root,root) %{_libdir}/kde3/libapplixgraphicimport.??
-%attr(755,root,root) %{_libdir}/kde3/libmsodimport.??
-%attr(755,root,root) %{_libdir}/kde3/libwmfimport.??
-
-%attr(755,root,root) %{_libdir}/kde3/libkontourrtfexport.so
-%attr(755,root,root) %{_libdir}/kde3/libtexgraphexport.so
-#%attr(755,root,root) %{_libdir}/kde3/libsvgexport.??
-#%attr(755,root,root) %{_libdir}/kde3/libxfigimport.??
-%{_datadir}/apps/kontour
-%{_datadir}/services/kontour*.desktop
-#%%{_datadir}/mimelnk/image/x-svg.desktop
-%{_datadir}/templates/.source/Illustration.kil
-%{_datadir}/templates/Illustration.desktop
-%{_applnkdir}/Graphics/kontour.desktop
-%{_pixmapsdir}/kontour.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/*/kontour.png}
-%{_mandir}/man1/kontour.*
-
-#################################
-# koffice-kpresenter
-#################################
-%files -f kpresenter.lang kpresenter
+%files kpresenter -f kpresenter.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kpresenter
 %attr(755,root,root) %{_bindir}/kprconverter.pl
-%attr(755,root,root) %{_libdir}/kpresenter.??
-%attr(755,root,root) %{_libdir}/kde3/libkpresenterpart.??
-%attr(755,root,root) %{_libdir}/kde3/libkprkword.??
+%{_libdir}/kpresenter.la
+%attr(755,root,root) %{_libdir}/kpresenter.so
+%{_libdir}/kde3/libkpresenterpart.la
+%attr(755,root,root) %{_libdir}/kde3/libkpresenterpart.so
+%{_libdir}/kde3/libkprkword.la
+%attr(755,root,root) %{_libdir}/kde3/libkprkword.so
+%{_libdir}/kde3/libooimpress*port.la
+%attr(755,root,root) %{_libdir}/kde3/libooimpress*port.so
 %{_datadir}/apps/kpresenter
 %{_datadir}/templates/.source/Presentation.kpt
 %{_datadir}/templates/Presentation.desktop
 %{_datadir}/services/kprkword.desktop
-%{_applnkdir}/Office/Presentations/kpresenter.desktop
-%{_pixmapsdir}/kpresenter.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kpresenter*.png}
-%{_mandir}/man1/kpresenter.*
-%{_mandir}/man1/kprconverter.pl.*
+%{_datadir}/services/kpresenter_ooimpress_export.desktop
+%{_datadir}/services/kpresenter_ooimpress_import.desktop
+%{_desktopdir}/kde/kpresenter.desktop
+%{_iconsdir}/*/*/apps/kpresenter*.png
+%{_mandir}/man1/kpresenter.1*
+%{_mandir}/man1/kprconverter.pl.1*
 
-#################################
-# koffice-kspread
-#################################
-%files -f kspread.lang kspread
+%files krita
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/krita
+%{_libdir}/kde3/*krita*.la
+%attr(755,root,root) %{_libdir}/kde3/*krita*.so
+%{_libdir}/*krita*.la
+%attr(755,root,root) %{_libdir}/*krita*.so
+%{_libdir}/kde3/*magick*port.la
+%attr(755,root,root) %{_libdir}/kde3/*magick*port.so
+%{_libdir}/libkisp_example.la
+%attr(755,root,root) %{_libdir}/libkisp_example.so
+%dir %{_datadir}/apps/krayon
+%dir %{_datadir}/apps/krayon/plugins
+%{_datadir}/apps/krayon/plugins/example.kisplugin
+%{_datadir}/apps/krita
+%{_datadir}/services/krita_magick_import.desktop
+%{_datadir}/templates/Illustration.desktop
+%{_desktopdir}/kde/krita.desktop
+
+%files kspread -f kspread.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kspread
-%attr(755,root,root) %{_libdir}/kspread.??
-%attr(755,root,root) %{_libdir}/kde3/libkspread*.??
-%attr(755,root,root) %{_libdir}/kde3/libcsv*.??
-%attr(755,root,root) %{_libdir}/kde3/libapplixspreadimport.??
-%attr(755,root,root) %{_libdir}/kde3/libgnumeric*port.??
-%attr(755,root,root) %{_libdir}/kde3/libdbase*port.??
-%attr(755,root,root) %{_libdir}/kde3/libqproimport.??
+%{_libdir}/kspread.la
+%attr(755,root,root) %{_libdir}/kspread.so
+%{_libdir}/kde3/libkspread*.la
+%attr(755,root,root) %{_libdir}/kde3/libkspread*.so
+%{_libdir}/kde3/libcsv*.la
+%attr(755,root,root) %{_libdir}/kde3/libcsv*.so
+%{_libdir}/kde3/libapplixspreadimport.la
+%attr(755,root,root) %{_libdir}/kde3/libapplixspreadimport.so
+%{_libdir}/kde3/libgnumeric*port.la
+%attr(755,root,root) %{_libdir}/kde3/libgnumeric*port.so
+%{_libdir}/kde3/libdbase*port.la
+%attr(755,root,root) %{_libdir}/kde3/libdbase*port.so
+%{_libdir}/kde3/libqproimport.la
+%attr(755,root,root) %{_libdir}/kde3/libqproimport.so
+%{_libdir}/kde3/libopencalc*port.la
+%attr(755,root,root) %{_libdir}/kde3/libopencalc*port.so
 %{_datadir}/apps/kspread
-#%%{_datadir}/mimelnk/text/x-gnumeric.desktop
 %{_datadir}/services/kspread*.desktop
 %{_datadir}/templates/.source/SpreadSheet.ksp
 %{_datadir}/templates/SpreadSheet.desktop
-%{_applnkdir}/Office/Spreadsheets/kspread.desktop
-%{_pixmapsdir}/kspread.png
-%{!?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kspreadc*.png}
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kspread*.png}
-%{_mandir}/man1/kspread.*
+%{_desktopdir}/kde/kspread.desktop
+%{_iconsdir}/[!l]*/*/apps/kspread*.png
+%{_mandir}/man1/kspread.1*
 
-#################################
-# koffice-kugar
-#################################
-%files -f kugar.lang kugar
+%files kugar -f kugar.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kudesigner
 %attr(755,root,root) %{_bindir}/kugar
-%attr(755,root,root) %{_libdir}/libkugar*.??
-%{_applnkdir}/Office/Presentations/kugar.desktop
-%{_applnkdir}/Office/Misc/kudesigner.desktop
+%{_libdir}/kde3/*kugar*.la
+%attr(755,root,root) %{_libdir}/kde3/*kugar*.so
+%{_libdir}/*kugar*.la
+%attr(755,root,root) %{_libdir}/*kugar*.so
+%{_libdir}/kde3/*kudesigner*.la
+%attr(755,root,root) %{_libdir}/kde3/*kudesigner*.so
+%{_libdir}/*kudesigner*.la
+%attr(755,root,root) %{_libdir}/*kudesigner*.so
+%{_desktopdir}/kde/kudesigner.desktop
+%{_desktopdir}/kde/kugar.desktop
 %{_datadir}/apps/kudesigner
 %{_datadir}/apps/kugar
-%{_pixmapsdir}/kudesigner.png
-%{_pixmapsdir}/kugar.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kudesigner.png}
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kugar*.png}
-%{_datadir}/mimelnk/application/x-kudesigner.desktop
-#%%{_datadir}/mimelnk/application/x-kugar.desktop
-%{_pixmapsdir}/*/*/mimetypes/*kugar*
-%{_mandir}/man1/kudesigner.*
-%{_mandir}/man1/kugar.*
+%{_datadir}/services/kugar_kugar_import.desktop
+%{_iconsdir}/*/*/*/kugar.png
+%{_iconsdir}/*/*/mimetypes/kugardata.png
+%{_mandir}/man1/kudesigner.1*
+%{_mandir}/man1/kugar.1*
 
-#################################
-# koffice-kword
-#################################
-%files -f kword.lang kword
+%files kword -f kword.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kthesaurus
 %attr(755,root,root) %{_bindir}/kword
-%attr(755,root,root) %{_libdir}/kword.??
-%attr(755,root,root) %{_libdir}/libkwmailmerge*.??
-%attr(755,root,root) %{_libdir}/libkwordexport*.??
-%attr(755,root,root) %{_libdir}/kde3/kwmailmerge*.??
-%attr(755,root,root) %{_libdir}/kde3/libabiword*port.??
-%attr(755,root,root) %{_libdir}/kde3/libapplixwordimport.??
-%attr(755,root,root) %{_libdir}/kde3/libascii*port.??
-%attr(755,root,root) %{_libdir}/kde3/libdocbookexport.??
-%attr(755,root,root) %{_libdir}/kde3/libhtml*port.??
-%attr(755,root,root) %{_libdir}/kde3/libpalmdoc*port.??
-%attr(755,root,root) %{_libdir}/kde3/libamipro*port.??
-%attr(755,root,root) %{_libdir}/kde3/libwml*port.??
-%attr(755,root,root) %{_libdir}/kde3/libkspelltool.??
-%attr(755,root,root) %{_libdir}/kde3/libkwordpart.??
-%attr(755,root,root) %{_libdir}/kde3/liblatex*port.??
-%attr(755,root,root) %{_libdir}/kde3/librtf*port.??
-%attr(755,root,root) %{_libdir}/kde3/libthesaurustool.??
-%attr(755,root,root) %{_libdir}/kde3/libwp*port.??
-%attr(755,root,root) %{_libdir}/kde3/libmswrite*port.??
-
+%{_libdir}/kword.la
+%attr(755,root,root) %{_libdir}/kword.so
+%{_libdir}/libkwmailmerge*.la
+%attr(755,root,root) %{_libdir}/libkwmailmerge*.so
+%{_libdir}/libkword*export*.la
+%attr(755,root,root) %{_libdir}/libkword*export*.so
+%{_libdir}/kde3/kwmailmerge*.la
+%attr(755,root,root) %{_libdir}/kde3/kwmailmerge*.so
+%{_libdir}/kde3/libabiword*port.la
+%attr(755,root,root) %{_libdir}/kde3/libabiword*port.so
+%{_libdir}/kde3/libmswordimport.la
+%attr(755,root,root) %{_libdir}/kde3/libmswordimport.so
+%{_libdir}/kde3/libapplixwordimport.la
+%attr(755,root,root) %{_libdir}/kde3/libapplixwordimport.so
+%{_libdir}/kde3/libascii*port.la
+%attr(755,root,root) %{_libdir}/kde3/libascii*port.so
+%{_libdir}/kde3/libdocbookexport.la
+%attr(755,root,root) %{_libdir}/kde3/libdocbookexport.so
+%{_libdir}/kde3/libhtml*port.la
+%attr(755,root,root) %{_libdir}/kde3/libhtml*port.so
+%{_libdir}/kde3/libpalmdoc*port.la
+%attr(755,root,root) %{_libdir}/kde3/libpalmdoc*port.so
+%{_libdir}/kde3/libamipro*port.la
+%attr(755,root,root) %{_libdir}/kde3/libamipro*port.so
+%{_libdir}/kde3/libpdfimport.la
+%attr(755,root,root) %{_libdir}/kde3/libpdfimport.so
+%{_libdir}/kde3/libwml*port.la
+%attr(755,root,root) %{_libdir}/kde3/libwml*port.so
+%{_libdir}/kde3/libkspelltool.la
+%attr(755,root,root) %{_libdir}/kde3/libkspelltool.so
+%{_libdir}/kde3/librtf*port.la
+%attr(755,root,root) %{_libdir}/kde3/librtf*port.so
+%{_libdir}/kde3/libthesaurustool.la
+%attr(755,root,root) %{_libdir}/kde3/libthesaurustool.so
+%{_libdir}/kde3/libwp*port.la
+%attr(755,root,root) %{_libdir}/kde3/libwp*port.so
+%{_libdir}/kde3/libmswrite*port.la
+%attr(755,root,root) %{_libdir}/kde3/libmswrite*port.so
+%{_libdir}/kde3/libkword*.la
+%attr(755,root,root) %{_libdir}/kde3/libkword*.so
+%{_libdir}/kde3/liboowriter*port.la
+%attr(755,root,root) %{_libdir}/kde3/liboowriter*port.so
 %{_datadir}/apps/kword
 %{_datadir}/apps/thesaurus
+%{_datadir}/apps/xsltfilter/export/kword/xslfo/*.xsl
 %{_datadir}/services/kspelltool.desktop
 %{_datadir}/services/kword*.desktop
 %{_datadir}/services/kwserialletter*
 %{_datadir}/services/thesaurustool.desktop
 %{_datadir}/templates/.source/TextDocument.kwt
 %{_datadir}/templates/TextDocument.desktop
-%{_applnkdir}/Office/Wordprocessors/kword.desktop
-%{_applnkdir}/Office/Wordprocessors/kwmailmerge.desktop
-%{_pixmapsdir}/kword.png
-%{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kword.png}
-%{_datadir}/apps/xsltfilter/export/kword/xslfo/*.xsl
-%{_mandir}/man1/kthesaurus.*
-%{_mandir}/man1/kword.*
+%{_desktopdir}/kde/KThesaurus.desktop
+%{_desktopdir}/kde/kword.desktop
+%{_iconsdir}/*/*/apps/kword.png
+%{_mandir}/man1/kthesaurus.1*
+%{_mandir}/man1/kword.1*
