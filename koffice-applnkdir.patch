@@ -1,0 +1,84 @@
+diff -Nur koffice-1.94/kchart/Makefile.am koffice-1.94.new/kchart/Makefile.am
+--- koffice-1.94/kchart/Makefile.am	Fri Jul 14 02:33:11 2000
++++ koffice-1.94.new/kchart/Makefile.am	Tue Oct  3 17:06:49 2000
+@@ -97,8 +97,8 @@
+ rcdir = $(kde_datadir)/kchart
+ rc_DATA = kchart.rc
+ 
+-kdelnk_DATA = kchart.desktop
+-kdelnkdir = $(kde_appsdir)/Office
++kchart_DATA = kchart.desktop
++kchartdir = $(kde_appsdir)/Office
+ 
+ kdemime_DATA = x-kchart.desktop
+ kdemimedir = $(kde_mimedir)/application
+diff -Nur koffice-1.94/killustrator/koffice/Makefile.am koffice-1.94.new/killustrator/koffice/Makefile.am
+--- koffice-1.94/killustrator/koffice/Makefile.am	Sun Aug 13 21:56:37 2000
++++ koffice-1.94.new/killustrator/koffice/Makefile.am	Tue Oct  3 17:07:31 2000
+@@ -28,8 +28,8 @@
+ 
+ libkillustratorpart_la_METASOURCES = AUTO
+ 
+-kdelnk_DATA = killustrator.desktop
+-kdelnkdir = $(kde_appsdir)/Office
++killustrator_DATA = killustrator.desktop
++killustratordir = $(kde_appsdir)/Office
+ 
+ kdemime_DATA = x-killustrator.desktop
+ kdemimedir = $(kde_mimedir)/application
+diff -Nur koffice-1.94/koshell/Makefile.am koffice-1.94.new/koshell/Makefile.am
+--- koffice-1.94/koshell/Makefile.am	Mon Aug 14 12:36:12 2000
++++ koffice-1.94.new/koshell/Makefile.am	Tue Oct  3 17:08:13 2000
+@@ -25,8 +25,8 @@
+ # rcdir = $(kde_datadir)/koshell
+ # rc_DATA = koshell_shell.rc
+ 
+-applnk_DATA = koshell.desktop
+-applnkdir = $(kde_appsdir)/Office
++koshell_DATA = koshell.desktop
++koshelldir = $(kde_appsdir)/Office
+ 
+ ####### Implicit rules
+ 
+diff -Nur koffice-1.94/kpresenter/Makefile.am koffice-1.94.new/kpresenter/Makefile.am
+--- koffice-1.94/kpresenter/Makefile.am	Fri Jul 21 11:11:20 2000
++++ koffice-1.94.new/kpresenter/Makefile.am	Tue Oct  3 17:08:53 2000
+@@ -67,8 +67,8 @@
+ 		KPresenterDocIface.h KPresenterViewIface.h KPresenterObjectIface.h \
+ 		KPresenterBackgroundIface.h textdialog.h
+ 
+-kdelnk_DATA = kpresenter.desktop
+-kdelnkdir = $(kde_appsdir)/Office
++kpresenter_DATA = kpresenter.desktop
++kpresenterdir = $(kde_appsdir)/Office
+ 
+ kdemime_DATA = x-kpresenter.desktop
+ kdemimedir = $(kde_mimedir)/application
+diff -Nur koffice-1.94/kspread/Makefile.am koffice-1.94.new/kspread/Makefile.am
+--- koffice-1.94/kspread/Makefile.am	Thu Jul 20 21:27:33 2000
++++ koffice-1.94.new/kspread/Makefile.am	Tue Oct  3 17:09:33 2000
+@@ -62,8 +62,8 @@
+ 	KSpreadCellIface.h KSpreadMapIface.h KSpreadTableIface.h KSpreadDocIface.h \
+ 	KSpreadAppIface.h kspread_dlg_format.h
+ 
+-kdelnk_DATA = kspread.desktop
+-kdelnkdir = $(kde_appsdir)/Office
++kspread_DATA = kspread.desktop
++kspreaddir = $(kde_appsdir)/Office
+ 
+ kdemime_DATA = x-kspread.desktop
+ kdemimedir = $(kde_mimedir)/application
+diff -Nur koffice-1.94/kword/Makefile.am koffice-1.94.new/kword/Makefile.am
+--- koffice-1.94/kword/Makefile.am	Sun Jul 16 10:44:01 2000
++++ koffice-1.94.new/kword/Makefile.am	Tue Oct  3 17:10:09 2000
+@@ -40,8 +40,8 @@
+                 footnote.h footnotedia.h autoformat.h autoformatdia.h \
+                 variabledlgs.h serialletter.h contents.h kword_factory.h
+ 
+-kdelnk_DATA = kword.desktop
+-kdelnkdir = $(kde_appsdir)/Office
++kword_DATA = kword.desktop
++kworddir = $(kde_appsdir)/Office
+ 
+ kdemime_DATA = x-kword.desktop
+ kdemimedir = $(kde_mimedir)/application
