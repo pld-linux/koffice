@@ -14,7 +14,7 @@ Summary(zh_CN):	KDE 的办公应用软件集。
 Name:		koffice
 # Version:	%{_ver}.%{_snap}
 Version:	%{_ver}
-Release:	3
+Release:	0.1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
@@ -25,7 +25,6 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{ve
 #Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}-%{_snap}.tar.bz2
 Patch100:	%{name}-branch.diff
 Patch0:		%{name}-vcategories.patch
-Patch2:		%{name}-desktop.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
@@ -340,7 +339,14 @@ Processador de texto do KOffice.
 %setup -q
 %patch100 -p1
 %patch0 -p1
-%patch2 -p1
+
+%{__sed} -i -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
+	karbon/data/karbon.desktop
+	
+%{__sed} -i -e 's/Terminal=0/Terminal=false/' \
+	kugar/kudesigner/kudesigner.desktop \
+	kugar/part/kugar.desktop \
+	kugar/part/kugarpart.desktop
 
 %build
 cp -f /usr/share/automake/config.sub admin
