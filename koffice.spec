@@ -91,7 +91,10 @@ Summary(pl):	KOffice - wspó³dzielone pliki i biblioteki
 Summary(pt_BR):	Arquivos requeridos por todos os softwares koffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
+Group(es):	X11/Aplicaciones
 Group(pl):	X11/Aplikacje
+Group(pt_BR):	X11/Aplicações
+Group(pt):	X11/Aplicações
 Requires:	kdelibs >= 2.1.1
 Obsoletes:	koffice-i18n-Azerbaijani
 Obsoletes:	koffice-i18n-Bulgarian
@@ -168,7 +171,10 @@ Summary(pl):	KOffice - KChart
 Summary(pt_BR):	Gerador de diagramas do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
+Group(es):	X11/Aplicaciones
 Group(pl):	X11/Aplikacje
+Group(pt_BR):	X11/Aplicações
+Group(pt):	X11/Aplicações
 Requires:	%{name}-common = %{version}
 
 %description kchart
@@ -188,7 +194,10 @@ Summary(pl):	KOffice - Kontour
 Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
+Group(es):	X11/Aplicaciones
 Group(pl):	X11/Aplikacje
+Group(pt_BR):	X11/Aplicações
+Group(pt):	X11/Aplicações
 Requires:	%{name}-common = %{version}
 
 %description kontour
@@ -218,7 +227,10 @@ Summary:	KOffice - KPresenter
 Summary(pl):	KOffice - KPresenter
 Group:		X11/Applications
 Group(de):	X11/Applikationen
+Group(es):	X11/Aplicaciones
 Group(pl):	X11/Aplikacje
+Group(pt_BR):	X11/Aplicações
+Group(pt):	X11/Aplicações
 Requires:	%{name}-common = %{version}
 
 %description kpresenter
@@ -237,7 +249,10 @@ Summary(pl):	KOffice - KSpread
 Summary(pt_BR):	Planilha eletrônica do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
+Group(es):	X11/Aplicaciones
 Group(pl):	X11/Aplikacje
+Group(pt_BR):	X11/Aplicações
+Group(pt):	X11/Aplicações
 Requires:	%{name}-common = %{version}
 
 %description kspread
@@ -256,7 +271,10 @@ Summary(pl):	KOffice - KWord
 Summary(pt_BR):	Processador de texto do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
+Group(es):	X11/Aplicaciones
 Group(pl):	X11/Aplikacje
+Group(pt_BR):	X11/Aplicações
+Group(pt):	X11/Aplicações
 Requires:	%{name}-common = %{version}
 
 %description kword
@@ -278,7 +296,10 @@ Summary(pl):	KOffice - ivio
 Summary(pt_BR):	Editor de fluxogramas do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
+Group(es):	X11/Aplicaciones
 Group(pl):	X11/Aplikacje
+Group(pt_BR):	X11/Aplicações
+Group(pt):	X11/Aplicações
 Requires:	%{name}-common = %{version}
 
 %description kivio
@@ -307,7 +328,10 @@ Summary(pl):	KOffice - KUgar
 Summary(pt_BR):	Gerador de relatórios do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
+Group(es):	X11/Aplicaciones
 Group(pl):	X11/Aplikacje
+Group(pt_BR):	X11/Aplicações
+Group(pt):	X11/Aplicações
 Requires:	%{name}-common = %{version}
 
 %description kugar
