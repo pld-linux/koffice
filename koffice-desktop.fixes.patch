@@ -9728,3 +9728,25 @@ Only in koffice-1.2.orig/koffice-i18n-1.2: ven
 Only in koffice-1.2.orig/koffice-i18n-1.2: xh
 Only in koffice-1.2.orig/koffice-i18n-1.2: zh_TW
 Only in koffice-1.2.orig/koffice-i18n-1.2: zu
+--- koffice-1.2.orig/kformula/kformula.desktop	Sat Aug 31 13:13:34 2002
++++ koffice-1.2/kformula/kformula.desktop	Thu Nov  7 00:47:32 2002
+@@ -62,7 +62,7 @@
+ GenericName[zu]=Umhleli we Formula
+ MimeType=application/x-kformula
+ Type=Application
+-Icon=kformula
++Icon=kformula.png
+ ServiceTypes=KOfficePart,KParts/ReadOnlyPart,KParts/ReadWritePart
+ X-KDE-NativeMimeType=application/x-kformula
+ X-DCOP-ServiceType=Multi
+--- koffice-1.2.orig/kugar/kudesigner/kudesigner.desktop	Sat Aug 31 13:13:44 2002
++++ koffice-1.2/kugar/kudesigner/kudesigner.desktop	Thu Nov  7 00:45:23 2002
+@@ -3,7 +3,7 @@
+ Encoding=UTF-8
+ Type=Application
+ Exec=kudesigner
+-Icon=kudesigner
++Icon=kudesigner.png
+ DocPath=kugar/index.html
+ Terminal=0
+ Name=Kugar Designer
