@@ -8,7 +8,7 @@
 
 %define		_state		snapshots
 %define		_ver		1.2.91
-%define		_snap		030726
+%define		_snap		030918
 
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
@@ -24,7 +24,7 @@ License:	GPL
 Group:		X11/Applications
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	6f449b0595feec05b648aeba608f31fa
+# Source0-md5:	94ab83a7ec41dbf17f0a1273fc978bca
 Patch0:		%{name}-vcategories.patch
 URL:		http://www.koffice.org/
 BuildRequires:	fam-devel
@@ -45,7 +45,6 @@ Requires:	wv2 >= 0.0.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_htmldir	%{_docdir}/kde/HTML
-%define		_icondir	%{_datadir}/icons
 
 %define		no_install_post_chrpath		1
 
@@ -341,6 +340,8 @@ Processador de texto do KOffice.
 
 %build
 
+%{__make} -f Makefile.cvs
+
 %configure
 
 %{__make}
@@ -353,11 +354,9 @@ rm -rf $RPM_BUILD_ROOT
 	kde_appsdir=%{_applnkdir} \
 	kde_htmldir=%{_htmldir}
 
+install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
 
-install -d $RPM_BUILD_ROOT{%{_desktopdir},%{_mandir}/man1}
-
-mv $RPM_BUILD_ROOT{%{_applnkdir}/Office/*,%{_desktopdir}}
-mv $RPM_BUILD_ROOT{%{_applnkdir}/Utilities/*,%{_desktopdir}}
+mv $RPM_BUILD_ROOT{%{_applnkdir}/Office/*,%{_desktopdir}/kde}
 
 install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
@@ -378,11 +377,9 @@ cat thesaurus.lang >> kword.lang
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	common
-/sbin/ldconfig
+%post	common -p /sbin/ldconfig
 
-%postun common
-/sbin/ldconfig
+%postun common -p /sbin/ldconfig
 
 %files devel -f koffice-apidocs.lang
 %defattr(644,root,root,755)
@@ -392,9 +389,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkexicore.so
 %{_libdir}/libkexidatatable.so
 %{_libdir}/libkexidb.so
-%{_libdir}/libkexiextendedwidgets.so
-%{_libdir}/libkexiimportwizard.so
-%{_libdir}/libkformeditor.so
+#%{_libdir}/libkexiextendedwidgets.so
+#%{_libdir}/libkexiimportwizard.so
+%{_libdir}/libkexisql.so
+#%{_libdir}/libkformeditor.so
 %{_libdir}/libkformula.so
 %{_libdir}/libkochart.so
 %{_libdir}/libkofficecore.so
@@ -428,12 +426,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkexidatatable.so.*.*.*
 %{_libdir}/libkexidb.la
 %attr(755,root,root) %{_libdir}/libkexidb.so.*.*.*
-%{_libdir}/libkexiextendedwidgets.la
-%attr(755,root,root) %{_libdir}/libkexiextendedwidgets.so.*.*.*
-%{_libdir}/libkexiimportwizard.la
-%attr(755,root,root) %{_libdir}/libkexiimportwizard.so.*.*.*
-%{_libdir}/libkformeditor.la
-%attr(755,root,root) %{_libdir}/libkformeditor.so.*.*.*
+#%{_libdir}/libkexiextendedwidgets.la
+#%attr(755,root,root) %{_libdir}/libkexiextendedwidgets.so.*.*.*
+#%{_libdir}/libkexiimportwizard.la
+#%attr(755,root,root) %{_libdir}/libkexiimportwizard.so.*.*.*
+#%{_libdir}/libkformeditor.la
+#%attr(755,root,root) %{_libdir}/libkformeditor.so.*.*.*
+%{_libdir}/libkexisql.la
+%attr(755,root,root) %{_libdir}/libkexisql.so.*.*.* 
 %{_libdir}/libkformula.la
 %attr(755,root,root) %{_libdir}/libkformula.so.*.*.*
 %{_libdir}/libkochart.la
@@ -506,7 +506,7 @@ rm -rf $RPM_BUILD_ROOT
 #%{_datadir}/mimelnk/image/x-wmf.desktop
 #%{_datadir}/mimelnk/image/x-xfig.desktop
 #%{_datadir}/mimelnk/text/x-csv.desktop
-%{_desktopdir}/koshell.desktop
+%{_desktopdir}/kde/koshell.desktop
 %{_mandir}/man1/koconverter.1*
 %{_mandir}/man1/koscript.1*
 %{_mandir}/man1/koshell.1*
@@ -523,8 +523,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/karbon
 %{_datadir}/services/karbon*
 %{_datadir}/templates/.source/Illustration.karbon
-%{_desktopdir}/karbon.desktop
-%{_icondir}/*/*/apps/karbon.png
+%{_desktopdir}/kde/karbon.desktop
+%{_iconsdir}/*/*/apps/karbon.png
 %{_mandir}/man1/karbon.1*
 
 %files kchart -f kchart.lang
@@ -535,48 +535,48 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/libkchartpart.la
 %attr(755,root,root) %{_libdir}/kde3/libkchartpart.so
 %{_datadir}/apps/kchart
-%{_desktopdir}/kchart.desktop
-%{_icondir}/*/*x*/apps/kchart.png
+%{_desktopdir}/kde/kchart.desktop
+%{_iconsdir}/*/*x*/apps/kchart.png
 %{_mandir}/man1/kchart.1*
 
 %files kexi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kexi*
-%attr(755,root,root) %{_bindir}/kformdesigner
+#%attr(755,root,root) %{_bindir}/kformdesigner
 %{_libdir}/kexi.la
-%attr(755,root,root) %{_libdir}/kexi.so
+%attr(755,root,root) %{_libdir}/kexi.so 
 %{_libdir}/kde3/*kexi*.la
 %attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
-%{_libdir}/kde3/containers.la
-%attr(755,root,root) %{_libdir}/kde3/containers.so
+#%{_libdir}/kde3/containers.la
+#%attr(755,root,root) %{_libdir}/kde3/containers.so
 %{_datadir}/apps/kexi
-%{_datadir}/apps/kformdesigner
+#%{_datadir}/apps/kformdesigner
 %{_datadir}/config/kexirc
-%{_desktopdir}/kformdesigner.desktop
+#%{_desktopdir}/kformdesigner.desktop
 %{_datadir}/services/kexi*
-%{_datadir}/services/kformeditor
-%{_desktopdir}/kexi.desktop
-%{_icondir}/*/*/*/kexi.png
-%{_icondir}/*/*/*/button.png
-%{_icondir}/*/*/*/form_edit.png
-%{_icondir}/*/*/*/lineedit.png
-%{_icondir}/*/*/*/relation.png
-%{_icondir}/*/*/*/state_edit.png
-%{_icondir}/*/*/*/state_sql.png
-%{_icondir}/*/*/*/db.png
-%{_icondir}/*/*/*/form.png
-%{_icondir}/*/*/*/forms.png
-%{_icondir}/*/*/*/queries.png
-%{_icondir}/*/*/*/query.png
-%{_icondir}/*/*/*/report.png
-%{_icondir}/*/*/*/reports.png
-%{_icondir}/*/*/*/table.png
-%{_icondir}/*/*/*/tables.png
-%{_icondir}/*/*/*/state_view.png
-%{_icondir}/*/*/*/frame.png
-%{_icondir}/*/*/*/label.png
-%{_icondir}/*/*/*/tabwidget.png
-%{_icondir}/*/*/*/urlrequest.png
+#%{_datadir}/services/kformeditor
+%{_desktopdir}/kde/kexi.desktop
+#%{_iconsdir}/*/*/*/kexi.png
+#%{_iconsdir}/*/*/*/button.png
+#%{_iconsdir}/*/*/*/form_edit.png
+#%{_iconsdir}/*/*/*/lineedit.png
+#%{_iconsdir}/*/*/*/relation.png
+#%{_iconsdir}/*/*/*/state_edit.png
+#%{_iconsdir}/*/*/*/state_sql.png
+#%{_iconsdir}/*/*/*/db.png
+#%{_iconsdir}/*/*/*/form.png
+#%{_iconsdir}/*/*/*/forms.png
+#%{_iconsdir}/*/*/*/queries.png
+#%{_iconsdir}/*/*/*/query.png
+#%{_iconsdir}/*/*/*/report.png
+#%{_iconsdir}/*/*/*/reports.png
+#%{_iconsdir}/*/*/*/table.png
+#%{_iconsdir}/*/*/*/tables.png
+#%{_iconsdir}/*/*/*/state_view.png
+#%{_iconsdir}/*/*/*/frame.png
+#%{_iconsdir}/*/*/*/label.png
+#%{_iconsdir}/*/*/*/tabwidget.png
+#%{_iconsdir}/*/*/*/urlrequest.png
 %{_mandir}/man1/kexi.1*
 %{_mandir}/man1/kformdesigner.1*
 
@@ -589,26 +589,26 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libkfo*.so
 %{_datadir}/apps/kformula
 %{_datadir}/services/kformula*
-%{_desktopdir}/kformula.desktop
-%{_icondir}/*/*/actions/abs.png
-%{_icondir}/*/*/actions/brac*.png
-%{_icondir}/*/*/actions/frac.png
-%{_icondir}/*/*/actions/ins*.png
-%{_icondir}/*/*/actions/key.png
-%{_icondir}/*/*/actions/rem*.png
-%{_icondir}/*/*/actions/int.png
-%{_icondir}/*/*/actions/[lr]su[bp].png
-%{_icondir}/*/*/actions/matrix.png
-%{_icondir}/*/*/actions/paren.png
-%{_icondir}/*/*/actions/prod.png
-%{_icondir}/*/*/actions/sqrt.png
-%{_icondir}/*/*/actions/sum.png
-%{_icondir}/*/*/actions/onetwomatrix.png
-%{_icondir}/*/*/actions/multiline.png
-%{_icondir}/*/*/actions/over.png
-%{_icondir}/*/*/actions/scripting.png
-%{_icondir}/*/*/actions/under.png
-%{_icondir}/*/*/apps/kformula.png
+%{_desktopdir}/kde/kformula.desktop
+%{_iconsdir}/*/*/actions/abs.png
+%{_iconsdir}/*/*/actions/brac*.png
+%{_iconsdir}/*/*/actions/frac.png
+%{_iconsdir}/*/*/actions/ins*.png
+#%{_iconsdir}/*/*/actions/key.png
+%{_iconsdir}/*/*/actions/rem*.png
+%{_iconsdir}/*/*/actions/int.png
+%{_iconsdir}/*/*/actions/[lr]su[bp].png
+%{_iconsdir}/*/*/actions/matrix.png
+%{_iconsdir}/*/*/actions/paren.png
+%{_iconsdir}/*/*/actions/prod.png
+%{_iconsdir}/*/*/actions/sqrt.png
+%{_iconsdir}/*/*/actions/sum.png
+%{_iconsdir}/*/*/actions/onetwomatrix.png
+%{_iconsdir}/*/*/actions/multiline.png
+%{_iconsdir}/*/*/actions/over.png
+#%{_iconsdir}/*/*/actions/scripting.png
+%{_iconsdir}/*/*/actions/under.png
+%{_iconsdir}/*/*/apps/kformula.png
 %{_mandir}/man1/kformula.1*
 
 %files kivio -f kivio.lang
@@ -624,8 +624,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/straight_connector.so
 %{_datadir}/apps/kivio
 %{_datadir}/services/kivio*.desktop
-%{_desktopdir}/kivio.desktop
-%{_icondir}/*/*/apps/kivio.png
+%{_desktopdir}/kde/kivio.desktop
+%{_iconsdir}/*/*/apps/kivio.png
 %{_mandir}/man1/kivio.1*
 
 %files kpresenter -f kpresenter.lang
@@ -646,8 +646,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kprkword.desktop
 %{_datadir}/services/kpresenter_ooimpress_export.desktop
 %{_datadir}/services/kpresenter_ooimpress_import.desktop
-%{_desktopdir}/kpresenter.desktop
-%{_icondir}/*/*/apps/kpresenter*.png
+%{_desktopdir}/kde/kpresenter.desktop
+%{_iconsdir}/*/*/apps/kpresenter*.png
 %{_mandir}/man1/kpresenter.1*
 %{_mandir}/man1/kprconverter.pl.1*
 
@@ -669,7 +669,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/krita_magick_import.desktop
 #%{_datadir}/templates/.source/Illustration.kil
 %{_datadir}/templates/Illustration.desktop
-%{_desktopdir}/krita.desktop
+%{_desktopdir}/kde/krita.desktop
 %{_mandir}/man1/krita.1*
 
 %files kspread -f kspread.lang
@@ -696,8 +696,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kspread*.desktop
 %{_datadir}/templates/.source/SpreadSheet.ksp
 %{_datadir}/templates/SpreadSheet.desktop
-%{_desktopdir}/kspread.desktop
-%{_icondir}/[!l]*/*/apps/kspread*.png
+%{_desktopdir}/kde/kspread.desktop
+%{_iconsdir}/[!l]*/*/apps/kspread*.png
 %{_mandir}/man1/kspread.1*
 
 %files kugar -f kugar.lang
@@ -712,14 +712,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/*kudesigner*.so
 %{_libdir}/*kudesigner*.la
 %attr(755,root,root) %{_libdir}/*kudesigner*.so
-%{_desktopdir}/kudesigner.desktop
-%{_desktopdir}/kugar.desktop
+%{_desktopdir}/kde/kudesigner.desktop
+%{_desktopdir}/kde/kugar.desktop
 %{_datadir}/apps/kudesigner
 %{_datadir}/apps/kugar
 %{_datadir}/services/kugar_kugar_import.desktop
-#%{_icondir}/*/*/*/kudesigner.png
-%{_icondir}/*/*/*/kugar.png
-%{_icondir}/*/*/mimetypes/*kugar*
+#%{_iconsdir}/*/*/*/kudesigner.png
+%{_iconsdir}/*/*/*/kugar.png
+%{_iconsdir}/*/*/mimetypes/*kugar*
 %{_mandir}/man1/kudesigner.1*
 %{_mandir}/man1/kugar.1*
 
@@ -737,6 +737,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/kwmailmerge*.so
 %{_libdir}/kde3/libabiword*port.la
 %attr(755,root,root) %{_libdir}/kde3/libabiword*port.so
+%{_libdir}/kde3/libmswordimport.la
+%attr(755,root,root) %{_libdir}/kde3/libmswordimport.so
 %{_libdir}/kde3/libapplixwordimport.la
 %attr(755,root,root) %{_libdir}/kde3/libapplixwordimport.so
 %{_libdir}/kde3/libascii*port.la
@@ -769,8 +771,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libkword*.so
 %{_libdir}/kde3/liboowriter*port.la
 %attr(755,root,root) %{_libdir}/kde3/liboowriter*port.so
-%{_libdir}/kde3/libmsword*port.la
-%attr(755,root,root) %{_libdir}/kde3/libmsword*port.so
+#%{_libdir}/kde3/libmsword*port.la
+#%attr(755,root,root) %{_libdir}/kde3/libmsword*port.so
 %{_datadir}/apps/kword
 %{_datadir}/apps/thesaurus
 %{_datadir}/apps/xsltfilter/export/kword/xslfo/*.xsl
@@ -780,8 +782,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/thesaurustool.desktop
 %{_datadir}/templates/.source/TextDocument.kwt
 %{_datadir}/templates/TextDocument.desktop
-%{_desktopdir}/KThesaurus.desktop
-%{_desktopdir}/kword.desktop
-%{_icondir}/*/*/apps/kword.png
+%{_desktopdir}/kde/KThesaurus.desktop
+%{_desktopdir}/kde/kword.desktop
+%{_iconsdir}/*/*/apps/kword.png
 %{_mandir}/man1/kthesaurus.1*
 %{_mandir}/man1/kword.1*
