@@ -230,7 +230,7 @@ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 %setup -q -n %{name}
 
 %build
-make -f Makefile.cvs
+%{__make} -f Makefile.cvs
 
 CXXFLAGS="$RPM_OPT_FLAGS -Wall"
 LDFLAGS="-s"
@@ -239,13 +239,13 @@ export LDFLAGS CXXFLAGS
 	--enable-final \
 	--disable-path-check
 
-make -i LD_LIBRARY_PATH="/usr/X11R6/lib"
+%{__make} -i LD_LIBRARY_PATH="/usr/X11R6/lib"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT
 
-make -i \
+%{__make} -i \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_icondir=%{_pixmapsdir} \
 	install
