@@ -1,6 +1,6 @@
 
-%define		_state		unstable
-%define		_ver		1.2.95
+%define		_state		stable
+%define		_ver		1.3
 %define		_snap		%{nil}
 %define		artsver		12:1.2.0.%{_snap}
 
@@ -19,13 +19,14 @@ License:	GPL
 Group:		X11/Applications
 # ftp://ftp.kde.org/pub/kde/unstable/koffice-1.2.95/src
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	a738120fed3f68316700f5f05317ac7a
+# Source0-md5:	8e4c9db57f701d42f21d61651f0b03bd
 #Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}-%{_snap}.tar.bz2
 Patch0:		%{name}-vcategories.patch
 #Patch1:		%{name}-mysql_includes.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
+BuildRequires:	aspell-devel >= 0.50.2
 BuildRequires:	fam-devel
 BuildRequires:	wv2-devel >= 0.0.7
 BuildRequires:	gettext-devel
