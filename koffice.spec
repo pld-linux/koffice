@@ -16,7 +16,7 @@ Summary(zh_CN):	KDE 的办公应用软件集。
 Name:		koffice
 # Version:	%{_ver}.%{_snap}
 Version:	%{_ver}
-Release:	1
+Release:	2
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
@@ -30,6 +30,7 @@ Source1:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-i18n
 %endif
 Patch0:		%{name}-vcategories.patch
 Patch1:		%{name}-gcc34.patch
+Patch2:		%{name}-desktop.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
@@ -460,6 +461,7 @@ Pliki umi阣zynarodawiaj眂e dla kworda.
 %endif
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 ##%{__make} -f admin/Makefile.common cvs
