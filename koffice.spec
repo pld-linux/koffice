@@ -458,10 +458,9 @@ Pliki umiêdzynarodawiaj±ce dla kword.
 #%%setup -q -n %{name}-%{_snap}
 %setup -q -a1
 %patch0 -p1
-%patch1 -p0
 
 %build
-%{__make} -f admin/Makefile.common cvs
+##%{__make} -f admin/Makefile.common cvs
 
 export DO_NOT_COMPILE="$DO_NOT_COMPILE kdgantt"
 
