@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %define		_state		stable
-%define		_ver		1.3.4
+%define		_ver		1.3.5
 %define		_snap		%{nil}
 %define		artsver		13:1.3.0
 
@@ -14,16 +14,16 @@ Summary(zh_CN):	KDE 的办公应用软件集。
 Name:		koffice
 # Version:	%{_ver}.%{_snap}
 Version:	%{_ver}
-Release:	2
+Release:	1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
 # ftp://ftp.kde.org/pub/kde/unstable/koffice-1.2.95/src
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	79896426542b0cf07e2e15f84946905a
+# Source0-md5:	dbc7e76c86647709a3e74f57c0fcf7f5
 # Source0-size:	10765924
 #Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}-%{_snap}.tar.bz2
-Patch100:	%{name}-branch.diff
+#Patch100:	%{name}-branch.diff
 Patch0:		%{name}-vcategories.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
@@ -338,7 +338,7 @@ Processador de texto do KOffice.
 
 %prep
 %setup -q
-%patch100 -p1
+#patch100 -p1
 %patch0 -p1
 
 %{__sed} -i -e '/\[Desktop Entry\]/aEncoding=UTF-8' \
