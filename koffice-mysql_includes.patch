@@ -1,10 +1,11 @@
---- koffice-031024/kexi/kexidb/drivers/mySQL/Makefile.am.orig	2003-10-09 01:59:54.000000000 +0200
-+++ koffice-031024/kexi/kexidb/drivers/mySQL/Makefile.am	2003-10-28 00:47:53.000000000 +0100
-@@ -1,6 +1,6 @@
- kde_module_LTLIBRARIES = kexidb_mysqldriver.la
+--- koffice-031024/kexi/kexidb/drivers/configure.in.in.orig	2003-10-09 01:59:54.000000000 +0200
++++ koffice-031024/kexi/kexidb/drivers/configure.in.in	2003-10-28 08:14:48.000000000 +0100
+@@ -38,7 +38,7 @@
+ ])
  
--INCLUDES = -I$(srcdir)/../../.. $(all_includes) -I$(MYSQL_INC)
-+INCLUDES = -I$(srcdir)/../../.. $(all_includes) $(MYSQL_INC)
- 
- kexidb_mysqldriver_la_METASOURCES = AUTO
- 
+ if test -n "$MYSQL_CONFIG"; then
+-	mysql_incdir=`$MYSQL_CONFIG --cflags| $SED -e "s,-I',,g" | $SED -e "s,'$,,g"`
++	mysql_incdir=`$MYSQL_CONFIG --cflags| $SED -e "s,-I,,g" -e "s,',,g"`
+ 	mysql_libdir=`$MYSQL_CONFIG --libs| $SED -e "s,',,g"`
+ 	MYSQL_INC=$mysql_incdir
+ 	MYSQL_LIBS=$mysql_libdir
