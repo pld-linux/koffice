@@ -20,7 +20,7 @@ Group:		X11/Applications
 # ftp://ftp.kde.org/pub/kde/unstable/koffice-1.2.95/src
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	a738120fed3f68316700f5f05317ac7a
-#Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
+#Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}-%{_snap}.tar.bz2
 Patch0:		%{name}-vcategories.patch
 #Patch1:		%{name}-mysql_includes.patch
 URL:		http://www.koffice.org/
