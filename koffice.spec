@@ -12,7 +12,7 @@ Summary(uk):	Ó¡¬¶“ œ∆¶”Œ…» –“œ«“¡Õ ƒÃ— KDE
 Summary(zh_CN):	KDE µƒ∞Ïπ´”¶”√»Ìº˛ºØ°£
 Name:		koffice
 Version:	1.2
-Release:	5
+Release:	6
 Epoch:		4
 License:	GPL
 Group:		X11/Applications
@@ -351,6 +351,7 @@ cd %{name}-i18n-%{version}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_mandir}/man1
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -393,6 +394,8 @@ install %{SOURCE2}	$RPM_BUILD_ROOT%{_pixmapsdir}
 %if %{!?_with_pixmapsubdirs:1}%{?_with_pixmapsubdirs:0}
 rm -f $RPM_BUILD_ROOT%{_pixmapsdir}/*color/??x??/apps/k{arbon,chart,formula,ivio,ontour,presenter,spread,udesigner,ugar,word}.png
 %endif
+
+install debian/*.1 $RPM_BUILD_ROOT%{_mandir}
 
 cd %{name}-i18n-%{version}
 %{__make} install \
@@ -534,6 +537,10 @@ rm -rf $RPM_BUILD_ROOT
 #%{_datadir}/mimelnk/image/x-wmf.desktop
 #%{_datadir}/mimelnk/image/x-xfig.desktop
 #%{_datadir}/mimelnk/text/x-csv.desktop
+%{_mandir}/man1/kformula.1
+%{_mandir}/man1/koconverter.1
+%{_mandir}/man1/koscript.1
+%{_mandir}/man1/koshell.1
 
 #################################
 # koffice-devel
@@ -567,7 +574,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Graphics/karbon.desktop
 %{_pixmapsdir}/karbon.png
 %{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/karbon.png}
-
+%{_mandir}/man1/karbon.1
 
 #################################
 # koffice-kchart
@@ -581,6 +588,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Office/Misc/kchart.desktop
 %{_pixmapsdir}/kchart.png
 %{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kchart*.png}
+%{_mandir}/man1/kchart.1
 
 #################################
 # koffice-kivio
@@ -596,6 +604,7 @@ rm -rf $RPM_BUILD_ROOT
 %{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kivio*.png}
 #%{_datadir}/mimelnk/application/x-kivio.desktop
 %{_datadir}/services/kivio*.desktop
+%{_mandir}/man1/kivio.1
 
 #################################
 # koffice-kontour
@@ -621,7 +630,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Graphics/kontour.desktop
 %{_pixmapsdir}/kontour.png
 %{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/*/kontour.png}
-
+%{_mandir}/man1/kontour.1
 
 #################################
 # koffice-kpresenter
@@ -640,6 +649,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Office/Presentation/kpresenter.desktop
 %{_pixmapsdir}/kpresenter.png
 %{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kpresenter*.png}
+%{_mandir}/man1/kpresenter.1
+%{_mandir}/man1/kprconverter.pl.1
 
 #################################
 # koffice-kspread
@@ -663,6 +674,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/kspread.png
 %{!?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kspreadc*.png}
 %{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kspread*.png}
+%{_mandir}/man1/kspread.1
 
 #################################
 # koffice-kugar
@@ -684,6 +696,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/mimelnk/application/x-kudesigner.desktop
 #%{_datadir}/mimelnk/application/x-kugar.desktop
 %{_pixmapsdir}/*/*/mimetypes/*kugar*
+%{_mandir}/man1/kudesigner.1
+%{_mandir}/man1/kugar.1
 
 #################################
 # koffice-kword
@@ -725,3 +739,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/kword.png
 %{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kword.png}
 %{_datadir}/apps/xsltfilter/export/kword/xslfo/*.xsl
+%{_mandir}/man1/kthesaurus.1
+%{_mandir}/man1/kword.1
