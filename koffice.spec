@@ -17,7 +17,7 @@ License:	GPL
 Group:		X11/Applications
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	3dce45bf28c45e333b19bb82a3cde0b0
+# Source0-md5:	3ecd0b29c35e02037697ef9847bde3fd
 Patch0:		%{name}-vcategories.patch
 Patch1:		%{name}-mysql_includes.patch
 Patch2:		%{name}-fix-kexi_widget_makefile_am.patch
