@@ -37,6 +37,7 @@ BuildRequires:	libtiff-devel
 BuildRequires:	perl
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	zlib-devel
+BuildRequires:	libxslt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define         _htmldir        /usr/share/doc/kde/HTML
