@@ -46,14 +46,6 @@
  X-DCOP-ServiceType=Multi
 -Categories=Qt;KDE;Office
 +Categories=Qt;KDE;Office;X-Misc;
---- koffice-030613/koshell/koshell.desktop~	2003-04-29 01:31:56.000000000 +0200
-+++ koffice-030613/koshell/koshell.desktop	2003-06-17 00:06:27.000000000 +0200
-@@ -99,4 +99,4 @@
- Icon=koshell
- X-KDE-StartupNotify=true
- X-DCOP-ServiceType=Multi
--Categories=Qt;KDE;Office
-+Categories=Qt;KDE;Office;X-Misc;
 --- koffice-030613/kpresenter/kpresenter.desktop~	2003-04-29 01:32:01.000000000 +0200
 +++ koffice-030613/kpresenter/kpresenter.desktop	2003-06-17 00:07:45.000000000 +0200
 @@ -67,4 +67,4 @@
