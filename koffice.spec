@@ -87,7 +87,7 @@ Summary(es):	Header files for compiling applications that use koffice libraries
 Summary(pl):	KOffice - pliki nag³ówkowe
 Summary(pt_BR):	Arquivos de inclusão necessários à compilação de aplicações que usem as bibliotecas do koffice
 Group:		X11/Development/Libraries
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}
 
 %description devel
 This package includes the header files you will need to compile
@@ -164,7 +164,7 @@ Arquivos requeridos por todos os softwares koffice.
 Summary:        KOffice - Karbon
 Summary(pl):    KOffice - Karbon
 Group:          X11/Applications
-Requires:       %{name}-common = %{version}
+Requires:       %{name}-common = %{epoch}:%{version}
 #karbon has changed its named (again) to curt therefore in the future:
 Obsoletes:	koffice-krayon
 
@@ -180,7 +180,7 @@ Summary:	KOffice - KChart
 Summary(pl):	KOffice - KChart
 Summary(pt_BR):	Gerador de diagramas do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}
 
 %description kchart
 KChart is KOffice part for generating diagrams from data, e.g. pie and
@@ -198,7 +198,7 @@ Summary:	KOffice - ivio
 Summary(pl):	KOffice - ivio
 Summary(pt_BR):	Editor de fluxogramas do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}
 
 %description kivio
 Kivio on the surface is your everyday flowcharting program. Underneath
@@ -225,7 +225,7 @@ Summary:	KOffice - Kontour
 Summary(pl):	KOffice - Kontour
 Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}
 Obsoletes:	koffice-killustrator
 
 %description kontour
@@ -254,7 +254,7 @@ Ferramenta de desenho vetorial do KOffice.
 Summary:	KOffice - KPresenter
 Summary(pl):	KOffice - KPresenter
 Group:		X11/Applications
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}
 
 %description kpresenter
 KPresenter is a presentation application of the KOffice, similar to MS
@@ -271,7 +271,7 @@ Summary:	KOffice - KSpread
 Summary(pl):	KOffice - KSpread
 Summary(pt_BR):	Planilha eletrônica do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}
 
 %description kspread
 KSpread is the spread sheet of the KOffice, similar to MS Excel.
@@ -288,7 +288,7 @@ Summary:	KOffice - KUgar
 Summary(pl):	KOffice - KUgar
 Summary(pt_BR):	Gerador de relatórios do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}
 
 %description kugar
 Kugar is a KDE tool for generating business quality reports which can
@@ -311,7 +311,7 @@ Summary:	KOffice - KWord
 Summary(pl):	KOffice - KWord
 Summary(pt_BR):	Processador de texto do KOffice
 Group:		X11/Applications
-Requires:	%{name}-common = %{version}
+Requires:	%{name}-common = %{epoch}:%{version}
 
 %description kword
 KWord is a FrameMaker-like wordprocessor application for KOffice. So
