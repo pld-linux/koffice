@@ -328,7 +328,7 @@ Processador de texto do KOffice.
 ######################## end descriptions ########################
 
 %prep
-%setup -q -n %{name}-%{version} -a1
+%setup -q -a1
 %patch0 -p1
 
 %build
