@@ -29,6 +29,7 @@ Source1:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-i18n
 # Source1-md5:	ad25c4a4edb9fc146fde63adf9f4e29e
 %endif
 Patch0:		%{name}-vcategories.patch
+Patch1:		%{name}-gcc34.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
