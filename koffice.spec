@@ -328,7 +328,7 @@ Processador de texto do KOffice.
 ######################## end descriptions ########################
 
 %prep
-%setup -q -n %{name}-%{version} -a1
+%setup -q -a1
 %patch0 -p1
 
 %build
@@ -338,10 +338,10 @@ CFLAGS="-D_GNU_SOURCE %{rpmcflags}"
 CXXFLAGS="-D_GNU_SOURCE %{rpmcflags} -fno-check-new"
 %configure \
 	%{!?debug:--disable-debug} \
+	--disable-rpath \
 	--enable-final \
-	--with-xinerama \
 	--enable-shared \
-	--disable-rpath
+	--with-xinerama
 
 %{__make}
 
