@@ -17,6 +17,7 @@ Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-i18n-%{
 Patch0:		%{name}-desktop.fixes.patch
 URL:		http://www.koffice.org/
 BuildRequires:	XFree86-devel
+BuildRequires:	arts-kde-devel
 BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 3.0.3
