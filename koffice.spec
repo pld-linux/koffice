@@ -362,16 +362,16 @@ install -d $RPM_BUILD_ROOT%{_mandir}/man1
 
 rm -rf $RPM_BUILD_ROOT%{_applnkdir}
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Office/{Wordprocessors,Spreadsheets} \
-	$RPM_BUILD_ROOT%{_applnkdir}/Office/{Presentation,Misc} \
+	$RPM_BUILD_ROOT%{_applnkdir}/Office/{Presentations,Misc} \
 	$RPM_BUILD_ROOT%{_applnkdir}/Graphics
 
 install karbon/data/karbon.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Graphics
 install kontour/kontour.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Graphics
-install kpresenter/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Presentation
+install kpresenter/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Presentations
 install kspread/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Spreadsheets
 install kword/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Wordprocessors
 install kivio/kiviopart/k*.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
-install kugar/part/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Presentation
+install kugar/part/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Presentations
 install kugar/kudesigner/k*.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 install kchart/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 
@@ -651,7 +651,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/.source/Presentation.kpt
 %{_datadir}/templates/Presentation.desktop
 %{_datadir}/services/kprkword.desktop
-%{_applnkdir}/Office/Presentation/kpresenter.desktop
+%{_applnkdir}/Office/Presentations/kpresenter.desktop
 %{_pixmapsdir}/kpresenter.png
 %{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kpresenter*.png}
 %{_mandir}/man1/kpresenter.*
@@ -689,7 +689,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kudesigner
 %attr(755,root,root) %{_bindir}/kugar
 %attr(755,root,root) %{_libdir}/libkugar*.??
-%{_applnkdir}/Office/Presentation/kugar.desktop
+%{_applnkdir}/Office/Presentations/kugar.desktop
 %{_applnkdir}/Office/Misc/kudesigner.desktop
 %{_datadir}/apps/kudesigner
 %{_datadir}/apps/kugar
