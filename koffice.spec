@@ -690,7 +690,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/.source/SpreadSheet.ksp
 %{_datadir}/templates/SpreadSheet.desktop
 %{_desktopdir}/kspread.desktop
-%{_icondir}/*/*/apps/kspread*.png
+%{_icondir}/[!l]*/*/apps/kspread*.png
 %{_mandir}/man1/kspread.1*
 
 %files kugar -f kugar.lang
@@ -710,7 +710,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kudesigner
 %{_datadir}/apps/kugar
 %{_datadir}/services/kugar_kugar_import.desktop
-%{_icondir}/*/*/*/kudesigner.png
+#%{_icondir}/*/*/*/kudesigner.png
 %{_icondir}/*/*/*/kugar.png
 %{_icondir}/*/*/mimetypes/*kugar*
 %{_mandir}/man1/kudesigner.1*
