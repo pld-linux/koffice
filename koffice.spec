@@ -10,7 +10,6 @@ License:	GPL
 Group:		X11/KDE/Applications
 Group(pl):	X11/KDE/Aplikacje
 Source0:	ftp://ftp.kde.org/pub/kde/stable/2.0/distribution/tar/generic/source/%{name}-%{version}.tar.bz2
-#Patch0:		%{name}-applnkdir.patch
 URL:		http://koffice.kde.org/
 BuildPreReq:	kdelibs-devel = %{version}
 BuildPreReq:	libstdc++-devel
@@ -161,12 +160,11 @@ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 
 %prep
 %setup -q
-#%patch0 -p1
 
 %build
 %define         _sharedir       %{_prefix}/share
 %define         _htmldir        %{_sharedir}/doc/kde/HTML
-%define         _pixmapsdir     %{_sharedir}/pixmaps
+%define         _pixmapsdir     %{_sharedir}/icons
 
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
@@ -182,6 +180,15 @@ install -d $RPM_BUILD_ROOT
 %{__make} \
 	DESTDIR=$RPM_BUILD_ROOT \
 	install
+
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Office/{Wordprocessors,Spreadsheets} \
+	$RPM_BUILD_ROOT%{_applnkdir}/{Office/{Presentations,Misc},Graphics}
+	
+install kchart/k*.desktop $RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
+install killustrator/koffice/k*.desktop $RPM_BUILD_ROOT%{_applnkdir}/Graphics
+install kpresenter/k*.desktop $RPM_BUILD_ROOT%{_applnkdir}/Office/Presentations
+install kspread/k*.desktop $RPM_BUILD_ROOT%{_applnkdir}/Office/Spreadsheets
+install kword/k*.desktop $RPM_BUILD_ROOT%{_applnkdir}/Office/Wordprocessors
 	
 %find_lang killustrator --with-kde
 %find_lang kpresenter --with-kde
@@ -255,7 +262,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkchartpart.??
 %{_datadir}/apps/kchart
 %{_datadir}/mimelnk/application/x-kchart.desktop
-%{_applnkdir}/Office/kchart.desktop
+%{_applnkdir}/Office/Misc/kchart.desktop
 %{_pixmapsdir}/locolor/*x*/apps/kchart.png
 %{_pixmapsdir}/hicolor/*x*/apps/kchart.png
 
@@ -269,7 +276,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkillustratorpart.??
 %{_datadir}/apps/killustrator
 %{_datadir}/mimelnk/application/x-killustrator.desktop
-%{_applnkdir}/Office/killustrator.desktop
+%{_applnkdir}/Graphics/killustrator.desktop
 %{_pixmapsdir}/locolor/*x*/apps/killustrator.png
 %{_pixmapsdir}/hicolor/*x*/apps/killustrator.png
 
@@ -284,7 +291,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kpresenter
 %{_datadir}/mimelnk/application/x-kpresenter.desktop
 %{_datadir}/services/ole_powerpoint97_import.desktop
-%{_applnkdir}/Office/kpresenter.desktop
+%{_applnkdir}/Office/Presentations/kpresenter.desktop
 %{_pixmapsdir}/locolor/*x*/apps/kpresenter.png
 %{_pixmapsdir}/hicolor/*x*/apps/kpresenter.png
 
@@ -297,11 +304,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kspread.??
 %attr(755,root,root) %{_libdir}/libkspreadpart.??
 %attr(755,root,root) %{_libdir}/libkspreadcalc.??
+%attr(755,root,root) %{_libdir}/libcsvexport.??
+%attr(755,root,root) %{_libdir}/libcsvimport.??
+%attr(755,root,root) %{_libdir}/libcsvfilterdia.??
 %{_datadir}/apps/kspread
 %{_datadir}/mimelnk/application/x-kspread.desktop
 %{_datadir}/services/kspread*.desktop
 %{_datadir}/services/ole_excel97_import.desktop
-%{_applnkdir}/Office/kspread.desktop
+%{_applnkdir}/Office/Spreadsheets/kspread.desktop
 %{_pixmapsdir}/locolor/*x*/apps/kspread.png
 %{_pixmapsdir}/hicolor/*x*/apps/kspread.png
 %{_pixmapsdir}/locolor/*x*/apps/kspreadcalc.png
@@ -316,9 +326,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkwordpart.??
 %attr(755,root,root) %{_libdir}/libasciiexport.??
 %attr(755,root,root) %{_libdir}/libasciiimport.??
-%attr(755,root,root) %{_libdir}/libcsvexport.??
-%attr(755,root,root) %{_libdir}/libcsvimport.??
-%attr(755,root,root) %{_libdir}/libcsvfilterdia.??
 %attr(755,root,root) %{_libdir}/libhtmlexport.??
 %attr(755,root,root) %{_libdir}/libhtmlimport.??
 %attr(755,root,root) %{_libdir}/libkspelltool.??
@@ -327,6 +334,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kspelltool.desktop
 %{_datadir}/services/kword*.desktop
 %{_datadir}/services/ole_winword97_import.desktop
-%{_applnkdir}/Office/kword.desktop
+%{_applnkdir}/Office/Wordprocessors/kword.desktop
 %{_pixmapsdir}/locolor/*x*/apps/kword.png
 %{_pixmapsdir}/hicolor/*x*/apps/kword.png
