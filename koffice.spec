@@ -5,7 +5,7 @@ Summary(pt_BR):	Suíte de aplicativos office para o KDE
 Name:		koffice
 Version:	1.1
 Release:	5
-Epoch:		3
+Epoch:		4
 License:	GPL
 Group:		X11/Applications
 Group(de):	X11/Applikationen
