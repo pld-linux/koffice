@@ -1,10 +1,10 @@
 #
 # Conditional build:
-%bcond_without	i18n	# disable i18n (26MB less to download)
+%bcond_with	i18n	# disable i18n (26MB less to download)
 #
-%define		_state		stable
+%define		_state		snapshots
 %define		_ver		1.3
-%define		_snap		%{nil}
+%define		_snap		040217
 %define		artsver		13:1.2.0
 
 Summary:	KOffice - powerful office suite for KDE
@@ -14,20 +14,17 @@ Summary(ru):	îÁÂÏÒ ÏÆÆÉÓÎÙÈ ÐÒÏÇÒÁÍÍ ÄÌÑ KDE
 Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
-# Version:	%{_ver}.%{_snap}
-Version:	%{_ver}
-Release:	2
+Version:	%{_ver}.%{_snap}
+Release:	3
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
-# ftp://ftp.kde.org/pub/kde/unstable/koffice-1.2.95/src
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	8e4c9db57f701d42f21d61651f0b03bd
+Source0:	%{name}.tar.bz2
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
+##%% Source0-md5:	8e4c9db57f701d42f21d61651f0b03bd
 #Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}-%{_snap}.tar.bz2
-%if %{with i18n}
-Source1:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
-# Source1-md5:	ca89c9c944508de11ca2908eb0a851e4
-%endif
+#Source1:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
+##%% Source1-md5:	ca89c9c944508de11ca2908eb0a851e4
 Patch0:		%{name}-vcategories.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
@@ -181,15 +178,19 @@ KChart jest aplikacj± s³u¿±c± do generowania wykresów.
 %description kchart -l pt_BR
 Gerador de diagramas do KOffice.
 
-#%%package kexi #Summary: KOffice - Kexi #Summary(pl): KOffice - Kexi
-#Group: X11/Applications #Requires: %{name}-common =
-%{epoch}:%{version}-%{release} #Requires: mysql-libs
+%package kexi
+Summary:	KOffice - Kexi
+Summary(pl):	KOffice - Kexi
+Group:		X11/Applications
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
+Requires:	mysql-libs
 
-#%%description kexi #Kexi is KOffice part for using database system
-such as mysql.
+%description kexi
+Kexi is KOffice part for using database system such as mysql.
 
-#%%description kexi -l pl #Kexi jest aplikacj± s³u¿±c± do korzystania
-z systemów baz danych #takich jak mysql.
+%description kexi -l pl
+Kexi jest aplikacj± s³u¿±c± do korzystania systemów baz danych
+takich jak mysql.
 
 %package kformula
 Summary:	KOffice - kformula
@@ -234,33 +235,33 @@ jest mo¿liwe poprzez architekturê skryptów i wtyczek Kivio.
 %description kivio -l pt_BR
 Editor de fluxogramas do KOffice.
 
-#%package krita
-#Summary:	KOffice - Krita
-#Summary(pl):	KOffice - Krita
-#Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
-#Group:		X11/Applications
-#Requires:	%{name}-common = %{epoch}:%{version}-%{release}
-#Obsoletes:	koffice-killustrator
+%package krita
+Summary:	KOffice - Krita
+Summary(pl):	KOffice - Krita
+Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
+Group:		X11/Applications
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
+Obsoletes:	koffice-killustrator
 
-#%description krita
-#Krita is the vector drawing program for the K Desktop Environment.
-#The aim of the Kontour project is the development of a freely
-#available vector-based drawing application similar to Corel Draw or
-#Adobe Illustrator.
-#Krita was formerly known as KIllustrator but due to blackmail made
-#by Adobe lawyers it has to be renamed.
+%description krita
+Krita is the vector drawing program for the K Desktop Environment.
+The aim of the Kontour project is the development of a freely
+available vector-based drawing application similar to Corel Draw or
+Adobe Illustrator.
+Krita was formerly known as KIllustrator but due to blackmail made
+by Adobe lawyers it has to be renamed.
 
-#%description krita -l pl
-#Krita jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
-#KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni
-#funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
-#lub Adobe Illustrator.
+%description krita -l pl
+Krita jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
+KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni
+funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
+lub Adobe Illustrator.
 
-#Krita wczesniej by³ znany jako KIlustrator ale developerzy zostali
-#zmuszeni szanta¿em przez prawników Adobe do zmiany nazwy.
+Krita wczesniej by³ znany jako KIlustrator ale developerzy zostali
+zmuszeni szanta¿em przez prawników Adobe do zmiany nazwy.
 
-#%description krita -l pt_BR
-#Ferramenta de desenho vetorial do KOffice.
+%description krita -l pt_BR
+Ferramenta de desenho vetorial do KOffice.
 
 %package kpresenter
 Summary:	KOffice - KPresenter
@@ -452,29 +453,36 @@ Internationalization and localization files for kword.
 Pliki umiêdzynarodawiaj±ce dla kworda.
 
 %prep
-#%%setup -q -n %{name}-%{_snap}
 %if %{with i18n}
 %setup -q -a1
 %else
-%setup -q
+%setup -q -n %{name}
 %endif
 %patch0 -p1
 
 %build
-##%{__make} -f admin/Makefile.common cvs
 cp /usr/share/automake/config.sub admin
+
+export UNSERMAKE=/usr/share/unsermake/unsermake
+
+echo "KDE_OPTIONS = nofinal" >> kexi/kexidb/parser/Makefile.am
+
+%{__make} -f admin/Makefile.common cvs
+
 export DO_NOT_COMPILE="$DO_NOT_COMPILE kdgantt"
 
 %configure \
 	--disable-rpath \
-	--with-qt-libraries=%{_libdir} \
-	--enable-final
+	--enable-final \
+	--with-qt-libraries=%{_libdir}
 
 %{__make}
 
+%if %{with i18n}
 cd %{name}-i18n-%{version}
 %configure
 %{__make}
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -490,7 +498,6 @@ mv $RPM_BUILD_ROOT{/usr/share/applnk/Office/*,%{_desktopdir}/kde}
 install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 %if %{with i18n}
-
 cd %{name}-i18n-%{version}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
@@ -498,50 +505,49 @@ cd %{name}-i18n-%{version}
 cd ..
 %endif
 
-%find_lang kchart		--with-kde
-%find_lang kformula		--with-kde
-%find_lang kivio		--with-kde
-%find_lang koffice		--with-kde
-%find_lang koshell		--with-kde
+%find_lang kchart	--with-kde
+%find_lang kformula	--with-kde
+%find_lang kivio	--with-kde
+%find_lang koffice	--with-kde
+%find_lang koshell	--with-kde
 cat koshell.lang >> koffice.lang
-%find_lang kugar		--with-kde
-%find_lang kpresenter		--with-kde
-%find_lang kspread		--with-kde
-%find_lang kword		--with-kde
-%find_lang thesaurus		--with-kde
+%find_lang kugar	--with-kde
+%find_lang kpresenter	--with-kde
+%find_lang kspread	--with-kde
+%find_lang kword	--with-kde
+%find_lang thesaurus	--with-kde
 cat thesaurus.lang >> kword.lang
 
 %if %{with i18n}
+plikez="\
+	desktop_koffice \
+	xsltexportfilter \
+	kfile_koffice \
+	kfile_ooo \
+	koconverter \
+	kocryptfilter \
+	kounavail \
+	kscan_plugin \
+	xsltimportfilter \
+	xsltfilter"
 
-plikez="desktop_koffice \
-xsltexportfilter \
-kfile_koffice \
-kfile_ooo \
-koconverter \
-kocryptfilter \
-kounavail \
-kscan_plugin \
-xsltimportfilter \
-xsltfilter"
-
-for i in $plikez;
-do
+for i in $plikez; do
 	%find_lang $i --with-kde
 	cat ${i}.lang >> koffice.lang
 done
 
-%find_lang karbon --with-kde
-%find_lang karbonepsfilter --with-kde
+%find_lang karbon		--with-kde
+%find_lang karbonepsfilter	--with-kde
 cat karbonepsfilter.lang >> karbon.lang
-%find_lang kudesigner --with-kde
+%find_lang kudesigner		--with-kde
 cat kudesigner.lang >> karbon.lang
 
-kform="kformulalatexfilter \
-kformulamathmlfilter \
-kformulapngfilter"
+kform="\
+	kformulalatexfilter \
+	kformulamathmlfilter \
+	kformulapngfilter"
 
-for i in $kform;
-do
+for i in $kform; do
 	%find_lang $i --with-kde
 	cat ${i}.lang >> kformula.lang
 done
@@ -549,51 +555,52 @@ done
 %find_lang kpresenterkwordfilter --with-kde
 cat kpresenterkwordfilter.lang >> kpresenter.lang
 
-kspread="csvfilter \
-kspreadcalc_calc \
-kspreaddbasefilter \
-kspreadexcelimportfilter \
-kspreadlatexexportfilter \
-kspreadopencalcfilter \
-kspreadqprofilter"
+kspread="\
+	csvfilter \
+	kspreadcalc_calc \
+	kspreaddbasefilter \
+	kspreadexcelimportfilter \
+	kspreadlatexexportfilter \
+	kspreadopencalcfilter \
+	kspreadqprofilter"
 
-for i in $kspread;
-do
+for i in $kspread; do
 	%find_lang $i --with-kde
 	cat ${i}.lang >> kspread.lang
 done
 
-kword="kthesaurus \
-kwordabiwordfilter \
-kwordasciifilter \
-kwordhtmlexportfilter \
-kwordhtmlimportfilter \
-kwordlatexexportfilter \
-kwordlatexfilter \
-kwordlateximportfilter \
-kwordmswordfilter \
-kwordmswritefilter \
-kwordoowriterfilter \
-kwordpdfimport \
-olefilterswinword97filter \
-thesaurus_tool \
-kwordhtmlfilter"
+kword="\
+	kthesaurus \
+	kwordabiwordfilter \
+	kwordasciifilter \
+	kwordhtmlexportfilter \
+	kwordhtmlimportfilter \
+	kwordlatexexportfilter \
+	kwordlatexfilter \
+	kwordlateximportfilter \
+	kwordmswordfilter \
+	kwordmswritefilter \
+	kwordoowriterfilter \
+	kwordpdfimport \
+	olefilterswinword97filter \
+	thesaurus_tool \
+	kwordhtmlfilter"
 
-for i in $kword;
-do
+for i in $kword; do
 	%find_lang $i --with-kde
 	cat ${i}.lang >> kword.lang
 done
 %endif
 
-files="kchart \
-kformula \
-kivio \
-koffice \
-kugar \
-kpresenter \
-kspread \
-kword"
+files="\
+	kchart \
+	kformula \
+	kivio \
+	koffice \
+	kugar \
+	kpresenter \
+	kspread \
+	kword"
 
 for i in $files; do
 	echo "%defattr(644,root,root,755)" > ${i}_en.lang
@@ -632,30 +639,34 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %lang(en) %{_kdedocdir}/en/%{name}-apidocs
-%attr(755,root,root) %{_libdir}/libkdchart.so
+%{_libdir}/libkarbonbase.so
+%{_libdir}/libkdchart.so
 #%{_libdir}/libkdgantt.so
-#%{_libdir}/libkexicore.so
-#%{_libdir}/libkexidatatable.so
-#%{_libdir}/libkexidb.so
-#%{_libdir}/libkexidbparser.so
-#%{_libdir}/libkexiextendedwidgets.so
+%{_libdir}/libkexicore.so
+%{_libdir}/libkexidatatable.so
+%{_libdir}/libkexidb.so
+%{_libdir}/libkexidbparser.so
+%{_libdir}/libkexiextendedwidgets.so
 #%{_libdir}/libkexiimportwizard.so
-#%{_libdir}/libkexisql.so
+%{_libdir}/libkeximain.so
+%{_libdir}/libkexipropertyeditor.so
+%{_libdir}/libkexirelationsview.so
+%{_libdir}/libkexisql.so
 #%{_libdir}/libkformeditor.so
-%attr(755,root,root) %{_libdir}/libkformula.so
-%attr(755,root,root) %{_libdir}/libkochart.so
-%attr(755,root,root) %{_libdir}/libkofficecore.so
-%attr(755,root,root) %{_libdir}/libkofficeui.so
-%attr(755,root,root) %{_libdir}/libkopainter.so
-%attr(755,root,root) %{_libdir}/libkoscript.so
-%attr(755,root,root) %{_libdir}/libkospell.so
-%attr(755,root,root) %{_libdir}/libkotext.so
-%attr(755,root,root) %{_libdir}/libkowmf.so
-%attr(755,root,root) %{_libdir}/libkstore.so
-%attr(755,root,root) %{_libdir}/libkugar.so
-%attr(755,root,root) %{_libdir}/libkwmailmerge_interface.so
-%attr(755,root,root) %{_libdir}/libkwmf.so
-%attr(755,root,root) %{_libdir}/libkwordexportfilters.so
+%{_libdir}/libkformula.so
+%{_libdir}/libkochart.so
+%{_libdir}/libkofficecore.so
+%{_libdir}/libkofficeui.so
+%{_libdir}/libkopainter.so
+%{_libdir}/libkoscript.so
+%{_libdir}/libkospell.so
+%{_libdir}/libkotext.so
+%{_libdir}/libkowmf.so
+%{_libdir}/libkstore.so
+%{_libdir}/libkugar.so
+%{_libdir}/libkwmailmerge_interface.so
+%{_libdir}/libkwmf.so
+%{_libdir}/libkwordexportfilters.so
 %{_includedir}/*.h
 %{_includedir}/kword
 
@@ -664,22 +675,30 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/koconverter
 %attr(755,root,root) %{_bindir}/koscript
 %attr(755,root,root) %{_bindir}/koshell
-%{_libdir}/koshell.la
-%attr(755,root,root) %{_libdir}/koshell.so
+%{_libdir}/libkarbonbase.la
+%attr(755,root,root) %{_libdir}/libkarbonbase.so.2.0.0
 %{_libdir}/libkdchart.la
 %attr(755,root,root) %{_libdir}/libkdchart.so.*.*.*
-#%{_libdir}/libkexicore.la
-#%attr(755,root,root) %{_libdir}/libkexicore.so.*.*.*
-#%{_libdir}/libkexidatatable.la
-#%attr(755,root,root) %{_libdir}/libkexidatatable.so.*.*.*
-#%{_libdir}/libkexidb.la
-#%attr(755,root,root) %{_libdir}/libkexidb.so.*.*.*
-#%{_libdir}/libkexidbparser.la
-#%attr(755,root,root) %{_libdir}/libkexidbparser.so.*.*.*
-#%{_libdir}/libkexiextendedwidgets.la
-#%attr(755,root,root) %{_libdir}/libkexiextendedwidgets.so.*.*.*
-#%{_libdir}/libkexisql.la
-#%attr(755,root,root) %{_libdir}/libkexisql.so.*.*.*
+%{_libdir}/libkdeinit_koshell.la
+%attr(755,root,root) %{_libdir}/libkdeinit_koshell.so
+%{_libdir}/libkexicore.la
+%attr(755,root,root) %{_libdir}/libkexicore.so.*.*.*
+%{_libdir}/libkexidatatable.la
+%attr(755,root,root) %{_libdir}/libkexidatatable.so.*.*.*
+%{_libdir}/libkexidb.la
+%attr(755,root,root) %{_libdir}/libkexidb.so.*.*.*
+%{_libdir}/libkexidbparser.la
+%attr(755,root,root) %{_libdir}/libkexidbparser.so.*.*.*
+%{_libdir}/libkexiextendedwidgets.la
+%attr(755,root,root) %{_libdir}/libkexiextendedwidgets.so.*.*.*
+%{_libdir}/libkeximain.la
+%attr(755,root,root) %{_libdir}/libkeximain.so.0.0.0
+%{_libdir}/libkexipropertyeditor.la
+%attr(755,root,root) %{_libdir}/libkexipropertyeditor.so.0.0.0
+%{_libdir}/libkexirelationsview.la
+%attr(755,root,root) %{_libdir}/libkexirelationsview.so.0.0.0
+%{_libdir}/libkexisql.la
+%attr(755,root,root) %{_libdir}/libkexisql.so.*.*.*
 %{_libdir}/libkformula.la
 %attr(755,root,root) %{_libdir}/libkformula.so.*.*.*
 %{_libdir}/libkochart.la
@@ -720,6 +739,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/kofficescan.so
 %{_libdir}/kde3/kofficethumbnail.la
 %attr(755,root,root) %{_libdir}/kde3/kofficethumbnail.so
+%{_libdir}/kde3/koshell.la
+%attr(755,root,root) %{_libdir}/kde3/koshell.so
 %{_libdir}/kde3/libgenerickofilter.la
 %attr(755,root,root) %{_libdir}/kde3/libgenerickofilter.so
 %{_libdir}/kde3/libxslt*port*.la
@@ -758,8 +779,8 @@ rm -rf $RPM_BUILD_ROOT
 %files karbon
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/karbon
-%{_libdir}/karbon.la
-%attr(755,root,root) %{_libdir}/karbon.so
+%{_libdir}/libkdeinit_karbon.la
+%attr(755,root,root) %{_libdir}/libkdeinit_karbon.so
 %{_libdir}/kde3/*karbon*.la
 %attr(755,root,root) %{_libdir}/kde3/*karbon*.so*
 %{_libdir}/kde3/*wmf*port.la
@@ -774,37 +795,53 @@ rm -rf $RPM_BUILD_ROOT
 %files kchart -f kchart_en.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kchart
-%{_libdir}/kchart.la
-%attr(755,root,root) %{_libdir}/kchart.so
+%{_libdir}/libkdeinit_kchart.la
+%attr(755,root,root) %{_libdir}/libkdeinit_kchart.so
+%{_libdir}/kde3/kchart.la
+%attr(755,root,root) %{_libdir}/kde3/kchart.so
 %{_libdir}/kde3/libkchartpart.la
 %attr(755,root,root) %{_libdir}/kde3/libkchartpart.so
 %{_datadir}/apps/kchart
+%{_datadir}/services/kchartpart.desktop
 %{_desktopdir}/kde/kchart.desktop
 %{_iconsdir}/*/*x*/apps/kchart.png
 %{_mandir}/man1/kchart.1*
 
-#%%files kexi
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/kexi*
-##%{_libdir}/kexi.la
-##%attr(755,root,root) %{_libdir}/kexi.so
-#%{_libdir}/kde3/*kexi*.la
-#%attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
-#%{_datadir}/apps/kexi
-#%{_datadir}/config/kexirc
-#%{_datadir}/config/magic/kexi.magic
-#%{_datadir}/mimelnk/application/x-kexiproject-shortcut.desktop
-#%{_datadir}/mimelnk/application/x-kexiproject-sqlite.desktop
-#%{_datadir}/services/kexi*
-#%{_desktopdir}/kde/kexi.desktop
+%files kexi
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/kexi*
+%{_libdir}/libkdeinit_kexi.la
+%attr(755,root,root) %{_libdir}/libkdeinit_kexi.so
+%{_libdir}/kde3/kexi.la
+%attr(755,root,root) %{_libdir}/kde3/kexi.so
+%{_libdir}/kde3/kexidb_mysqldriver.la
+%attr(755,root,root) %{_libdir}/kde3/kexidb_mysqldriver.so
+%{_libdir}/kde3/kexidb_sqlitedriver.la
+%attr(755,root,root) %{_libdir}/kde3/kexidb_sqlitedriver.so
+%{_libdir}/kde3/kexihandler_query.la
+%attr(755,root,root) %{_libdir}/kde3/kexihandler_query.so
+%{_libdir}/kde3/kexihandler_relation.la
+%attr(755,root,root) %{_libdir}/kde3/kexihandler_relation.so
+%{_libdir}/kde3/kexihandler_table.la
+%attr(755,root,root) %{_libdir}/kde3/kexihandler_table.so
+%{_datadir}/apps/kexi
+%{_datadir}/config/kexirc
+%{_datadir}/config/magic/kexi.magic
+%{_datadir}/mimelnk/application/x-kexiproject-shortcut.desktop
+%{_datadir}/mimelnk/application/x-kexiproject-sqlite.desktop
+%{_datadir}/services/kexi*
+%{_desktopdir}/kde/kexi.desktop
+%{_iconsdir}/*/*/*/kexi.png
+%{_iconsdir}/crystalsvg/32x32/mimetypes/kexiproject_shortcut.png
+%{_iconsdir}/crystalsvg/32x32/mimetypes/kexiproject_sqlite.png
 #%{_mandir}/man1/kexi.1*
 #%{_mandir}/man1/kformdesigner.1*
 
 %files kformula -f kformula_en.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kformula
-%{_libdir}/kformula*.la
-%attr(755,root,root) %{_libdir}/kformula*.so
+#%{_libdir}/kde3/kformula*.la
+#%attr(755,root,root) %{_libdir}/kde3/kformula*.so
 %{_libdir}/kde3/libkfo*.la
 %attr(755,root,root) %{_libdir}/kde3/libkfo*.so
 %{_datadir}/apps/kformula
@@ -836,6 +873,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/*kivio*.so
 %{_libdir}/kde3/*kivio*.la
 %attr(755,root,root) %{_libdir}/kde3/*kivio*.so
+%{_libdir}/kde3/sml_connector.la
+%attr(755,root,root) %{_libdir}/kde3/sml_connector.so
 %{_libdir}/kde3/straight_connector.la
 %attr(755,root,root) %{_libdir}/kde3/straight_connector.so
 %{_datadir}/apps/kivio
@@ -848,8 +887,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kpresenter
 %attr(755,root,root) %{_bindir}/kprconverter.pl
-%{_libdir}/kpresenter.la
-%attr(755,root,root) %{_libdir}/kpresenter.so
+%{_libdir}/libkdeinit_kpresenter.la
+%attr(755,root,root) %{_libdir}/libkdeinit_kpresenter.so
+%{_libdir}/kde3/kpresenter.la
+%attr(755,root,root) %{_libdir}/kde3/kpresenter.so
 %{_libdir}/kde3/libkpresenterpart.la
 %attr(755,root,root) %{_libdir}/kde3/libkpresenterpart.so
 %{_libdir}/kde3/libkprkword.la
@@ -862,35 +903,40 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kprkword.desktop
 %{_datadir}/services/kpresenter_ooimpress_export.desktop
 %{_datadir}/services/kpresenter_ooimpress_import.desktop
+%{_datadir}/services/kpresenterpart.desktop
 %{_desktopdir}/kde/kpresenter.desktop
 %{_iconsdir}/*/*/apps/kpresenter*.png
 %{_mandir}/man1/kpresenter.1*
 %{_mandir}/man1/kprconverter.pl.1*
 
-#%files krita
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/krita
-#%{_libdir}/kde3/*krita*.la
-#%attr(755,root,root) %{_libdir}/kde3/*krita*.so
-#%{_libdir}/*krita*.la
-#%attr(755,root,root) %{_libdir}/*krita*.so
-#%{_libdir}/kde3/*magick*port.la
-#%attr(755,root,root) %{_libdir}/kde3/*magick*port.so
-#%{_libdir}/libkisp_example.la
-#%attr(755,root,root) %{_libdir}/libkisp_example.so
-#%dir %{_datadir}/apps/krayon
-#%dir %{_datadir}/apps/krayon/plugins
-#%{_datadir}/apps/krayon/plugins/example.kisplugin
-#%{_datadir}/apps/krita
-#%{_datadir}/services/krita_magick_import.desktop
-#%{_datadir}/templates/Illustration.desktop
-#%{_desktopdir}/kde/krita.desktop
+%files krita
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/krita
+%{_libdir}/kde3/*krita*.la
+%attr(755,root,root) %{_libdir}/kde3/*krita*.so
+%{_libdir}/*krita*.la
+%attr(755,root,root) %{_libdir}/*krita*.so
+%{_libdir}/kde3/*magick*port.la
+%attr(755,root,root) %{_libdir}/kde3/*magick*port.so
+%{_libdir}/libkisp_example.la
+%attr(755,root,root) %{_libdir}/libkisp_example.so
+%dir %{_datadir}/apps/krayon
+%dir %{_datadir}/apps/krayon/plugins
+%{_datadir}/apps/krayon/plugins/example.kisplugin
+%{_datadir}/apps/krita
+%{_datadir}/services/krita_magick_import.desktop
+%{_datadir}/services/kritapart.desktop
+%{_datadir}/templates/Illustration.desktop
+%{_desktopdir}/kde/krita.desktop
+%{_iconsdir}/*/*/*/krita.png
 
 %files kspread -f kspread_en.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kspread
-%{_libdir}/kspread.la
-%attr(755,root,root) %{_libdir}/kspread.so
+%{_libdir}/libkdeinit_kspread.la
+%attr(755,root,root) %{_libdir}/libkdeinit_kspread.so
+%{_libdir}/kde3/kspread.la
+%attr(755,root,root) %{_libdir}/kde3/kspread.so
 %{_libdir}/kde3/libkspread*.la
 %attr(755,root,root) %{_libdir}/kde3/libkspread*.so
 %{_libdir}/kde3/libcsv*.la
@@ -930,6 +976,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kudesigner
 %{_datadir}/apps/kugar
 %{_datadir}/services/kugar_kugar_import.desktop
+%{_datadir}/services/kugarpart.desktop
 %{_iconsdir}/*/*/*/kugar.png
 %{_iconsdir}/*/*/mimetypes/kugardata.png
 %{_mandir}/man1/kudesigner.1*
@@ -939,8 +986,10 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kthesaurus
 %attr(755,root,root) %{_bindir}/kword
-%{_libdir}/kword.la
-%attr(755,root,root) %{_libdir}/kword.so
+%{_libdir}/libkdeinit_kword.la
+%attr(755,root,root) %{_libdir}/libkdeinit_kword.so
+%{_libdir}/kde3/kword.la
+%attr(755,root,root) %{_libdir}/kde3/kword.so
 %{_libdir}/libkwmailmerge*.la
 %attr(755,root,root) %{_libdir}/libkwmailmerge*.so
 %{_libdir}/libkword*export*.la
@@ -984,6 +1033,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kword
 %{_datadir}/apps/thesaurus
 %{_datadir}/apps/xsltfilter/export/kword/xslfo/*.xsl
+%{_datadir}/services/kwmailmerge_kabc.desktop
 %{_datadir}/services/kspelltool.desktop
 %{_datadir}/services/kword*.desktop
 %{_datadir}/services/kwserialletter*
