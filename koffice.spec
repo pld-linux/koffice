@@ -1,6 +1,7 @@
-
-%bcond_without	i18n	# disable i18n (26 mb less to download)
-
+#
+# Conditional build:
+%bcond_without	i18n	# disable i18n (26MB less to download)
+#
 %define		_state		stable
 %define		_ver		1.3
 %define		_snap		%{nil}
@@ -32,19 +33,17 @@ URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
 BuildRequires:	aspell-devel >= 0.50.2
-BuildRequires:	fam-devel
-BuildRequires:	wv2-devel >= 0.0.7
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:3.1.94.%{_snap}
-BuildRequires:	libart_lgpl-devel >= 2.3.8
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	mysql-devel
-BuildRequires:	perl
+BuildRequires:	perl-base
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	wv2-devel >= 0.0.7
 BuildRequires:	zlib-devel
 Requires:	wv2 >= 0.0.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -100,8 +99,8 @@ This package includes the header files you will need to compile
 applications that use koffice libraries.
 
 %description devel -l pl
-Ten pakiet zawiera pliki nag³ówkowe, których bêdziesz potrzebowa³ aby
-skompilowaæ programy u¿ywaj±ce bibliotek KOffice.
+Ten pakiet zawiera pliki nag³ówkowe potrzebne przy kompilowaniu
+programów u¿ywaj±cych bibliotek KOffice.
 
 %description devel -l pt_BR
 Arquivos de inclusão necessários à compilação de aplicações que usem
@@ -163,7 +162,7 @@ Obsoletes:	koffice-krayon
 Karbon is a vector graphics application within koffice.
 
 %description karbon -l pl
-Karbon to aplikacja koffice slu¿±ca do rysowania grafiki wektorowej,
+Karbon to aplikacja koffice s³u¿±ca do rysowania grafiki wektorowej,
 
 %package kchart
 Summary:	KOffice - KChart
@@ -206,7 +205,7 @@ Requires:       %{name}-common = %{epoch}:%{version}-%{release}
 KFormula is KOffice part for creating formulas, equations, etc...
 
 %description kformula -l pl
-jest aplikacj± s³u¿±c± do tworzenia wzorów, równañ, itd...
+KFormula jest aplikacj± s³u¿±c± do tworzenia wzorów, równañ, itp.
 
 %package kivio
 Summary:	KOffice - kivio
@@ -227,9 +226,14 @@ is possible through the scripting/plugin architecture Kivio will
 possess.
 
 %description kivio -l pl
-Kivio jest programem typu flowcharting. Kivio dostarcza
-najpotrzebniejsze funkcje ale wszystkie obiekty mo¿na rozszerzaæ za
-pomoc± jêzyka skryptowego.
+Kivio jest programem typu flowcharting. Pod tym pojêciem jednak kryje
+siê znacznie wiêcej. Kivio dostarcza najpotrzebniejsze funkcje, ale
+wszystkie obiekty mo¿na rozszerzaæ za pomoc± jêzyka skryptowego, a
+system wtyczek backendowych oferuje mo¿liwo¶æ tworzenia obiektów
+dotycz±cych prawie wszystkiego. Kivio mo¿na nakarmiæ katalogiem plików
+nag³ówkowych C++ lub plików Javy i pozwoliæ wygenerowaæ graficzn± mapê
+klas. Po podaniu sieci przejrzy j± i stworzy jej mapê. Wszystko to
+jest mo¿liwe poprzez architekturê skryptów i wtyczek Kivio.
 
 %description kivio -l pt_BR
 Editor de fluxogramas do KOffice.
@@ -335,123 +339,122 @@ równie¿ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 %description kword -l pt_BR
 Processador de texto do KOffice.
 
-
 %package common-i18n
-Summary:	Internationalization and localization files for common
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla common
-Group:	X11/Applications
+Summary:	Internationalization and localization files for koffice-common
+Summary(pl):	Pliki umiêdzynarodawiaj±ce dla koffice-common
+Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 Requires:	kdebase-core >= 9:3.1.92.%{_snap}
 
 %description common-i18n
-Internationalization and localization files for common.
+Internationalization and localization files for koffice-common.
 
-%description -l pl common-i18n
-Pliki umiêdzynarodawiaj±ce dla common.
+%description common-i18n -l pl
+Pliki umiêdzynarodawiaj±ce dla koffice-common.
 
 %package karbon-i18n
 Summary:	Internationalization and localization files for karbon
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla karbon
-Group:	X11/Applications
-Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
+Summary(pl):	Pliki umiêdzynarodawiaj±ce dla karbona
+Group:		X11/Applications
 Requires:	%{name}-karbon = %{epoch}:%{version}-%{release}
+Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
 
 %description karbon-i18n
 Internationalization and localization files for karbon.
 
-%description -l pl karbon-i18n
+%description karbon-i18n -l pl
 Pliki umiêdzynarodawiaj±ce dla karbon.
 
 %package kchart-i18n
 Summary:	Internationalization and localization files for kchart
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kchart
-Group:	X11/Applications
+Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kcharta
+Group:		X11/Applications
 Requires:	%{name}-kchart = %{epoch}:%{version}-%{release}
 Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
 
 %description kchart-i18n
 Internationalization and localization files for kchart.
 
-%description -l pl kchart-i18n
-Pliki umiêdzynarodawiaj±ce dla kchart.
+%description kchart-i18n -l pl
+Pliki umiêdzynarodawiaj±ce dla kcharta.
 
 %package kformula-i18n
 Summary:	Internationalization and localization files for kformula
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kformula
-Group:	X11/Applications
+Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kformuli
+Group:		X11/Applications
 Requires:	%{name}-kformula = %{epoch}:%{version}-%{release}
 Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
 
 %description kformula-i18n
 Internationalization and localization files for kformula.
 
-%description -l pl kformula-i18n
-Pliki umiêdzynarodawiaj±ce dla kformula.
+%description kformula-i18n -l pl
+Pliki umiêdzynarodawiaj±ce dla kformuli.
 
 %package kivio-i18n
 Summary:	Internationalization and localization files for kivio
 Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kivio
-Group:	X11/Applications
+Group:		X11/Applications
 Requires:	%{name}-kivio = %{epoch}:%{version}-%{release}
 Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
 
 %description kivio-i18n
 Internationalization and localization files for kivio.
 
-%description -l pl kivio-i18n
+%description kivio-i18n -l pl
 Pliki umiêdzynarodawiaj±ce dla kivio.
 
 %package kpresenter-i18n
 Summary:	Internationalization and localization files for kpresenter
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kpresenter
-Group:	X11/Applications
+Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kpresentera
+Group:		X11/Applications
 Requires:	%{name}-kpresenter = %{epoch}:%{version}-%{release}
 Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
 
 %description kpresenter-i18n
 Internationalization and localization files for kpresenter.
 
-%description -l pl kpresenter-i18n
-Pliki umiêdzynarodawiaj±ce dla kpresenter.
+%description kpresenter-i18n -l pl
+Pliki umiêdzynarodawiaj±ce dla kpresentera.
 
 %package kspread-i18n
 Summary:	Internationalization and localization files for kspread
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kspread
-Group:	X11/Applications
+Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kspreada
+Group:		X11/Applications
 Requires:	%{name}-kspread = %{epoch}:%{version}-%{release}
 Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
 
 %description kspread-i18n
 Internationalization and localization files for kspread.
 
-%description -l pl kspread-i18n
-Pliki umiêdzynarodawiaj±ce dla kspread.
+%description kspread-i18n -l pl
+Pliki umiêdzynarodawiaj±ce dla kspreada.
 
 %package kugar-i18n
 Summary:	Internationalization and localization files for kugar
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kugar
-Group:	X11/Applications
+Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kugara
+Group:		X11/Applications
 Requires:	%{name}-kugar = %{epoch}:%{version}-%{release}
 Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
 
 %description kugar-i18n
 Internationalization and localization files for kugar.
 
-%description -l pl kugar-i18n
-Pliki umiêdzynarodawiaj±ce dla kugar.
+%description kugar-i18n -l pl
+Pliki umiêdzynarodawiaj±ce dla kugara.
 
 %package kword-i18n
 Summary:	Internationalization and localization files for kword
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kword
-Group:	X11/Applications
+Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kworda
+Group:		X11/Applications
 Requires:	%{name}-kword = %{epoch}:%{version}-%{release}
 Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
 
 %description kword-i18n
 Internationalization and localization files for kword.
 
-%description -l pl kword-i18n
-Pliki umiêdzynarodawiaj±ce dla kword.
+%description kword-i18n -l pl
+Pliki umiêdzynarodawiaj±ce dla kworda.
 
 %prep
 #%%setup -q -n %{name}-%{_snap}
@@ -584,7 +587,6 @@ do
 done
 %endif
 
-
 files="kchart \
 kformula \
 kivio \
@@ -605,7 +607,6 @@ done
 rm -rf $RPM_BUILD_ROOT
 
 %post	common -p /sbin/ldconfig
-
 %postun common -p /sbin/ldconfig
 
 %if %{with i18n}
@@ -623,8 +624,7 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %lang(en) %{_kdedocdir}/en/%{name}-apidocs
-%{_includedir}/*
-%{_libdir}/libkdchart.so
+%attr(755,root,root) %{_libdir}/libkdchart.so
 #%{_libdir}/libkdgantt.so
 #%{_libdir}/libkexicore.so
 #%{_libdir}/libkexidatatable.so
@@ -634,20 +634,22 @@ rm -rf $RPM_BUILD_ROOT
 #%{_libdir}/libkexiimportwizard.so
 #%{_libdir}/libkexisql.so
 #%{_libdir}/libkformeditor.so
-%{_libdir}/libkformula.so
-%{_libdir}/libkochart.so
-%{_libdir}/libkofficecore.so
-%{_libdir}/libkofficeui.so
-%{_libdir}/libkopainter.so
-%{_libdir}/libkoscript.so
-%{_libdir}/libkospell.so
-%{_libdir}/libkotext.so
-%{_libdir}/libkowmf.so
-%{_libdir}/libkstore.so
-%{_libdir}/libkugar.so
-%{_libdir}/libkwmailmerge_interface.so
-%{_libdir}/libkwmf.so
-%{_libdir}/libkwordexportfilters.so
+%attr(755,root,root) %{_libdir}/libkformula.so
+%attr(755,root,root) %{_libdir}/libkochart.so
+%attr(755,root,root) %{_libdir}/libkofficecore.so
+%attr(755,root,root) %{_libdir}/libkofficeui.so
+%attr(755,root,root) %{_libdir}/libkopainter.so
+%attr(755,root,root) %{_libdir}/libkoscript.so
+%attr(755,root,root) %{_libdir}/libkospell.so
+%attr(755,root,root) %{_libdir}/libkotext.so
+%attr(755,root,root) %{_libdir}/libkowmf.so
+%attr(755,root,root) %{_libdir}/libkstore.so
+%attr(755,root,root) %{_libdir}/libkugar.so
+%attr(755,root,root) %{_libdir}/libkwmailmerge_interface.so
+%attr(755,root,root) %{_libdir}/libkwmf.so
+%attr(755,root,root) %{_libdir}/libkwordexportfilters.so
+%{_includedir}/*.h
+%{_includedir}/kword
 
 %files common -f koffice_en.lang
 %defattr(644,root,root,755)
