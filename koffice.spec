@@ -17,7 +17,9 @@ Epoch:		4
 License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
+# Source0-md5:	6a73aa72b094ca7b7377f74a508e804e
 Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
+# Source1-md5:	d108bb02a7035e188cac9e2857903ff6
 Source2:	kudesigner.png
 Patch0:		%{name}-desktop.fixes.patch
 URL:		http://www.koffice.org/
