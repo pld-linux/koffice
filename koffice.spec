@@ -1,11 +1,10 @@
 %define	ver	1.1
 Summary:	KOffice - powerful office suite for KDE
-Summary(es):	Set of office applications for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
 Summary(pt_BR):	Suíte de aplicativos office para o KDE
 Name:		koffice
 Version:	1.1
-Release:	4
+Release:	5
 Epoch:		3
 License:	GPL
 Group:		X11/Applications
@@ -70,14 +69,12 @@ Group(pl):	X11/Programowanie/Biblioteki
 Requires:	%{name}-common = %{version}
 
 %description devel
-Contains header files for KOffice.
-
-%description -l es devel
 This package includes the header files you will need to compile
 applications that use koffice libraries.
 
 %description -l pl devel
-Zawiera pliki nag³ówkowe dla KOffice.
+Ten pakiet zawiera pliki nag³ówkowe, których bêdziesz potrzebowa³ aby
+skompilowaæ programy u¿ywaj±ce bibliotek KOffice.
 
 %description -l pt_BR devel
 Arquivos de inclusão necessários à compilação de aplicações
