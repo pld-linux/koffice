@@ -14,6 +14,7 @@ License:	GPL
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
 Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
+Source2:	kudesigner.png
 Patch0:		%{name}-desktop.fixes.patch
 URL:		http://www.koffice.org/
 BuildRequires:	XFree86-devel
@@ -360,6 +361,7 @@ install kspread/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Spreadsheets
 install kword/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Wordprocessors
 install kivio/kiviopart/k*.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 install kugar/part/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Presentation
+install kugar/kudesigner/k.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 install kchart/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 
 install kformula/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
@@ -367,12 +369,13 @@ install koshell/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office
 
 # icons must be located at the top %{_pixmapsdir} to be properly displeyed
 # in gnome; in KDE they work in both cases
-cp -f $RPM_BUILD_ROOT%{_pixmapsdir}/hicolor/48x48/apps/k{arbon,chart,ivio,ontour,presenter,spread,ugar,word}.png \
+cp -f $RPM_BUILD_ROOT%{_pixmapsdir}/hicolor/48x48/apps/k{arbon,chart,formula,ivio,ontour,presenter,spread,ugar,word}.png \
 	$RPM_BUILD_ROOT%{_pixmapsdir}
+install %{SOURCE2}	$RPM_BUILD_ROOT%{_pixmapsdir}
 
 # leave only best-resolution icons at the top level; the other are not
 # necessary - their absence should make KDE a bit faster...
-rm -f $RPM_BUILD_ROOT%{_pixmapsdir}/*color/??x??/apps/k{arbon,chart,ivio,ontour,presenter,spread,ugar,word}.png
+rm -f $RPM_BUILD_ROOT%{_pixmapsdir}/*color/??x??/apps/k{arbon,chart,formula,ivio,ontour,presenter,spread,udesigner,ugar,word}.png
 
 cd %{name}-i18n-%{version}
 %{__make} install \
@@ -406,7 +409,7 @@ done
 ##############
 ## COMMON:
 > common.lang
-programs="desktop_koffice example graphite kdatabase kfile_koffice kformula kformulalib kformulalatexfilter kformulapngfilter koconverter kocryptfilter koffice koshell kscan_plugin kounavail kplato krita kudesigner olefilterswinword97filter xsltfilter xsltexportfilter xsltimportfilter"
+programs="desktop_koffice example graphite kdatabase kfile_koffice kformula kformulalib kformulalatexfilter kformulapngfilter koconverter kocryptfilter koffice koshell kscan_plugin kounavail kplato krita olefilterswinword97filter xsltfilter xsltexportfilter xsltimportfilter"
 for i in $programs; do
 	%find_lang $i --with-kde
 	cat $i.lang >> common.lang
@@ -415,10 +418,10 @@ done
 ###############
 ## OTHERS:
 %find_lang kchart --with-kde
-#%find_lang kdiagramm --with-kde
-#cat kdiagramm.lang >> kchart.lang
 %find_lang kivio --with-kde
 %find_lang kugar --with-kde
+%find_lang kudesigner --with-kde
+cat kudesigner.lang >> kugar.lang
 %find_lang kontour --with-kde
 
 # will be introduced in koffice 1.3:
@@ -460,7 +463,6 @@ rm -rf $RPM_BUILD_ROOT
 %files common -f common.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kformula
-%attr(755,root,root) %{_bindir}/kudesigner
 %attr(755,root,root) %{_bindir}/koconverter
 %attr(755,root,root) %{_bindir}/koscript
 %attr(755,root,root) %{_bindir}/koshell
@@ -498,11 +500,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*color/*x*/actions/sqrt.png
 %{_pixmapsdir}/*color/*x*/actions/sum.png
 %{_pixmapsdir}/*color/*x*/actions/onetwomatrix.png
-%{_pixmapsdir}/*color/*x*/apps/kudesigner.png
-%{_pixmapsdir}/*color/*x*/apps/kformula.png    
+%{_pixmapsdir}/kformula.png
+#%{_pixmapsdir}/*color/*x*/apps/kformula.png    
 %{_datadir}/apps/kformula
 %{_datadir}/apps/koffice
-%{_datadir}/apps/kudesigner
 %{_datadir}/services/clipartthumbnail.desktop
 %{_datadir}/services/kfile_koffice.desktop
 %{_datadir}/services/kformula*
@@ -512,7 +513,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/ole_*.desktop
 %{_datadir}/services/otherofficethumbnail.desktop
 %{_datadir}/services/xslt_*.desktop
-%{_datadir}/mimelnk/application/x-kudesigner.desktop
 # Conflicts with kdelibs
 #%{_datadir}/mimelnk/image/x-msod.desktop
 #%{_datadir}/mimelnk/image/x-wmf.desktop
@@ -654,13 +654,19 @@ rm -rf $RPM_BUILD_ROOT
 #################################
 %files -f kugar.lang kugar
 %defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/kudesigner
 %attr(755,root,root) %{_bindir}/kugar
 %attr(755,root,root) %{_libdir}/libkugar*.??
 %attr(755,root,root) %{_libdir}/straight_connector.ksp
 %{_applnkdir}/Office/Presentation/kugar.desktop
+%{_applnkdir}/Office/Misc/kudesigner.desktop
+%{_datadir}/apps/kudesigner
 %{_datadir}/apps/kugar
+%{_pixmapsdir}/kudesigner.png
 %{_pixmapsdir}/kugar.png
+#%{_pixmapsdir}/*/*/apps/kudesigner.png
 #%{_pixmapsdir}/*/*/apps/kugar*.png
+%{_datadir}/mimelnk/application/x-kudesigner.desktop
 #%{_datadir}/mimelnk/application/x-kugar.desktop
 %{_pixmapsdir}/*/*/mimetypes/*kugar*
 
