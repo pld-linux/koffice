@@ -1,9 +1,9 @@
-%define	ver	1.1-beta1
+%define	ver	1.1
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
 Name:		koffice
-Version:	%(echo %{ver} | sed -e "s#-##g")
-Release:	2
+Version:	1.1
+Release:	0.1
 Epoch:		2
 License:	GPL
 Group:		X11/Applications
@@ -130,26 +130,32 @@ bar charts.
 %description -l pl kchart
 KChart jest aplikacj± s³u¿±c± do generowania wykresów.
 
-# koffice-killustrator
-%package killustrator
-Summary:	KOffice - KIllustrator
-Summary(pl):	KOffice - KIllustrator
+# koffice-kontour (f. k. a. koffice-killustrator)
+%package kontour
+Summary:	KOffice - Kontour
+Summary(pl):	KOffice - Kontour
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
 Requires:	%{name}-common = %{version}
 
-%description killustrator
-KIllustrator is the vector drawing program for the K Desktop
-Environment. The aim of the KIllustrator project is the development of
-a freely available vector-based drawing application similar to Corel
-Draw or Adobe Illustrator.
+%description kontour
+Kontour is the vector drawing program for the K Desktop Environment. The
+aim of the Kontour project is the development of a freely available
+vector-based drawing application similar to Corel Draw or Adobe
+Illustrator.
 
-%description -l pl killustrator
-Killustrator jest programem do tworzenia grafiki wektorowej dla
+Kontour was formerly known as KIllustrator but due to blackmail made by
+Adobe lawyers it has to be renamed.
+
+%description -l pl kontour
+Kontour jest programem do tworzenia grafiki wektorowej dla
 ¶rodowiska KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w
 pe³ni funkcjonalnego programu do grafiki wektorowej podobnego do Corel
 Draw lub Adobe Illustrator.
+
+Kontour wczesniej by³ znany jako KIlustrator ale developerzy zostali
+zmuszeni szantarzem przez prawników Adobe do zmiany nazwy.
 
 # koffice-kpresenter
 %package kpresenter
@@ -283,9 +289,9 @@ cd %{name}-i18n-%{ver}
 %configure2_13
 
 # broken languages
-for lang in ja zh_TW.Big5; do
-	echo -ne "all:\ninstall:\n" > ${lang}/Makefile
-done
+#for lang in ja zh_TW.Big5; do
+#	echo -ne "all:\ninstall:\n" > ${lang}/Makefile
+#done
 
 %{__make}
 
@@ -303,12 +309,12 @@ install -d $RPM_BUILD_ROOT%{_applnkdir}/Office/{Wordprocessors,Spreadsheets}
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Office/{Presentations,Misc}
 install -d $RPM_BUILD_ROOT%{_applnkdir}/Graphics
 
-install killustrator/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Graphics
+install kontour/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Graphics
 install kpresenter/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Presentations
 install kspread/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Spreadsheets
 install kword/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Wordprocessors
 install kivio/kiviopart/k*.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
-install kimageshop/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Graphics
+#install kimageshop/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Graphics
 install kugar/part/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Presentations
 install kchart/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 
@@ -320,14 +326,14 @@ cd %{name}-i18n-%{ver}
 	DESTDIR=$RPM_BUILD_ROOT
 cd ..
 
-%find_lang killustrator --with-kde
+%find_lang kontour --with-kde
 %find_lang kpresenter --with-kde
 %find_lang kspread --with-kde
 %find_lang kspreadcalc_calc --with-kde
 cat kspreadcalc_calc.lang >> kspread.lang
 %find_lang kword --with-kde
 %find_lang kivio --with-kde
-%find_lang krayon --with-kde
+#%find_lang krayon --with-kde
 %find_lang kugar --with-kde
 %find_lang kchart --with-kde
 %find_lang koshell --with-kde
@@ -345,8 +351,8 @@ rm -rf $RPM_BUILD_ROOT
 %post kchart	-p /sbin/ldconfig
 %postun kchart	-p /sbin/ldconfig
 
-%post killustrator	-p /sbin/ldconfig
-%postun killustrator	-p /sbin/ldconfig
+%post kontour	-p /sbin/ldconfig
+%postun kontour	-p /sbin/ldconfig
 
 %post kpresenter	-p /sbin/ldconfig
 %postun kpresenter	-p /sbin/ldconfig
@@ -388,17 +394,17 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*color/*x*/actions/abs.png
 %{_pixmapsdir}/*color/*x*/actions/brac*.png
 %{_pixmapsdir}/*color/*x*/actions/frac.png
-%{_pixmapsdir}/*color/*x*/actions/funct.png
+#%{_pixmapsdir}/*color/*x*/actions/funct.png
 %{_pixmapsdir}/*color/*x*/actions/int.png
 %{_pixmapsdir}/*color/*x*/actions/[lr]su[bp].png
 %{_pixmapsdir}/*color/*x*/actions/matrix.png
 %{_pixmapsdir}/*color/*x*/actions/paren.png
 %{_pixmapsdir}/*color/*x*/actions/prod.png
-%{_pixmapsdir}/*color/*x*/actions/percent.png
-%{_pixmapsdir}/*color/*x*/actions/prec_*.png
+#%{_pixmapsdir}/*color/*x*/actions/percent.png
+#%{_pixmapsdir}/*color/*x*/actions/prec_*.png
 %{_pixmapsdir}/*color/*x*/actions/sqrt.png
 %{_pixmapsdir}/*color/*x*/actions/sum.png
-%{_pixmapsdir}/*color/*x*/actions/border_*.png
+#%{_pixmapsdir}/*color/*x*/actions/border_*.png
 %{_datadir}/apps/koffice
 %{_datadir}/apps/kformula
 %{_datadir}/services/kodocinfopropspage.desktop
@@ -429,29 +435,29 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde2/libkchartpart.??
 %{_datadir}/apps/kchart
 %{_datadir}/mimelnk/application/x-kchart.desktop
-%{_applnkdir}/Office/Misc/kchart.desktop
+#%{_applnkdir}/Office/Misc/kchart.desktop
 %{_pixmapsdir}/*color/*x*/apps/kchart.png
 
 #################################
-# koffice-killustrator
+# koffice-kontour
 #################################
-%files -f killustrator.lang killustrator
+%files -f kontour.lang kontour
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/killustrator
-%attr(755,root,root) %{_libdir}/killustrator.??
-%attr(755,root,root) %{_libdir}/kde2/libkillustratorpart.??
+%attr(755,root,root) %{_bindir}/kontour
+%attr(755,root,root) %{_libdir}/kontour.??
+%attr(755,root,root) %{_libdir}/kde2/libkontourpart.??
 %attr(755,root,root) %{_libdir}/kde2/libapplixgraphicimport.??
 %attr(755,root,root) %{_libdir}/kde2/libmsodimport.??
 %attr(755,root,root) %{_libdir}/kde2/libwmfimport.??
 %attr(755,root,root) %{_libdir}/kde2/libkprkword.??
-%{_datadir}/apps/killustrator
-%{_datadir}/services/killustrator_*.desktop
+%{_datadir}/apps/kontour
+#%{_datadir}/services/kontour_*.desktop
 %{_datadir}/services/kprkword.desktop
-%{_datadir}/mimelnk/application/x-killustrator.desktop
+%{_datadir}/mimelnk/application/x-kontour.desktop
 %{_datadir}/mimelnk/image/x-msod.desktop
 %{_datadir}/mimelnk/image/x-wmf.desktop
-%{_applnkdir}/Graphics/killustrator.desktop
-%{_pixmapsdir}/*color/*x*/apps/killustrator.png
+%{_applnkdir}/Graphics/kontour.desktop
+%{_pixmapsdir}/*color/*x*/apps/kontour.png
 
 #################################
 # koffice-kpresenter
@@ -498,7 +504,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde2/libascii*port.??
 %attr(755,root,root) %{_libdir}/kde2/libdocbookexport.??
 %attr(755,root,root) %{_libdir}/kde2/libhtml*port.??
-%attr(755,root,root) %{_libdir}/kde2/libhtml*portdia.??
+#%attr(755,root,root) %{_libdir}/kde2/libhtml*portdia.??
 %attr(755,root,root) %{_libdir}/kde2/liblatexexport.??
 %attr(755,root,root) %{_libdir}/kde2/librtf*port.??
 %attr(755,root,root) %{_libdir}/kde2/libkspelltool.??
@@ -529,14 +535,14 @@ rm -rf $RPM_BUILD_ROOT
 #################################
 %files -f krayon.lang krayon
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/krayon
-%attr(755,root,root) %{_libdir}/krayon.??
-%attr(755,root,root) %{_libdir}/libkisp_example.??
-%attr(755,root,root) %{_libdir}/kde2/libkrayon*.??
-%{_applnkdir}/Graphics/krayon.desktop
-%{_datadir}/apps/krayon
-%{_pixmapsdir}/*color/*x*/apps/krayon.png
-%{_datadir}/mimelnk/application/x-krayon.desktop
+#%attr(755,root,root) %{_bindir}/krayon
+#%attr(755,root,root) %{_libdir}/krayon.??
+#%attr(755,root,root) %{_libdir}/libkisp_example.??
+#%attr(755,root,root) %{_libdir}/kde2/libkrayon*.??
+#%{_applnkdir}/Graphics/krayon.desktop
+#%{_datadir}/apps/krayon
+#%{_pixmapsdir}/*color/*x*/apps/krayon.png
+#%{_datadir}/mimelnk/application/x-krayon.desktop
 
 #################################
 # koffice-kugar
@@ -545,7 +551,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kugar
 %attr(755,root,root) %{_libdir}/libkugarpart.??
-%{_applnkdir}/Office/Presentations/kugar.desktop
+#%{_applnkdir}/Office/Presentations/kugar.desktop
 %{_datadir}/apps/kugar
 %{_pixmapsdir}/*color/*x*/apps/kugar.png
 %{_datadir}/mimelnk/application/x-kugar.desktop
