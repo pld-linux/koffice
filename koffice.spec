@@ -1,7 +1,8 @@
 
 %define		_state		snapshots
 %define		_ver		1.2.94
-%define		_snap		031114
+%define		_snap		031204
+%define		artsver		12:1.2.0.%{_snap}
 
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
@@ -17,16 +18,16 @@ License:	GPL
 Group:		X11/Applications
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	3ecd0b29c35e02037697ef9847bde3fd
+# Source0-md5:	3bae96f313c9bbe908a4189c636c1a13
 Patch0:		%{name}-vcategories.patch
 Patch1:		%{name}-mysql_includes.patch
-Patch2:		%{name}-fix-kexi_widget_makefile_am.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
+BuildRequires:	arts-qt-devel >= %{artsver}
 BuildRequires:	fam-devel
 BuildRequires:	wv2-devel >= 0.0.7
 BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel >= 9:3.1.92.%{_snap}
+BuildRequires:	kdelibs-devel >= 9:3.1.94.%{_snap}
 BuildRequires:	libart_lgpl-devel >= 2.3.8
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
@@ -330,7 +331,6 @@ Processador de texto do KOffice.
 %setup -q -n %{name}-%{_snap}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 %build
 
@@ -349,12 +349,11 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	kde_appsdir=%{_applnkdir} \
 	kde_htmldir=%{_kdedocdir}
 
 install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
 
-mv $RPM_BUILD_ROOT{%{_applnkdir}/Office/*,%{_desktopdir}/kde}
+mv $RPM_BUILD_ROOT{%{_datadir}/applnk/Office/*,%{_desktopdir}/kde}
 
 install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
@@ -496,7 +495,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kofficethumbnail.desktop
 %{_datadir}/services/kounavail.desktop
 %{_datadir}/services/ole_*.desktop
-%{_datadir}/services/otherofficethumbnail.desktop
+#%{_datadir}/services/otherofficethumbnail.desktop
 %{_datadir}/services/xslt_*.desktop
 %{_datadir}/services/generic_filter.desktop
 %dir %{_datadir}/templates/.source
