@@ -3,7 +3,7 @@ Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
 Summary(pt_BR):	Suíte de aplicativos office para o KDE
 Name:		koffice
 Version:	1.1.1
-Release:	3
+Release:	4
 Epoch:		4
 License:	GPL
 Group:		X11/Applications
@@ -11,6 +11,7 @@ Source0:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-%{versi
 Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
 Patch0:		%{name}-fix-change-custom-variable-value.patch
 Patch1:		%{name}-fix-crash-in-sidebar.patch
+Patch2:		%{name}-fix-kpresenter-mem-leak.patch
 URL:		http://www.koffice.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	gettext-devel
@@ -308,6 +309,7 @@ Gerador de relatórios do KOffice.
 %setup -q -n %{name}-%{version} -a1
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
