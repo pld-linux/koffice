@@ -1,6 +1,9 @@
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potЙ©ny pakiet biurowy dla KDE
 Summary(pt_BR):	SuМte de aplicativos office para o KDE
+Summary(ru):	Набор оффисных программ для KDE
+Summary(uk):	Наб╕р оф╕сних програм для KDE
+Summary(zh_CN):	KDE ╣д╟Л╧╚с╕сцхМ╪Ч╪╞║ё
 Name:		koffice
 Version:	1.1.1
 Release:	5
@@ -12,6 +15,7 @@ Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-i18n-%{
 Patch0:		%{name}-fix-change-custom-variable-value.patch
 Patch1:		%{name}-fix-crash-in-sidebar.patch
 Patch2:		%{name}-fix-kpresenter-mem-leak.patch
+Patch3:		%{name}-zh-langname.patch
 URL:		http://www.koffice.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	gettext-devel
@@ -56,6 +60,16 @@ Pakiet miЙdzy innymi zawiera:
 - Krayon - bazuj╠cy na pikselach program typu GIMP czy Adobe(c)
   Photoshop(R)
 - Kugar - narzЙdzie do generowania raportСw jako╤ci biznesowej
+
+%description -l ru
+Оффисные программы для K Desktop Environment 2.0. Содержит: KWord
+(текстовый процессор), KSpread (электронная таблица), KPresenter
+(презентации) и KChart (генератор диаграмм).
+
+%description -l uk
+Оф╕сн╕ програми для K Desktop Environment 2.0. М╕стить: KWord
+(текстовий процесор), KSpread (електронна таблиця), KPresenter
+(презентац╕╖) та KChart (генератор д╕аграм).
 
 # koffice-devel
 %package devel
@@ -310,6 +324,7 @@ Gerador de relatСrios do KOffice.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
@@ -331,18 +346,16 @@ cd %{name}-i18n-%{version}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 rm -rf $RPM_BUILD_ROOT%{_applnkdir}
+install -d $RPM_BUILD_ROOT%{_applnkdir}/Office/{Wordprocessors,Spreadsheets} \
+	$RPM_BUILD_ROOT%{_applnkdir}/Office/{Presentation,Misc} \
+	$RPM_BUILD_ROOT%{_applnkdir}/Graphics
 
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Office/{Wordprocessors,Spreadsheets}
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Office/{Presentation,Misc}
-install -d $RPM_BUILD_ROOT%{_applnkdir}/Graphics
-
-install kontour/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Graphics
+install kontour/kontour.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Graphics
 install kpresenter/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Presentation
 install kspread/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Spreadsheets
 install kword/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Wordprocessors
