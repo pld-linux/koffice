@@ -4,6 +4,7 @@ Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
 Name:		koffice
 Version:	%(echo %{ver} | sed -e "s#-##g")
 Release:	1
+Epoch:		2
 License:	GPL
 Group:		X11/Applications
 Group(de):	X11/Applikationen
@@ -272,8 +273,8 @@ umo¿liwiaj±c ogl±danie raportu w przegl±darce Konqueror.
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
-
 %configure \
+	%{!?debug:--disable-debug} \
 	--enable-final
 
 %{__make} 
