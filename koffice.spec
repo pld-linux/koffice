@@ -1,7 +1,7 @@
 # TODO: kformula to separate package
 #
 # Conditional build:
-# _with_pixmapsubdirs - leave different depth/resolution icons 
+# _with_pixmapsubdirs - leave different depth/resolution icons
 #
 %define 	no_compress_doc 1
 Summary:	KOffice - powerful office suite for KDE
@@ -161,10 +161,10 @@ Arquivos requeridos por todos os softwares koffice.
 
 # koffice-karbon
 %package karbon
-Summary:        KOffice - Karbon
-Summary(pl):    KOffice - Karbon
-Group:          X11/Applications
-Requires:       %{name}-common = %{epoch}:%{version}
+Summary:	KOffice - Karbon
+Summary(pl):	KOffice - Karbon
+Group:		X11/Applications
+Requires:	%{name}-common = %{epoch}:%{version}
 #karbon has changed its named (again) to curt therefore in the future:
 Obsoletes:	koffice-krayon
 
