@@ -22,6 +22,7 @@ Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-i18n-%{
 # Source1-md5:	d108bb02a7035e188cac9e2857903ff6
 Source2:	kudesigner.png
 Patch0:		%{name}-desktop.fixes.patch
+Patch1:		%{name}-gcc.patch
 URL:		http://www.koffice.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	arts-kde-devel
@@ -330,6 +331,7 @@ Processador de texto do KOffice.
 %prep
 %setup -q -a1
 %patch0 -p1
+%patch1 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
@@ -721,7 +723,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libwml*port.??
 %attr(755,root,root) %{_libdir}/kde3/libkspelltool.??
 %attr(755,root,root) %{_libdir}/kde3/libkwordpart.??
-%attr(755,root,root) %{_libdir}/kde3/liblatexexport.??
+%attr(755,root,root) %{_libdir}/kde3/liblatex*port.??
 %attr(755,root,root) %{_libdir}/kde3/librtf*port.??
 %attr(755,root,root) %{_libdir}/kde3/libthesaurustool.??
 %attr(755,root,root) %{_libdir}/kde3/libwp*port.??
