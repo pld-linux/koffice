@@ -13,8 +13,13 @@ Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}-kde3/src/%{name}-%{version}-kde3.tar.bz2
 Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}-kde3/src/%{name}-i18n-%{version}.tar.bz2
 Patch0:		%{name}-fix-change-custom-variable-value.patch
+Patch1:		%{name}-fix-crash-in-sidebar.patch
+Patch2:		%{name}-fix-kpresenter-mem-leak.patch
+Patch3:		%{name}-zh-langname.patch
+Patch4:		%{name}-desktop.fixes.patch
 URL:		http://www.koffice.org/
 BuildRequires:	XFree86-devel
+BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 2.1.1
 BuildRequires:	libjpeg-devel
@@ -319,6 +324,10 @@ Gerador de relatórios do KOffice.
 %prep
 %setup -q -n %{name}-%{version} -a1
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
@@ -359,6 +368,9 @@ install kchart/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 
 install kformula/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 install koshell/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office
+
+mv -f $RPM_BUILD_ROOT%{_pixmapsdir}/hicolor/48x48/apps/{kchart,kontour,kpresenter,kspread,kword,kivio}.png \
+	$RPM_BUILD_ROOT%{_pixmapsdir}
 
 cd %{name}-i18n-%{version}
 %{__make} install \
@@ -496,7 +508,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libkchartpart.??
 %{_datadir}/apps/kchart
 %{_applnkdir}/Office/Misc/kchart.desktop
-%{_pixmapsdir}/*color/*x*/apps/kchart.png
+%{_pixmapsdir}/kchart.png
 
 #################################
 # koffice-kontour
@@ -520,7 +532,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/.source/Illustration.kil
 %{_datadir}/templates/Illustration.desktop
 %{_applnkdir}/Graphics/kontour.desktop
-%{_pixmapsdir}/*color/*x*/apps/kontour.png
+%{_pixmapsdir}/kontour.png
 
 #################################
 # koffice-kpresenter
@@ -536,7 +548,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/.source/Presentation.kpt
 %{_datadir}/templates/Presentation.desktop
 %{_applnkdir}/Office/Presentation/kpresenter.desktop
-%{_pixmapsdir}/*color/*x*/apps/kpresenter.png
+%{_pixmapsdir}/kpresenter.png
 
 #################################
 # koffice-kspread
@@ -557,8 +569,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/.source/SpreadSheet.ksp
 %{_datadir}/templates/SpreadSheet.desktop
 %{_applnkdir}/Office/Spreadsheets/kspread.desktop
-%{_pixmapsdir}/*color/*x*/apps/kspread.png
-%{_pixmapsdir}/*color/*x*/apps/kspreadcalc.png
+%{_pixmapsdir}/kspread.png
 
 #################################
 # koffice-kword
@@ -584,7 +595,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/.source/TextDocument.kwt
 %{_datadir}/templates/TextDocument.desktop
 %{_applnkdir}/Office/Wordprocessors/kword.desktop
-%{_pixmapsdir}/*color/*x*/apps/kword.png
+%{_pixmapsdir}/kword.png
 
 #################################
 # koffice-kivio
@@ -596,7 +607,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/*kivio*.??
 %{_applnkdir}/Office/Misc/kivio.desktop
 %{_datadir}/apps/kivio
-%{_pixmapsdir}/*color/*x*/apps/kivio.png
+%{_pixmapsdir}/kivio.png
+%{_datadir}/mimelnk/application/x-kivio.desktop
 %{_datadir}/services/kivio*.desktop
 
 #################################
@@ -608,4 +620,5 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkugarpart.??
 %{_applnkdir}/Office/Presentation/kugar.desktop
 %{_datadir}/apps/kugar
-%{_pixmapsdir}/*color/*x*/*/kugar*.png
+%{_pixmapsdir}/kugar*.png
+%{_datadir}/mimelnk/application/x-kugar.desktop
