@@ -532,10 +532,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/otherofficethumbnail.desktop
 %{_datadir}/services/xslt_*.desktop
 # Conflicts with kdelibs
-#%{_datadir}/mimelnk/image/x-msod.desktop
-#%{_datadir}/mimelnk/image/x-wmf.desktop
-#%{_datadir}/mimelnk/image/x-xfig.desktop
-#%{_datadir}/mimelnk/text/x-csv.desktop
+#%%{_datadir}/mimelnk/image/x-msod.desktop
+#%%{_datadir}/mimelnk/image/x-wmf.desktop
+#%%{_datadir}/mimelnk/image/x-xfig.desktop
+#%%{_datadir}/mimelnk/text/x-csv.desktop
 %{_mandir}/man1/kformula.1
 %{_mandir}/man1/koconverter.1
 %{_mandir}/man1/koscript.1
@@ -567,9 +567,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libkarbon*import*
 %attr(755,root,root) %{_libdir}/kde3/libkarbon*export*
 %{_datadir}/services/karbon*
-#%{_datadir}/apps/karbon
-#%{_datadir}/templates/.source/Presentation.kpt
-##%{_datadir}/templates/Presentation.desktop
+#%%{_datadir}/apps/karbon
+#%%{_datadir}/templates/.source/Presentation.kpt
+#%%{_datadir}/templates/Presentation.desktop
 %{_applnkdir}/Graphics/karbon.desktop
 %{_pixmapsdir}/karbon.png
 %{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/karbon.png}
@@ -601,7 +601,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kivio
 %{_pixmapsdir}/kivio.png
 %{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kivio*.png}
-#%{_datadir}/mimelnk/application/x-kivio.desktop
+#%%{_datadir}/mimelnk/application/x-kivio.desktop
 %{_datadir}/services/kivio*.desktop
 %{_mandir}/man1/kivio.1
 
@@ -623,7 +623,7 @@ rm -rf $RPM_BUILD_ROOT
 #%attr(755,root,root) %{_libdir}/kde3/libxfigimport.??
 %{_datadir}/apps/kontour
 %{_datadir}/services/kontour*.desktop
-#%{_datadir}/mimelnk/image/x-svg.desktop
+#%%{_datadir}/mimelnk/image/x-svg.desktop
 %{_datadir}/templates/.source/Illustration.kil
 %{_datadir}/templates/Illustration.desktop
 %{_applnkdir}/Graphics/kontour.desktop
@@ -665,7 +665,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libdbase*port.??
 %attr(755,root,root) %{_libdir}/kde3/libqproimport.??
 %{_datadir}/apps/kspread
-#%{_datadir}/mimelnk/text/x-gnumeric.desktop
+#%%{_datadir}/mimelnk/text/x-gnumeric.desktop
 %{_datadir}/services/kspread*.desktop
 %{_datadir}/templates/.source/SpreadSheet.ksp
 %{_datadir}/templates/SpreadSheet.desktop
@@ -693,7 +693,7 @@ rm -rf $RPM_BUILD_ROOT
 %{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kudesigner.png}
 %{?_with_pixmapsubdirs:%{_pixmapsdir}/*/*/apps/kugar*.png}
 %{_datadir}/mimelnk/application/x-kudesigner.desktop
-#%{_datadir}/mimelnk/application/x-kugar.desktop
+#%%{_datadir}/mimelnk/application/x-kugar.desktop
 %{_pixmapsdir}/*/*/mimetypes/*kugar*
 %{_mandir}/man1/kudesigner.1
 %{_mandir}/man1/kugar.1
