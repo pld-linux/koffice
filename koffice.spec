@@ -35,8 +35,8 @@ BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtiff-devel
-BuildRequires:	libxslt-devel >= 0:1.0.7
 BuildRequires:	libxml2-devel >= 0:2.4.8
+BuildRequires:	libxslt-devel >= 1.0.7
 BuildRequires:	mysql-devel
 BuildRequires:	perl-base
 BuildRequires:	python-devel >= 2.2
@@ -152,7 +152,7 @@ Summary:	KOffice - Karbon
 Summary(pl):	KOffice - Karbon
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
-#karbon has changed its named (again) to curt therefore in the future:
+#karbon has changed its name (again) to curt therefore in the future:
 Obsoletes:	koffice-krayon
 
 %description karbon
@@ -189,8 +189,8 @@ Requires:	mysql-libs
 Kexi is KOffice part for using database system such as mysql.
 
 %description kexi -l pl 
-Kexi jest aplikacj± s³u¿±c± do korzystania z systemów baz 
-danych #takich jak mysql.
+Kexi jest aplikacj± s³u¿±c± do korzystania z systemów baz danych
+takich jak mysql.
 
 %package kformula
 Summary:	KOffice - kformula
@@ -355,9 +355,9 @@ export DO_NOT_COMPILE="$DO_NOT_COMPILE kdgantt"
 %{__make} -f admin/Makefile.common cvs
 
 %configure \
-	%if "%{_lib}" == "lib64"
+%if "%{_lib}" == "lib64"
 	--enable-libsuffix=64 \
-	%endif
+%endif
 	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
 	--with-qt-libraries=%{_libdir} \
 	--enable-final
