@@ -74,7 +74,6 @@ Package contains common files and libraries needs by KOffice applications.
 %description -l pl common
 Pakiet zawiera wspólne pliki i biblioteki wymagane przez aplikacje KOffoce.
 
-
 #################################
 # koffice-kchart
 #################################
@@ -254,11 +253,35 @@ make -i \
 strip --strip-unneeded $RPM_BUILD_ROOT%{_bindir}/* || :
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/*.so* || :
 
-%post	-p /sbin/ldconfig
-%postun	-p /sbin/ldconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post common	-p /sbin/ldconfig
+%postun common	-p /sbin/ldconfig
+
+%post kchart	-p /sbin/ldconfig
+%postun kchart	-p /sbin/ldconfig
+
+%post kgraph	-p /sbin/ldconfig
+%postun kgraph	-p /sbin/ldconfig
+
+%post killustrator	-p /sbin/ldconfig
+%postun killustrator	-p /sbin/ldconfig
+
+%post kimage	-p /sbin/ldconfig
+%postun kimage	-p /sbin/ldconfig
+
+%post kimageshop	-p /sbin/ldconfig
+%postun kimageshop	-p /sbin/ldconfig
+
+%post kpresenter	-p /sbin/ldconfig
+%postun kpresenter	-p /sbin/ldconfig
+
+%post kspread	-p /sbin/ldconfig
+%postun kspread	-p /sbin/ldconfig
+
+%post kword	-p /sbin/ldconfig
+%postun kword	-p /sbin/ldconfig
 
 #################################
 # koffice-common
