@@ -5,8 +5,9 @@
 #
 %define		_state		snapshots
 %define		_ver		1.3
-%define		_snap		040327
+%define		_snap		040509
 %define		artsver		13:1.2.0
+%define		_packager	adgor	
 
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
@@ -16,24 +17,25 @@ Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ĞÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼ş¼¯¡£
 Name:		koffice
 Version:	%{_ver}.%{_snap}
-Release:	1
+Release:	0.1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
 Source0:	%{name}.tar.bz2
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
+Source0:	http://ep09.pld-linux.org/~%{_packager}/kde/%{name}-%{_snap}.tar.bz2
 ##%% Source0-md5:	8e4c9db57f701d42f21d61651f0b03bd
-#Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}-%{_snap}.tar.bz2
 #Source1:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
 ##%% Source1-md5:	ca89c9c944508de11ca2908eb0a851e4
 Patch0:		%{name}-vcategories.patch
 Patch1:		kde-common-QTDOCDIR.patch
+Patch2:		%{name}-gcc34.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
 BuildRequires:	aspell-devel >= 0.50.2
 BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel >= 9:3.2
+BuildRequires:	kdelibs-devel >= 9:3.2.90
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
@@ -43,9 +45,9 @@ BuildRequires:	perl-base
 BuildRequires:	python-devel >= 2.2
 %{?with_apidocs:BuildRequires:  qt-doc}
 BuildRequires:	rpmbuild(macros) >= 1.129
-BuildRequires:	wv2-devel >= 0.0.7
+#BuildRequires:	wv2-devel >= 0.0.7
 BuildRequires:	zlib-devel
-Requires:	wv2 >= 0.0.7
+#Requires:	wv2 >= 0.0.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -123,7 +125,7 @@ Summary:	KOffice - common files and libraries
 Summary(pl):	KOffice - wspólne pliki i biblioteki
 Summary(pt_BR):	Arquivos requeridos por todos os softwares koffice
 Group:		X11/Applications
-Requires:	kdebase-core >= 9:3.2
+Requires:	kdebase-core >= 9:3.2.90
 
 %description common
 KOffice is an integrated office suite for K Desktop Environment.
@@ -471,13 +473,14 @@ Pliki umiêdzynarodawiaj±ce dla kworda.
 %if %{with i18n}
 %setup -q -a1
 %else
-%setup -q -n %{name}
+%setup -q -n %{name}-%{_snap}
 %endif
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
-echo "KDE_OPTIONS = nofinal" >> kexi/kexidb/parser/Makefile.am
-echo "KDE_OPTIONS = nofinal" >> krita/ui/Makefile.am
+#echo "KDE_OPTIONS = nofinal" >> kexi/kexidb/parser/Makefile.am
+#echo "KDE_OPTIONS = nofinal" >> krita/ui/Makefile.am
 
 %build
 cp /usr/share/automake/config.sub admin
