@@ -1,7 +1,5 @@
 #
 # Conditional build:
-%bcond_without	i18n	# disable i18n (26MB less to download)
-#
 %define		_state		stable
 %define		_ver		1.3.4
 %define		_snap		%{nil}
@@ -25,11 +23,6 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{ve
 # Source0-md5:	79896426542b0cf07e2e15f84946905a
 # Source0-size:	10765924
 #Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}-%{_snap}.tar.bz2
-%if %{with i18n}
-Source1:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
-# Source1-md5:	6455f496f6031e810398ad6b065eb929
-# Source1-size:	27798685
-%endif
 Patch100:	%{name}-branch.diff
 Patch0:		%{name}-vcategories.patch
 Patch2:		%{name}-desktop.patch
@@ -343,174 +336,41 @@ równie¿ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 %description kword -l pt_BR
 Processador de texto do KOffice.
 
-%package common-i18n
-Summary:	Internationalization and localization files for koffice-common
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla koffice-common
-Group:		X11/Applications
-Requires:	%{name}-common = %{epoch}:%{version}-%{release}
-Requires:	kdebase-core >= 9:3.2
-
-%description common-i18n
-Internationalization and localization files for koffice-common.
-
-%description common-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla koffice-common.
-
-%package karbon-i18n
-Summary:	Internationalization and localization files for karbon
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla karbona
-Group:		X11/Applications
-Requires:	%{name}-karbon = %{epoch}:%{version}-%{release}
-Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
-
-%description karbon-i18n
-Internationalization and localization files for karbon.
-
-%description karbon-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla karbon.
-
-%package kchart-i18n
-Summary:	Internationalization and localization files for kchart
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kcharta
-Group:		X11/Applications
-Requires:	%{name}-kchart = %{epoch}:%{version}-%{release}
-Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
-
-%description kchart-i18n
-Internationalization and localization files for kchart.
-
-%description kchart-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kcharta.
-
-%package kformula-i18n
-Summary:	Internationalization and localization files for kformula
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kformuli
-Group:		X11/Applications
-Requires:	%{name}-kformula = %{epoch}:%{version}-%{release}
-Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
-
-%description kformula-i18n
-Internationalization and localization files for kformula.
-
-%description kformula-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kformuli.
-
-%package kivio-i18n
-Summary:	Internationalization and localization files for kivio
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kivio
-Group:		X11/Applications
-Requires:	%{name}-kivio = %{epoch}:%{version}-%{release}
-Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
-
-%description kivio-i18n
-Internationalization and localization files for kivio.
-
-%description kivio-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kivio.
-
-%package kpresenter-i18n
-Summary:	Internationalization and localization files for kpresenter
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kpresentera
-Group:		X11/Applications
-Requires:	%{name}-kpresenter = %{epoch}:%{version}-%{release}
-Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
-
-%description kpresenter-i18n
-Internationalization and localization files for kpresenter.
-
-%description kpresenter-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kpresentera.
-
-%package kspread-i18n
-Summary:	Internationalization and localization files for kspread
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kspreada
-Group:		X11/Applications
-Requires:	%{name}-kspread = %{epoch}:%{version}-%{release}
-Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
-
-%description kspread-i18n
-Internationalization and localization files for kspread.
-
-%description kspread-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kspreada.
-
-%package kugar-i18n
-Summary:	Internationalization and localization files for kugar
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kugara
-Group:		X11/Applications
-Requires:	%{name}-kugar = %{epoch}:%{version}-%{release}
-Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
-
-%description kugar-i18n
-Internationalization and localization files for kugar.
-
-%description kugar-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kugara.
-
-%package kword-i18n
-Summary:	Internationalization and localization files for kword
-Summary(pl):	Pliki umiêdzynarodawiaj±ce dla kworda
-Group:		X11/Applications
-Requires:	%{name}-kword = %{epoch}:%{version}-%{release}
-Requires:	%{name}-common-i18n = %{epoch}:%{version}-%{release}
-
-%description kword-i18n
-Internationalization and localization files for kword.
-
-%description kword-i18n -l pl
-Pliki umiêdzynarodawiaj±ce dla kworda.
-
 %prep
-#%%setup -q -n %{name}-%{_snap}
-%if %{with i18n}
-%setup -q -a1
-%else
 %setup -q
-%endif
 %patch100 -p1
 %patch0 -p1
-
 %patch2 -p1
 
 %build
-%{__make} -f admin/Makefile.common cvs
-cp /usr/share/automake/config.sub admin
+cp -f /usr/share/automake/config.sub admin
+export UNSERMAKE=/usr/share/unsermake/unsermake
 export DO_NOT_COMPILE="$DO_NOT_COMPILE kdgantt"
+%{__make} -f admin/Makefile.common cvs
 
 %configure \
-	--disable-rpath \
+	%if "%{_lib}" == "lib64"
+	--enable-libsuffix=64 \
+	%endif
+	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
 	--with-qt-libraries=%{_libdir} \
 	--enable-final
-
+	
 %{__make}
-
-%if %{with i18n}
-cd %{name}-i18n-%{version}
-%configure
-%{__make}
-%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir}
-
+	kde_htmldir=%{_kdedocdir} \
+	kde_libs_htmldir=%{_kdedocdir}
+	
 install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
 
 mv $RPM_BUILD_ROOT{/usr/share/applnk/Office/*,%{_desktopdir}/kde}
 
 install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
-
-%if %{with i18n}
-
-cd %{name}-i18n-%{version}
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir}
-cd ..
-%endif
 
 %find_lang kchart		--with-kde
 %find_lang kformula		--with-kde
@@ -525,123 +385,11 @@ cat koshell.lang >> koffice.lang
 %find_lang thesaurus		--with-kde
 cat thesaurus.lang >> kword.lang
 
-%if %{with i18n}
-
-plikez="desktop_koffice \
-xsltexportfilter \
-kfile_koffice \
-kfile_ooo \
-koconverter \
-kocryptfilter \
-kounavail \
-kscan_plugin \
-xsltimportfilter \
-xsltfilter"
-
-for i in $plikez;
-do
-	%find_lang $i --with-kde
-	cat ${i}.lang >> koffice.lang
-done
-
-%find_lang karbon --with-kde
-%find_lang karbonepsfilter --with-kde
-cat karbonepsfilter.lang >> karbon.lang
-%find_lang kudesigner --with-kde
-cat kudesigner.lang >> karbon.lang
-
-kform="kformulalatexfilter \
-kformulamathmlfilter \
-kformulapngfilter"
-
-for i in $kform;
-do
-	%find_lang $i --with-kde
-	cat ${i}.lang >> kformula.lang
-done
-
-%find_lang kpresenterkwordfilter --with-kde
-cat kpresenterkwordfilter.lang >> kpresenter.lang
-
-kspread="csvfilter \
-kspreadcalc_calc \
-kspreaddbasefilter \
-kspreadexcelimportfilter \
-kspreadlatexexportfilter \
-kspreadopencalcfilter \
-kspreadqprofilter"
-
-for i in $kspread;
-do
-	%find_lang $i --with-kde
-	cat ${i}.lang >> kspread.lang
-done
-
-kword="kthesaurus \
-kwordabiwordfilter \
-kwordasciifilter \
-kwordhtmlexportfilter \
-kwordhtmlimportfilter \
-kwordlatexexportfilter \
-kwordlatexfilter \
-kwordlateximportfilter \
-kwordmswordfilter \
-kwordmswritefilter \
-kwordoowriterfilter \
-kwordpdfimport \
-olefilterswinword97filter \
-thesaurus_tool \
-kwordhtmlfilter"
-
-for i in $kword;
-do
-	%find_lang $i --with-kde
-	cat ${i}.lang >> kword.lang
-done
-%endif
-
-files="kchart \
-kformula \
-kivio \
-koffice \
-kugar \
-kpresenter \
-kspread \
-kword"
-
-for i in $files; do
-	echo "%defattr(644,root,root,755)" > ${i}_en.lang
-	grep en\/ ${i}.lang|grep -v apidocs >> ${i}_en.lang
-	grep -v apidocs $i.lang|grep -v en\/ > ${i}.lang.1
-	mv ${i}.lang.1 ${i}.lang
-done
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %post	common -p /sbin/ldconfig
 %postun common -p /sbin/ldconfig
-
-%if %{with i18n}
-%files common-i18n	-f koffice.lang
-%defattr(644,root,root,755)
-%files karbon-i18n	-f karbon.lang
-%defattr(644,root,root,755)
-%files kchart-i18n	-f kchart.lang
-%defattr(644,root,root,755)
-%files kformula-i18n	-f kformula.lang
-%defattr(644,root,root,755)
-%files kivio-i18n	-f kivio.lang
-%defattr(644,root,root,755)
-%files kpresenter-i18n	-f kpresenter.lang
-%defattr(644,root,root,755)
-%files kspread-i18n	-f kspread.lang
-%defattr(644,root,root,755)
-%files kugar-i18n	-f kugar.lang
-%defattr(644,root,root,755)
-%files kword-i18n	-f kword.lang
-%defattr(644,root,root,755)
-%endif
 
 %files devel
 %defattr(644,root,root,755)
@@ -797,22 +545,24 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*x*/apps/kchart.png
 %{_mandir}/man1/kchart.1*
 
-#%%files kexi
-#%defattr(644,root,root,755)
-#%attr(755,root,root) %{_bindir}/kexi*
-##%{_libdir}/kexi.la
-##%attr(755,root,root) %{_libdir}/kexi.so
-#%{_libdir}/kde3/*kexi*.la
-#%attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
-#%{_datadir}/apps/kexi
-#%{_datadir}/config/kexirc
-#%{_datadir}/config/magic/kexi.magic
-#%{_datadir}/mimelnk/application/x-kexiproject-shortcut.desktop
-#%{_datadir}/mimelnk/application/x-kexiproject-sqlite.desktop
-#%{_datadir}/services/kexi*
-#%{_desktopdir}/kde/kexi.desktop
-#%{_mandir}/man1/kexi.1*
-#%{_mandir}/man1/kformdesigner.1*
+%if "%{_state}" == "snaphots"
+%files kexi
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/kexi*
+%{_libdir}/kexi.la
+%attr(755,root,root) %{_libdir}/kexi.so
+%{_libdir}/kde3/*kexi*.la
+%attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
+%{_datadir}/apps/kexi
+%{_datadir}/config/kexirc
+%{_datadir}/config/magic/kexi.magic
+%{_datadir}/mimelnk/application/x-kexiproject-shortcut.desktop
+%{_datadir}/mimelnk/application/x-kexiproject-sqlite.desktop
+%{_datadir}/services/kexi*
+%{_desktopdir}/kde/kexi.desktop
+%{_mandir}/man1/kexi.1*
+%{_mandir}/man1/kformdesigner.1*
+%endif
 
 %files kformula -f kformula_en.lang
 %defattr(644,root,root,755)
