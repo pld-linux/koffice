@@ -10,7 +10,7 @@ Summary(uk):	Ó¡¬¶“ œ∆¶”Œ…» –“œ«“¡Õ ƒÃ— KDE
 Summary(zh_CN):	KDE µƒ∞Ïπ´”¶”√»Ìº˛ºØ°£
 Name:		koffice
 Version:	1.2.1
-Release:	1
+Release:	2
 Epoch:		4
 License:	GPL
 Group:		X11/Applications
@@ -383,7 +383,9 @@ do
 	ln -sf `echo $i | sed "s:^$RPM_BUILD_ROOT%{_pixmapsdir}/::"` $RPM_BUILD_ROOT%{_pixmapsdir}
 done
 
-mv $RPM_BUILD_ROOT%{_pixmapsdir}/{l,L}ocolor
+for i in 16x16 22x22 32x32; do
+	mv $RPM_BUILD_ROOT%{_pixmapsdir}/{lo,hi}color/$i/apps/kspreadcalc.png
+done
 
 install %{SOURCE2}	$RPM_BUILD_ROOT%{_pixmapsdir}
 
@@ -664,7 +666,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/SpreadSheet.desktop
 %{_applnkdir}/Office/Spreadsheets/kspread.desktop
 %{_pixmapsdir}/kspread.png
-%{_pixmapsdir}/*/*/apps/kspreadc*.png
+%{_pixmapsdir}/[!l]*/*/apps/kspreadc*.png
 %{_pixmapsdir}/*/*/apps/kspread*.png
 %{_mandir}/man1/kspread.1
 
@@ -686,7 +688,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*/*/apps/kugar*.png
 %{_datadir}/mimelnk/application/x-kudesigner.desktop
 #%{_datadir}/mimelnk/application/x-kugar.desktop
-%{_pixmapsdir}/*/*/mimetypes/*kugar*
+%{_pixmapsdir}/[!l]*/*/mimetypes/*kugar*
 %{_mandir}/man1/kudesigner.1
 %{_mandir}/man1/kugar.1
 
