@@ -7,8 +7,8 @@
 # check reqs
 
 %define		_state		snapshots
-%define		_ver		1.2.91
-%define		_snap		030918
+%define		_ver		1.2.92
+%define		_snap		030930
 
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
@@ -24,13 +24,13 @@ License:	GPL
 Group:		X11/Applications
 #Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}.tar.bz2
 Source0:	http://www.kernel.pl/~adgor/kde/%{name}-%{_snap}.tar.bz2
-# Source0-md5:	94ab83a7ec41dbf17f0a1273fc978bca
+# Source0-md5:	bed2daf57127a40ba3e36240ba3d1579
 Patch0:		%{name}-vcategories.patch
 URL:		http://www.koffice.org/
 BuildRequires:	fam-devel
 BuildRequires:	wv2-devel >= 0.0.7
 BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel >= 9:3.1.90.030726
+BuildRequires:	kdelibs-devel >= 9:3.1.92.%{_snap}
 BuildRequires:	libart_lgpl-devel >= 2.3.8
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
@@ -111,7 +111,7 @@ Summary:	KOffice - common files and libraries
 Summary(pl):	KOffice - wspólne pliki i biblioteki
 Summary(pt_BR):	Arquivos requeridos por todos os softwares koffice
 Group:		X11/Applications
-Requires:	kdelibs >= 2.1.1
+Requires:	kdebase-core >= 9:3.1.92.%{_snap}
 
 %description common
 KOffice is an integrated office suite for K Desktop Environment.
@@ -426,8 +426,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkexidatatable.so.*.*.*
 %{_libdir}/libkexidb.la
 %attr(755,root,root) %{_libdir}/libkexidb.so.*.*.*
-#%{_libdir}/libkexiextendedwidgets.la
-#%attr(755,root,root) %{_libdir}/libkexiextendedwidgets.so.*.*.*
+%{_libdir}/libkexiextendedwidgets.la
+%attr(755,root,root) %{_libdir}/libkexiextendedwidgets.so.*.*.*
 #%{_libdir}/libkexiimportwizard.la
 #%attr(755,root,root) %{_libdir}/libkexiimportwizard.so.*.*.*
 #%{_libdir}/libkformeditor.la
@@ -670,7 +670,7 @@ rm -rf $RPM_BUILD_ROOT
 #%{_datadir}/templates/.source/Illustration.kil
 %{_datadir}/templates/Illustration.desktop
 %{_desktopdir}/kde/krita.desktop
-%{_mandir}/man1/krita.1*
+#%{_mandir}/man1/krita.1*
 
 %files kspread -f kspread.lang
 %defattr(644,root,root,755)
