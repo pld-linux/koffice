@@ -361,7 +361,6 @@ install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 %find_lang kchart		--with-kde
 %find_lang kformula		--with-kde
 %find_lang kivio		--with-kde
-%find_lang koffice-apidocs	--with-kde
 %find_lang koffice		--with-kde
 %find_lang koshell		--with-kde
 cat koshell.lang >> koffice.lang
@@ -379,8 +378,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %postun common -p /sbin/ldconfig
 
-%files devel -f koffice-apidocs.lang
+%files devel
 %defattr(644,root,root,755)
+%lang(en) %{_kdedocdir}/en/koffice-apidocs
 %{_includedir}/*
 %{_libdir}/libkdchart.so
 #%{_libdir}/libkdgantt.so
