@@ -191,7 +191,7 @@ such as mysql.
 #%%description kexi -l pl #Kexi jest aplikacj± s³u¿±c± do korzystania
 z systemów baz danych #takich jak mysql.
 
-%package  kformula
+%package kformula
 Summary:	KOffice - kformula
 Summary(pl):	KOffice - kformula
 Group:		X11/Applications
@@ -512,7 +512,7 @@ cat thesaurus.lang >> kword.lang
 
 %if %{with i18n}
 
-plikez="desktop_koffice  \
+plikez="desktop_koffice \
 xsltexportfilter \
 kfile_koffice \
 kfile_ooo \
@@ -595,7 +595,7 @@ kspread \
 kword"
 
 for i in $files; do
-        echo "%defattr(644,root,root,755)" > ${i}_en.lang
+	echo "%defattr(644,root,root,755)" > ${i}_en.lang
 	grep en\/ ${i}.lang|grep -v apidocs >> ${i}_en.lang
 	grep -v apidocs $i.lang|grep -v en\/ > ${i}.lang.1
 	mv ${i}.lang.1 ${i}.lang
@@ -608,23 +608,23 @@ rm -rf $RPM_BUILD_ROOT
 %postun common -p /sbin/ldconfig
 
 %if %{with i18n}
-%files  common-i18n     -f koffice.lang
+%files common-i18n	-f koffice.lang
 %defattr(644,root,root,755)
-%files  karbon-i18n     -f karbon.lang
+%files karbon-i18n	-f karbon.lang
 %defattr(644,root,root,755)
-%files  kchart-i18n     -f kchart.lang
+%files kchart-i18n	-f kchart.lang
 %defattr(644,root,root,755)
-%files  kformula-i18n   -f kformula.lang
+%files kformula-i18n	-f kformula.lang
 %defattr(644,root,root,755)
-%files  kivio-i18n      -f kivio.lang
+%files kivio-i18n	-f kivio.lang
 %defattr(644,root,root,755)
-%files  kpresenter-i18n -f kpresenter.lang
+%files kpresenter-i18n	-f kpresenter.lang
 %defattr(644,root,root,755)
-%files  kspread-i18n    -f kspread.lang
+%files kspread-i18n	-f kspread.lang
 %defattr(644,root,root,755)
-%files  kugar-i18n      -f kugar.lang
+%files kugar-i18n	-f kugar.lang
 %defattr(644,root,root,755)
-%files  kword-i18n      -f kword.lang
+%files kword-i18n	-f kword.lang
 %defattr(644,root,root,755)
 %endif
 
