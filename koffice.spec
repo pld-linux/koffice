@@ -4,7 +4,7 @@ Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
 Summary(pt_BR):	Suíte de aplicativos office para o KDE
 Name:		koffice
 Version:	1.1
-Release:	5
+Release:	6
 Epoch:		4
 License:	GPL
 Group:		X11/Applications
@@ -26,8 +26,7 @@ BuildRequires:	python-devel >= 2.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
-%define		_htmldir	%{_docdir}/kde/HTML
-%define         _htmldir        %{_datadir}/doc/kde/HTML
+%define         _htmldir        /usr/share/doc/kde/HTML
 
 %description
 KOffice is an integrated office suite for K Desktop Environment.
@@ -440,8 +439,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Office/koshell.desktop
 %{_applnkdir}/Office/Misc/kformula.desktop
 %{_datadir}/servicetypes/*
-%{_datadir}/templates/*.desktop
-%{_datadir}/templates/.source/*
+%dir %{_datadir}/templates
+%dir %{_datadir}/templates/.source
 %{_pixmapsdir}/*color/*x*/actions/abs.png
 %{_pixmapsdir}/*color/*x*/actions/brac*.png
 %{_pixmapsdir}/*color/*x*/actions/frac.png
@@ -505,12 +504,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kontour
 %{_datadir}/services/killustrator_*.desktop
 %{_datadir}/services/kprkword.desktop
+%{_datadir}/services/ki_rtf_export.desktop
 %{_datadir}/mimelnk/application/x-kontour.desktop
 %{_datadir}/mimelnk/application/x-killustrator.desktop
 %{_datadir}/mimelnk/image/x-msod.desktop
 %{_datadir}/mimelnk/image/x-wmf.desktop
 %{_datadir}/mimelnk/image/x-xfig.desktop
 %{_datadir}/mimelnk/image/x-svg.desktop
+%{_datadir}/templates/.source/Illustration.kil
+%{_datadir}/templates/Illustration.desktop
 %{_applnkdir}/Graphics/kontour.desktop
 %{_applnkdir}/Graphics/killustrator.desktop
 %{_pixmapsdir}/*color/*x*/apps/kontour.png
@@ -526,6 +528,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde2/libkpresenterpart.??
 %{_datadir}/apps/kpresenter
 %{_datadir}/mimelnk/application/x-kpresenter.desktop
+%{_datadir}/templates/.source/Presentation.kpt
+%{_datadir}/templates/Presentation.desktop
 %{_applnkdir}/Office/Presentations/kpresenter.desktop
 %{_pixmapsdir}/*color/*x*/apps/kpresenter.png
 
@@ -548,6 +552,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/mimelnk/text/x-csv.desktop
 %{_datadir}/mimelnk/text/x-gnumeric.desktop
 %{_datadir}/services/kspread*.desktop
+%{_datadir}/templates/.source/SpreadSheet.ksp
+%{_datadir}/templates/SpreadSheet.desktop
 %{_applnkdir}/Office/Spreadsheets/kspread.desktop
 %{_pixmapsdir}/*color/*x*/apps/kspread.png
 %{_pixmapsdir}/*color/*x*/apps/kspreadcalc.png
@@ -574,6 +580,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kspelltool.desktop
 %{_datadir}/services/kword*.desktop
 %{_datadir}/services/*_kword.desktop
+%{_datadir}/templates/.source/TextDocument.kwt
+%{_datadir}/templates/TextDocument.desktop
 %{_applnkdir}/Office/Wordprocessors/kword.desktop
 %{_pixmapsdir}/*color/*x*/apps/kword.png
 
