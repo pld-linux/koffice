@@ -4,7 +4,7 @@
 
 %define		_state		snapshots
 %define		_ver		1.3.90
-%define		_snap		040510
+%define		_snap		040516
 %define		artsver		13:1.2.0
 %define		_packager	adgor	
 
@@ -26,7 +26,6 @@ Source0:	http://ep09.pld-linux.org/~%{_packager}/kde/%{name}-%{_snap}.tar.bz2
 ##%% Source0-md5:	8e4c9db57f701d42f21d61651f0b03bd
 Patch0:		%{name}-vcategories.patch
 Patch1:		kde-common-QTDOCDIR.patch
-Patch2:		%{name}-gcc34.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
@@ -43,9 +42,10 @@ BuildRequires:	perl-base
 BuildRequires:	python-devel >= 2.2
 %{?with_apidocs:BuildRequires:  qt-doc}
 BuildRequires:	rpmbuild(macros) >= 1.129
-#BuildRequires:	wv2-devel >= 0.0.7
+BuildRequires:	unsermake >= 040511
+BuildRequires:	wv2-devel >= 0.0.7
 BuildRequires:	zlib-devel
-#Requires:	wv2 >= 0.0.7
+Requires:	wv2 >= 0.0.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -354,7 +354,6 @@ Processador de texto do KOffice.
 %setup -q -n %{name}-%{_snap}
 %patch0 -p1
 %patch1 -p1
-%patch2 -p1
 
 echo "KDE_OPTIONS = nofinal" >> kexi/kexidb/parser/Makefile.am
 
@@ -383,13 +382,6 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir}
 
-# Workaround for doc caches (unsermake bug?)
-cd doc
-for i in `find . -name index.cache.bz2`; do
-	install -c -p -m 644 $i $RPM_BUILD_ROOT%{_kdedocdir}/en/$i
-done
-cd -	 
-
 install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
 
 mv $RPM_BUILD_ROOT{%{_datadir}/applnk/{Office,Utilities}/*,%{_desktopdir}/kde}
@@ -409,22 +401,8 @@ cat koshell.lang >> koffice.lang
 %find_lang thesaurus	--with-kde
 cat thesaurus.lang >> kword.lang
 
-files="\
-	kchart \
-	kformula \
-	kivio \
-	koffice \
-	kugar \
-	kpresenter \
-	kspread \
-	kword"
-
-for i in $files; do
-	echo "%defattr(644,root,root,755)" > ${i}_en.lang
-	grep en\/ ${i}.lang|grep -v apidocs >> ${i}_en.lang
-	grep -v apidocs $i.lang|grep -v en\/ > ${i}.lang.1
-	mv ${i}.lang.1 ${i}.lang
-done
+# Omit apidocs entries
+sed -i 's/.*apidocs.*//' *.lang
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -474,7 +452,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_kdedocdir}/en/%{name}-apidocs
 %endif
 
-%files common -f koffice_en.lang
+%files common -f koffice.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/koconverter
 %attr(755,root,root) %{_bindir}/koscript
@@ -604,7 +582,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/apps/karbon.png
 %{_mandir}/man1/karbon.1*
 
-%files kchart -f kchart_en.lang
+%files kchart -f kchart.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kchart
 %{_libdir}/libkdeinit_kchart.la
@@ -663,7 +641,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kformeditor
 %{_desktopdir}/kde/kformdesigner.desktop
 
-%files kformula -f kformula_en.lang
+%files kformula -f kformula.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kformula
 #%{_libdir}/kde3/kformula*.la
@@ -692,7 +670,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/apps/kformula.png
 %{_mandir}/man1/kformula.1*
 
-%files kivio -f kivio_en.lang
+%files kivio -f kivio.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kivio
 %{_libdir}/*kivio*.la
@@ -710,7 +688,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/apps/kivio.png
 %{_mandir}/man1/kivio.1*
 
-%files kpresenter -f kpresenter_en.lang
+%files kpresenter -f kpresenter.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kpresenter
 %attr(755,root,root) %{_bindir}/kprconverter.pl
@@ -759,7 +737,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde/krita.desktop
 %{_iconsdir}/*/*/*/krita.png
 
-%files kspread -f kspread_en.lang
+%files kspread -f kspread.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kspread
 %{_libdir}/libkdeinit_kspread.la
@@ -788,7 +766,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/[!l]*/*/apps/kspread*.png
 %{_mandir}/man1/kspread.1*
 
-%files kugar -f kugar_en.lang
+%files kugar -f kugar.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kudesigner
 %attr(755,root,root) %{_bindir}/kugar
@@ -811,7 +789,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/kudesigner.1*
 %{_mandir}/man1/kugar.1*
 
-%files kword -f kword_en.lang
+%files kword -f kword.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kthesaurus
 %attr(755,root,root) %{_bindir}/kword
