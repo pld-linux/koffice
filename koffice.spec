@@ -18,7 +18,7 @@ URL:		http://www.koffice.org/
 BuildRequires:	XFree86-devel
 BuildRequires:	fam-devel
 BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel >= 2.1.1
+BuildRequires:	kdelibs-devel >= 3.0.3
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libstdc++-devel
@@ -370,48 +370,45 @@ cd %{name}-i18n-%{version}
 	DESTDIR=$RPM_BUILD_ROOT
 cd ..
 
-# These seem to not be used by anything...
-%find_lang krayon --with-kde
-%find_lang kocryptfilter --with-kde
-%find_lang kformviewer --with-kde
-%find_lang spell_tool --with-kde
-%find_lang kdiagramm --with-kde
-%find_lang kimage --with-kde
-%find_lang kimageshop --with-kde
-%find_lang kohtml --with-kde
-
-# These are used ;)
 %find_lang kontour --with-kde
 %find_lang kpresenter --with-kde
 %find_lang kpresenterkwordfilter --with-kde
 cat kpresenterkwordfilter.lang >> kpresenter.lang
-%find_lang krayon --with-kde
 %find_lang kspread --with-kde
 %find_lang kspreadcalc_calc --with-kde
 %find_lang kspreadqprofilter --with-kde
 %find_lang csvfilter --with-kde
 cat kspreadcalc_calc.lang kspreadqprofilter.lang csvfilter.lang >> kspread.lang
+%find_lang kohtml --with-kde
 %find_lang kword --with-kde
 %find_lang kwordhtmlfilter --with-kde
 %find_lang kwordlatexfilter --with-kde
-cat kwordhtmlfilter.lang kwordlatexfilter.lang >> kword.lang
+%find_lang spell_tool --with-kde
+cat kohtml.lang kwordhtmlfilter.lang kwordlatexfilter.lang spell_tool.lang >> kword.lang
 %find_lang kivio --with-kde
 %find_lang kugar --with-kde
 %find_lang kchart --with-kde
+%find_lang kdiagramm --with-kde
+cat kdiagramm.lang >> kchart.lang
 
 %find_lang koshell --with-kde
 %find_lang graphite --with-kde
-# This one seem unused.
-%find_lang kimageshop --with-kde
 %find_lang koffice --with-kde
 %find_lang kformula --with-kde
 %find_lang kscan_plugin --with-kde
-# Not sure if it is the right place.
+# Not pure if it is the right place.
 %find_lang example --with-kde
 %find_lang olefilterswinword97filter --with-kde
 cat koshell.lang graphite.lang koffice.lang kformula.lang kscan_plugin.lang example.lang \
 	olefilterswinword97filter.lang \
 	> common.lang
+	
+# seems to be unused:
+%find_lang kimage --with-kde
+%find_lang kimageshop --with-kde
+%find_lang kformviewer --with-kde
+%find_lang krayon --with-kde
+%find_lang kocryptfilter --with-kde
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -475,6 +472,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kformula
 %{_datadir}/services/kodocinfopropspage.desktop
 %{_datadir}/services/ole_*.desktop
+%{_datadir}/mimelnk/image/x-msod.desktop
+%{_datadir}/mimelnk/image/x-wmf.desktop
+%{_datadir}/mimelnk/image/x-xfig.desktop
+%{_datadir}/mimelnk/text/x-csv.desktop
 
 #################################
 # koffice-devel
@@ -502,6 +503,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kchart
 %{_applnkdir}/Office/Misc/kchart.desktop
 %{_pixmapsdir}/kchart.png
+%{_pixmapsdir}/*/*/apps/kchart*.png
 
 #################################
 # koffice-kontour
@@ -526,6 +528,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/Illustration.desktop
 %{_applnkdir}/Graphics/kontour.desktop
 %{_pixmapsdir}/kontour.png
+%{_pixmapsdir}/*/*/apps/kontour*.png
 
 #################################
 # koffice-kpresenter
@@ -542,6 +545,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/Presentation.desktop
 %{_applnkdir}/Office/Presentation/kpresenter.desktop
 %{_pixmapsdir}/kpresenter.png
+%{_pixmapsdir}/*/*/apps/kpresenter*.png
 
 #################################
 # koffice-kspread
@@ -563,6 +567,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/SpreadSheet.desktop
 %{_applnkdir}/Office/Spreadsheets/kspread.desktop
 %{_pixmapsdir}/kspread.png
+%{_pixmapsdir}/*/*/apps/kspread*.png
 
 #################################
 # koffice-kword
@@ -589,6 +594,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/TextDocument.desktop
 %{_applnkdir}/Office/Wordprocessors/kword.desktop
 %{_pixmapsdir}/kword.png
+%{_pixmapsdir}/*/*/apps/kword*.png
 
 #################################
 # koffice-kivio
@@ -601,7 +607,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_applnkdir}/Office/Misc/kivio.desktop
 %{_datadir}/apps/kivio
 %{_pixmapsdir}/kivio.png
-%{_datadir}/mimelnk/application/x-kivio.desktop
+%{_pixmapsdir}/*/*/apps/kivio*.png
+#%{_datadir}/mimelnk/application/x-kivio.desktop
 %{_datadir}/services/kivio*.desktop
 
 #################################
@@ -613,5 +620,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkugarpart.??
 %{_applnkdir}/Office/Presentation/kugar.desktop
 %{_datadir}/apps/kugar
-%{_pixmapsdir}/kugar*.png
-%{_datadir}/mimelnk/application/x-kugar.desktop
+%{_pixmapsdir}/*/*/apps/kugar*.png
+#%{_datadir}/mimelnk/application/x-kugar.desktop
+%{_pixmapsdir}/*/*/mimetypes/*kugar*
