@@ -6,7 +6,7 @@ Summary(uk):	Наб╕р оф╕сних програм для KDE
 Summary(zh_CN):	KDE ╣д╟Л╧╚с╕сцхМ╪Ч╪╞║ё
 Name:		koffice
 Version:	1.1.1
-Release:	8
+Release:	9
 Epoch:		4
 License:	GPL
 Group:		X11/Applications
@@ -472,10 +472,11 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kformula
 %{_datadir}/services/kodocinfopropspage.desktop
 %{_datadir}/services/ole_*.desktop
-%{_datadir}/mimelnk/image/x-msod.desktop
-%{_datadir}/mimelnk/image/x-wmf.desktop
-%{_datadir}/mimelnk/image/x-xfig.desktop
-%{_datadir}/mimelnk/text/x-csv.desktop
+# Conflicts with kdelibs
+#%{_datadir}/mimelnk/image/x-msod.desktop
+#%{_datadir}/mimelnk/image/x-wmf.desktop
+#%{_datadir}/mimelnk/image/x-xfig.desktop
+#%{_datadir}/mimelnk/text/x-csv.desktop
 
 #################################
 # koffice-devel
