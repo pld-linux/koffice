@@ -3,26 +3,30 @@ Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
 Summary(pt_BR):	Suíte de aplicativos office para o KDE
 Name:		koffice
 Version:	1.1.1
-Release:	1
+Release:	2
 Epoch:		4
 License:	GPL
 Group:		X11/Applications
 Group(de):	X11/Applikationen
+Group(es):	X11/Aplicaciones
+Group(fr):	X11/Applications
 Group(pl):	X11/Aplikacje
+Group(pt_BR):	X11/Aplicações
+Group(pt):	X11/Aplicações
 Source0:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
 Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
 URL:		http://www.koffice.org/
-BuildRequires:	kdelibs-devel >= 2.1.1
-BuildRequires:	libstdc++-devel
 BuildRequires:	XFree86-devel
+BuildRequires:	gettext-devel
+BuildRequires:	kdelibs-devel >= 2.1.1
+BuildRequires:	libjpeg-devel
+BuildRequires:	libpng-devel
+BuildRequires:	libstdc++-devel
+BuildRequires:	libtiff-devel
+BuildRequires:	perl
+BuildRequires:	python-devel >= 2.2
 BuildRequires:	qt-devel >= 2.3.0
 BuildRequires:	zlib-devel
-BuildRequires:	libpng-devel
-BuildRequires:	libjpeg-devel
-BuildRequires:	libtiff-devel
-BuildRequires:	gettext-devel
-BuildRequires:	perl
-BuildRequires:	python-devel >= 2.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
@@ -63,7 +67,7 @@ Summary(es):	Header files for compiling applications that use koffice libraries.
 Summary(pl):	KOffice - pliki nag³ówkowe
 Summary(pt_BR):	Arquivos de inclusão necessários à compilação de aplicações que usem as bibliotecas do koffice
 Group:		X11/Development/Libraries
-Group(de):	X11/Entwicklung/Libraries
+Group(de):	X11/Entwicklung/Bibliotheken
 Group(es):	X11/Desarrollo/Bibliotecas
 Group(fr):	X11/Development/Librairies
 Group(pl):	X11/Programowanie/Biblioteki
@@ -81,8 +85,8 @@ Ten pakiet zawiera pliki nag³ówkowe, których bêdziesz potrzebowa³ aby
 skompilowaæ programy u¿ywaj±ce bibliotek KOffice.
 
 %description -l pt_BR devel
-Arquivos de inclusão necessários à compilação de aplicações
-que usem as bibliotecas do koffice.
+Arquivos de inclusão necessários à compilação de aplicações que usem
+as bibliotecas do koffice.
 
 # koffice-common
 %package common
@@ -92,6 +96,7 @@ Summary(pt_BR):	Arquivos requeridos por todos os softwares koffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(es):	X11/Aplicaciones
+Group(fr):	X11/Applications
 Group(pl):	X11/Aplikacje
 Group(pt_BR):	X11/Aplicações
 Group(pt):	X11/Aplicações
@@ -172,6 +177,7 @@ Summary(pt_BR):	Gerador de diagramas do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(es):	X11/Aplicaciones
+Group(fr):	X11/Applications
 Group(pl):	X11/Aplikacje
 Group(pt_BR):	X11/Aplicações
 Group(pt):	X11/Aplicações
@@ -195,25 +201,26 @@ Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(es):	X11/Aplicaciones
+Group(fr):	X11/Applications
 Group(pl):	X11/Aplikacje
 Group(pt_BR):	X11/Aplicações
 Group(pt):	X11/Aplicações
 Requires:	%{name}-common = %{version}
 
 %description kontour
-Kontour is the vector drawing program for the K Desktop Environment. The
-aim of the Kontour project is the development of a freely available
-vector-based drawing application similar to Corel Draw or Adobe
-Illustrator.
+Kontour is the vector drawing program for the K Desktop Environment.
+The aim of the Kontour project is the development of a freely
+available vector-based drawing application similar to Corel Draw or
+Adobe Illustrator.
 
-Kontour was formerly known as KIllustrator but due to blackmail made by
-Adobe lawyers it has to be renamed.
+Kontour was formerly known as KIllustrator but due to blackmail made
+by Adobe lawyers it has to be renamed.
 
 %description -l pl kontour
-Kontour jest programem do tworzenia grafiki wektorowej dla
-¶rodowiska KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w
-pe³ni funkcjonalnego programu do grafiki wektorowej podobnego do Corel
-Draw lub Adobe Illustrator.
+Kontour jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
+KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni
+funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
+lub Adobe Illustrator.
 
 Kontour wczesniej by³ znany jako KIlustrator ale developerzy zostali
 zmuszeni szantarzem przez prawników Adobe do zmiany nazwy.
@@ -228,6 +235,7 @@ Summary(pl):	KOffice - KPresenter
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(es):	X11/Aplicaciones
+Group(fr):	X11/Applications
 Group(pl):	X11/Aplikacje
 Group(pt_BR):	X11/Aplicações
 Group(pt):	X11/Aplicações
@@ -250,6 +258,7 @@ Summary(pt_BR):	Planilha eletrônica do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(es):	X11/Aplicaciones
+Group(fr):	X11/Applications
 Group(pl):	X11/Aplikacje
 Group(pt_BR):	X11/Aplicações
 Group(pt):	X11/Aplicações
@@ -272,6 +281,7 @@ Summary(pt_BR):	Processador de texto do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(es):	X11/Aplicaciones
+Group(fr):	X11/Applications
 Group(pl):	X11/Aplikacje
 Group(pt_BR):	X11/Aplicações
 Group(pt):	X11/Aplicações
@@ -297,6 +307,7 @@ Summary(pt_BR):	Editor de fluxogramas do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(es):	X11/Aplicaciones
+Group(fr):	X11/Applications
 Group(pl):	X11/Aplikacje
 Group(pt_BR):	X11/Aplicações
 Group(pt):	X11/Aplicações
@@ -329,6 +340,7 @@ Summary(pt_BR):	Gerador de relatórios do KOffice
 Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(es):	X11/Aplicaciones
+Group(fr):	X11/Applications
 Group(pl):	X11/Aplikacje
 Group(pt_BR):	X11/Aplicações
 Group(pt):	X11/Aplicações
@@ -357,8 +369,8 @@ Gerador de relatórios do KOffice.
 %build
 kde_htmldir="%{_htmldir}"; export kde_htmldir
 kde_icondir="%{_pixmapsdir}"; export kde_icondir
-CFLAGS="-D_GNU_SOURCE $RPM_OPT_FLAGS"
-CXXFLAGS="-D_GNU_SOURCE $RPM_OPT_FLAGS -fno-check-new"
+CFLAGS="-D_GNU_SOURCE %{rpmcflags}"
+CXXFLAGS="-D_GNU_SOURCE %{rpmcflags} -fno-check-new"
 %configure2_13 \
 	%{!?debug:--disable-debug} \
 	--enable-final \
