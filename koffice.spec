@@ -480,7 +480,7 @@ rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
 
-mv $RPM_BUILD_ROOT{%{_applnkdir}/Office/*,%{_desktopdir}/kde}
+mv $RPM_BUILD_ROOT{/usr/share/applnk/Office/*,%{_desktopdir}/kde}
 
 install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
