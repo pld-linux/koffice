@@ -8,7 +8,7 @@ Summary(uk):	Наб╕р оф╕сних програм для KDE
 Summary(zh_CN):	KDE ╣д╟Л╧╚с╕сцхМ╪Ч╪╞║ё
 Name:		koffice
 Version:	1.2
-Release:	2
+Release:	2	
 Epoch:		4
 License:	GPL
 Group:		X11/Applications
@@ -593,7 +593,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libapplixgraphicimport.??
 %attr(755,root,root) %{_libdir}/kde3/libmsodimport.??
 %attr(755,root,root) %{_libdir}/kde3/libwmfimport.??
-#%attr(755,root,root) %{_libdir}/kde3/liblibkfo*.??
+#%attr(755,root,root) %{_libdir}/kde3/libkfo*.??
 %attr(755,root,root) %{_libdir}/kde3/libkontourrtfexport.so
 %attr(755,root,root) %{_libdir}/kde3/libtexgraphexport.so
 #%attr(755,root,root) %{_libdir}/kde3/libsvgexport.??
