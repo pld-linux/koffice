@@ -7,12 +7,6 @@ Release:	2
 Epoch:		4
 License:	GPL
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(es):	X11/Aplicaciones
-Group(fr):	X11/Applications
-Group(pl):	X11/Aplikacje
-Group(pt_BR):	X11/Aplicações
-Group(pt):	X11/Aplicações
 Source0:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
 Source1:	ftp://ftp.kde.org/pub/kde/stable/%{name}-%{version}/src/%{name}-i18n-%{version}.tar.bz2
 URL:		http://www.koffice.org/
@@ -67,13 +61,6 @@ Summary(es):	Header files for compiling applications that use koffice libraries.
 Summary(pl):	KOffice - pliki nag³ówkowe
 Summary(pt_BR):	Arquivos de inclusão necessários à compilação de aplicações que usem as bibliotecas do koffice
 Group:		X11/Development/Libraries
-Group(de):	X11/Entwicklung/Bibliotheken
-Group(es):	X11/Desarrollo/Bibliotecas
-Group(fr):	X11/Development/Librairies
-Group(pl):	X11/Programowanie/Biblioteki
-Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
-Group(ru):	X11/òÁÚÒÁÂÏÔËÁ/âÉÂÌÉÏÔÅËÉ
-Group(uk):	X11/òÏÚÒÏÂËÁ/â¦ÂÌ¦ÏÔÅËÉ
 Requires:	%{name}-common = %{version}
 
 %description devel
@@ -94,12 +81,6 @@ Summary:	KOffice - common files and libraries
 Summary(pl):	KOffice - wspó³dzielone pliki i biblioteki
 Summary(pt_BR):	Arquivos requeridos por todos os softwares koffice
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(es):	X11/Aplicaciones
-Group(fr):	X11/Applications
-Group(pl):	X11/Aplikacje
-Group(pt_BR):	X11/Aplicações
-Group(pt):	X11/Aplicações
 Requires:	kdelibs >= 2.1.1
 Obsoletes:	koffice-i18n-Azerbaijani
 Obsoletes:	koffice-i18n-Bulgarian
@@ -175,12 +156,6 @@ Summary:	KOffice - KChart
 Summary(pl):	KOffice - KChart
 Summary(pt_BR):	Gerador de diagramas do KOffice
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(es):	X11/Aplicaciones
-Group(fr):	X11/Applications
-Group(pl):	X11/Aplikacje
-Group(pt_BR):	X11/Aplicações
-Group(pt):	X11/Aplicações
 Requires:	%{name}-common = %{version}
 
 %description kchart
@@ -199,12 +174,6 @@ Summary:	KOffice - Kontour
 Summary(pl):	KOffice - Kontour
 Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(es):	X11/Aplicaciones
-Group(fr):	X11/Applications
-Group(pl):	X11/Aplikacje
-Group(pt_BR):	X11/Aplicações
-Group(pt):	X11/Aplicações
 Requires:	%{name}-common = %{version}
 
 %description kontour
@@ -233,12 +202,6 @@ Ferramenta de desenho vetorial do KOffice.
 Summary:	KOffice - KPresenter
 Summary(pl):	KOffice - KPresenter
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(es):	X11/Aplicaciones
-Group(fr):	X11/Applications
-Group(pl):	X11/Aplikacje
-Group(pt_BR):	X11/Aplicações
-Group(pt):	X11/Aplicações
 Requires:	%{name}-common = %{version}
 
 %description kpresenter
@@ -256,12 +219,6 @@ Summary:	KOffice - KSpread
 Summary(pl):	KOffice - KSpread
 Summary(pt_BR):	Planilha eletrônica do KOffice
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(es):	X11/Aplicaciones
-Group(fr):	X11/Applications
-Group(pl):	X11/Aplikacje
-Group(pt_BR):	X11/Aplicações
-Group(pt):	X11/Aplicações
 Requires:	%{name}-common = %{version}
 
 %description kspread
@@ -279,12 +236,6 @@ Summary:	KOffice - KWord
 Summary(pl):	KOffice - KWord
 Summary(pt_BR):	Processador de texto do KOffice
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(es):	X11/Aplicaciones
-Group(fr):	X11/Applications
-Group(pl):	X11/Aplikacje
-Group(pt_BR):	X11/Aplicações
-Group(pt):	X11/Aplicações
 Requires:	%{name}-common = %{version}
 
 %description kword
@@ -305,12 +256,6 @@ Summary:	KOffice - ivio
 Summary(pl):	KOffice - ivio
 Summary(pt_BR):	Editor de fluxogramas do KOffice
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(es):	X11/Aplicaciones
-Group(fr):	X11/Applications
-Group(pl):	X11/Aplikacje
-Group(pt_BR):	X11/Aplicações
-Group(pt):	X11/Aplicações
 Requires:	%{name}-common = %{version}
 
 %description kivio
@@ -338,12 +283,6 @@ Summary:	KOffice - KUgar
 Summary(pl):	KOffice - KUgar
 Summary(pt_BR):	Gerador de relatórios do KOffice
 Group:		X11/Applications
-Group(de):	X11/Applikationen
-Group(es):	X11/Aplicaciones
-Group(fr):	X11/Applications
-Group(pl):	X11/Aplikacje
-Group(pt_BR):	X11/Aplicações
-Group(pt):	X11/Aplicações
 Requires:	%{name}-common = %{version}
 
 %description kugar
