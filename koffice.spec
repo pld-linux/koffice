@@ -3,8 +3,8 @@
 %bcond_without  apidocs # do not prepare API documentation
 
 %define		_state		snapshots
-%define		_ver		1.3.91
-%define		_snap		040630
+%define		_ver		1.3.90
+%define		_snap		041002
 %define		artsver		13:1.2.0
 
 Summary:	KOffice - powerful office suite for KDE
@@ -16,12 +16,11 @@ Summary(zh_CN):	KDE 的办公应用软件集。
 Name:		koffice
 Version:	%{_ver}.%{_snap}
 Release:	1
-Epoch:		5
+Epoch:		6
 License:	GPL/LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.pld-linux.org/software/kde/%{name}-%{_snap}.tar.bz2
 Patch0:		kde-common-PLD.patch
-Patch1:		%{name}-vcategories.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
@@ -349,14 +348,41 @@ Processador de texto do KOffice.
 %prep
 %setup -q -n %{name}-%{_snap}
 %patch0 -p1
-%patch1 -p1
 
-echo "KDE_OPTIONS = nofinal" >> kexi/kexidb/parser/Makefile.am
+for f in `find . -name *.desktop`; do
+    %{__sed} -i -e 's/Terminal=0/Terminal=false/' \
+    -e 's/Terminal=1/Terminal=true/' $f
+done    
+
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;X-Misc;/' \
+	tools/kthesaurus/KThesaurus.desktop \
+	kchart/kchart.desktop \
+	kformula/kformula.desktop \
+	kivio/kiviopart/kivio.desktop \
+	kugar/kudesigner/kudesigner.desktop \
+	kugar/part/kugar.desktop \
+	kexi/formeditor/test/kformdesigner.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Graphics;/' \
+	karbon/data/karbon.desktop \
+	krita/krita.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;Database;/' \
+	kexi/kexi.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;Presentation;/' \
+	kpresenter/kpresenter.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;Spreadsheet;/' \
+	kspread/kspread.desktop
+%{__sed} -i -e 's/Categories=.*/Categories=Qt;KDE;Office;WordProcessor;/' \
+	kword/kword.desktop
+for f in `find . -name \*.desktop`; do
+	if grep -q '^Categories=.*[^;]$' $f; then
+		sed -i -e 's/\(^Categories=.*$\)/\1;/' $f
+	fi
+done
 
 %build
 cp /usr/share/automake/config.sub admin
 
-export UNSERMAKE=/usr/share/unsermake/unsermake
+#export PATH=/usr/share/unsermake:$PATH
 
 %{__make} -f admin/Makefile.common cvs
 
@@ -366,6 +392,8 @@ export DO_NOT_COMPILE="$DO_NOT_COMPILE kdgantt"
 	--disable-rpath \
 	--enable-final \
 	--with-qt-libraries=%{_libdir}
+
+%{__make} -C kword/mailmerge/sql qtsqlopenwidget.h
 
 %{__make}
 
@@ -422,7 +450,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkexipropertyeditor.so
 %{_libdir}/libkexirelationsview.so
 %{_libdir}/libkexisql.so
-%{_libdir}/libkformeditor.so
+%{_libdir}/libkformdesigner.so
 %{_libdir}/libkformulalib.so
 %{_libdir}/libkiviocommon.so
 %{_libdir}/libkochart.so
@@ -480,8 +508,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkexirelationsview.so.0.0.0
 %{_libdir}/libkexisql.la
 %attr(755,root,root) %{_libdir}/libkexisql.so.*.*.*
-%{_libdir}/libkformeditor.la
-%attr(755,root,root) %{_libdir}/libkformeditor.so.*.*.*
+%{_libdir}/libkformdesigner.la
+%attr(755,root,root) %{_libdir}/libkformdesigner.so.*.*.*
 %{_libdir}/libkformulalib.la
 %attr(755,root,root) %{_libdir}/libkformulalib.so.*.*.*
 %{_libdir}/libkiviocommon.la
@@ -572,6 +600,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/*wmf*port.la
 %attr(755,root,root) %{_libdir}/kde3/*wmf*port.so*
 %{_datadir}/apps/karbon
+%{_datadir}/apps/konqueror/servicemenus/karbon_konqi.desktop
+%{_datadir}/mimelnk/application/vnd.oasis.openoffice.drawing.desktop
 %{_datadir}/services/karbon*
 %{_datadir}/templates/.source/Illustration.karbon
 %{_desktopdir}/kde/karbon.desktop
@@ -600,12 +630,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkdeinit_kexi.so
 %{_libdir}/kde3/kexi.la
 %attr(755,root,root) %{_libdir}/kde3/kexi.so
-#%{_libdir}/kde3/kexidb_mysqldriver.la
-#%attr(755,root,root) %{_libdir}/kde3/kexidb_mysqldriver.so
+%{_libdir}/kde3/kexidb_mysqldriver.la
+%attr(755,root,root) %{_libdir}/kde3/kexidb_mysqldriver.so
 %{_libdir}/kde3/kexidb_pqxxsqldriver.la
 %attr(755,root,root) %{_libdir}/kde3/kexidb_pqxxsqldriver.so
 %{_libdir}/kde3/kexidb_sqlitedriver.la
 %attr(755,root,root) %{_libdir}/kde3/kexidb_sqlitedriver.so
+%{_libdir}/kde3/kexidbwidgets.la
+%attr(755,root,root) %{_libdir}/kde3/kexidbwidgets.so
 %{_libdir}/kde3/kexihandler_form.la
 %attr(755,root,root) %{_libdir}/kde3/kexihandler_form.so
 %{_libdir}/kde3/kexihandler_query.la
@@ -615,6 +647,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/kexihandler_table.la
 %attr(755,root,root) %{_libdir}/kde3/kexihandler_table.so
 %{_datadir}/apps/kexi
+%{_datadir}/apps/konqueror/servicemenus/kexi_konqi.desktop
 %{_datadir}/config/kexirc
 %{_datadir}/config/magic/kexi.magic
 %{_datadir}/mimelnk/application/x-kexiproject-shortcut.desktop
@@ -625,8 +658,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/crystalsvg/scalable/apps/kexi.svgz
 %{_iconsdir}/crystalsvg/32x32/mimetypes/kexiproject_shortcut.png
 %{_iconsdir}/crystalsvg/32x32/mimetypes/kexiproject_sqlite.png
-#%{_mandir}/man1/kexi.1*
-#%{_mandir}/man1/kformdesigner.1*
 # Separate?
 %attr(755,root,root) %{_bindir}/kformdesigner
 %{_libdir}/kde3/containers.la
@@ -634,8 +665,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/stdwidgets.la
 %attr(755,root,root) %{_libdir}/kde3/stdwidgets.so
 %{_datadir}/apps/kformdesigner
-%{_datadir}/services/kformeditor
+%{_datadir}/apps/kformdesigner_part/kformdesigner_part.rc
+%{_datadir}/apps/kformdesigner_part/kformdesigner_part_shell.rc
+%dir %{_datadir}/services/kformdesigner/
+%{_datadir}/services/kformdesigner/containerfactory.desktop
+%{_datadir}/services/kformdesigner/kexidbfactory.desktop
+%{_datadir}/services/kformdesigner/stdwidgets.desktop
+%{_datadir}/services/kformdesigner_part.desktop
 %{_desktopdir}/kde/kformdesigner.desktop
+#%{_mandir}/man1/kexi.1*
+#%{_mandir}/man1/kformdesigner.1*
 
 %files kformula -f kformula.lang
 %defattr(644,root,root,755)
@@ -647,6 +686,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/libkfo*.la
 %attr(755,root,root) %{_libdir}/kde3/libkfo*.so
 %{_datadir}/apps/kformula
+%{_datadir}/apps/konqueror/servicemenus/kformula_konqi.desktop
+%{_datadir}/mimelnk/application/vnd.oasis.openoffice.formula.desktop
 %{_datadir}/services/kformula*
 %{_desktopdir}/kde/kformula.desktop
 %{_iconsdir}/*/*/actions/abs.png
@@ -680,6 +721,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/straight_connector.la
 %attr(755,root,root) %{_libdir}/kde3/straight_connector.so
 %{_datadir}/apps/kivio
+%{_datadir}/apps/konqueror/servicemenus/kivio_konqi.desktop
 %{_datadir}/config.kcfg/kivio.kcfg
 %{_datadir}/services/kivio*.desktop
 %{_desktopdir}/kde/kivio.desktop
@@ -700,7 +742,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libkprkword.so
 %{_libdir}/kde3/libooimpress*port.la
 %attr(755,root,root) %{_libdir}/kde3/libooimpress*port.so
+%{_datadir}/apps/konqueror/servicemenus/kpresenter_konqi.desktop
 %{_datadir}/apps/kpresenter
+%{_datadir}/mimelnk/application/vnd.oasis.openoffice.presentation.desktop
 %{_datadir}/templates/.source/Presentation.kpt
 %{_datadir}/templates/Presentation.desktop
 %{_datadir}/services/kprkword.desktop
@@ -721,22 +765,27 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/*krita*.so
 %{_libdir}/kde3/*magick*port.la
 %attr(755,root,root) %{_libdir}/kde3/*magick*port.so
-%{_libdir}/kde3/colorsfilters.la
-%attr(755,root,root) %{_libdir}/kde3/colorsfilters.so
-%{_libdir}/kde3/colorrange.la
-%attr(755,root,root) %{_libdir}/kde3/colorrange.so
-%{_libdir}/kde3/imagesize.la
-%attr(755,root,root) %{_libdir}/kde3/imagesize.so
-%{_libdir}/kde3/variations.la
-%attr(755,root,root) %{_libdir}/kde3/variations.so
+#%{_libdir}/kde3/colorsfilters.la
+#%attr(755,root,root) %{_libdir}/kde3/colorsfilters.so
+#%{_libdir}/kde3/colorrange.la
+#%attr(755,root,root) %{_libdir}/kde3/colorrange.so
+#%{_libdir}/kde3/imagesize.la
+#%attr(755,root,root) %{_libdir}/kde3/imagesize.so
+#%{_libdir}/kde3/variations.la
+#%attr(755,root,root) %{_libdir}/kde3/variations.so
 #%{_libdir}/libkisp_example.la
 #%attr(755,root,root) %{_libdir}/libkisp_example.so
 #%dir %{_datadir}/apps/krayon
 #%dir %{_datadir}/apps/krayon/plugins
 #%{_datadir}/apps/krayon/plugins/example.kisplugin
+%{_datadir}/apps/konqueror/servicemenus/krita_konqi.desktop
 %{_datadir}/apps/krita
 %{_datadir}/services/krita_magick_import.desktop
+%{_datadir}/services/kritacmykplugin.desktop
+%{_datadir}/services/kritadefaulttools.desktop
+%{_datadir}/services/kritagrayplugin.desktop
 %{_datadir}/services/kritapart.desktop
+%{_datadir}/services/kritargbplugin.desktop
 %{_datadir}/templates/Illustration.desktop
 %{_desktopdir}/kde/krita.desktop
 %{_iconsdir}/*/*/*/krita.png
@@ -763,7 +812,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/kde3/libopencalc*port.la
 %attr(755,root,root) %{_libdir}/kde3/libopencalc*port.so
 %{_datadir}/apps/kspread
+%{_datadir}/mimelnk/application/vnd.oasis.openoffice.spreadsheet.desktop
 %{_datadir}/services/kspread*.desktop
+%{_datadir}/services/kwmailmerge_kspread.desktop
 %{_datadir}/templates/.source/SpreadSheet.ksp
 %{_datadir}/templates/SpreadSheet.desktop
 %{_desktopdir}/kde/kspread.desktop
@@ -784,6 +835,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/*kudesigner*.so
 %{_desktopdir}/kde/kudesigner.desktop
 %{_desktopdir}/kde/kugar.desktop
+%{_datadir}/apps/konqueror/servicemenus/kspread_konqi.desktop
 %{_datadir}/apps/kudesigner
 %{_datadir}/apps/kugar
 %{_datadir}/services/kugar_kugar_import.desktop
@@ -845,9 +897,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libkword*.so
 %{_libdir}/kde3/liboowriter*port.la
 %attr(755,root,root) %{_libdir}/kde3/liboowriter*port.so
+%{_datadir}/apps/konqueror/servicemenus/kword_konqi.desktop
 %{_datadir}/apps/kword
 %{_datadir}/apps/thesaurus
 %{_datadir}/apps/xsltfilter/export/kword/xslfo/*.xsl
+%{_datadir}/mimelnk/application/vnd.oasis.openoffice.text.desktop
 %{_datadir}/services/kwmailmerge_kabc.desktop
 #%{_datadir}/services/kspelltool.desktop
 %{_datadir}/services/kword*.desktop
