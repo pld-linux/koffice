@@ -64,7 +64,12 @@ Summary(pl):	KOffice - pliki nagЁСwkowe
 Summary(pt_BR):	Arquivos de inclusЦo necessАrios Ю compilaГЦo de aplicaГУes que usem as bibliotecas do koffice
 Group:		X11/Development/Libraries
 Group(de):	X11/Entwicklung/Libraries
+Group(es):	X11/Desarrollo/Bibliotecas
+Group(fr):	X11/Development/Librairies
 Group(pl):	X11/Programowanie/Biblioteki
+Group(pt_BR):	X11/Desenvolvimento/Bibliotecas
+Group(ru):	X11/Разработка/Библиотеки
+Group(uk):	X11/Розробка/Б╕бл╕отеки
 Requires:	%{name}-common = %{version}
 
 %description devel
