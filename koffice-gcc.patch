@@ -1,0 +1,130 @@
+diff -Nru koffice-1.2.1.orig/filters/kspread/qpro/libqpro/src/formula.cc koffice-1.2.1/filters/kspread/qpro/libqpro/src/formula.cc
+--- koffice-1.2.1.orig/filters/kspread/qpro/libqpro/src/formula.cc	2003-08-22 14:09:35.000000000 +0000
++++ koffice-1.2.1/filters/kspread/qpro/libqpro/src/formula.cc	2003-08-22 14:46:05.000000000 +0000
+@@ -1,7 +1,7 @@
+ #include <qpro/common.h>
+ 
+ #include <iostream.h>
+-#include <strstream.h>
++#include <strstream>
+ 
+ #include <string.h>
+ 
+@@ -474,7 +474,7 @@
+ QpFormula::floatFuncReal(const char*)
+ {
+    QP_INT64   lFloat;
+-   ostrstream lNum;
++   std::ostrstream lNum;
+ 
+    cFormula >> lFloat;
+ 
+@@ -489,7 +489,7 @@
+ QpFormula::intFuncReal(const char*)
+ {
+    QP_INT16 lInt;
+-   ostrstream lNum;
++   std::ostrstream lNum;
+ 
+    cFormula >> lInt;
+ 
+diff -Nru koffice-1.2.1.orig/filters/kspread/qpro/libqpro/src/record.cc koffice-1.2.1/filters/kspread/qpro/libqpro/src/record.cc
+--- koffice-1.2.1.orig/filters/kspread/qpro/libqpro/src/record.cc	2003-08-22 14:09:35.000000000 +0000
++++ koffice-1.2.1/filters/kspread/qpro/libqpro/src/record.cc	2003-08-22 14:46:05.000000000 +0000
+@@ -10,7 +10,7 @@
+ // -----------------------------------------------------------------------
+ 
+ #include <iomanip.h>
+-#include <strstream.h>
++#include <strstream>
+ 
+ void
+ Charout(ostream& pOut, unsigned char pChar)
+@@ -32,7 +32,7 @@
+ int
+ Hexout(char* pChar, int pLen)
+ {
+-   ostrstream*   lOStr = new ostrstream;
++   std::ostrstream*   lOStr = new std::ostrstream;
+ 
+    while( pLen )
+    {
+@@ -57,7 +57,7 @@
+       cerr << lOStr->rdbuf() << endl;
+ 
+       delete lOStr;
+-      lOStr = new ostrstream;
++      lOStr = new std::ostrstream;
+    }
+ 
+    delete lOStr;
+@@ -200,7 +200,7 @@
+ {
+ //??? cope with relative/absolute references
+ 
+-   strstream lOut(pText, 20, ios::out); // ??? ard coded len
++   std::strstream lOut(pText, 20, ios::out); // ??? ard coded len
+    int       lPageRelative = pRow & 0x8000;
+    int       lColRelative  = pRow & 0x4000;
+    int       lRowRelative  = pRow & 0x2000;
+diff -Nru koffice-1.2.1.orig/filters/kspread/qpro/libqpro/src/stream.cc koffice-1.2.1/filters/kspread/qpro/libqpro/src/stream.cc
+--- koffice-1.2.1.orig/filters/kspread/qpro/libqpro/src/stream.cc	2003-08-22 14:09:35.000000000 +0000
++++ koffice-1.2.1/filters/kspread/qpro/libqpro/src/stream.cc	2003-08-22 14:43:30.000000000 +0000
+@@ -31,7 +31,7 @@
+ #else
+ #include <string.h>
+ #include <fstream.h>
+-#include <strstream.h>
++#include <strstream>
+ 
+ // For IRIX
+ namespace std {}
+diff -Nru koffice-1.2.1.orig/filters/kspread/qpro/qproimport.cc koffice-1.2.1/filters/kspread/qpro/qproimport.cc
+--- koffice-1.2.1.orig/filters/kspread/qpro/qproimport.cc	2003-08-22 14:09:35.000000000 +0000
++++ koffice-1.2.1/filters/kspread/qpro/qproimport.cc	2003-08-22 14:46:05.000000000 +0000
+@@ -18,7 +18,7 @@
+    Boston, MA 02111-1307, USA.
+ */
+ 
+-#include <strstream.h>
++#include <strstream>
+ 
+ #include <kdebug.h>
+ #include <kmessagebox.h>
+diff -Nru koffice-1.2.1.orig/filters/kword/latex/export/table.cc koffice-1.2.1/filters/kword/latex/export/table.cc
+--- koffice-1.2.1.orig/filters/kword/latex/export/table.cc	2003-08-22 14:09:34.000000000 +0000
++++ koffice-1.2.1/filters/kword/latex/export/table.cc	2003-08-22 14:46:05.000000000 +0000
+@@ -168,7 +168,7 @@
+ void Table::generateTopLineBorder(QTextStream& out, int row)
+ {
+ 	Element* elt = 0;
+-	bool border[getMaxCol()];
++	bool* border = new bool[getMaxCol()];
+ 	bool fullLine = true;
+ 	for(int index = 0; index <= getMaxCol(); index++)
+ 	{
+@@ -213,6 +213,7 @@
+ 			index = index + 1;
+ 		}
+ 	}
++	delete[] border;
+ }
+ 
+ /*******************************************/
+@@ -221,7 +222,7 @@
+ void Table::generateBottomLineBorder(QTextStream& out, int row)
+ {
+ 	Element* elt = 0;
+-	bool border[getMaxCol()];
++	bool* border = new bool[getMaxCol()];
+ 	bool fullLine = true;
+ 
+ 	for(int index = 0; index <= getMaxCol(); index++)
+@@ -266,6 +267,7 @@
+ 			index = index + 1;
+ 		}
+ 	}
++	delete[] border;
+ }
+ 
+ /*******************************************/
