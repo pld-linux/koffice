@@ -8,7 +8,7 @@ Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
 Version:	1.2
-Release:	2	
+Release:	3
 Epoch:		4
 License:	GPL
 Group:		X11/Applications
@@ -29,11 +29,11 @@ BuildRequires:	perl
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-#Obsoletes:	koffice-kontour
-#Obsoletes:	koffice-karbon
 
 %define		_prefix		/usr/X11R6
 %define         _htmldir        /usr/share/doc/kde/HTML
+
+%define		no_install_post_chrpath		1
 
 %description
 KOffice is an integrated office suite for K Desktop Environment.
@@ -45,7 +45,7 @@ KOffice contains:
 - Kivio - A Visio(R)-style flowcharting application
 - KChart - diagram generator
 - Kontour - vector drawing
-- Krayon - A pixel-based image manipulation program like The GIMP or
+- Karbon - A pixel-based image manipulation program like The GIMP or
   Adobe(c) Photoshop(R)
 - Kugar - A tool for generating business quality reports
 
@@ -59,7 +59,7 @@ Pakiet miêdzy innymi zawiera:
 - Kivio - aplikacja wzorowana na Visio(R)
 - KChart - generator wykresów
 - Kontour - grafika wektorowa
-- Krayon - bazuj±cy na pikselach program typu GIMP czy Adobe(c)
+- Karbon - bazuj±cy na pikselach program typu GIMP czy Adobe(c)
   Photoshop(R)
 - Kugar - narzêdzie do generowania raportów jako¶ci biznesowej
 
@@ -97,39 +97,22 @@ as bibliotecas do koffice.
 # koffice-common
 %package common
 Summary:	KOffice - common files and libraries
-Summary(pl):	KOffice - wspó³dzielone pliki i biblioteki
+Summary(pl):	KOffice - wspólne pliki i biblioteki
 Summary(pt_BR):	Arquivos requeridos por todos os softwares koffice
 Group:		X11/Applications
 Requires:	kdelibs >= 2.1.1
-Obsoletes:	koffice-i18n-Azerbaijani
-Obsoletes:	koffice-i18n-Bulgarian
-Obsoletes:	koffice-i18n-Czech
-Obsoletes:	koffice-i18n-Danish
-Obsoletes:	koffice-i18n-German
-Obsoletes:	koffice-i18n-British
-Obsoletes:	koffice-i18n-Esperanto
-Obsoletes:	koffice-i18n-Spanish
-Obsoletes:	koffice-i18n-Estonian
-Obsoletes:	koffice-i18n-French
-Obsoletes:	koffice-i18n-Hebrew
-Obsoletes:	koffice-i18n-Hungarian
-Obsoletes:	koffice-i18n-Icelandic
-Obsoletes:	koffice-i18n-Italian
-Obsoletes:	koffice-i18n-Japanese
-Obsoletes:	koffice-i18n-Lithuanian
-Obsoletes:	koffice-i18n-Maltese
-Obsoletes:	koffice-i18n-Dutch
-Obsoletes:	koffice-i18n-Norwegian
-Obsoletes:	koffice-i18n-Norwegian-Nynorsk
-Obsoletes:	koffice-i18n-Polish
-Obsoletes:	koffice-i18n-Portuguese
-Obsoletes:	koffice-i18n-Brazil
-Obsoletes:	koffice-i18n-Romanian
-Obsoletes:	koffice-i18n-Russian
-Obsoletes:	koffice-i18n-Slovak
-Obsoletes:	koffice-i18n-Slovenian
-Obsoletes:	koffice-i18n-Swedish
-Obsoletes:	koffice-i18n-Tamil
+Obsoletes:	koffice-i18n-Azerbaijani koffice-i18n-Bulgarian
+Obsoletes:	koffice-i18n-Czech koffice-i18n-Danish koffice-i18n-German
+Obsoletes:	koffice-i18n-British koffice-i18n-Esperanto
+Obsoletes:	koffice-i18n-Spanish koffice-i18n-Estonian koffice-i18n-French
+Obsoletes:	koffice-i18n-Hebrew koffice-i18n-Hungarian
+Obsoletes:	koffice-i18n-Icelandic koffice-i18n-Italian
+Obsoletes:	koffice-i18n-Japanese koffice-i18n-Lithuanian
+Obsoletes:	koffice-i18n-Maltese koffice-i18n-Dutch koffice-i18n-Norwegian
+Obsoletes:	koffice-i18n-Norwegian-Nynorsk koffice-i18n-Polish
+Obsoletes:	koffice-i18n-Portuguese koffice-i18n-Brazil
+Obsoletes:	koffice-i18n-Romanian koffice-i18n-Russian koffice-i18n-Slovak
+Obsoletes:	koffice-i18n-Slovenian koffice-i18n-Swedish koffice-i18n-Tamil
 Obsoletes:	koffice-i18n-Turkish
 
 %description common
@@ -141,8 +124,8 @@ KOffice contains:
 - KPresenter - presentations
 - Kivio - A Visio(R)-style flowcharting application
 - KChart - diagram generator
-- KIllustrator - vector drawing
-- Krayon - A pixel-based image manipulation program like The GIMP or
+- Kontour - vector drawing
+- Karbon - A pixel-based image manipulation program like The GIMP or
   Adobe(c) Photoshop(R)
 - Kugar - A tool for generating business quality reports
 
@@ -158,13 +141,13 @@ Pakiet miêdzy innymi zawiera:
 - KPresenter - tworzenie prezentacji
 - Kivio - aplikacja wzorowana na Visio(R)
 - KChart - generator wykresów
-- KIllustrator - grafika wektorowa
-- Krayon - bazuj±cy na pikselach program typu GIMP czy Adobe(c)
+- Kontour - grafika wektorowa
+- Karbon - bazuj±cy na pikselach program typu GIMP czy Adobe(c)
   Photoshop(R)
 - Kugar - narzêdzie do generowania raportów jako¶ci biznesowej
 
 Pakiet zawiera wspólne pliki i biblioteki wymagane przez aplikacje
-KOffoce.
+KOffice.
 
 %description common -l pt_BR
 Arquivos requeridos por todos os softwares koffice.
@@ -176,15 +159,13 @@ Summary(pl):    KOffice - Karbon
 Group:          X11/Applications
 Requires:       %{name}-common = %{version}
 #karbon has changed its named (again) to curt therefore in the future:
-#Obsoletes: koffice-karbon
+Obsoletes: koffice-krayon
 
 %description karbon
 Karbon is a vector graphics application within koffice.
 
-
 %description karbon -l pl
 Karbon to aplikacja koffice slu¿±ca do rysowania grafiki wektorowej,
-
 
 # koffice-kchart
 %package kchart
@@ -204,6 +185,33 @@ KChart jest aplikacj± s³u¿±c± do generowania wykresów.
 %description kchart -l pt_BR
 Gerador de diagramas do KOffice.
 
+# koffice-kivio
+%package kivio
+Summary:	KOffice - ivio
+Summary(pl):	KOffice - ivio
+Summary(pt_BR):	Editor de fluxogramas do KOffice
+Group:		X11/Applications
+Requires:	%{name}-common = %{version}
+
+%description kivio
+Kivio on the surface is your everyday flowcharting program. Underneath
+this skin, however, lies much more. Kivio will offer basic
+flowcharting abilities, but with a twist. Objects are scriptable, and
+a backend plugin system will offer the ability to make objects do just
+about anything. Feed it a directory of C++ header files, or even Java
+files, and let it generate a graphical class map for you. Give it a
+network and let it explore and map out the network for you. All this
+is possible through the scripting/plugin architecture Kivio will
+possess.
+
+%description kivio -l pl
+Kivio jest programem typu flowcharting. Kivio dostarcza
+najpotrzebniejsze funkcje ale wszystkie obiekty mo¿na rozszerzaæ za
+pomoc± jêzyka skryptowego.
+
+%description kivio -l pt_BR
+Editor de fluxogramas do KOffice.
+
 # koffice-kontour (f. k. a. koffice-killustrator)
 %package kontour
 Summary:	KOffice - Kontour
@@ -217,6 +225,7 @@ Kontour is the vector drawing program for the K Desktop Environment.
 The aim of the Kontour project is the development of a freely
 available vector-based drawing application similar to Corel Draw or
 Adobe Illustrator.
+
 Kontour was formerly known as KIllustrator but due to blackmail made
 by Adobe lawyers it has to be renamed.
 
@@ -231,6 +240,7 @@ zmuszeni szanta¿em przez prawników Adobe do zmiany nazwy.
 
 %description kontour -l pt_BR
 Ferramenta de desenho vetorial do KOffice.
+
 # koffice-kpresenter
 %package kpresenter
 Summary:	KOffice - KPresenter
@@ -264,53 +274,6 @@ KSpread jest arkuszem kalkulacyjnym, podobnym do MS Excel.
 %description kspread -l pt_BR
 Planilha eletrônica do KOffice.
 
-# koffice-kword
-%package kword
-Summary:	KOffice - KWord
-Summary(pl):	KOffice - KWord
-Summary(pt_BR):	Processador de texto do KOffice
-Group:		X11/Applications
-Requires:	%{name}-common = %{version}
-
-%description kword
-KWord is a FrameMaker-like wordprocessor application for KOffice. So
-it can be used for DTP, but also for "normal" wordprocessing (like
-writing letters, reports, etc.).
-
-%description kword -l pl
-KWord jest ramkowym procesorem tekstu. Mo¿e byæ u¿yty do DTP, ale
-równie¿ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
-
-%description kword -l pt_BR
-Processador de texto do KOffice.
-
-# koffice-kivio
-%package kivio
-Summary:	KOffice - ivio
-Summary(pl):	KOffice - ivio
-Summary(pt_BR):	Editor de fluxogramas do KOffice
-Group:		X11/Applications
-Requires:	%{name}-common = %{version}
-
-%description kivio
-Kivio on the surface is your everyday flowcharting program. Underneath
-this skin, however, lies much more. Kivio will offer basic
-flowcharting abilities, but with a twist. Objects are scriptable, and
-a backend plugin system will offer the ability to make objects do just
-about anything. Feed it a directory of C++ header files, or even Java
-files, and let it generate a graphical class map for you. Give it a
-network and let it explore and map out the network for you. All this
-is possible through the scripting/plugin architecture Kivio will
-possess.
-
-%description kivio -l pl
-Kivio jest programem typu flowcharting. Kivio dostarcza
-najpotrzebniejsze funkcje ale wszystkie obiekty mo¿na rozszerzaæ za
-pomoc± jêzyka skryptowego.
-
-%description kivio -l pt_BR
-Editor de fluxogramas do KOffice.
-
 # koffice-kugar
 %package kugar
 Summary:	KOffice - KUgar
@@ -333,6 +296,26 @@ umo¿liwiaj±c ogl±danie raportu w przegl±darce Konqueror.
 
 %description kugar -l pt_BR
 Gerador de relatórios do KOffice.
+
+# koffice-kword
+%package kword
+Summary:	KOffice - KWord
+Summary(pl):	KOffice - KWord
+Summary(pt_BR):	Processador de texto do KOffice
+Group:		X11/Applications
+Requires:	%{name}-common = %{version}
+
+%description kword
+KWord is a FrameMaker-like wordprocessor application for KOffice. So
+it can be used for DTP, but also for "normal" wordprocessing (like
+writing letters, reports, etc.).
+
+%description kword -l pl
+KWord jest ramkowym procesorem tekstu. Mo¿e byæ u¿yty do DTP, ale
+równie¿ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
+
+%description kword -l pt_BR
+Processador de texto do KOffice.
 
 ######################## end descriptions ########################
 
@@ -370,6 +353,7 @@ install -d $RPM_BUILD_ROOT%{_applnkdir}/Office/{Wordprocessors,Spreadsheets} \
 	$RPM_BUILD_ROOT%{_applnkdir}/Office/{Presentation,Misc} \
 	$RPM_BUILD_ROOT%{_applnkdir}/Graphics
 
+install karbon/data/karbon.desktop	$RPM_BUILD_ROOT%{_applnkdir}/Graphics
 install kontour/kontour.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Graphics
 install kpresenter/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Presentation
 install kspread/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Spreadsheets
@@ -381,8 +365,14 @@ install kchart/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 install kformula/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office/Misc
 install koshell/k*.desktop		$RPM_BUILD_ROOT%{_applnkdir}/Office
 
-#mv -f $RPM_BUILD_ROOT%{_pixmapsdir}/hicolor/48x48/apps/{kchart,kontour,kpresenter,kspread,kword,kivio}.png \
-#	$RPM_BUILD_ROOT%{_pixmapsdir}
+# icons must be located at the top %{_pixmapsdir} to be properly displeyed
+# in gnome; in KDE they work in both cases
+cp -f $RPM_BUILD_ROOT%{_pixmapsdir}/hicolor/48x48/apps/k{arbon,chart,ivio,ontour,presenter,spread,ugar,word}.png \
+	$RPM_BUILD_ROOT%{_pixmapsdir}
+
+# leave only best-resolution icons at the top level; the other are not
+# necessary - their absence should make KDE a bit faster...
+rm -f $RPM_BUILD_ROOT%{_pixmapsdir}/*color/??x??/apps/k{arbon,chart,ivio,ontour,presenter,spread,ugar,word}.png
 
 cd %{name}-i18n-%{version}
 %{__make} install \
@@ -483,9 +473,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/kofficethumbnail.??
 %attr(755,root,root) %{_libdir}/libkotext.??
 %attr(755,root,root) %{_libdir}/libkopainter.??
-#%attr(755,root,root) %{_libdir}/kde3/lib[!k][!a][!r][!b][!o][!n]*export.??
-#%attr(755,root,root) %{_libdir}/kde3/lib[!k][!a][!r][!b][!o][!n]*import.??
-#%attr(755,root,root) %{_libdir}/kde3/lib[!karbon]*import.??
 %attr(755,root,root) %{_libdir}/kde3/libkfo*.??
 %attr(755,root,root) %{_libdir}/kde3/libxslt*port*.??
 #%attr(755,root,root) %{_libdir}/kde3/libkformulapart.??
@@ -558,14 +545,13 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libkarbonpart.??
 %attr(755,root,root) %{_libdir}/kde3/libkarbon*import*
 %attr(755,root,root) %{_libdir}/kde3/libkarbon*export*
+%{_datadir}/services/karbon*
 #%{_datadir}/apps/karbon
 #%{_datadir}/templates/.source/Presentation.kpt
 ##%{_datadir}/templates/Presentation.desktop
-#%{_applnkdir}/Office/Presentation/kpresenter.desktop
-%{_datadir}/services/karbon*
-
-##%{_pixmapsdir}/kpresenter.png
-%{_pixmapsdir}/*/*/apps/karbon.png
+%{_applnkdir}/Graphics/karbon.desktop
+%{_pixmapsdir}/karbon.png
+#%{_pixmapsdir}/*/*/apps/karbon.png
 
 
 #################################
@@ -578,8 +564,23 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libkchartpart.??
 %{_datadir}/apps/kchart
 %{_applnkdir}/Office/Misc/kchart.desktop
-#%{_pixmapsdir}/kchart.png
-%{_pixmapsdir}/*/*/apps/kchart*.png
+%{_pixmapsdir}/kchart.png
+#%{_pixmapsdir}/*/*/apps/kchart*.png
+
+#################################
+# koffice-kivio
+#################################
+%files -f kivio.lang kivio
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/kivio
+%attr(755,root,root) %{_libdir}/*kivio*.??
+%attr(755,root,root) %{_libdir}/kde3/*kivio*.??
+%{_applnkdir}/Office/Misc/kivio.desktop
+%{_datadir}/apps/kivio
+%{_pixmapsdir}/kivio.png
+#%{_pixmapsdir}/*/*/apps/kivio*.png
+#%{_datadir}/mimelnk/application/x-kivio.desktop
+%{_datadir}/services/kivio*.desktop
 
 #################################
 # koffice-kontour
@@ -604,7 +605,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/.source/Illustration.kil
 %{_datadir}/templates/Illustration.desktop
 %{_applnkdir}/Graphics/kontour.desktop
-%{_pixmapsdir}/*/*/*/kontour.png
+%{_pixmapsdir}/kontour.png
+#%{_pixmapsdir}/*/*/*/kontour.png
 
 
 #################################
@@ -621,8 +623,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/.source/Presentation.kpt
 %{_datadir}/templates/Presentation.desktop
 %{_applnkdir}/Office/Presentation/kpresenter.desktop
-#%{_pixmapsdir}/kpresenter.png
-%{_pixmapsdir}/*/*/apps/kpresenter*.png
+%{_pixmapsdir}/kpresenter.png
+#%{_pixmapsdir}/*/*/apps/kpresenter*.png
 
 #################################
 # koffice-kspread
@@ -643,8 +645,24 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/.source/SpreadSheet.ksp
 %{_datadir}/templates/SpreadSheet.desktop
 %{_applnkdir}/Office/Spreadsheets/kspread.desktop
-#%{_pixmapsdir}/kspread.png
-%{_pixmapsdir}/*/*/apps/kspread*.png
+%{_pixmapsdir}/kspread.png
+%{_pixmapsdir}/*/*/apps/kspreadc*.png
+#%{_pixmapsdir}/*/*/apps/kspread*.png
+
+#################################
+# koffice-kugar
+#################################
+%files -f kugar.lang kugar
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/kugar
+%attr(755,root,root) %{_libdir}/libkugar*.??
+%attr(755,root,root) %{_libdir}/straight_connector.ksp
+%{_applnkdir}/Office/Presentation/kugar.desktop
+%{_datadir}/apps/kugar
+%{_pixmapsdir}/kugar.png
+#%{_pixmapsdir}/*/*/apps/kugar*.png
+#%{_datadir}/mimelnk/application/x-kugar.desktop
+%{_pixmapsdir}/*/*/mimetypes/*kugar*
 
 #################################
 # koffice-kword
@@ -684,35 +702,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/templates/TextDocument.desktop
 %{_applnkdir}/Office/Wordprocessors/kword.desktop
 %{_applnkdir}/Office/Wordprocessors/kwmailmerge.desktop
-#%{_pixmapsdir}/kword.png
-%{_pixmapsdir}/*/*/apps/kword*.png
+%{_pixmapsdir}/kword.png
+#%{_pixmapsdir}/*/*/apps/kword*.png
 %{_datadir}/apps/xsltfilter/export/kword/xslfo/*.xsl
-
-#################################
-# koffice-kivio
-#################################
-%files -f kivio.lang kivio
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kivio
-%attr(755,root,root) %{_libdir}/*kivio*.??
-%attr(755,root,root) %{_libdir}/kde3/*kivio*.??
-%{_applnkdir}/Office/Misc/kivio.desktop
-%{_datadir}/apps/kivio
-#%{_pixmapsdir}/kivio.png
-%{_pixmapsdir}/*/*/apps/kivio*.png
-#%{_datadir}/mimelnk/application/x-kivio.desktop
-%{_datadir}/services/kivio*.desktop
-
-#################################
-# koffice-kugar
-#################################
-%files -f kugar.lang kugar
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kugar
-%attr(755,root,root) %{_libdir}/libkugar*.??
-%attr(755,root,root) %{_libdir}/straight_connector.ksp
-%{_applnkdir}/Office/Presentation/kugar.desktop
-%{_datadir}/apps/kugar
-%{_pixmapsdir}/*/*/apps/kugar*.png
-#%{_datadir}/mimelnk/application/x-kugar.desktop
-%{_pixmapsdir}/*/*/mimetypes/*kugar*
