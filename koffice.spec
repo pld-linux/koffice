@@ -371,6 +371,13 @@ cat koshell.lang >> koffice.lang
 %find_lang thesaurus		--with-kde
 cat thesaurus.lang >> kword.lang
 
+for f in *.lang; do
+	if grep -q %{name}-apidocs $f; then
+		grep -v %{name}-apidocs $f > $f.tmp
+		mv $f.tmp $f
+	fi	
+done	
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -380,7 +387,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%lang(en) %{_kdedocdir}/en/koffice-apidocs
+%lang(en) %{_kdedocdir}/en/%{name}-apidocs
 %{_includedir}/*
 %{_libdir}/libkdchart.so
 #%{_libdir}/libkdgantt.so
