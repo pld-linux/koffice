@@ -9,7 +9,7 @@ Group:		X11/Applications
 Group(de):	X11/Applikationen
 Group(pl):	X11/Aplikacje
 Source0:	http://ftp.kde.org/pub/kde/unstable/%{name}-%{ver}/src/%{name}-%{ver}.tar.bz2
-Source1:	http://ftp.kde.org/pub/kde/unstable/%{name}-%{ver}src/%{name}-i18n-%{ver}.tar.bz2
+Source1:	http://ftp.kde.org/pub/kde/unstable/%{name}-%{ver}/src/%{name}-i18n-%{ver}.tar.bz2
 URL:		http://www.koffice.org
 BuildRequires:	kdelibs-devel >= 2.1.1
 BuildRequires:	libstdc++-devel
@@ -20,18 +20,18 @@ BuildRequires:	libpng-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libtiff-devel
 BuildRequires:	perl
+BuildRequires:	python-devel >= 2.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
 %define		_htmldir	%{_docdir}/kde/HTML
-%define         _sharedir       %{_prefix}/share
-%define         _htmldir        %{_sharedir}/doc/kde/HTML
-%define         _pixmapsdir     %{_sharedir}/icons
+%define         _htmldir        %{_datadir}/doc/kde/HTML
 
 %description
 KOffice is an integrated office suite for K Desktop Environment.
 KOffice contains:
 - KWord - word processor
+- KFormula - formula editor
 - KSpread - spreadsheet
 - KPresenter - presentations
 - Kivio - A Visio(R)-style flowcharting application
@@ -45,6 +45,7 @@ KOffice contains:
 KOffice jest zintegrowanym pakietem biurowym dla ¶rodowiska KDE.
 Pakiet miêdzy innymi zawiera:
 - KWord - procesor tekstu
+- KFormula - edytor równañ
 - KSpread - arkusz kalkulacyjny
 - KPresenter - tworzenie prezentacji
 - Kivio - aplikacja wzorowana na Visio(R)
@@ -54,8 +55,7 @@ Pakiet miêdzy innymi zawiera:
   Photoshop(R)
 - Kugar - narzêdzie do generowania raportów jako¶ci biznesowej
 
-################################# # koffice-devel
-#################################
+# koffice-devel
 %package devel
 Summary:	KOffice - header files
 Summary(pl):	KOffice - pliki nag³ówkowe
@@ -70,8 +70,7 @@ Contains header files for KOffice.
 %description -l pl devel
 Zawiera pliki nag³ówkowe dla KOffice.
 
-################################# # koffice-common
-#################################
+# koffice-common
 %package common
 Summary:	KOffice - common files and libraries
 Summary(pl):	KOffice - wspó³dzielone pliki i biblioteki
@@ -81,15 +80,40 @@ Group(pl):	X11/Aplikacje
 Requires:	kdelibs >= 2.1.1
 
 %description common
+KOffice is an integrated office suite for K Desktop Environment.
+KOffice contains:
+- KWord - word processor
+- KFormula - formula editor
+- KSpread - spreadsheet
+- KPresenter - presentations
+- Kivio - A Visio(R)-style flowcharting application
+- KChart - diagram generator
+- KIllustrator - vector drawing
+- Krayon - A pixel-based image manipulation program like The GIMP or
+  Adobe(c) Photoshop(R)
+- Kugar - A tool for generating business quality reports
+
 Package contains common files and libraries needs by KOffice
 applications.
 
 %description -l pl common
+KOffice jest zintegrowanym pakietem biurowym dla ¶rodowiska KDE.
+Pakiet miêdzy innymi zawiera:
+- KWord - procesor tekstu
+- KFormula - edytor równañ
+- KSpread - arkusz kalkulacyjny
+- KPresenter - tworzenie prezentacji
+- Kivio - aplikacja wzorowana na Visio(R)
+- KChart - generator wykresów
+- KIllustrator - grafika wektorowa
+- Krayon - bazuj±cy na pikselach program typu GIMP czy Adobe(c)
+  Photoshop(R)
+- Kugar - narzêdzie do generowania raportów jako¶ci biznesowej
+
 Pakiet zawiera wspólne pliki i biblioteki wymagane przez aplikacje
 KOffoce.
 
-################################# # koffice-kchart
-#################################
+# koffice-kchart
 %package kchart
 Summary:	KOffice - KChart
 Summary(pl):	KOffice - KChart
@@ -105,8 +129,7 @@ bar charts.
 %description -l pl kchart
 KChart jest aplikacj± s³u¿±c± do generowania wykresów.
 
-################################# # koffice-killustrator
-#################################
+# koffice-killustrator
 %package killustrator
 Summary:	KOffice - KIllustrator
 Summary(pl):	KOffice - KIllustrator
@@ -127,8 +150,7 @@ Killustrator jest programem do tworzenia grafiki wektorowej dla
 pe³ni funkcjonalnego programu do grafiki wektorowej podobnego do Corel
 Draw lub Adobe Illustrator.
 
-################################# # koffice-kpresenter
-#################################
+# koffice-kpresenter
 %package kpresenter
 Summary:	KOffice - KPresenter
 Summary(pl):	KOffice - KPresenter
@@ -146,8 +168,7 @@ presentations or transparencies.
 KPresenter jest aplikacj± KOffice do tworzenia prezentacji, podobn± do
 MS PowerPoint. Mo¿esz u¿yæ jej do tworzenia wizualnych prezentacji.
 
-################################# # koffice-kspread
-#################################
+# koffice-kspread
 %package kspread
 Summary:	KOffice - KSpread
 Summary(pl):	KOffice - KSpread
@@ -162,8 +183,7 @@ KSpread is the spread sheet of the KOffice, similar to MS Excel.
 %description -l pl kspread
 KSpread jest arkuszem kalkulacyjnym, podobnym do MS Excel.
 
-################################# # koffice-kword
-#################################
+# koffice-kword
 %package kword
 Summary:	KOffice - KWord
 Summary(pl):	KOffice - KWord
@@ -181,8 +201,7 @@ writing letters, reports, etc.).
 KWord jest ramkowym procesorem tekstu. Mo¿e byæ u¿yty do DTP, ale
 równie¿ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 
-################################# # koffice-ivio
-#################################
+# koffice-ivio
 %package kivio
 Summary:	KOffice - ivio
 Summary(pl):	KOffice - ivio
@@ -207,8 +226,7 @@ Kivio jest programem typu flowcharting. Kivio dostarcza
 najpotrzebniejsze funkcje ale wszystkie obiekty mo¿na rozszerzaæ za
 pomoc± jêzyka skryptowego.
 
-################################# # koffice-krayon
-#################################
+# koffice-krayon
 %package krayon
 Summary:	KOffice - KRayon
 Summary(pl):	KOffice - KRayon
@@ -225,8 +243,7 @@ application for KOffice.
 Krayon równie¿ znany jako Kimageshop jest programem do rysowania i
 edycji obrazków dla KOffice.
 
-################################# # koffice-kugar
-#################################
+# koffice-kugar
 %package kugar
 Summary:	KOffice - KUgar
 Summary(pl):	KOffice - KUgar
@@ -265,7 +282,9 @@ cd %{name}-i18n-%{ver}
 %configure
 
 # broken languages
-echo -ne "all:\ninstall:\n" > {ja,zh_TW.Big5}/Makefile
+for lang in ja zh_TW.Big5; do
+	echo -ne "all:\ninstall:\n" > ${lang}/Makefile
+done
 
 %{__make}
 
@@ -303,14 +322,18 @@ cd ..
 %find_lang killustrator --with-kde
 %find_lang kpresenter --with-kde
 %find_lang kspread --with-kde
+%find_lang kspreadcalc_calc --with-kde
+cat kspreadcalc_calc.lang >> kspread.lang
 %find_lang kword --with-kde
 %find_lang kivio --with-kde
 %find_lang krayon --with-kde
 %find_lang kugar --with-kde
 %find_lang kchart --with-kde
-
+%find_lang koshell --with-kde
 %find_lang koffice --with-kde
-cat koffice.lang > common.lang
+%find_lang graphite --with-kde
+%find_lang kformula --with-kde
+cat koshell.lang graphite.lang koffice.lang kformula.lang > common.lang
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -353,19 +376,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/koshell.??
 %attr(755,root,root) %{_libdir}/kformulamain.??
 %attr(755,root,root) %{_libdir}/kde2/libkformulapart.??
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(755,root,root) %{_libdir}/libkwmf.??
-%attr(755,root,root) %{_libdir}/kde2/libabiword*.??
-%attr(755,root,root) %{_libdir}/kde2/libapplix**.??
-%attr(755,root,root) %{_libdir}/kde2/libascii*.??
-%attr(755,root,root) %{_libdir}/kde2/libdocbookexport.??
-%attr(755,root,root) %{_libdir}/kde2/libhtml*po*.??
-%attr(755,root,root) %{_libdir}/kde2/liblatexexport.??
-%attr(755,root,root) %{_libdir}/kde2/libmsodimport.??
 %attr(755,root,root) %{_libdir}/kde2/libolefilter.??
-%attr(755,root,root) %{_libdir}/kde2/librtf*po*.??
-%attr(755,root,root) %{_libdir}/kde2/libwmf*po*.??
-%attr(755,root,root) %{_libdir}/kde2/libkprkword.??
+%attr(755,root,root) %{_libdir}/libkwmf.??
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 %{_applnkdir}/Office/koshell.desktop
 %{_applnkdir}/Office/Misc/kformula.desktop
 %{_datadir}/servicetypes/*
@@ -374,16 +387,21 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*color/*x*/actions/abs.png
 %{_pixmapsdir}/*color/*x*/actions/brac*.png
 %{_pixmapsdir}/*color/*x*/actions/frac.png
+%{_pixmapsdir}/*color/*x*/actions/funct.png
 %{_pixmapsdir}/*color/*x*/actions/int.png
 %{_pixmapsdir}/*color/*x*/actions/[lr]su[bp].png
 %{_pixmapsdir}/*color/*x*/actions/matrix.png
 %{_pixmapsdir}/*color/*x*/actions/paren.png
 %{_pixmapsdir}/*color/*x*/actions/prod.png
+%{_pixmapsdir}/*color/*x*/actions/percent.png
+%{_pixmapsdir}/*color/*x*/actions/prec_*.png
 %{_pixmapsdir}/*color/*x*/actions/sqrt.png
 %{_pixmapsdir}/*color/*x*/actions/sum.png
+%{_pixmapsdir}/*color/*x*/actions/border_*.png
 %{_datadir}/apps/koffice
 %{_datadir}/apps/kformula
 %{_datadir}/services/kodocinfopropspage.desktop
+%{_datadir}/services/ole_*.desktop
 %{_datadir}/mimelnk/application/x-kformula.desktop
 
 #################################
@@ -403,7 +421,7 @@ rm -rf $RPM_BUILD_ROOT
 #################################
 # koffice-kchart
 #################################
-%files kchart
+%files -f kchart.lang kchart
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kchart
 %attr(755,root,root) %{_libdir}/kchart.??
@@ -421,8 +439,16 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/killustrator
 %attr(755,root,root) %{_libdir}/killustrator.??
 %attr(755,root,root) %{_libdir}/kde2/libkillustratorpart.??
+%attr(755,root,root) %{_libdir}/kde2/libapplixgraphicimport.??
+%attr(755,root,root) %{_libdir}/kde2/libmsodimport.??
+%attr(755,root,root) %{_libdir}/kde2/libwmfimport.??
+%attr(755,root,root) %{_libdir}/kde2/libkprkword.??
 %{_datadir}/apps/killustrator
+%{_datadir}/services/killustrator_*.desktop
+%{_datadir}/services/kprkword.desktop
 %{_datadir}/mimelnk/application/x-killustrator.desktop
+%{_datadir}/mimelnk/image/x-msod.desktop
+%{_datadir}/mimelnk/image/x-wmf.desktop
 %{_applnkdir}/Graphics/killustrator.desktop
 %{_pixmapsdir}/*color/*x*/apps/killustrator.png
 
@@ -437,7 +463,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde2/libkpresenterpart.??
 %{_datadir}/apps/kpresenter
 %{_datadir}/mimelnk/application/x-kpresenter.desktop
-%{_datadir}/services/ole_powerpoint97_import.desktop
 %{_applnkdir}/Office/Presentations/kpresenter.desktop
 %{_pixmapsdir}/*color/*x*/apps/kpresenter.png
 
@@ -450,10 +475,11 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kspread.??
 %attr(755,root,root) %{_libdir}/kde2/libkspread*.??
 %attr(755,root,root) %{_libdir}/kde2/libcsv*.??
+%attr(755,root,root) %{_libdir}/kde2/libapplixspreadimport.??
 %{_datadir}/apps/kspread
 %{_datadir}/mimelnk/application/x-kspread.desktop
+%{_datadir}/mimelnk/text/x-csv.desktop
 %{_datadir}/services/kspread*.desktop
-%{_datadir}/services/ole_excel97_import.desktop
 %{_applnkdir}/Office/Spreadsheets/kspread.desktop
 %{_pixmapsdir}/*color/*x*/apps/kspread.png
 %{_pixmapsdir}/*color/*x*/apps/kspreadcalc.png
@@ -466,17 +492,20 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kword
 %attr(755,root,root) %{_libdir}/kword.??
 %attr(755,root,root) %{_libdir}/kde2/libkwordpart.??
-# TODO
-#%attr(755,root,root) %{_libdir}/libasciiexport.??
-#%attr(755,root,root) %{_libdir}/libasciiimport.??
-#%attr(755,root,root) %{_libdir}/libhtmlexport.??
-#%attr(755,root,root) %{_libdir}/libhtmlimport.??
+%attr(755,root,root) %{_libdir}/kde2/libabiword*port.??
+%attr(755,root,root) %{_libdir}/kde2/libapplixwordimport.??
+%attr(755,root,root) %{_libdir}/kde2/libascii*port.??
+%attr(755,root,root) %{_libdir}/kde2/libdocbookexport.??
+%attr(755,root,root) %{_libdir}/kde2/libhtml*port.??
+%attr(755,root,root) %{_libdir}/kde2/libhtml*portdia.??
+%attr(755,root,root) %{_libdir}/kde2/liblatexexport.??
+%attr(755,root,root) %{_libdir}/kde2/librtf*port.??
 %attr(755,root,root) %{_libdir}/kde2/libkspelltool.??
 %{_datadir}/apps/kword
 %{_datadir}/mimelnk/application/x-kword.desktop
+%{_datadir}/mimelnk/application/x-abiword.desktop
 %{_datadir}/services/kspelltool.desktop
 %{_datadir}/services/kword*.desktop
-%{_datadir}/services/ole_winword97_import.desktop
 %{_applnkdir}/Office/Wordprocessors/kword.desktop
 %{_pixmapsdir}/*color/*x*/apps/kword.png
 
