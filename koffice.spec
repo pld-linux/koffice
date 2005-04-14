@@ -4,7 +4,7 @@
 
 %define		_state		unstable
 %define		_ver		1.3
-%define		_snap		050217
+%define		_snap		050413
 %define		artsver		13:1.3.92
 
 Summary:	KOffice - powerful office suite for KDE
@@ -27,6 +27,7 @@ BuildRequires:	arts-qt-devel >= %{artsver}
 BuildRequires:	aspell-devel >= 0.50.2
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:3.2.92
+BuildRequires:	kdebindings-kjsembed-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libpqxx-devel
@@ -346,7 +347,7 @@ równie¿ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 Processador de texto do KOffice.
 
 %prep
-%setup -q -n %{name}-%{_snap}
+%setup -q -n %{name}
 %patch0 -p1
 
 for f in `find . -name *.desktop`; do
@@ -444,6 +445,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkexidb.so
 %{_libdir}/libkexidbparser.so
 %{_libdir}/libkexiextendedwidgets.so
+%{_libdir}/libkexiformutils.so
 %{_libdir}/libkexiguiutils.so
 %{_libdir}/libkeximain.so
 %{_libdir}/libkeximigrate.so
@@ -469,6 +471,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkwmf.so
 %{_libdir}/libkwordexportfilters.so
 %{_includedir}/*.h
+%{_includedir}/kexidb
 %{_includedir}/kword
 
 %if %{with apidocs}
@@ -500,6 +503,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkexidbparser.so.*.*.*
 %{_libdir}/libkexiextendedwidgets.la
 %attr(755,root,root) %{_libdir}/libkexiextendedwidgets.so.*.*.*
+%{_libdir}/libkexiformutils.la
+%attr(755,root,root)  %{_libdir}/libkexiformutils.so.*.*.*
 %{_libdir}/libkexiguiutils.la
 %attr(755,root,root) %{_libdir}/libkexiguiutils.so.*.*.*
 %{_libdir}/libkeximain.la
@@ -573,6 +578,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/servicetypes/*
 %{_datadir}/apps/koffice
 %{_datadir}/apps/koshell
+%{_datadir}/config.kcfg/koshell.kcfg
 %{_datadir}/services/clipartthumbnail.desktop
 %{_datadir}/services/kfile_koffice.desktop
 %{_datadir}/services/kfile_ooo.desktop
@@ -614,8 +620,14 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/kchart.so
 %{_libdir}/kde3/libkchartpart.la
 %attr(755,root,root) %{_libdir}/kde3/libkchartpart.so
+%{_libdir}/kde3/libkchartpngexport.la
+%attr(755,root,root) %{_libdir}/kde3/libkchartpngexport.so
+%{_libdir}/kde3/libkchartsvgexport.la
+%attr(755,root,root) %{_libdir}/kde3/libkchartsvgexport.so
 %{_datadir}/apps/kchart
 %{_datadir}/services/kchartpart.desktop
+%{_datadir}/services/kchart_png_export.desktop
+%{_datadir}/services/kchart_svg_export.desktop
 %{_desktopdir}/kde/kchart.desktop
 %{_iconsdir}/*/*x*/apps/kchart.png
 %{_mandir}/man1/kchart.1*
@@ -785,6 +797,17 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kritagrayplugin.desktop
 %{_datadir}/services/kritapart.desktop
 %{_datadir}/services/kritargbplugin.desktop
+%{_datadir}/services/kritacimg.desktop
+%{_datadir}/services/kritadefaultpaintops.desktop
+%{_datadir}/services/kritamagick.desktop
+%{_datadir}/services/kritaselectiontools.desktop
+%{_datadir}/services/kritatoolcrop.desktop
+%{_datadir}/services/kritatoolfilter.desktop
+%{_datadir}/services/kritatoolpolygon.desktop
+%{_datadir}/services/kritatoolpolyline.desktop
+%{_datadir}/services/kritatoolselectpicker.desktop
+%{_datadir}/services/kritatoolstar.desktop
+%{_datadir}/services/kritatooltransform.desktop
 %{_datadir}/templates/Illustration.desktop
 %{_desktopdir}/kde/krita.desktop
 %{_iconsdir}/*/*/*/krita.png
@@ -810,6 +833,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libqproimport.so
 %{_libdir}/kde3/libopencalc*port.la
 %attr(755,root,root) %{_libdir}/kde3/libopencalc*port.so
+%{_libdir}/kde3/libexcelimport.la
+%attr(755,root,root) %{_libdir}/kde3/libexcelimport.so
 %{_datadir}/apps/kspread
 %{_datadir}/services/kspread*.desktop
 %{_datadir}/services/kwmailmerge_kspread.desktop
