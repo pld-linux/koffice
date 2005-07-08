@@ -40,6 +40,7 @@ BuildRequires:	mysql-devel
 BuildRequires:	perl-base
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	rpmbuild(macros) >= 1.129
+BuildRequires:	sed >= 4.0
 BuildRequires:	wv2-devel >= 0.1.9
 BuildRequires:	zlib-devel
 Requires:	wv2 >= 0.1.9
