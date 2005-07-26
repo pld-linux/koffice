@@ -2,10 +2,10 @@
 # Conditional build:
 %bcond_without  apidocs # do not prepare API documentation
 
-%define		_state		unstable
-%define		_ver		1.4.88
-%define		_snap		050702
-%define		artsver		13:1.4.89
+%define		_state		stable
+%define		_ver		1.4.1
+%define		_snap		%{nil}
+%define		artsver		13:1.4.1
 
 Summary:	KOffice - powerful office suite for KDE
 Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
@@ -14,12 +14,13 @@ Summary(ru):	îÁÂÏÒ ÏÆÆÉÓÎÙÈ ÐÒÏÇÒÁÍÍ ÄÌÑ KDE
 Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
-Version:	%{_ver}.%{_snap}
-Release:	1
+Version:	%{_ver}
+Release:	0.1
 Epoch:		6
 License:	GPL/LGPL
 Group:		X11/Applications
-Source0:	ftp://ftp.pld-linux.org/software/kde/%{name}-%{_snap}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
+# Source0-md5:	91a7b68757addc5934c5a8209a4926d5
 Patch0:		kde-common-PLD.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
@@ -33,6 +34,7 @@ BuildRequires:	libpng-devel
 BuildRequires:	libpqxx-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtiff-devel
+BuildRequires:	libwpd-devel
 BuildRequires:	mysql-devel
 BuildRequires:	perl-base
 BuildRequires:	python-devel >= 2.2
@@ -194,6 +196,7 @@ Summary:	KOffice - Kexi
 Summary(pl):	KOffice - Kexi
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
+Requires:	libpqxx
 Requires:	mysql-libs
 
 %description kexi
@@ -246,17 +249,17 @@ jest mo¿liwe poprzez architekturê skryptów i wtyczek Kivio.
 %description kivio -l pt_BR
 Editor de fluxogramas do KOffice.
 
-%package kplato
-Summary:	KOffice - kplato
-Summary(pl):	KOffice - kplato
-Group:		X11/Applications
-Requires:	%{name}-common = %{epoch}:%{version}-%{release}
+#%package kplato
+#Summary:	KOffice - kplato
+#Summary(pl):	KOffice - kplato
+#Group:		X11/Applications
+#Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
-%description kplato
-TODO.
+#%description kplato
+#TODO.
 
-%description kplato -l pl
-TODO.
+#%description kplato -l pl
+#TODO.
 
 %package kpresenter
 Summary:	KOffice - KPresenter
@@ -359,7 +362,7 @@ równie¿ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 Processador de texto do KOffice.
 
 %prep
-%setup -q -n %{name}-%{_snap}
+%setup -q
 %patch0 -p1
 
 for f in `find . -name *.desktop`; do
@@ -392,7 +395,7 @@ for f in `find . -name \*.desktop`; do
 	fi
 done
 
-echo "KDE_OPTIONS = nofinal" >> kplato/Makefile.am
+#echo "KDE_OPTIONS = nofinal" >> kplato/Makefile.am
 
 %build
 cp /usr/share/automake/config.sub admin
@@ -406,6 +409,8 @@ cp /usr/share/automake/config.sub admin
 %configure \
 	--disable-rpath \
 	--enable-final \
+	--with-pgsqllibdir=%{_libdir} \
+	--with-pqxxlibdir=%{_libdir} \
 	--with-qt-libraries=%{_libdir}
 
 #%%{__make} -C kword/mailmerge/sql qtsqlopenwidget.h
@@ -428,14 +433,14 @@ mv $RPM_BUILD_ROOT{%{_datadir}/applnk/{Office,Utilities}/*,%{_desktopdir}/kde}
 install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
 %find_lang kchart	--with-kde
-%find_lang kexi		--with-kde
+#%find_lang kexi		--with-kde
 %find_lang kformula	--with-kde
 %find_lang kivio	--with-kde
 %find_lang koffice	--with-kde
 %find_lang koshell	--with-kde
 cat koshell.lang >> koffice.lang
 %find_lang kpresenter	--with-kde
-%find_lang krita	--with-kde
+#%find_lang krita	--with-kde
 %find_lang kspread	--with-kde
 %find_lang kugar	--with-kde
 %find_lang kword	--with-kde
@@ -470,7 +475,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkexirelationsview.so
 %{_libdir}/libkexisql2.so
 %{_libdir}/libkexisql3.so
-%{_libdir}/libkexiutils.so
+#%{_libdir}/libkexiutils.so
 %{_libdir}/libkformdesigner.so
 %{_libdir}/libkformulalib.so
 %{_libdir}/libkiviocommon.so
@@ -478,7 +483,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkofficecore.so
 %{_libdir}/libkofficeui.so
 %{_libdir}/libkopainter.so
-%{_libdir}/libkoproperty.so
+#%{_libdir}/libkoproperty.so
 %{_libdir}/libkoscript.so
 %{_libdir}/libkotext.so
 %{_libdir}/libkowmf.so
@@ -491,7 +496,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkwordexportfilters.so
 %{_includedir}/*.h
 %{_includedir}/kexidb
-%{_includedir}/kexiutils
+#%{_includedir}/kexiutils
 %{_includedir}/kword
 
 %if %{with apidocs}
@@ -500,7 +505,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_kdedocdir}/en/%{name}-apidocs
 %endif
 
-%files common -f koffice.lang
+%files common
+# -f koffice.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/koconverter
 %attr(755,root,root) %{_bindir}/koscript
@@ -541,8 +547,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkexisql2.so.*.*.*
 %{_libdir}/libkexisql3.la
 %attr(755,root,root) %{_libdir}/libkexisql3.so.*.*.*
-%{_libdir}/libkexiutils.la
-%attr(755,root,root) %{_libdir}/libkexiutils.so.*.*.*
+#%{_libdir}/libkexiutils.la
+#%attr(755,root,root) %{_libdir}/libkexiutils.so.*.*.*
 %{_libdir}/libkformdesigner.la
 %attr(755,root,root) %{_libdir}/libkformdesigner.so.*.*.*
 %{_libdir}/libkformulalib.la
@@ -557,8 +563,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkofficeui.so.*.*.*
 %{_libdir}/libkopainter.la
 %attr(755,root,root) %{_libdir}/libkopainter.so.*.*.*
-%{_libdir}/libkoproperty.la
-%attr(755,root,root) %{_libdir}/libkoproperty.so.*.*.*
+#%{_libdir}/libkoproperty.la
+#%attr(755,root,root) %{_libdir}/libkoproperty.so.*.*.*
 %{_libdir}/libkoscript.la
 %attr(755,root,root) %{_libdir}/libkoscript.so.*.*.*
 %{_libdir}/libkotext.la
@@ -581,10 +587,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkwordexportfilters.so.*.*.*
 %{_libdir}/kde3/clipartthumbnail.la
 %attr(755,root,root) %{_libdir}/kde3/clipartthumbnail.so
-%{_libdir}/kde3/kfile_abiword.la
-%attr(755,root,root) %{_libdir}/kde3/kfile_abiword.so
-%{_libdir}/kde3/kfile_gnumeric.la
-%attr(755,root,root) %{_libdir}/kde3/kfile_gnumeric.so
+#%{_libdir}/kde3/kfile_abiword.la
+#%attr(755,root,root) %{_libdir}/kde3/kfile_abiword.so
+#%{_libdir}/kde3/kfile_gnumeric.la
+#%attr(755,root,root) %{_libdir}/kde3/kfile_gnumeric.so
 %{_libdir}/kde3/kfile_koffice.la
 %attr(755,root,root) %{_libdir}/kde3/kfile_koffice.so
 %{_libdir}/kde3/kfile_ooo.la
@@ -610,8 +616,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/koshell
 %{_datadir}/config.kcfg/koshell.kcfg
 %{_datadir}/services/clipartthumbnail.desktop
-%{_datadir}/services/kfile_abiword.desktop
-%{_datadir}/services/kfile_gnumeric.desktop
+#%{_datadir}/services/kfile_abiword.desktop
+#%{_datadir}/services/kfile_gnumeric.desktop
 %{_datadir}/services/kfile_koffice.desktop
 %{_datadir}/services/kfile_ooo.desktop
 %{_datadir}/services/kodocinfopropspage.desktop
@@ -657,10 +663,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libkchartpngexport.so
 %{_libdir}/kde3/libkchartsvgexport.la
 %attr(755,root,root) %{_libdir}/kde3/libkchartsvgexport.so
-%{_libdir}/kde3/libkptchart.la
-%attr(755,root,root) %{_libdir}/kde3/libkptchart.so
+#%{_libdir}/kde3/libkptchart.la
+#%attr(755,root,root) %{_libdir}/kde3/libkptchart.so
 %{_datadir}/apps/kchart
-%{_datadir}/apps/konqueror/servicemenus/kchart_konqi.desktop
+#%{_datadir}/apps/konqueror/servicemenus/kchart_konqi.desktop
 %{_datadir}/services/kchartpart.desktop
 %{_datadir}/services/kchart_png_export.desktop
 %{_datadir}/services/kchart_svg_export.desktop
@@ -668,7 +674,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*x*/apps/kchart.png
 %{_mandir}/man1/kchart.1*
 
-%files kexi -f kexi.lang
+%files kexi
+# -f kexi.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kexi*
 %attr(755,root,root) %{_bindir}/ksqlite
@@ -688,8 +695,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/kexidb_sqlite3driver.so
 %{_libdir}/kde3/kexidbwidgets.la
 %attr(755,root,root) %{_libdir}/kde3/kexidbwidgets.so
-%{_libdir}/kde3/kexihandler_csv_import.la
-%attr(755,root,root) %{_libdir}/kde3/kexihandler_csv_import.so
+#%{_libdir}/kde3/kexihandler_csv_import.la
+#%attr(755,root,root) %{_libdir}/kde3/kexihandler_csv_import.so
 %{_libdir}/kde3/kexihandler_form.la
 %attr(755,root,root) %{_libdir}/kde3/kexihandler_form.so
 %{_libdir}/kde3/kexihandler_migration.la
@@ -738,7 +745,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/crystalsvg/16x16/mimetypes/kexiproject_sqlite2.png
 %{_iconsdir}/crystalsvg/32x32/mimetypes/kexiproject_sqlite2.png
 
-%files kformula -f kformula.lang
+%files kformula
+# -f kformula.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kformula
 %{_libdir}/libkdeinit_kformula.la
@@ -775,7 +783,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/apps/kformula.png
 %{_mandir}/man1/kformula.1*
 
-%files kivio -f kivio.lang
+%files kivio 
+#-f kivio.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kivio
 %{_libdir}/*kivio*.la
@@ -792,21 +801,22 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/*/*/apps/kivio.png
 %{_mandir}/man1/kivio.1*
 
-%files kplato
-%defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/kplato
-%{_libdir}/libkdeinit_kplato.la
-%attr(755,root,root) %{_libdir}/libkdeinit_kplato.so
-%{_libdir}/kde3/kplato.la
-%attr(755,root,root) %{_libdir}/kde3/kplato.so
-%{_libdir}/kde3/libkplatopart.la
-%attr(755,root,root) %{_libdir}/kde3/libkplatopart.so
-%{_datadir}/apps/kplato
-%{_datadir}/services/kplatopart.desktop
-%{_desktopdir}/kde/kplato.desktop
-%{_iconsdir}/*/*/apps/kplato.*
+#%files kplato
+#%defattr(644,root,root,755)
+#%attr(755,root,root) %{_bindir}/kplato
+#%{_libdir}/libkdeinit_kplato.la
+#%attr(755,root,root) %{_libdir}/libkdeinit_kplato.so
+#%{_libdir}/kde3/kplato.la
+#%attr(755,root,root) %{_libdir}/kde3/kplato.so
+#%{_libdir}/kde3/libkplatopart.la
+#%attr(755,root,root) %{_libdir}/kde3/libkplatopart.so
+#%{_datadir}/apps/kplato
+#%{_datadir}/services/kplatopart.desktop
+#%{_desktopdir}/kde/kplato.desktop
+#%{_iconsdir}/*/*/apps/kplato.*
 
-%files kpresenter -f kpresenter.lang
+%files kpresenter
+# -f kpresenter.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kpresenter
 %attr(755,root,root) %{_bindir}/kprconverter.pl
@@ -833,7 +843,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man1/kpresenter.1*
 %{_mandir}/man1/kprconverter.pl.1*
 
-%files krita -f krita.lang
+%files krita
+# -f krita.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krita
 %{_libdir}/kde3/*krita*.la
@@ -844,7 +855,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/krita
 %{_datadir}/services/krita_magick_export.desktop
 %{_datadir}/services/krita_magick_import.desktop
-%{_datadir}/services/krita_rgb_u16_plugin.desktop
+#%{_datadir}/services/krita_rgb_u16_plugin.desktop
 #%{_datadir}/services/kritacmykplugin.desktop
 %{_datadir}/services/kritadefaulttools.desktop
 %{_datadir}/services/kritagrayplugin.desktop
@@ -854,7 +865,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kritadefaultpaintops.desktop
 #%{_datadir}/services/kritamagick.desktop
 %{_datadir}/services/kritaselectiontools.desktop
-%{_datadir}/services/kritatestcsplugin.desktop
+#%{_datadir}/services/kritatestcsplugin.desktop
 %{_datadir}/services/kritatoolcrop.desktop
 %{_datadir}/services/kritatoolfilter.desktop
 %{_datadir}/services/kritatoolpolygon.desktop
@@ -862,14 +873,15 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kritatoolselectpicker.desktop
 %{_datadir}/services/kritatoolstar.desktop
 %{_datadir}/services/kritatooltransform.desktop
-%{_datadir}/services/kritawetplugin.desktop
-%{_datadir}/services/kritawsbrushpaintop.desktop
-%{_datadir}/services/kritawsplugin.desktop
+#%{_datadir}/services/kritawetplugin.desktop
+#%{_datadir}/services/kritawsbrushpaintop.desktop
+#%{_datadir}/services/kritawsplugin.desktop
 %{_datadir}/templates/Illustration.desktop
 %{_desktopdir}/kde/krita.desktop
 %{_iconsdir}/*/*/*/krita.png
 
-%files kspread -f kspread.lang
+%files kspread
+# -f kspread.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kspread
 %{_libdir}/libkdeinit_kspread.la
@@ -901,7 +913,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_iconsdir}/[!l]*/*/apps/kspread*.png
 %{_mandir}/man1/kspread.1*
 
-%files kugar -f kugar.lang
+%files kugar
+# -f kugar.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kudesigner
 %attr(755,root,root) %{_bindir}/kugar
@@ -920,12 +933,14 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kugar
 %{_datadir}/services/kugar_kugar_import.desktop
 %{_datadir}/services/kugarpart.desktop
+%{_iconsdir}/*/*/*/kudesigner.png
 %{_iconsdir}/*/*/*/kugar.png
 %{_iconsdir}/*/*/mimetypes/kugardata.png
 %{_mandir}/man1/kudesigner.1*
 %{_mandir}/man1/kugar.1*
 
-%files kword -f kword.lang
+%files kword
+# -f kword.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kthesaurus
 %attr(755,root,root) %{_bindir}/kword
