@@ -12,16 +12,13 @@ Summary(ru):	Набор оффисных программ для KDE
 Summary(uk):	Наб╕р оф╕сних програм для KDE
 Summary(zh_CN):	KDE ╣д╟Л╧╚с╕сцхМ╪Ч╪╞║ё
 Name:		koffice
-# Version:	%{_ver}.%{_snap}
 Version:	%{_ver}
-Release:	0.1
+Release:	1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
-# ftp://ftp.kde.org/pub/kde/unstable/koffice-1.2.95/src
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	91a7b68757addc5934c5a8209a4926d5
-#Source0:	http://ep09.pld-linux.org/~adgor/kde/%{name}-%{_snap}.tar.bz2
 #Patch100:	%{name}-branch.diff
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel
