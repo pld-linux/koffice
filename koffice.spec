@@ -332,6 +332,24 @@ równie¿ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
 %description kword -l pt_BR
 Processador de texto do KOffice.
 
+%package apidocs
+Summary:	Koffice API documentation
+Summary(pl):	Dokumentacja API dla Koffice
+Group:		Documentation
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+
+%description apidocs
+Annotated reference of KOffice libraries programming interface including:
+- class lists
+- class members
+- namespaces
+
+%description apidocs -l pl
+Dokumentacja interfejsu programowania bibliotek KOffice z przypisami.
+Zawiera:
+- listy klas i ich sk³adników
+- listê przestrzeni nazw (namespace)
+
 %prep
 %setup -q
 #patch100 -p1
@@ -419,9 +437,12 @@ rm -rf $RPM_BUILD_ROOT
 %post	common -p /sbin/ldconfig
 %postun common -p /sbin/ldconfig
 
+%files apidocs
+%defattr(644,root,root,755)
+%{_kdedocdir}/en/%{name}-apidocs
+
 %files devel
 %defattr(644,root,root,755)
-%lang(en) %{_kdedocdir}/en/%{name}-apidocs
 %attr(755,root,root) %{_libdir}/libkdchart.so
 #%{_libdir}/libkdgantt.so
 #%{_libdir}/libkexicore.so
@@ -454,16 +475,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/koconverter
 %attr(755,root,root) %{_bindir}/koscript
 %attr(755,root,root) %{_bindir}/koshell
-%attr(755,root,root) %{_bindir}/ksqlite
-%attr(755,root,root) %{_bindir}/ksqlite2
-%attr(755,root,root) %{_bindir}/ksqlite2to3
-
 %{_libdir}/libkdeinit_koshell.la
 %attr(755,root,root) %{_libdir}/libkdeinit_koshell.so
 %{_libdir}/libkdchart.la
 %attr(755,root,root) %{_libdir}/libkdchart.so.*.*.*
-%{_libdir}/libkexi*.la
-%attr(755,root,root) %{_libdir}/libkexi*.so.*.*.*
 %{_libdir}/libkformulalib.la
 %attr(755,root,root) %{_libdir}/libkformulalib.so.*.*.*
 %{_libdir}/libkochart.la
@@ -492,8 +507,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkwordexportfilters.so.*.*.*
 %{_libdir}/kde3/clipartthumbnail.la
 %attr(755,root,root) %{_libdir}/kde3/clipartthumbnail.so
-%{_libdir}/kde3/containers.la
-%attr(755,root,root) %{_libdir}/kde3/containers.so
 %{_libdir}/kde3/kfile_koffice.la
 %attr(755,root,root) %{_libdir}/kde3/kfile_koffice.so
 %{_libdir}/kde3/kfile_ooo.la
@@ -514,9 +527,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libkounavailpart.so
 %{_libdir}/kde3/libolefilter.la
 %attr(755,root,root) %{_libdir}/kde3/libolefilter.so
-# check if 2 files above are in correct packages
-%{_libdir}/kde3/stdwidgets.la
-%attr(755,root,root) %{_libdir}/kde3/stdwidgets.so
 %{_datadir}/servicetypes/*
 %{_datadir}/apps/koffice
 %{_datadir}/apps/koshell
@@ -582,6 +592,9 @@ rm -rf $RPM_BUILD_ROOT
 %files kexi
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kexi*
+%attr(755,root,root) %{_bindir}/ksqlite
+%attr(755,root,root) %{_bindir}/ksqlite2
+%attr(755,root,root) %{_bindir}/ksqlite2to3
 %attr(755,root,root) %{_bindir}/kformdesigner
 %{_libdir}/libkdeinit_kexi.la
 %attr(755,root,root) %{_libdir}/libkdeinit_kexi.so
@@ -591,6 +604,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkexi*.so.*.*.*
 %{_libdir}/kde3/*kexi*.la
 %attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
+%{_libdir}/kde3/containers.la
+%attr(755,root,root) %{_libdir}/kde3/containers.so
+%{_libdir}/kde3/stdwidgets.la
+%attr(755,root,root) %{_libdir}/kde3/stdwidgets.so
 %{_datadir}/apps/kexi
 %{_datadir}/apps/kformdesigner/kfd_mainwindow.rc
 %{_datadir}/apps/kformdesigner_part/kformdesigner_part*.rc
