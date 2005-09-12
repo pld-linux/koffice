@@ -743,9 +743,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libqproimport.so
 %{_libdir}/kde3/libopencalc*port.la
 %attr(755,root,root) %{_libdir}/kde3/libopencalc*port.so
+%{_libdir}/kde3/kwmailmerge_kspread.la
+%attr(755,root,root) %{_libdir}/kde3/kwmailmerge_kspread.so
 %{_datadir}/apps/kspread
 %{_datadir}/apps/konqueror/servicemenus/kspread_konqi.desktop
 %{_datadir}/services/kspread*.desktop
+%{_datadir}/services/kwmailmerge_kspread.desktop
 # file below should be uncommented
 #%{_datadir}/templates/.source/SpreadSheet.ksp
 %{_datadir}/templates/SpreadSheet.desktop
@@ -782,16 +785,12 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kword
 %{_libdir}/libkdeinit_kword.la
 %attr(755,root,root) %{_libdir}/libkdeinit_kword.so
-%{_libdir}/libkwmailmerge*.la
-%attr(755,root,root) %{_libdir}/libkwmailmerge*.so
 %{_libdir}/libkword*export*.la
 %attr(755,root,root) %{_libdir}/libkword*export*.so
 %{_libdir}/libkdeinit_kthesaurus.la
 %attr(755,root,root) %{_libdir}/libkdeinit_kthesaurus.so
 %{_libdir}/kde3/kthesaurus.la
 %attr(755,root,root) %{_libdir}/kde3/kthesaurus.so
-%{_libdir}/kde3/kwmailmerge*.la
-%attr(755,root,root) %{_libdir}/kde3/kwmailmerge*.so
 %{_libdir}/kde3/kword.la
 %attr(755,root,root) %{_libdir}/kde3/kword.so
 %{_libdir}/kde3/libabiword*port.la
@@ -826,14 +825,21 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libkword*.so
 %{_libdir}/kde3/liboowriter*port.la
 %attr(755,root,root) %{_libdir}/kde3/liboowriter*port.so
+%{_libdir}/kde3/kwmailmerge_classic.la
+%attr(755,root,root) %{_libdir}/kde3/kwmailmerge_classic.so
+%{_libdir}/kde3/kwmailmerge_kabc.la
+%attr(755,root,root) %{_libdir}/kde3/kwmailmerge_kabc.so
+%{_libdir}/kde3/kwmailmerge_qtsqldb*.la
+%attr(755,root,root) %{_libdir}/kde3/kwmailmerge_qtsqldb*.so
 %{_datadir}/apps/kword
 %{_datadir}/apps/thesaurus
 %{_datadir}/apps/xsltfilter/export/kword/xslfo/*.xsl
 %{_datadir}/apps/konqueror/servicemenus/kword_konqi.desktop
 %{_datadir}/services/kword*.desktop
-%{_datadir}/services/kwserialletter*
 %{_datadir}/services/thesaurustool.desktop
-%{_datadir}/services/kwmailmerge*.desktop
+%{_datadir}/services/kwmailmerge_kabc.desktop
+#this is the mailmerge service info for qtsqldb and classic
+%{_datadir}/services/kwserialletter*
 %{_datadir}/templates/.source/TextDocument.kwt
 %{_datadir}/templates/TextDocument.desktop
 %{_desktopdir}/kde/KThesaurus.desktop
