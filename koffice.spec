@@ -13,7 +13,7 @@ Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
 Version:	%{_ver}
-Release:	1
+Release:	1.1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
@@ -28,12 +28,15 @@ BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:3.2
 BuildRequires:	libjpeg-devel
 BuildRequires:	libpng-devel
+BuildRequires:	libpqxx-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libtiff-devel
+BuildRequires:	libwpd-devel
 BuildRequires:	libxml2-devel >= 0:2.4.8
 BuildRequires:	libxslt-devel >= 1.0.7
 BuildRequires:	mysql-devel
 BuildRequires:	perl-base
+BuildRequires:	pkgconfig
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	sed >= 4.0
