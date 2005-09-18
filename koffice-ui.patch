@@ -1,0 +1,120 @@
+diff -U 3 -H -d -r -N -- koffice-1.4.1.orig/kpresenter/imageEffectBase.ui koffice-1.4.1/kpresenter/imageEffectBase.ui
+--- koffice-1.4.1.orig/kpresenter/imageEffectBase.ui	2005-07-19 16:11:52.000000000 +0200
++++ koffice-1.4.1/kpresenter/imageEffectBase.ui	2005-09-18 17:43:28.000000000 +0200
+@@ -1461,20 +1461,5 @@
+ <layoutdefaults spacing="6" margin="11"/>
+ <includehints>
+     <includehint>kcolorbutton.h</includehint>
+-    <includehint>kdoublenuminput.h</includehint>
+-    <includehint>kcolorbutton.h</includehint>
+-    <includehint>kcolorbutton.h</includehint>
+-    <includehint>kdoublenuminput.h</includehint>
+-    <includehint>kdoublenuminput.h</includehint>
+-    <includehint>kdoublenuminput.h</includehint>
+-    <includehint>kdoublenuminput.h</includehint>
+-    <includehint>kdoublenuminput.h</includehint>
+-    <includehint>kdoublenuminput.h</includehint>
+-    <includehint>kdoublenuminput.h</includehint>
+-    <includehint>kdoublenuminput.h</includehint>
+-    <includehint>kdoublenuminput.h</includehint>
+-    <includehint>kdoublenuminput.h</includehint>
+-    <includehint>kdoublenuminput.h</includehint>
+-    <includehint>kdoublenuminput.h</includehint>
+ </includehints>
+ </UI>
+diff -U 3 -H -d -r -N -- koffice-1.4.1.orig/krita/plugins/colorspaceconversion/wdgconvertcolorspace.ui koffice-1.4.1/krita/plugins/colorspaceconversion/wdgconvertcolorspace.ui
+--- koffice-1.4.1.orig/krita/plugins/colorspaceconversion/wdgconvertcolorspace.ui	2005-07-19 16:09:43.000000000 +0200
++++ koffice-1.4.1/krita/plugins/colorspaceconversion/wdgconvertcolorspace.ui	2005-09-18 17:47:45.000000000 +0200
+@@ -266,6 +266,6 @@
+ </tabstops>
+ <layoutdefaults spacing="6" margin="11"/>
+ <includehints>
+-    <includehint>kiscmbidlist.h</includehint>
++    <includehint>kis_cmb_idlist.h</includehint>
+ </includehints>
+ </UI>
+diff -U 3 -H -d -r -N -- koffice-1.4.1.orig/krita/plugins/convolutionfilters/kis_custom_convolution_filter_configuration_base_widget.ui koffice-1.4.1/krita/plugins/convolutionfilters/kis_custom_convolution_filter_configuration_base_widget.ui
+--- koffice-1.4.1.orig/krita/plugins/convolutionfilters/kis_custom_convolution_filter_configuration_base_widget.ui	2005-07-19 16:09:45.000000000 +0200
++++ koffice-1.4.1/krita/plugins/convolutionfilters/kis_custom_convolution_filter_configuration_base_widget.ui	2005-09-18 17:50:37.000000000 +0200
+@@ -187,6 +187,6 @@
+ </images>
+ <layoutdefaults spacing="6" margin="11"/>
+ <includehints>
+-    <includehint>kismatrixwidget.h</includehint>
++    <includehint>kis_matrix_widget.h</includehint>
+ </includehints>
+ </UI>
+diff -U 3 -H -d -r -N -- koffice-1.4.1.orig/krita/plugins/screenshot/ksnapshotwidget.ui koffice-1.4.1/krita/plugins/screenshot/ksnapshotwidget.ui
+--- koffice-1.4.1.orig/krita/plugins/screenshot/ksnapshotwidget.ui	2005-07-19 16:09:46.000000000 +0200
++++ koffice-1.4.1/krita/plugins/screenshot/ksnapshotwidget.ui	2005-09-18 17:50:02.000000000 +0200
+@@ -333,6 +333,6 @@
+ <layoutdefaults spacing="6" margin="11"/>
+ <layoutfunctions spacing="KDialog::spacingHint" margin="KDialog::marginHint"/>
+ <includehints>
+-    <includehint>ksnapshotthumb.h</includehint>
++    <includehint>ksnapshot.h</includehint>
+ </includehints>
+ </UI>
+diff -U 3 -H -d -r -N -- koffice-1.4.1.orig/krita/ui/kis_previewwidgetbase.ui koffice-1.4.1/krita/ui/kis_previewwidgetbase.ui
+--- koffice-1.4.1.orig/krita/ui/kis_previewwidgetbase.ui	2005-07-19 16:10:20.000000000 +0200
++++ koffice-1.4.1/krita/ui/kis_previewwidgetbase.ui	2005-09-18 17:51:30.000000000 +0200
+@@ -202,7 +202,6 @@
+ </connections>
+ <layoutdefaults spacing="6" margin="11"/>
+ <includehints>
+-    <includehint>kispreviewview.h</includehint>
+-    <includehint>kispreviewview.h</includehint>
++    <includehint>kis_previewview.h</includehint>
+ </includehints>
+ </UI>
+diff -U 3 -H -d -r -N -- koffice-1.4.1.orig/krita/ui/wdgcolorsettings.ui koffice-1.4.1/krita/ui/wdgcolorsettings.ui
+--- koffice-1.4.1.orig/krita/ui/wdgcolorsettings.ui	2005-07-19 16:10:21.000000000 +0200
++++ koffice-1.4.1/krita/ui/wdgcolorsettings.ui	2005-09-18 17:48:06.000000000 +0200
+@@ -362,7 +362,6 @@
+ </tabstops>
+ <layoutdefaults spacing="6" margin="11"/>
+ <includehints>
+-    <includehint>kiscmbidlist.h</includehint>
+-    <includehint>kiscmbidlist.h</includehint>
++    <includehint>kis_cmb_idlist.h</includehint>
+ </includehints>
+ </UI>
+diff -U 3 -H -d -r -N -- koffice-1.4.1.orig/krita/ui/wdglayerbox.ui koffice-1.4.1/krita/ui/wdglayerbox.ui
+--- koffice-1.4.1.orig/krita/ui/wdglayerbox.ui	2005-07-19 16:10:20.000000000 +0200
++++ koffice-1.4.1/krita/ui/wdglayerbox.ui	2005-09-18 17:49:23.000000000 +0200
+@@ -250,8 +250,7 @@
+ </images>
+ <layoutdefaults spacing="6" margin="11"/>
+ <includehints>
+-    <includehint>kiscmbcomposite.h</includehint>
+-    <includehint>knuminput.h</includehint>
++    <includehint>kis_cmb_composite.h</includehint>
+     <includehint>knuminput.h</includehint>
+     <includehint>klistbox.h</includehint>
+ </includehints>
+diff -U 3 -H -d -r -N -- koffice-1.4.1.orig/krita/ui/wdgnewimage.ui koffice-1.4.1/krita/ui/wdgnewimage.ui
+--- koffice-1.4.1.orig/krita/ui/wdgnewimage.ui	2005-07-19 16:10:21.000000000 +0200
++++ koffice-1.4.1/krita/ui/wdgnewimage.ui	2005-09-18 17:48:29.000000000 +0200
+@@ -319,8 +319,7 @@
+ <layoutdefaults spacing="6" margin="11"/>
+ <includehints>
+     <includehint>knuminput.h</includehint>
+-    <includehint>knuminput.h</includehint>
+-    <includehint>kiscmbidlist.h</includehint>
++    <includehint>kis_cmb_idlist.h</includehint>
+     <includehint>kcolorcombo.h</includehint>
+ </includehints>
+ </UI>
+diff -U 3 -H -d -r -N -- koffice-1.4.1.orig/krita/ui/widgets/kis_wdg_autogradient.ui koffice-1.4.1/krita/ui/widgets/kis_wdg_autogradient.ui
+--- koffice-1.4.1.orig/krita/ui/widgets/kis_wdg_autogradient.ui	2005-07-19 16:10:19.000000000 +0200
++++ koffice-1.4.1/krita/ui/widgets/kis_wdg_autogradient.ui	2005-09-18 17:46:19.000000000 +0200
+@@ -406,8 +406,7 @@
+ </tabstops>
+ <layoutdefaults spacing="6" margin="11"/>
+ <includehints>
+-    <includehint>kisgradientsliderwidget.h</includehint>
+-    <includehint>kcolorbutton.h</includehint>
++    <includehint>kis_gradient_slider_widget.h</includehint>
+     <includehint>kcolorbutton.h</includehint>
+ </includehints>
+ </UI>
