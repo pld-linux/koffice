@@ -13,7 +13,7 @@ Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
 Version:	%{_ver}
-Release:	4
+Release:	5
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
@@ -22,7 +22,7 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{ve
 Patch0:		%{name}-CAN-2005-0064.patch
 Patch1:		%{name}-ui.patch
 URL:		http://www.koffice.org/
-BuildRequires:	ImageMagick-c++-devel
+BuildRequires:	ImageMagick-c++-devel >= 1:6.2.4.0
 BuildRequires:	arts-qt-devel >= %{artsver}
 BuildRequires:	aspell-devel >= 2:0.50.2
 BuildRequires:	autoconf
