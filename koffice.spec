@@ -13,13 +13,12 @@ Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
 Version:	%{_ver}
-Release:	0.1
+Release:	1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	6b456fb7d54c84b11396b27a96ae0cf8
-Patch0:		%{name}-CAN-2005-0064.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel >= 1:6.2.4.0
 BuildRequires:	arts-qt-devel >= %{artsver}
@@ -355,7 +354,6 @@ Zawiera:
 
 %prep
 %setup -q
-%patch0 -p0
 
 %{__sed} -i 's/Categories=Qt;KDE;Office/Categories=Qt;KDE;Office;X-Misc;/' \
 	tools/kthesaurus/KThesaurus.desktop
