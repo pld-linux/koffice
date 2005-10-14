@@ -1,7 +1,7 @@
 #
 # Conditional build:
 %define		_state		stable
-%define		_ver		1.4.1
+%define		_ver		1.4.2
 %define		_snap		%{nil}
 %define		artsver		13:1.3.0
 
@@ -13,15 +13,13 @@ Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
 Version:	%{_ver}
-Release:	6
+Release:	0.1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	91a7b68757addc5934c5a8209a4926d5
+# Source0-md5:	6b456fb7d54c84b11396b27a96ae0cf8
 Patch0:		%{name}-CAN-2005-0064.patch
-Patch1:		%{name}-ui.patch
-Patch2:		ftp://ftp.linux.ee/pub/gentoo/distfiles/distfiles/post-koffice-1.4.1-rtfimport.diff
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel >= 1:6.2.4.0
 BuildRequires:	arts-qt-devel >= %{artsver}
@@ -358,8 +356,6 @@ Zawiera:
 %prep
 %setup -q
 %patch0 -p0
-%patch1 -p1
-%patch2 -p0
 
 %{__sed} -i 's/Categories=Qt;KDE;Office/Categories=Qt;KDE;Office;X-Misc;/' \
 	tools/kthesaurus/KThesaurus.desktop
@@ -421,7 +417,6 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
 
 mv $RPM_BUILD_ROOT{/usr/share/applnk/Office/*,%{_desktopdir}/kde}
-mv $RPM_BUILD_ROOT{/usr/share/applnk/Utilities/kformdesigner.desktop,%{_desktopdir}/kde}
 
 install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
@@ -781,6 +776,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kugar
 %{_datadir}/services/kugar_kugar_import.desktop
 %{_datadir}/services/kugarpart.desktop
+%{_iconsdir}/*/*/*/kudesigner.png
 %{_iconsdir}/*/*/*/kugar.png
 %{_iconsdir}/*/*/mimetypes/kugardata.png
 %{_mandir}/man1/kudesigner.1*
