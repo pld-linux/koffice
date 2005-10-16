@@ -338,7 +338,7 @@ Processador de texto do KOffice.
 Summary:	Koffice API documentation
 Summary(pl):	Dokumentacja API dla Koffice
 Group:		Documentation
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description apidocs
 Annotated reference of KOffice libraries programming interface including:
