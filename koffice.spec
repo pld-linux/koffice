@@ -716,6 +716,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/krita*.desktop
 %{_datadir}/templates/Illustration.desktop
 %{_desktopdir}/kde/krita.desktop
+%{_desktopdir}/kde/krita_magick.desktop
 %{_iconsdir}/hicolor/*/apps/krita.png
 
 %files kspread -f kspread.lang
