@@ -17,7 +17,7 @@ Release:	2
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{name}-%{version}/src/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-%{version}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	6b456fb7d54c84b11396b27a96ae0cf8
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel >= 1:6.2.4.0
@@ -177,17 +177,17 @@ KChart jest aplikacj± s³u¿±c± do generowania wykresów.
 %description kchart -l pt_BR
 Gerador de diagramas do KOffice.
 
-%package kexi 
-Summary:	KOffice - Kexi 
+%package kexi
+Summary:	KOffice - Kexi
 Summary(pl):	KOffice - Kexi
-Group:		X11/Applications 
-Requires:	%{name}-common = %{epoch}:%{version}-%{release} 
+Group:		X11/Applications
+Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 Requires:	mysql-libs
 
-%description kexi 
+%description kexi
 Kexi is KOffice part for using database system such as mysql.
 
-%description kexi -l pl 
+%description kexi -l pl
 Kexi jest aplikacj± s³u¿±c± do korzystania z systemów baz danych
 takich jak mysql.
 
@@ -243,12 +243,11 @@ Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 Obsoletes:	koffice-killustrator
 
 %description krita
-Krita is the vector drawing program for the K Desktop Environment.
-The aim of the Kontour project is the development of a freely
-available vector-based drawing application similar to Corel Draw or
-Adobe Illustrator.
-Krita was formerly known as KIllustrator but due to blackmail made
-by Adobe lawyers it has to be renamed.
+Krita is the vector drawing program for the K Desktop Environment. The
+aim of the Kontour project is the development of a freely available
+vector-based drawing application similar to Corel Draw or Adobe
+Illustrator. Krita was formerly known as KIllustrator but due to
+blackmail made by Adobe lawyers it has to be renamed.
 
 %description krita -l pl
 Krita jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
@@ -341,7 +340,8 @@ Group:		Documentation
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description apidocs
-Annotated reference of KOffice libraries programming interface including:
+Annotated reference of KOffice libraries programming interface
+including:
 - class lists
 - class members
 - namespaces
@@ -401,7 +401,7 @@ export DO_NOT_COMPILE="$DO_NOT_COMPILE kdgantt"
 	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
 	--with-qt-libraries=%{_libdir} \
 	--enable-final
-	
+
 %{__make}
 
 %install
@@ -411,10 +411,10 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir} \
 	kde_libs_htmldir=%{_kdedocdir}
-	
+
 install -d $RPM_BUILD_ROOT{%{_desktopdir}/kde,%{_mandir}/man1}
 
-mv $RPM_BUILD_ROOT{/usr/share/applnk/Office/*,%{_desktopdir}/kde}
+mv $RPM_BUILD_ROOT{%{_datadir}/applnk/Office/*,%{_desktopdir}/kde}
 
 install debian/*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
@@ -436,6 +436,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %post	common -p /sbin/ldconfig
 %postun common -p /sbin/ldconfig
+%post   kspread -p /sbin/ldconfig
+%postun kspread -p /sbin/ldconfig
 
 %files apidocs
 %defattr(644,root,root,755)
@@ -724,7 +726,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kspread
 %{_libdir}/libkdeinit_kspread.la
 %attr(755,root,root) %{_libdir}/libkdeinit_kspread.so
-%{_libdir}/libkspreadcommon.so.*.*.*
+%attr(755,root,root) %{_libdir}/libkspreadcommon.so.*.*.*
 %attr(755,root,root) %{_libdir}/libkspreadcommon.la
 %{_libdir}/kde3/kspread.la
 %attr(755,root,root) %{_libdir}/kde3/kspread.so
