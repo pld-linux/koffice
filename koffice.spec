@@ -1,5 +1,4 @@
-#
-# Conditional build:
+
 %define		_state		stable
 %define		_ver		1.4.2
 %define		_snap		%{nil}
@@ -390,7 +389,6 @@ done
 
 %build
 cp -f /usr/share/automake/config.sub admin
-export UNSERMAKE=/usr/share/unsermake/unsermake
 export DO_NOT_COMPILE="$DO_NOT_COMPILE kdgantt"
 %{__make} -f admin/Makefile.common cvs
 
@@ -399,8 +397,15 @@ export DO_NOT_COMPILE="$DO_NOT_COMPILE kdgantt"
 	--enable-libsuffix=64 \
 %endif
 	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
+	--with-mysql-includes=%{_includedir}/mysql \
+	--with-mysql-libraries=%{_libdir} \
+	--with-pgsqlincdir=%{_includedir} \
+	--with-pgsqllibdir=%{_libdir} \
+	--with-pqxxincdir=%{_includedir}/pqxx \
+	--with-pqxxlibdir=%{_libdir} \
 	--with-qt-libraries=%{_libdir} \
-	--enable-final
+	--disable-rpath \
+	--disable-final
 
 %{__make}
 
