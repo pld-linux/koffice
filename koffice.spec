@@ -442,11 +442,28 @@ cat thesaurus.lang >> kword.lang
 rm -rf $RPM_BUILD_ROOT
 
 %post	common -p /sbin/ldconfig
-%postun	common -p /sbin/ldconfig
+%postun common -p /sbin/ldconfig
+
+%post   karbon -p /sbin/ldconfig
+%postun karbon -p /sbin/ldconfig
+
+%post   kchart -p /sbin/ldconfig
+%postun kchart -p /sbin/ldconfig
+
 %post	kexi -p /sbin/ldconfig
 %postun	kexi -p /sbin/ldconfig
-%post	kspread -p /sbin/ldconfig
-%postun	kspread -p /sbin/ldconfig
+
+%post	kivio -p /sbin/ldconfig
+%postun	kivio -p /sbin/ldconfig
+
+%post	krita -p /sbin/ldconfig
+%postun	krita -p /sbin/ldconfig
+
+%post   kspread -p /sbin/ldconfig
+%postun kspread -p /sbin/ldconfig
+
+%post   kugar -p /sbin/ldconfig
+%postun kugar -p /sbin/ldconfig
 
 %files apidocs
 %defattr(644,root,root,755)
@@ -479,6 +496,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkwordexportfilters.so
 %{_includedir}/*.h
 %{_includedir}/kword
+# move it with *.so for -kexi to -kexi-devel?
 %{_includedir}/kexidb
 
 %files common -f koffice.lang
@@ -568,12 +586,14 @@ rm -rf $RPM_BUILD_ROOT
 %files karbon
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/karbon
-%{_libdir}/lib*karbon*.la
-%attr(755,root,root) %{_libdir}/*karbon*.so*
+%{_libdir}/libkarbon*.la
+%attr(755,root,root) %{_libdir}/libkarbon*.so.*.*.*
+%{_libdir}/libkdeinit_karbon.la
+%attr(755,root,root) %{_libdir}/libkdeinit_karbon.so
 %{_libdir}/kde3/*karbon*.la
-%attr(755,root,root) %{_libdir}/kde3/*karbon*.so*
+%attr(755,root,root) %{_libdir}/kde3/*karbon*.so
 %{_libdir}/kde3/*wmf*port.la
-%attr(755,root,root) %{_libdir}/kde3/*wmf*port.so*
+%attr(755,root,root) %{_libdir}/kde3/*wmf*port.so
 %{_datadir}/apps/karbon
 %{_datadir}/apps/konqueror/servicemenus/karbon_konqi.desktop
 %{_datadir}/services/karbon*
@@ -587,8 +607,10 @@ rm -rf $RPM_BUILD_ROOT
 %files kchart -f kchart.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kchart
-%{_libdir}/lib*kchart*.la
-%attr(755,root,root) %{_libdir}/lib*kchart*.so*
+%{_libdir}/libkchartcommon.la
+%attr(755,root,root) %{_libdir}/libkchartcommon.so.*.*.*
+%{_libdir}/libkdeinit_kchart.la
+%attr(755,root,root) %{_libdir}/libkdeinit_kchart.so
 %{_libdir}/kde3/kchart.la
 %attr(755,root,root) %{_libdir}/kde3/kchart.so
 %{_libdir}/kde3/libkchart*.la
@@ -614,7 +636,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkexi*.la
 %attr(755,root,root) %{_libdir}/libkexi*.so.*.*.*
 %{_libdir}/kde3/*kexi*.la
-%attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
+%attr(755,root,root) %{_libdir}/kde3/*kexi*.so
 %{_libdir}/kde3/containers.la
 %attr(755,root,root) %{_libdir}/kde3/containers.so
 %{_libdir}/kde3/stdwidgets.la
@@ -674,10 +696,14 @@ rm -rf $RPM_BUILD_ROOT
 %files kivio -f kivio.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kivio
-%{_libdir}/*kivio*.la
-%attr(755,root,root) %{_libdir}/*kivio*.so*
+%{_libdir}/libkiviocommon.la
+%attr(755,root,root) %{_libdir}/libkiviocommon.so.*.*.*
+%{_libdir}/libkivio*tool.la
+%attr(755,root,root) %{_libdir}/libkivio*tool.so
+%{_libdir}/libkdeinit_kivio.la
+%attr(755,root,root) %{_libdir}/libkdeinit_kivio.so
 %{_libdir}/kde3/*kivio*.la
-%attr(755,root,root) %{_libdir}/kde3/*kivio*.so*
+%attr(755,root,root) %{_libdir}/kde3/*kivio*.so
 %{_libdir}/kde3/straight_connector.la
 %attr(755,root,root) %{_libdir}/kde3/straight_connector.so
 %{_datadir}/apps/kivio
@@ -718,10 +744,12 @@ rm -rf $RPM_BUILD_ROOT
 %files krita
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/krita
+%{_libdir}/libkritacommon.la
+%attr(755,root,root) %{_libdir}/libkritacommon.so.*.*.*
+%{_libdir}/libkdeinit_krita.la
+%attr(755,root,root) %{_libdir}/libkdeinit_krita.so
 %{_libdir}/kde3/*krita*.la
 %attr(755,root,root) %{_libdir}/kde3/*krita*.so
-%{_libdir}/*krita*.la
-%attr(755,root,root) %{_libdir}/*krita*.so*
 %{_datadir}/apps/konqueror/servicemenus/krita_konqi.desktop
 %{_datadir}/apps/krita
 %{_datadir}/services/krita*.desktop
@@ -735,8 +763,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kspread
 %{_libdir}/libkdeinit_kspread.la
 %attr(755,root,root) %{_libdir}/libkdeinit_kspread.so
+%{_libdir}/libkspreadcommon.la
 %attr(755,root,root) %{_libdir}/libkspreadcommon.so.*.*.*
-%attr(755,root,root) %{_libdir}/libkspreadcommon.la
 %{_libdir}/kde3/kspread.la
 %attr(755,root,root) %{_libdir}/kde3/kspread.so
 %{_libdir}/kde3/libkspread*.la
@@ -772,14 +800,16 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kudesigner
 %attr(755,root,root) %{_bindir}/kugar
+%{_libdir}/libkugarlib.la
+%attr(755,root,root) %{_libdir}/libkugarlib.so.*.*.*
+%{_libdir}/libkdeinit_kugar.la
+%attr(755,root,root) %{_libdir}/libkdeinit_kugar.so
+%{_libdir}/libkudesignercore.la
+%attr(755,root,root) %{_libdir}/libkudesignercore.so
 %{_libdir}/kde3/*kugar*.la
 %attr(755,root,root) %{_libdir}/kde3/*kugar*.so
-%{_libdir}/*kugar*.la
-%attr(755,root,root) %{_libdir}/*kugar*.so
 %{_libdir}/kde3/*kudesigner*.la
 %attr(755,root,root) %{_libdir}/kde3/*kudesigner*.so
-%{_libdir}/*kudesigner*.la
-%attr(755,root,root) %{_libdir}/*kudesigner*.so
 %{_desktopdir}/kde/kudesigner.desktop
 %{_desktopdir}/kde/kugar.desktop
 %{_datadir}/apps/kudesigner
