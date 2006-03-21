@@ -18,6 +18,7 @@ License:	GPL/LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-%{version}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	6b456fb7d54c84b11396b27a96ae0cf8
+Patch0:		%{name}-gcc4.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel >= 1:6.2.4.0
 BuildRequires:	arts-qt-devel >= %{artsver}
@@ -353,6 +354,7 @@ Zawiera:
 
 %prep
 %setup -q
+%patch0 -p1
 
 %{__sed} -i 's/Categories=Qt;KDE;Office/Categories=Qt;KDE;Office;X-Misc;/' \
 	tools/kthesaurus/KThesaurus.desktop
@@ -608,7 +610,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkformdesigner.la
 %attr(755,root,root) %{_libdir}/libkformdesigner.so.*.*.*
 %{_libdir}/libkexi*.la
-%attr(755,root,root) %{_libdir}/libkexi*.so.*.*.*
+%attr(755,root,root) %{_libdir}/libkexi*.so.*
 %{_libdir}/kde3/*kexi*.la
 %attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
 %{_libdir}/kde3/containers.la
