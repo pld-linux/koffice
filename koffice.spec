@@ -442,9 +442,11 @@ cat thesaurus.lang >> kword.lang
 rm -rf $RPM_BUILD_ROOT
 
 %post	common -p /sbin/ldconfig
-%postun common -p /sbin/ldconfig
-%post   kspread -p /sbin/ldconfig
-%postun kspread -p /sbin/ldconfig
+%postun	common -p /sbin/ldconfig
+%post	kexi -p /sbin/ldconfig
+%postun	kexi -p /sbin/ldconfig
+%post	kspread -p /sbin/ldconfig
+%postun	kspread -p /sbin/ldconfig
 
 %files apidocs
 %defattr(644,root,root,755)
@@ -610,7 +612,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libkformdesigner.la
 %attr(755,root,root) %{_libdir}/libkformdesigner.so.*.*.*
 %{_libdir}/libkexi*.la
-%attr(755,root,root) %{_libdir}/libkexi*.so.*
+%attr(755,root,root) %{_libdir}/libkexi*.so.*.*.*
 %{_libdir}/kde3/*kexi*.la
 %attr(755,root,root) %{_libdir}/kde3/*kexi*.so*
 %{_libdir}/kde3/containers.la
