@@ -1,0 +1,38 @@
+diff -u -r koffice-1.4.95.orig/admin/acinclude.m4.in koffice-1.4.95/admin/acinclude.m4.in
+--- koffice-1.4.95.orig/admin/acinclude.m4.in	2006-02-23 07:34:17.000000000 +0100
++++ koffice-1.4.95/admin/acinclude.m4.in	2006-03-23 16:38:36.000000000 +0100
+@@ -4557,7 +4557,7 @@
+ 
+ PYTHONINC=-I$python_incdir
+ 
+-python_libdirs="$ac_python_dir/lib$kdelibsuff /usr/lib$kdelibsuff /usr/local /usr/lib$kdelibsuff $kde_extra_libs"
++python_libdirs="$ac_python_dir/lib$kdelibsuff /usr/lib$kdelibsuff /usr/local /usr/share $kde_extra_libs"
+ AC_FIND_FILE(libpython$version.so, $python_libdirs, python_libdir)
+ if test ! -r $python_libdir/libpython$version.so; then
+   AC_FIND_FILE(libpython$version.a, $python_libdirs, python_libdir)
+@@ -4576,9 +4576,9 @@
+   LIBPYTHON=-lpython$version
+ fi
+ 
+-AC_FIND_FILE(python$version/copy.py, $python_libdirs, python_moddir)
++AC_FIND_FILE(python$version/copy.pyc, $python_libdirs, python_moddir)
+ python_moddir=$python_moddir/python$version
+-if test ! -r $python_moddir/copy.py; then
++if test ! -r $python_moddir/copy.pyc; then
+   python_moddir=no
+ fi
+ 
+diff -u -r koffice-1.4.95.orig/kexi/kexidb/drivers/configure.in.in koffice-1.4.95/kexi/kexidb/drivers/configure.in.in
+--- koffice-1.4.95.orig/kexi/kexidb/drivers/configure.in.in	2006-03-03 21:43:44.000000000 +0100
++++ koffice-1.4.95/kexi/kexidb/drivers/configure.in.in	2006-03-23 16:44:44.000000000 +0100
+@@ -54,8 +54,8 @@
+ 
+     AC_MSG_CHECKING([for MySQL libraries])
+     mysql_libdirs="$ac_mysql_libdir /usr/local/lib$kdelibsuff /usr/lib$kdelibsuff"
+-    AC_FIND_FILE(mysql/libmysqlclient.so, $mysql_libdirs, mysql_libdir)
+-    if test -r $mysql_libdir/mysql/libmysqlclient.so; then
++    AC_FIND_FILE(libmysqlclient.so, $mysql_libdirs, mysql_libdir)
++    if test -r $mysql_libdir/libmysqlclient.so; then
+       MYSQL_LIBS=$mysql_libdir
+       AC_MSG_RESULT([$MYSQL_LIBS])
+       AC_SUBST(MYSQL_LIBS)
