@@ -12,7 +12,7 @@ Summary(uk):	Наб╕р оф╕сних програм для KDE
 Summary(zh_CN):	KDE ╣д╟Л╧╚с╕сцхМ╪Ч╪╞║ё
 Name:		koffice
 Version:	%{_ver}
-Release:	0.1
+Release:	1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
