@@ -735,7 +735,8 @@ rm -rf $RPM_BUILD_ROOT
 %files kplato -f kplato.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kplato
-%attr(755,root,root) %{_libdir}/libkdeinit_kplato.la
+%{_libdir}/libkdeinit_kplato.la
+%attr(755,root,root) %{_libdir}/libkdeinit_kplato.so
 %{_libdir}/kde3/kplato.la
 %attr(755,root,root) %{_libdir}/kde3/kplato.so
 %{_libdir}/kde3/libkplatopart.la
@@ -846,7 +847,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/kudesigner
 %attr(755,root,root) %{_bindir}/kugar
-%attr(755,root,root) %{_libdir}/libkdeinit_kudesigner.la
+%{_libdir}/libkdeinit_kudesigner.la
+%attr(755,root,root) %{_libdir}/libkdeinit_kudesigner.so
 %{_libdir}/libkugarlib.la
 %attr(755,root,root) %{_libdir}/libkugarlib.so.*.*.*
 %{_libdir}/libkdeinit_kugar.la
