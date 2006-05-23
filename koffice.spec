@@ -430,8 +430,8 @@ for f in `find . -name *.desktop`; do
 done
 
 %build
-#cp -f /usr/share/automake/config.sub admin
-#%{__make} -f admin/Makefile.common cvs
+cp -f /usr/share/automake/config.sub admin
+%{__make} -f admin/Makefile.common cvs
 
 %configure \
 %if "%{_lib}" == "lib64"
