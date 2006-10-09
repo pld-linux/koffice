@@ -20,6 +20,8 @@ Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-1.6-rc1/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	2134a0d09a3f98b91a062c7bafb57622
 Patch0:		%{name}-build.patch
+Patch1:		%{name}-python25-64bit.patch
+Patch2:		kde-ac260-lt.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel >= 1:6.2.4.0
 BuildRequires:	OpenEXR-devel
@@ -396,6 +398,8 @@ Zawiera:
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %{__sed} -i 's/Categories=Qt;KDE;Office/Categories=Qt;KDE;Office;X-Misc;/' \
 	tools/kthesaurus/KThesaurus.desktop
