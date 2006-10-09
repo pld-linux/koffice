@@ -16,7 +16,8 @@ Release:	0.1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-%{version}/src/%{name}-%{version}.tar.bz2
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-%{version}/src/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-1.6-rc1/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	2134a0d09a3f98b91a062c7bafb57622
 Patch0:		%{name}-build.patch
 URL:		http://www.koffice.org/
