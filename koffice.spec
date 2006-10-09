@@ -1,6 +1,6 @@
 
-%define		_state		stable
-%define		_ver		1.5.2
+%define		_state		unstable
+%define		_ver		1.5.92
 %define		_snap		%{nil}
 %define		artsver		13:1.3.0
 
@@ -12,12 +12,12 @@ Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
 Version:	%{_ver}
-Release:	2
+Release:	0.1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	cbe9deeb7c811a6bb5a954989b25c1f2
+# Source0-md5:	2134a0d09a3f98b91a062c7bafb57622
 Patch0:		%{name}-build.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel >= 1:6.2.4.0
