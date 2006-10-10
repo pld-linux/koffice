@@ -1,4 +1,18 @@
-
+#
+# TODO:
+#	- package:
+#	/usr/lib/kde3/krosskspreadcore.la
+#	/usr/lib/kde3/krosskspreadcore.so
+#	/usr/lib/kde3/kspreadscripting.la
+#	/usr/lib/kde3/kspreadscripting.so
+#	/usr/lib/kde3/libolefilter.la
+#	/usr/lib/kde3/libolefilter.so
+#	/usr/share/services/ole_powerpoint97_import.desktop
+#
+#	- move libkexidb*.so to -common package? i.e. kspread needs them.
+#	- fix /usr/share/apps/xsltfilter/export/kword/xslfo issue.
+#	- remove /usr/share/doc/kde/HTML/en/koffice-apidocs parts from non-apidoc packages.
+#
 %define		_state		unstable
 %define		_ver		1.5.92
 %define		_snap		%{nil}
