@@ -1,0 +1,4 @@
+- added desktop for kudesigner
+- kformula and kudesigner icons moved to toplevel %{_pixmapdir}
+  (kudesigner as a separate source to be converted to 48x48)
+- moved kudesigner to kugar
