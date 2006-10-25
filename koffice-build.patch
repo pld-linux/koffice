@@ -10,18 +10,6 @@ diff -u -r koffice-1.4.95.orig/admin/acinclude.m4.in koffice-1.4.95/admin/acincl
  AC_FIND_FILE(libpython$version.so, $python_libdirs, python_libdir)
  if test ! -r $python_libdir/libpython$version.so; then
    AC_FIND_FILE(libpython$version.a, $python_libdirs, python_libdir)
-@@ -4576,9 +4576,9 @@
-   LIBPYTHON=-lpython$version
- fi
- 
--AC_FIND_FILE(python$version/copy.py, $python_libdirs, python_moddir)
-+AC_FIND_FILE(python$version/copy.pyc, $python_libdirs, python_moddir)
- python_moddir=$python_moddir/python$version
--if test ! -r $python_moddir/copy.py; then
-+if test ! -r $python_moddir/copy.pyc; then
-   python_moddir=no
- fi
- 
 diff -u -r koffice-1.4.95.orig/kexi/kexidb/drivers/configure.in.in koffice-1.4.95/kexi/kexidb/drivers/configure.in.in
 --- koffice-1.4.95.orig/kexi/kexidb/drivers/configure.in.in	2006-03-03 21:43:44.000000000 +0100
 +++ koffice-1.4.95/kexi/kexidb/drivers/configure.in.in	2006-03-23 16:44:44.000000000 +0100
