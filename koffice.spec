@@ -13,8 +13,8 @@
 #	- fix /usr/share/apps/xsltfilter/export/kword/xslfo issue.
 #	- remove /usr/share/doc/kde/HTML/en/koffice-apidocs parts from non-apidoc packages.
 #
-%define		_state		unstable
-%define		_ver		1.5.92
+%define		_state		stable
+%define		_ver		1.6.0
 %define		_snap		%{nil}
 %define		artsver		13:1.3.0
 
@@ -30,9 +30,9 @@ Release:	0.1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
-#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-%{version}/src/%{name}-%{version}.tar.bz2
-Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-1.6-rc1/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	2134a0d09a3f98b91a062c7bafb57622
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-%{version}/src/%{name}-%{version}.tar.bz2
+# Source0-md5:	e669cf19b2e1c7db7029c0772c527c0d
+#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-1.6-rc1/src/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-build.patch
 Patch1:		%{name}-python25-64bit.patch
 Patch2:		kde-ac260-lt.patch
@@ -412,7 +412,7 @@ Zawiera:
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
+#%patch1 -p1
 %patch2 -p1
 
 %{__sed} -i 's/Categories=Qt;KDE;Office/Categories=Qt;KDE;Office;X-Misc;/' \
