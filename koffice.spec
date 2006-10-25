@@ -32,10 +32,10 @@ License:	GPL/LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-%{version}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	e669cf19b2e1c7db7029c0772c527c0d
-#Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-1.6-rc1/src/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-build.patch
-Patch1:		%{name}-python25-64bit.patch
-Patch2:		kde-ac260-lt.patch
+Patch0:		kde-common-PLD.patch
+Patch1:		%{name}-build.patch
+Patch2:		%{name}-python25-64bit.patch
+Patch3:		kde-ac260-lt.patch
 URL:		http://www.koffice.org/
 BuildRequires:	ImageMagick-c++-devel >= 1:6.2.4.0
 BuildRequires:	OpenEXR-devel
@@ -317,10 +317,10 @@ Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kross-python
-Kross is a scripting bridge to embed scripting functionality
-into an application. Kross provides an abstract API to access
-the scripting functionality in a interpreter-independend
-way. This package provides Python scripting backend.
+Kross is a scripting bridge to embed scripting functionality into an
+application. Kross provides an abstract API to access the scripting
+functionality in a interpreter-independend way. This package provides
+Python scripting backend.
 
 %package kross-ruby
 Summary:	KOffice - Kross Ruby
@@ -328,10 +328,10 @@ Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kross-ruby
-Kross is a scripting bridge to embed scripting functionality
-into an application. Kross provides an abstract API to access
-the scripting functionality in a interpreter-independend
-way. This package provides Ruby scripting backend.
+Kross is a scripting bridge to embed scripting functionality into an
+application. Kross provides an abstract API to access the scripting
+functionality in a interpreter-independend way. This package provides
+Ruby scripting backend.
 
 %package kspread
 Summary:	KOffice - KSpread
@@ -412,8 +412,9 @@ Zawiera:
 %prep
 %setup -q
 %patch0 -p1
-#%patch1 -p1
-%patch2 -p1
+%patch1 -p1
+#%patch2 -p1
+%patch3 -p1
 
 %{__sed} -i 's/Categories=Qt;KDE;Office/Categories=Qt;KDE;Office;X-Misc;/' \
 	tools/kthesaurus/KThesaurus.desktop
@@ -954,7 +955,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/services/kword*.desktop
 %{_datadir}/services/thesaurustool.desktop
 %{_datadir}/services/kwmailmerge_kabc.desktop
-#this is the mailmerge service info for qtsqldb and classic
+# this is the mailmerge service info for qtsqldb and classic
 %{_datadir}/services/kwserialletter*
 %{_datadir}/templates/.source/TextDocument.kwt
 %{_datadir}/templates/TextDocument.desktop
