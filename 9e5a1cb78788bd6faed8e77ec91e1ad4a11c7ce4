@@ -1,0 +1,4 @@
+- up to 1.4.1
+- %files not completed (ca 50 files needs to be packed)
+- patch0 moved to spec ( %{__sed} ). It's easiest way.
+- rel 0.1 (NFY)
