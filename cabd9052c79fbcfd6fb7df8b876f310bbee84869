@@ -1,0 +1,5 @@
+- finally killed KIllustrator (and also Krayon)
+- utility packages sorted alphabetically
+- restored moving highest-resolution icons to toplevel %{_pixmapsdir} +
+  removing other resolution icons
+- release 3
