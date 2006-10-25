@@ -1,0 +1,3 @@
+- more %files (needs checkout)
+- log shorten
+- %if "%{_state}" == "snaphots"  hashed (#), because I've no idea what for is that.
