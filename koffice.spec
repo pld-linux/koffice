@@ -1,12 +1,6 @@
 #
 # TODO:
 #	- package:
-#	/usr/lib/kde3/krosskspreadcore.la
-#	/usr/lib/kde3/krosskspreadcore.so
-#	/usr/lib/kde3/kspreadscripting.la
-#	/usr/lib/kde3/kspreadscripting.so
-#	/usr/lib/kde3/libolefilter.la
-#	/usr/lib/kde3/libolefilter.so
 #	/usr/share/services/ole_powerpoint97_import.desktop
 #
 #	- move libkexidb*.so to -common package? i.e. kspread needs them.
@@ -606,6 +600,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/libxslt*port*.so
 %{_libdir}/kde3/libkounavailpart.la
 %attr(755,root,root) %{_libdir}/kde3/libkounavailpart.so
+%{_libdir}/kde3/libolefilter.la
+%attr(755,root,root) %{_libdir}/kde3/libolefilter.so
 %{_datadir}/apps/koffice
 %{_datadir}/apps/kofficewidgets
 %{_datadir}/apps/koshell
@@ -621,12 +617,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/servicetypes/*
 %dir %{_datadir}/apps/kross
 %dir %{_datadir}/templates/.source
-# Conflicts with kdelibs
-#%{_datadir}/mimelnk/image/x-msod.desktop
-#%{_datadir}/mimelnk/image/x-wmf.desktop
-#%{_datadir}/mimelnk/image/x-xfig.desktop
-#%{_datadir}/mimelnk/text/x-csv.desktop
 %{_desktopdir}/kde/koshell.desktop
+%{_datadir}/services/ole_powerpoint97_import.desktop
 %{_iconsdir}/hicolor/*/apps/koshell.*
 %{_iconsdir}/crystalsvg/*/actions/gsu*.png
 
@@ -833,6 +825,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkspreadcommon.so.*.*.*
 %{_libdir}/kde3/kspread.la
 %attr(755,root,root) %{_libdir}/kde3/kspread.so
+%{_libdir}/kde3/krosskspreadcore.la
+%attr(755,root,root) %{_libdir}/kde3/krosskspreadcore.so
+%{_libdir}/kde3/kspreadscripting.la
+%attr(755,root,root) %{_libdir}/kde3/kspreadscripting.so
 %{_libdir}/kde3/libkspread*.la
 %attr(755,root,root) %{_libdir}/kde3/libkspread*.so
 %{_libdir}/kde3/libcsv*.la
