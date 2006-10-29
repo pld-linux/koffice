@@ -1,8 +1,4 @@
-#
 # TODO:
-#	- package:
-#	/usr/share/services/ole_powerpoint97_import.desktop
-#
 #	- move libkexidb*.so to -common package? i.e. kspread needs them.
 #	- fix /usr/share/apps/xsltfilter/export/kword/xslfo issue.
 #	- remove /usr/share/doc/kde/HTML/en/koffice-apidocs parts from non-apidoc packages.
@@ -20,7 +16,7 @@ Summary(uk):	Наб╕р оф╕сних програм для KDE
 Summary(zh_CN):	KDE ╣д╟Л╧╚с╕сцхМ╪Ч╪╞║ё
 Name:		koffice
 Version:	%{_ver}
-Release:	0.1
+Release:	1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
