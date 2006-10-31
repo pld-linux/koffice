@@ -27,6 +27,7 @@ Patch1:		%{name}-build.patch
 Patch2:		%{name}-python25-64bit.patch
 Patch3:		kde-ac260-lt.patch
 URL:		http://www.koffice.org/
+BuildRequires:	GraphicsMagick-devel >= 1.1.7
 BuildRequires:	ImageMagick-c++-devel >= 1:6.2.4.0
 BuildRequires:	OpenEXR-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
@@ -46,6 +47,7 @@ BuildRequires:	libwpd-devel
 BuildRequires:	libxml2-devel >= 0:2.4.8
 BuildRequires:	libxslt-devel >= 1.0.7
 BuildRequires:	mysql-devel
+BuildRequires:	poppler-qt-devel >= 0.5.1
 BuildRequires:	pkgconfig
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	readline-devel
