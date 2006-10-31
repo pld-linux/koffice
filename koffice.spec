@@ -47,8 +47,8 @@ BuildRequires:	libwpd-devel
 BuildRequires:	libxml2-devel >= 0:2.4.8
 BuildRequires:	libxslt-devel >= 1.0.7
 BuildRequires:	mysql-devel
-BuildRequires:	poppler-qt-devel >= 0.5.1
 BuildRequires:	pkgconfig
+BuildRequires:	poppler-qt-devel >= 0.5.1
 BuildRequires:	python-devel >= 2.2
 BuildRequires:	readline-devel
 BuildRequires:	rpm-pythonprov
