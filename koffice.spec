@@ -69,9 +69,8 @@ KOffice contains:
 - KPresenter - presentations
 - Kivio - A Visio(R)-style flowcharting application
 - KChart - diagram generator
-- Kontour - vector drawing
-- Karbon - A pixel-based image manipulation program like The GIMP or
-  Adobe(c) Photoshop(R)
+- Karbon - A vector-based drawing application
+- Krita - A pixel-based drawing application like The GIMP
 - Kugar - A tool for generating business quality reports
 
 %description -l pl
@@ -83,9 +82,8 @@ Pakiet miêdzy innymi zawiera:
 - KPresenter - tworzenie prezentacji
 - Kivio - aplikacja wzorowana na Visio(R)
 - KChart - generator wykresów
-- Kontour - grafika wektorowa
-- Karbon - bazuj±cy na pikselach program typu GIMP czy Adobe(c)
-  Photoshop(R)
+- Karbon - aplikacja do edycji grafiki wektorowej
+- Krita - aplikacja do edycji grafiki bitmapowej
 - Kugar - narzêdzie do generowania raportów jako¶ci biznesowej
 
 %description -l ru
@@ -134,9 +132,8 @@ KOffice contains:
 - KPresenter - presentations
 - Kivio - A Visio(R)-style flowcharting application
 - KChart - diagram generator
-- Kontour - vector drawing
-- Karbon - A pixel-based image manipulation program like The GIMP or
-  Adobe(c) Photoshop(R)
+- Karbon - A vector-based drawing application
+- Krita - A pixel-based drawing application
 - Kugar - A tool for generating business quality reports
 
 Package contains common files and libraries needs by KOffice
@@ -151,9 +148,8 @@ Pakiet miêdzy innymi zawiera:
 - KPresenter - tworzenie prezentacji
 - Kivio - aplikacja wzorowana na Visio(R)
 - KChart - generator wykresów
-- Kontour - grafika wektorowa
-- Karbon - bazuj±cy na pikselach program typu GIMP czy Adobe(c)
-  Photoshop(R)
+- Karbon - aplikacja do edycji grafiki wektorowej
+- Krita - aplikacja do edycji grafiki bitmapowej
 - Kugar - narzêdzie do generowania raportów jako¶ci biznesowej
 
 Pakiet zawiera wspólne pliki i biblioteki wymagane przez aplikacje
@@ -285,23 +281,14 @@ Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 Obsoletes:	koffice-killustrator
 
 %description krita
-Krita is the vector drawing program for the K Desktop Environment. The
-aim of the Kontour project is the development of a freely available
-vector-based drawing application similar to Corel Draw or Adobe
-Illustrator. Krita was formerly known as KIllustrator but due to
-blackmail made by Adobe lawyers it has to be renamed.
+Krita is a painting and image editing application for KOffice. It
+supports many color spaces like RGB, grayscale, CMYK, Lab, YCBCR and
+LMS, in 8 and 16 bits per channel
 
 %description krita -l pl
-Krita jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
-KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni
-funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
-lub Adobe Illustrator.
-
-Krita wczesniej by³ znany jako KIlustrator ale developerzy zostali
-zmuszeni szanta¿em przez prawników Adobe do zmiany nazwy.
-
-%description krita -l pt_BR
-Ferramenta de desenho vetorial do KOffice.
+Krita jest aplikacj± do edycji grafiki bitmapowej. Wspiera ró¿ne
+przestrzenie barw, jak np. RGB, skala szaro¶ci, CMYK, Lab, YCBCR
+oraz LMS - zarówno w trybie 8 jak i 16 bitowym na kana³.
 
 %package kross-python
 Summary:	KOffice - Kross Python
