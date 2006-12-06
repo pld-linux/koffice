@@ -4,7 +4,7 @@
 #	- remove /usr/share/doc/kde/HTML/en/koffice-apidocs parts from non-apidoc packages.
 #
 %define		_state		stable
-%define		_ver		1.6.0
+%define		_ver		1.6.1
 %define		_snap		%{nil}
 %define		artsver		13:1.3.0
 
@@ -21,7 +21,7 @@ Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	e669cf19b2e1c7db7029c0772c527c0d
+# Source0-md5:	f7b90b46b79019edc60761a6bff2d387
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-build.patch
 Patch2:		%{name}-python25-64bit.patch
@@ -786,8 +786,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kritaplugins
 %{_datadir}/services/krita*.desktop
 %{_datadir}/templates/Illustration.desktop
+%{_datadir}/applnk/.hidden/krita_*.desktop
 %{_desktopdir}/kde/krita.desktop
-%{_desktopdir}/kde/krita_*.desktop
 %{_iconsdir}/hicolor/*/apps/krita.png
 
 %files kross-python
