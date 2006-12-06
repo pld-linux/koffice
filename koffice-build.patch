@@ -10,19 +10,6 @@ diff -ur org/admin/acinclude.m4.in mod/admin/acinclude.m4.in
  AC_FIND_FILE(libpython$version.so, $python_libdirs, python_libdir)
  if test ! -r $python_libdir/libpython$version.so; then
    AC_FIND_FILE(libpython$version.a, $python_libdirs, python_libdir)
-Tylko w mod/admin: acinclude.m4.in.orig
-diff -ur org/admin/cvs.sh mod/admin/cvs.sh
---- org/admin/cvs.sh	2006-10-07 15:41:51.000000000 +0200
-+++ mod/admin/cvs.sh	2006-11-12 15:39:17.787004750 +0100
-@@ -68,7 +68,7 @@
-     echo "*** KDE requires automake $required_automake_version"
-     exit 1
-     ;;
--  automake*1.6.* | automake*1.7* | automake*1.8* | automake*1.9*)
-+  automake*1.6.* | automake*1.7* | automake*1.8* | automake*1.9* | automake*1.10* )
-     echo "*** $AUTOMAKE_STRING found."
-     UNSERMAKE=no
-     ;;
 diff -ur org/filters/kpresenter/Makefile.am mod/filters/kpresenter/Makefile.am
 --- org/filters/kpresenter/Makefile.am	2006-10-07 15:33:06.000000000 +0200
 +++ mod/filters/kpresenter/Makefile.am	2006-11-12 15:33:37.645747250 +0100
