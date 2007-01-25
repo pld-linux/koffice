@@ -1,6 +1,5 @@
 # TODO:
 #	- move libkexidb*.so to -common package? i.e. kspread needs them.
-#	- fix /usr/share/apps/xsltfilter/export/kword/xslfo issue.
 #	- remove /usr/share/doc/kde/HTML/en/koffice-apidocs parts from non-apidoc packages.
 #
 %define		_state		stable
@@ -16,7 +15,7 @@ Summary(uk):	Наб╕р оф╕сних програм для KDE
 Summary(zh_CN):	KDE ╣д╟Л╧╚с╕сцхМ╪Ч╪╞║ё
 Name:		koffice
 Version:	%{_ver}
-Release:	2
+Release:	3
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
@@ -930,6 +929,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/kwmailmerge_qtsqldb*.so
 %{_datadir}/apps/kword
 %{_datadir}/apps/thesaurus
+%dir %{_datadir}/apps/xsltfilter/export/kword
+%dir %{_datadir}/apps/xsltfilter/export/kword/xslfo
 %{_datadir}/apps/xsltfilter/export/kword/xslfo/*.xsl
 %{_datadir}/apps/konqueror/servicemenus/kword_konqi.desktop
 %{_datadir}/services/kfile_abiword.desktop
