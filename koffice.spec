@@ -15,7 +15,7 @@ Summary(uk):	Наб╕р оф╕сних програм для KDE
 Summary(zh_CN):	KDE ╣д╟Л╧╚с╕сцхМ╪Ч╪╞║ё
 Name:		koffice
 Version:	%{_ver}
-Release:	3
+Release:	4
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
@@ -929,6 +929,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/kwmailmerge_qtsqldb*.so
 %{_datadir}/apps/kword
 %{_datadir}/apps/thesaurus
+%dir %{_datadir}/apps/xsltfilter
+%dir %{_datadir}/apps/xsltfilter/export
 %dir %{_datadir}/apps/xsltfilter/export/kword
 %dir %{_datadir}/apps/xsltfilter/export/kword/xslfo
 %{_datadir}/apps/xsltfilter/export/kword/xslfo/*.xsl
