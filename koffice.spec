@@ -8,11 +8,11 @@
 %define		artsver		13:1.4.1
 
 Summary:	KOffice - powerful office suite for KDE
-Summary(pl):	KOffice - potê¿ny pakiet biurowy dla KDE
-Summary(pt_BR):	Suíte de aplicativos office para o KDE
-Summary(ru):	îÁÂÏÒ ÏÆÆÉÓÎÙÈ ÐÒÏÇÒÁÍÍ ÄÌÑ KDE
-Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
-Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
+Summary(pl.UTF-8):   KOffice - potÄ™Å¼ny pakiet biurowy dla KDE
+Summary(pt_BR.UTF-8):   SuÃ­te de aplicativos office para o KDE
+Summary(ru.UTF-8):   ÐÐ°Ð±Ð¾Ñ€ Ð¾Ñ„Ñ„Ð¸ÑÐ½Ñ‹Ñ… Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼ Ð´Ð»Ñ KDE
+Summary(uk.UTF-8):   ÐÐ°Ð±Ñ–Ñ€ Ð¾Ñ„Ñ–ÑÐ½Ð¸Ñ… Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼ Ð´Ð»Ñ KDE
+Summary(zh_CN.UTF-8):   KDE çš„åŠžå…¬åº”ç”¨è½¯ä»¶é›†ã€‚
 Name:		koffice
 Version:	%{_ver}
 Release:	0.1
@@ -60,35 +60,35 @@ KOffice contains:
   Adobe(c) Photoshop(R)
 - Kugar - A tool for generating business quality reports
 
-%description -l pl
-KOffice jest zintegrowanym pakietem biurowym dla ¶rodowiska KDE.
-Pakiet miêdzy innymi zawiera:
+%description -l pl.UTF-8
+KOffice jest zintegrowanym pakietem biurowym dla Å›rodowiska KDE.
+Pakiet miÄ™dzy innymi zawiera:
 - KWord - procesor tekstu
-- KFormula - edytor równañ
+- KFormula - edytor rÃ³wnaÅ„
 - KSpread - arkusz kalkulacyjny
 - KPresenter - tworzenie prezentacji
 - Kivio - aplikacja wzorowana na Visio(R)
-- KChart - generator wykresów
+- KChart - generator wykresÃ³w
 - Kontour - grafika wektorowa
-- Karbon - bazuj±cy na pikselach program typu GIMP czy Adobe(c)
+- Karbon - bazujÄ…cy na pikselach program typu GIMP czy Adobe(c)
   Photoshop(R)
-- Kugar - narzêdzie do generowania raportów jako¶ci biznesowej
+- Kugar - narzÄ™dzie do generowania raportÃ³w jakoÅ›ci biznesowej
 
-%description -l ru
-ïÆÆÉÓÎÙÅ ÐÒÏÇÒÁÍÍÙ ÄÌÑ K Desktop Environment 2.0. óÏÄÅÒÖÉÔ: KWord
-(ÔÅËÓÔÏ×ÙÊ ÐÒÏÃÅÓÓÏÒ), KSpread (ÜÌÅËÔÒÏÎÎÁÑ ÔÁÂÌÉÃÁ), KPresenter
-(ÐÒÅÚÅÎÔÁÃÉÉ) É KChart (ÇÅÎÅÒÁÔÏÒ ÄÉÁÇÒÁÍÍ).
+%description -l ru.UTF-8
+ÐžÑ„Ñ„Ð¸ÑÐ½Ñ‹Ðµ Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¼Ñ‹ Ð´Ð»Ñ K Desktop Environment 2.0. Ð¡Ð¾Ð´ÐµÑ€Ð¶Ð¸Ñ‚: KWord
+(Ñ‚ÐµÐºÑÑ‚Ð¾Ð²Ñ‹Ð¹ Ð¿Ñ€Ð¾Ñ†ÐµÑÑÐ¾Ñ€), KSpread (ÑÐ»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð½Ð°Ñ Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ð°), KPresenter
+(Ð¿Ñ€ÐµÐ·ÐµÐ½Ñ‚Ð°Ñ†Ð¸Ð¸) Ð¸ KChart (Ð³ÐµÐ½ÐµÑ€Ð°Ñ‚Ð¾Ñ€ Ð´Ð¸Ð°Ð³Ñ€Ð°Ð¼Ð¼).
 
-%description -l uk
-ïÆ¦ÓÎ¦ ÐÒÏÇÒÁÍÉ ÄÌÑ K Desktop Environment 2.0. í¦ÓÔÉÔØ: KWord
-(ÔÅËÓÔÏ×ÉÊ ÐÒÏÃÅÓÏÒ), KSpread (ÅÌÅËÔÒÏÎÎÁ ÔÁÂÌÉÃÑ), KPresenter
-(ÐÒÅÚÅÎÔÁÃ¦§) ÔÁ KChart (ÇÅÎÅÒÁÔÏÒ Ä¦ÁÇÒÁÍ).
+%description -l uk.UTF-8
+ÐžÑ„Ñ–ÑÐ½Ñ– Ð¿Ñ€Ð¾Ð³Ñ€Ð°Ð¼Ð¸ Ð´Ð»Ñ K Desktop Environment 2.0. ÐœÑ–ÑÑ‚Ð¸Ñ‚ÑŒ: KWord
+(Ñ‚ÐµÐºÑÑ‚Ð¾Ð²Ð¸Ð¹ Ð¿Ñ€Ð¾Ñ†ÐµÑÐ¾Ñ€), KSpread (ÐµÐ»ÐµÐºÑ‚Ñ€Ð¾Ð½Ð½Ð° Ñ‚Ð°Ð±Ð»Ð¸Ñ†Ñ), KPresenter
+(Ð¿Ñ€ÐµÐ·ÐµÐ½Ñ‚Ð°Ñ†Ñ–Ñ—) Ñ‚Ð° KChart (Ð³ÐµÐ½ÐµÑ€Ð°Ñ‚Ð¾Ñ€ Ð´Ñ–Ð°Ð³Ñ€Ð°Ð¼).
 
 %package devel
 Summary:	KOffice - header files
-Summary(es):	Header files for compiling applications that use koffice libraries
-Summary(pl):	KOffice - pliki nag³ówkowe
-Summary(pt_BR):	Arquivos de inclusão necessários à compilação de aplicações que usem as bibliotecas do koffice
+Summary(es.UTF-8):   Header files for compiling applications that use koffice libraries
+Summary(pl.UTF-8):   KOffice - pliki nagÅ‚Ã³wkowe
+Summary(pt_BR.UTF-8):   Arquivos de inclusÃ£o necessÃ¡rios Ã  compilaÃ§Ã£o de aplicaÃ§Ãµes que usem as bibliotecas do koffice
 Group:		X11/Development/Libraries
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
@@ -96,30 +96,30 @@ Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 This package includes the header files you will need to compile
 applications that use koffice libraries.
 
-%description devel -l pl
-Ten pakiet zawiera pliki nag³ówkowe potrzebne przy kompilowaniu
-programów u¿ywaj±cych bibliotek KOffice.
+%description devel -l pl.UTF-8
+Ten pakiet zawiera pliki nagÅ‚Ã³wkowe potrzebne przy kompilowaniu
+programÃ³w uÅ¼ywajÄ…cych bibliotek KOffice.
 
-%description devel -l pt_BR
-Arquivos de inclusão necessários à compilação de aplicações que usem
+%description devel -l pt_BR.UTF-8
+Arquivos de inclusÃ£o necessÃ¡rios Ã  compilaÃ§Ã£o de aplicaÃ§Ãµes que usem
 as bibliotecas do koffice.
 
 %package apidocs
 Summary:	API documentation
-Summary(pl):	Dokumentacja API
+Summary(pl.UTF-8):   Dokumentacja API
 Group:		Development/Docs
 Requires:	kdelibs >= 9:3.2.90
 
 %description apidocs
 API documentation.
 
-%description apidocs -l pl
+%description apidocs -l pl.UTF-8
 Dokumentacja API.
 
 %package common
 Summary:	KOffice - common files and libraries
-Summary(pl):	KOffice - wspólne pliki i biblioteki
-Summary(pt_BR):	Arquivos requeridos por todos os softwares koffice
+Summary(pl.UTF-8):   KOffice - wspÃ³lne pliki i biblioteki
+Summary(pt_BR.UTF-8):   Arquivos requeridos por todos os softwares koffice
 Group:		X11/Applications
 Requires:	kdebase-core >= 9:3.2.90
 
@@ -140,29 +140,29 @@ KOffice contains:
 Package contains common files and libraries needs by KOffice
 applications.
 
-%description common -l pl
-KOffice jest zintegrowanym pakietem biurowym dla ¶rodowiska KDE.
-Pakiet miêdzy innymi zawiera:
+%description common -l pl.UTF-8
+KOffice jest zintegrowanym pakietem biurowym dla Å›rodowiska KDE.
+Pakiet miÄ™dzy innymi zawiera:
 - KWord - procesor tekstu
-- KFormula - edytor równañ
+- KFormula - edytor rÃ³wnaÅ„
 - KSpread - arkusz kalkulacyjny
 - KPresenter - tworzenie prezentacji
 - Kivio - aplikacja wzorowana na Visio(R)
-- KChart - generator wykresów
+- KChart - generator wykresÃ³w
 - Kontour - grafika wektorowa
-- Karbon - bazuj±cy na pikselach program typu GIMP czy Adobe(c)
+- Karbon - bazujÄ…cy na pikselach program typu GIMP czy Adobe(c)
   Photoshop(R)
-- Kugar - narzêdzie do generowania raportów jako¶ci biznesowej
+- Kugar - narzÄ™dzie do generowania raportÃ³w jakoÅ›ci biznesowej
 
-Pakiet zawiera wspólne pliki i biblioteki wymagane przez aplikacje
+Pakiet zawiera wspÃ³lne pliki i biblioteki wymagane przez aplikacje
 KOffice.
 
-%description common -l pt_BR
+%description common -l pt_BR.UTF-8
 Arquivos requeridos por todos os softwares koffice.
 
 %package karbon
 Summary:	KOffice - Karbon
-Summary(pl):	KOffice - Karbon
+Summary(pl.UTF-8):   KOffice - Karbon
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 #karbon has changed its named (again) to curt therefore in the future:
@@ -171,13 +171,13 @@ Obsoletes:	koffice-krayon
 %description karbon
 Karbon is a vector graphics application within koffice.
 
-%description karbon -l pl
-Karbon to aplikacja koffice s³u¿±ca do rysowania grafiki wektorowej,
+%description karbon -l pl.UTF-8
+Karbon to aplikacja koffice sÅ‚uÅ¼Ä…ca do rysowania grafiki wektorowej,
 
 %package kchart
 Summary:	KOffice - KChart
-Summary(pl):	KOffice - KChart
-Summary(pt_BR):	Gerador de diagramas do KOffice
+Summary(pl.UTF-8):   KOffice - KChart
+Summary(pt_BR.UTF-8):   Gerador de diagramas do KOffice
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
@@ -185,15 +185,15 @@ Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 KChart is KOffice part for generating diagrams from data, e.g. pie and
 bar charts.
 
-%description kchart -l pl
-KChart jest aplikacj± s³u¿±c± do generowania wykresów.
+%description kchart -l pl.UTF-8
+KChart jest aplikacjÄ… sÅ‚uÅ¼Ä…cÄ… do generowania wykresÃ³w.
 
-%description kchart -l pt_BR
+%description kchart -l pt_BR.UTF-8
 Gerador de diagramas do KOffice.
 
 %package kexi
 Summary:	KOffice - Kexi
-Summary(pl):	KOffice - Kexi
+Summary(pl.UTF-8):   KOffice - Kexi
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 Requires:	libpqxx
@@ -202,26 +202,26 @@ Requires:	mysql-libs
 %description kexi
 Kexi is KOffice part for using database system such as mysql.
 
-%description kexi -l pl
-Kexi jest aplikacj± s³u¿±c± do korzystania systemów baz danych
+%description kexi -l pl.UTF-8
+Kexi jest aplikacjÄ… sÅ‚uÅ¼Ä…cÄ… do korzystania systemÃ³w baz danych
 takich jak mysql.
 
 %package kformula
 Summary:	KOffice - kformula
-Summary(pl):	KOffice - kformula
+Summary(pl.UTF-8):   KOffice - kformula
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kformula
 KFormula is KOffice part for creating formulas, equations, etc...
 
-%description kformula -l pl
-KFormula jest aplikacj± s³u¿±c± do tworzenia wzorów, równañ, itp.
+%description kformula -l pl.UTF-8
+KFormula jest aplikacjÄ… sÅ‚uÅ¼Ä…cÄ… do tworzenia wzorÃ³w, rÃ³wnaÅ„, itp.
 
 %package kivio
 Summary:	KOffice - kivio
-Summary(pl):	KOffice - kivio
-Summary(pt_BR):	Editor de fluxogramas do KOffice
+Summary(pl.UTF-8):   KOffice - kivio
+Summary(pt_BR.UTF-8):   Editor de fluxogramas do KOffice
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
@@ -236,17 +236,17 @@ network and let it explore and map out the network for you. All this
 is possible through the scripting/plugin architecture Kivio will
 possess.
 
-%description kivio -l pl
-Kivio jest programem typu flowcharting. Pod tym pojêciem jednak kryje
-siê znacznie wiêcej. Kivio dostarcza najpotrzebniejsze funkcje, ale
-wszystkie obiekty mo¿na rozszerzaæ za pomoc± jêzyka skryptowego, a
-system wtyczek backendowych oferuje mo¿liwo¶æ tworzenia obiektów
-dotycz±cych prawie wszystkiego. Kivio mo¿na nakarmiæ katalogiem plików
-nag³ówkowych C++ lub plików Javy i pozwoliæ wygenerowaæ graficzn± mapê
-klas. Po podaniu sieci przejrzy j± i stworzy jej mapê. Wszystko to
-jest mo¿liwe poprzez architekturê skryptów i wtyczek Kivio.
+%description kivio -l pl.UTF-8
+Kivio jest programem typu flowcharting. Pod tym pojÄ™ciem jednak kryje
+siÄ™ znacznie wiÄ™cej. Kivio dostarcza najpotrzebniejsze funkcje, ale
+wszystkie obiekty moÅ¼na rozszerzaÄ‡ za pomocÄ… jÄ™zyka skryptowego, a
+system wtyczek backendowych oferuje moÅ¼liwoÅ›Ä‡ tworzenia obiektÃ³w
+dotyczÄ…cych prawie wszystkiego. Kivio moÅ¼na nakarmiÄ‡ katalogiem plikÃ³w
+nagÅ‚Ã³wkowych C++ lub plikÃ³w Javy i pozwoliÄ‡ wygenerowaÄ‡ graficznÄ… mapÄ™
+klas. Po podaniu sieci przejrzy jÄ… i stworzy jej mapÄ™. Wszystko to
+jest moÅ¼liwe poprzez architekturÄ™ skryptÃ³w i wtyczek Kivio.
 
-%description kivio -l pt_BR
+%description kivio -l pt_BR.UTF-8
 Editor de fluxogramas do KOffice.
 
 #%package kplato
@@ -263,7 +263,7 @@ Editor de fluxogramas do KOffice.
 
 %package kpresenter
 Summary:	KOffice - KPresenter
-Summary(pl):	KOffice - KPresenter
+Summary(pl.UTF-8):   KOffice - KPresenter
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
@@ -272,14 +272,14 @@ KPresenter is a presentation application of the KOffice, similar to MS
 PowerPoint in the windows world. You can use it for doing screen
 presentations or transparencies.
 
-%description kpresenter -l pl
-KPresenter jest aplikacj± KOffice do tworzenia prezentacji, podobn± do
-MS PowerPoint. Mo¿esz u¿yæ jej do tworzenia wizualnych prezentacji.
+%description kpresenter -l pl.UTF-8
+KPresenter jest aplikacjÄ… KOffice do tworzenia prezentacji, podobnÄ… do
+MS PowerPoint. MoÅ¼esz uÅ¼yÄ‡ jej do tworzenia wizualnych prezentacji.
 
 %package krita
 Summary:	KOffice - Krita
-Summary(pl):	KOffice - Krita
-Summary(pt_BR):	Ferramenta de desenho vetorial do KOffice
+Summary(pl.UTF-8):   KOffice - Krita
+Summary(pt_BR.UTF-8):   Ferramenta de desenho vetorial do KOffice
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 Obsoletes:	koffice-killustrator
@@ -292,38 +292,38 @@ Adobe Illustrator.
 Krita was formerly known as KIllustrator but due to blackmail made
 by Adobe lawyers it has to be renamed.
 
-%description krita -l pl
-Krita jest programem do tworzenia grafiki wektorowej dla ¶rodowiska
-KDE. Celem przy¶wiecaj±cym programistom jest stworzenie w pe³ni
+%description krita -l pl.UTF-8
+Krita jest programem do tworzenia grafiki wektorowej dla Å›rodowiska
+KDE. Celem przyÅ›wiecajÄ…cym programistom jest stworzenie w peÅ‚ni
 funkcjonalnego programu do grafiki wektorowej podobnego do Corel Draw
 lub Adobe Illustrator.
 
-Krita wczesniej by³ znany jako KIlustrator ale developerzy zostali
-zmuszeni szanta¿em przez prawników Adobe do zmiany nazwy.
+Krita wczesniej byÅ‚ znany jako KIlustrator ale developerzy zostali
+zmuszeni szantaÅ¼em przez prawnikÃ³w Adobe do zmiany nazwy.
 
-%description krita -l pt_BR
+%description krita -l pt_BR.UTF-8
 Ferramenta de desenho vetorial do KOffice.
 
 %package kspread
 Summary:	KOffice - KSpread
-Summary(pl):	KOffice - KSpread
-Summary(pt_BR):	Planilha eletrônica do KOffice
+Summary(pl.UTF-8):   KOffice - KSpread
+Summary(pt_BR.UTF-8):   Planilha eletrÃ´nica do KOffice
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
 %description kspread
 KSpread is the spread sheet of the KOffice, similar to MS Excel.
 
-%description kspread -l pl
+%description kspread -l pl.UTF-8
 KSpread jest arkuszem kalkulacyjnym, podobnym do MS Excel.
 
-%description kspread -l pt_BR
-Planilha eletrônica do KOffice.
+%description kspread -l pt_BR.UTF-8
+Planilha eletrÃ´nica do KOffice.
 
 %package kugar
 Summary:	KOffice - KUgar
-Summary(pl):	KOffice - KUgar
-Summary(pt_BR):	Gerador de relatórios do KOffice
+Summary(pl.UTF-8):   KOffice - KUgar
+Summary(pt_BR.UTF-8):   Gerador de relatÃ³rios do KOffice
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
@@ -333,19 +333,19 @@ be viewed and printed. It includes a standalone report application can
 embed the report viewing functionality and that reports can be viewed
 using the Konqueror browser.
 
-%description kugar -l pl
-Kugar jest narzêdziem KDE do generowania raportów o jako¶ci
-biznesowej, które mog± byæ przegl±dane oraz drukowane. Dodatkowo
-do³±czony jest program który mo¿e byæ do³±czony do raportu
-umo¿liwiaj±c ogl±danie raportu w przegl±darce Konqueror.
+%description kugar -l pl.UTF-8
+Kugar jest narzÄ™dziem KDE do generowania raportÃ³w o jakoÅ›ci
+biznesowej, ktÃ³re mogÄ… byÄ‡ przeglÄ…dane oraz drukowane. Dodatkowo
+doÅ‚Ä…czony jest program ktÃ³ry moÅ¼e byÄ‡ doÅ‚Ä…czony do raportu
+umoÅ¼liwiajÄ…c oglÄ…danie raportu w przeglÄ…darce Konqueror.
 
-%description kugar -l pt_BR
-Gerador de relatórios do KOffice.
+%description kugar -l pt_BR.UTF-8
+Gerador de relatÃ³rios do KOffice.
 
 %package kword
 Summary:	KOffice - KWord
-Summary(pl):	KOffice - KWord
-Summary(pt_BR):	Processador de texto do KOffice
+Summary(pl.UTF-8):   KOffice - KWord
+Summary(pt_BR.UTF-8):   Processador de texto do KOffice
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
@@ -354,11 +354,11 @@ KWord is a FrameMaker-like wordprocessor application for KOffice. So
 it can be used for DTP, but also for "normal" wordprocessing (like
 writing letters, reports, etc.).
 
-%description kword -l pl
-KWord jest ramkowym procesorem tekstu. Mo¿e byæ u¿yty do DTP, ale
-równie¿ do zwyk³ej edycji tekstu (jak pisanie listów, raportów, itp.).
+%description kword -l pl.UTF-8
+KWord jest ramkowym procesorem tekstu. MoÅ¼e byÄ‡ uÅ¼yty do DTP, ale
+rÃ³wnieÅ¼ do zwykÅ‚ej edycji tekstu (jak pisanie listÃ³w, raportÃ³w, itp.).
 
-%description kword -l pt_BR
+%description kword -l pt_BR.UTF-8
 Processador de texto do KOffice.
 
 %prep
