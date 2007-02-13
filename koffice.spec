@@ -8,11 +8,11 @@
 %define		artsver		13:1.3.0
 
 Summary:	KOffice - powerful office suite for KDE
-Summary(pl.UTF-8):   KOffice - potężny pakiet biurowy dla KDE
-Summary(pt_BR.UTF-8):   Suíte de aplicativos office para o KDE
-Summary(ru.UTF-8):   Набор оффисных программ для KDE
-Summary(uk.UTF-8):   Набір офісних програм для KDE
-Summary(zh_CN.UTF-8):   KDE 的办公应用软件集。
+Summary(pl.UTF-8):	KOffice - potężny pakiet biurowy dla KDE
+Summary(pt_BR.UTF-8):	Suíte de aplicativos office para o KDE
+Summary(ru.UTF-8):	Набор оффисных программ для KDE
+Summary(uk.UTF-8):	Набір офісних програм для KDE
+Summary(zh_CN.UTF-8):	KDE 的办公应用软件集。
 Name:		koffice
 Version:	%{_ver}
 Release:	4
@@ -97,9 +97,9 @@ Pakiet między innymi zawiera:
 
 %package devel
 Summary:	KOffice - header files
-Summary(es.UTF-8):   Header files for compiling applications that use koffice libraries
-Summary(pl.UTF-8):   KOffice - pliki nagłówkowe
-Summary(pt_BR.UTF-8):   Arquivos de inclusão necessários à compilação de aplicações que usem as bibliotecas do koffice
+Summary(es.UTF-8):	Header files for compiling applications that use koffice libraries
+Summary(pl.UTF-8):	KOffice - pliki nagłówkowe
+Summary(pt_BR.UTF-8):	Arquivos de inclusão necessários à compilação de aplicações que usem as bibliotecas do koffice
 Group:		X11/Development/Libraries
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
@@ -117,8 +117,8 @@ as bibliotecas do koffice.
 
 %package common
 Summary:	KOffice - common files and libraries
-Summary(pl.UTF-8):   KOffice - wspólne pliki i biblioteki
-Summary(pt_BR.UTF-8):   Arquivos requeridos por todos os softwares koffice
+Summary(pl.UTF-8):	KOffice - wspólne pliki i biblioteki
+Summary(pt_BR.UTF-8):	Arquivos requeridos por todos os softwares koffice
 Group:		X11/Applications
 Requires:	kdebase-core >= 9:3.2.0
 
@@ -159,7 +159,7 @@ Arquivos requeridos por todos os softwares koffice.
 
 %package karbon
 Summary:	KOffice - Karbon
-Summary(pl.UTF-8):   KOffice - Karbon
+Summary(pl.UTF-8):	KOffice - Karbon
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 #karbon has changed its name (again) to curt therefore in the future:
@@ -173,8 +173,8 @@ Karbon to aplikacja koffice służąca do rysowania grafiki wektorowej,
 
 %package kchart
 Summary:	KOffice - KChart
-Summary(pl.UTF-8):   KOffice - KChart
-Summary(pt_BR.UTF-8):   Gerador de diagramas do KOffice
+Summary(pl.UTF-8):	KOffice - KChart
+Summary(pt_BR.UTF-8):	Gerador de diagramas do KOffice
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
@@ -190,7 +190,7 @@ Gerador de diagramas do KOffice.
 
 %package kexi
 Summary:	KOffice - Kexi
-Summary(pl.UTF-8):   KOffice - Kexi
+Summary(pl.UTF-8):	KOffice - Kexi
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 Obsoletes:	kexi
@@ -206,7 +206,7 @@ takich jak MySQL.
 
 %package kformula
 Summary:	KOffice - kformula
-Summary(pl.UTF-8):   KOffice - kformula
+Summary(pl.UTF-8):	KOffice - kformula
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
@@ -218,8 +218,8 @@ KFormula jest aplikacją służącą do tworzenia wzorów, równań, itp.
 
 %package kivio
 Summary:	KOffice - kivio
-Summary(pl.UTF-8):   KOffice - kivio
-Summary(pt_BR.UTF-8):   Editor de fluxogramas do KOffice
+Summary(pl.UTF-8):	KOffice - kivio
+Summary(pt_BR.UTF-8):	Editor de fluxogramas do KOffice
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
@@ -249,7 +249,7 @@ Editor de fluxogramas do KOffice.
 
 %package kplato
 Summary:	KOffice - KPlato
-Summary(pl.UTF-8):   KOffice - KPlato
+Summary(pl.UTF-8):	KOffice - KPlato
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
@@ -258,7 +258,7 @@ KPlato is a project management application.
 
 %package kpresenter
 Summary:	KOffice - KPresenter
-Summary(pl.UTF-8):   KOffice - KPresenter
+Summary(pl.UTF-8):	KOffice - KPresenter
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
@@ -273,8 +273,8 @@ MS PowerPoint. Możesz użyć jej do tworzenia wizualnych prezentacji.
 
 %package krita
 Summary:	KOffice - Krita
-Summary(pl.UTF-8):   KOffice - Krita
-Summary(pt_BR.UTF-8):   Ferramenta de desenho vetorial do KOffice
+Summary(pl.UTF-8):	KOffice - Krita
+Summary(pt_BR.UTF-8):	Ferramenta de desenho vetorial do KOffice
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 Obsoletes:	koffice-killustrator
@@ -313,8 +313,8 @@ Ruby scripting backend.
 
 %package kspread
 Summary:	KOffice - KSpread
-Summary(pl.UTF-8):   KOffice - KSpread
-Summary(pt_BR.UTF-8):   Planilha eletrônica do KOffice
+Summary(pl.UTF-8):	KOffice - KSpread
+Summary(pt_BR.UTF-8):	Planilha eletrônica do KOffice
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
@@ -329,8 +329,8 @@ Planilha eletrônica do KOffice.
 
 %package kugar
 Summary:	KOffice - KUgar
-Summary(pl.UTF-8):   KOffice - KUgar
-Summary(pt_BR.UTF-8):   Gerador de relatórios do KOffice
+Summary(pl.UTF-8):	KOffice - KUgar
+Summary(pt_BR.UTF-8):	Gerador de relatórios do KOffice
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
@@ -351,8 +351,8 @@ Gerador de relatórios do KOffice.
 
 %package kword
 Summary:	KOffice - KWord
-Summary(pl.UTF-8):   KOffice - KWord
-Summary(pt_BR.UTF-8):   Processador de texto do KOffice
+Summary(pl.UTF-8):	KOffice - KWord
+Summary(pt_BR.UTF-8):	Processador de texto do KOffice
 Group:		X11/Applications
 Requires:	%{name}-common = %{epoch}:%{version}-%{release}
 
@@ -370,7 +370,7 @@ Processador de texto do KOffice.
 
 %package apidocs
 Summary:	Koffice API documentation
-Summary(pl.UTF-8):   Dokumentacja API dla Koffice
+Summary(pl.UTF-8):	Dokumentacja API dla Koffice
 Group:		Documentation
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
