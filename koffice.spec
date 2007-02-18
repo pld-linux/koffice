@@ -1,10 +1,9 @@
 # TODO:
 #	- move libkexidb*.so to -common package? i.e. kspread needs them.
-#	- fix /usr/share/apps/xsltfilter/export/kword/xslfo issue.
 #	- remove /usr/share/doc/kde/HTML/en/koffice-apidocs parts from non-apidoc packages.
 #
 %define		_state		stable
-%define		_ver		1.6.1
+%define		_ver		1.6.2
 %define		_snap		%{nil}
 %define		artsver		13:1.3.0
 
@@ -16,16 +15,17 @@ Summary(uk):	îÁÂ¦Ò ÏÆ¦ÓÎÉÈ ÐÒÏÇÒÁÍ ÄÌÑ KDE
 Summary(zh_CN):	KDE µÄ°ì¹«Ó¦ÓÃÈí¼þ¼¯¡£
 Name:		koffice
 Version:	%{_ver}
-Release:	2
+Release:	1
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	f7b90b46b79019edc60761a6bff2d387
+# Source0-md5:	74ef62a5f8f766fe8192d5b7d65a3928
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-build.patch
 Patch2:		%{name}-python25-64bit.patch
 Patch3:		kde-ac260-lt.patch
+Patch4:		%{name}-paths.patch
 URL:		http://www.koffice.org/
 BuildRequires:	GraphicsMagick-devel >= 1.1.7
 BuildRequires:	ImageMagick-c++-devel >= 1:6.2.4.0
@@ -55,6 +55,7 @@ BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.129
 BuildRequires:	ruby-devel
 BuildRequires:	sed >= 4.0
+BuildRequires:	which
 BuildRequires:	wv2-devel >= 0.1.9
 BuildRequires:	zlib-devel
 Requires:	wv2 >= 0.1.9
@@ -394,6 +395,7 @@ Zawiera:
 %patch1 -p1
 #%patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %{__sed} -i 's/Categories=Qt;KDE;Office/Categories=Qt;KDE;Office;X-Misc;/' \
 	tools/kthesaurus/KThesaurus.desktop
@@ -477,6 +479,9 @@ cat koshell.lang >> koffice.lang
 %find_lang kword		--with-kde
 %find_lang thesaurus		--with-kde
 cat thesaurus.lang >> kword.lang
+
+rm $RPM_BUILD_ROOT%{_datadir}/locale/pl/LC_MESSAGES/kexi_add_column_gui_transl_pl.sh
+rm $RPM_BUILD_ROOT%{_datadir}/locale/pl/LC_MESSAGES/kexi_delete_column_gui_transl_pl.sh
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -930,6 +935,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/kde3/kwmailmerge_qtsqldb*.so
 %{_datadir}/apps/kword
 %{_datadir}/apps/thesaurus
+%dir %{_datadir}/apps/xsltfilter
+%dir %{_datadir}/apps/xsltfilter/export
+%dir %{_datadir}/apps/xsltfilter/export/kword
+%dir %{_datadir}/apps/xsltfilter/export/kword/xslfo
 %{_datadir}/apps/xsltfilter/export/kword/xslfo/*.xsl
 %{_datadir}/apps/konqueror/servicemenus/kword_konqi.desktop
 %{_datadir}/services/kfile_abiword.desktop
