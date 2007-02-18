@@ -480,6 +480,9 @@ cat koshell.lang >> koffice.lang
 %find_lang thesaurus		--with-kde
 cat thesaurus.lang >> kword.lang
 
+rm $RPM_BUILD_ROOT%{_datadir}/locale/pl/LC_MESSAGES/kexi_add_column_gui_transl_pl.sh
+rm $RPM_BUILD_ROOT%{_datadir}/locale/pl/LC_MESSAGES/kexi_delete_column_gui_transl_pl.sh
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
