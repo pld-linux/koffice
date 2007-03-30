@@ -15,7 +15,7 @@ Summary(uk.UTF-8):	Набір офісних програм для KDE
 Summary(zh_CN.UTF-8):	KDE 的办公应用软件集。
 Name:		koffice
 Version:	%{_ver}
-Release:	2
+Release:	3
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
@@ -463,6 +463,7 @@ mv $RPM_BUILD_ROOT{%{_datadir}/applnk/Office/*,%{_desktopdir}/kde}
 
 install kexi/debian/man/k[es]*.1 $RPM_BUILD_ROOT%{_mandir}/man1
 
+rm -f *.lang
 %find_lang karbon		--with-kde
 %find_lang kchart		--with-kde
 %find_lang kexi			--with-kde
@@ -479,6 +480,9 @@ cat koshell.lang >> koffice.lang
 %find_lang kword		--with-kde
 %find_lang thesaurus		--with-kde
 cat thesaurus.lang >> kword.lang
+
+# drop koffice-apidocs from lang files, find_lang catches too much
+sed -i -e 's#.*koffice-apidocs.*##g' *.lang
 
 rm $RPM_BUILD_ROOT%{_datadir}/locale/pl/LC_MESSAGES/kexi_add_column_gui_transl_pl.sh
 rm $RPM_BUILD_ROOT%{_datadir}/locale/pl/LC_MESSAGES/kexi_delete_column_gui_transl_pl.sh
@@ -952,7 +956,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde/KThesaurus.desktop
 %{_desktopdir}/kde/kword.desktop
 %{_iconsdir}/*/*/apps/kword.png
-%exclude %{_kdedocdir}/en/%{name}-apidocs
 
 %files apidocs
 %defattr(644,root,root,755)
