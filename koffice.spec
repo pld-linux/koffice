@@ -15,7 +15,7 @@ Summary(uk.UTF-8):	Набір офісних програм для KDE
 Summary(zh_CN.UTF-8):	KDE 的办公应用软件集。
 Name:		koffice
 Version:	%{_ver}
-Release:	1
+Release:	2
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
@@ -952,6 +952,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/kde/KThesaurus.desktop
 %{_desktopdir}/kde/kword.desktop
 %{_iconsdir}/*/*/apps/kword.png
+%exclude %{_kdedocdir}/en/%{name}-apidocs
 
 %files apidocs
 %defattr(644,root,root,755)
