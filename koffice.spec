@@ -3,7 +3,7 @@
 #	- remove /usr/share/doc/kde/HTML/en/koffice-apidocs parts from non-apidoc packages.
 #
 %define		_state		stable
-%define		_ver		1.6.2
+%define		_ver		1.6.3
 %define		_snap		%{nil}
 %define		artsver		13:1.3.0
 
@@ -20,12 +20,11 @@ Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-%{version}/src/%{name}-%{version}.tar.bz2
-# Source0-md5:	74ef62a5f8f766fe8192d5b7d65a3928
+# Source0-md5:	386d388094734f9759977c3267098e30
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-build.patch
 Patch2:		%{name}-python25-64bit.patch
 Patch3:		kde-ac260-lt.patch
-Patch4:		%{name}-paths.patch
 URL:		http://www.koffice.org/
 BuildRequires:	GraphicsMagick-devel >= 1.1.7
 BuildRequires:	ImageMagick-c++-devel >= 1:6.2.4.0
@@ -395,7 +394,6 @@ Zawiera:
 %patch1 -p1
 #%patch2 -p1
 %patch3 -p1
-%patch4 -p1
 
 %{__sed} -i 's/Categories=Qt;KDE;Office/Categories=Qt;KDE;Office;X-Misc;/' \
 	tools/kthesaurus/KThesaurus.desktop
