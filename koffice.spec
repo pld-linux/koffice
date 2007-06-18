@@ -609,6 +609,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/servicetypes/*
 %dir %{_datadir}/apps/kross
 %dir %{_datadir}/templates/.source
+%{_desktopdir}/kde/koffice.desktop
 %{_desktopdir}/kde/koshell.desktop
 %{_datadir}/services/ole_powerpoint97_import.desktop
 %{_iconsdir}/hicolor/*/apps/koshell.*
