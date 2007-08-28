@@ -874,7 +874,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kugar
 %{_datadir}/services/kugar_kugar_import.desktop
 %{_datadir}/services/kugarpart.desktop
-%{_iconsdir}/*/*/*/kudesigner.png
+%{_iconsdir}/[!l]*/*/*/kudesigner.png
 %{_iconsdir}/*/*/*/kugar.png
 %{_iconsdir}/*/*/mimetypes/kugardata.png
 
