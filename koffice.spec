@@ -15,7 +15,7 @@ Summary(uk.UTF-8):	Набір офісних програм для KDE
 Summary(zh_CN.UTF-8):	KDE 的办公应用软件集。
 Name:		koffice
 Version:	%{_ver}
-Release:	4
+Release:	5
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
@@ -874,7 +874,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/apps/kugar
 %{_datadir}/services/kugar_kugar_import.desktop
 %{_datadir}/services/kugarpart.desktop
-%{_iconsdir}/[!l]*/*/*/kudesigner.png
+%{_iconsdir}/*/*/*/kudesigner.png
 %{_iconsdir}/*/*/*/kugar.png
 %{_iconsdir}/*/*/mimetypes/kugardata.png
 
