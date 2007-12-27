@@ -15,7 +15,7 @@ Summary(uk.UTF-8):	Набір офісних програм для KDE
 Summary(zh_CN.UTF-8):	KDE 的办公应用软件集。
 Name:		koffice
 Version:	%{_ver}
-Release:	5
+Release:	6
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
@@ -484,6 +484,8 @@ sed -i -e 's#.*koffice-apidocs.*##g' *.lang
 
 rm $RPM_BUILD_ROOT%{_datadir}/locale/pl/LC_MESSAGES/kexi_add_column_gui_transl_pl.sh
 rm $RPM_BUILD_ROOT%{_datadir}/locale/pl/LC_MESSAGES/kexi_delete_column_gui_transl_pl.sh
+
+rm -rf $RPM_BUILD_ROOT%{_datadir}/icons/locolor
 
 %clean
 rm -rf $RPM_BUILD_ROOT
