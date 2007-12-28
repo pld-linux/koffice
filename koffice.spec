@@ -480,7 +480,7 @@ cat koshell.lang >> koffice.lang
 cat thesaurus.lang >> kword.lang
 
 # drop koffice-apidocs from lang files, find_lang catches too much
-sed -i -e 's#.*koffice-apidocs.*##g' *.lang
+sed -i -e '/koffice-apidocs/d' *.lang
 
 rm $RPM_BUILD_ROOT%{_datadir}/locale/pl/LC_MESSAGES/kexi_add_column_gui_transl_pl.sh
 rm $RPM_BUILD_ROOT%{_datadir}/locale/pl/LC_MESSAGES/kexi_delete_column_gui_transl_pl.sh
