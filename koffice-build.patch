@@ -1,0 +1,32 @@
+diff -ur org/admin/acinclude.m4.in mod/admin/acinclude.m4.in
+--- org/admin/acinclude.m4.in	2006-10-07 15:41:51.000000000 +0200
++++ mod/admin/acinclude.m4.in	2006-11-12 15:33:37.645747250 +0100
+@@ -4556,7 +4556,7 @@
+ 
+ PYTHONINC=-I$python_incdir
+ 
+-python_libdirs="$ac_python_dir/lib$kdelibsuff /usr/lib$kdelibsuff /usr/local /usr/lib$kdelibsuff $kde_extra_libs"
++python_libdirs="$ac_python_dir/lib$kdelibsuff /usr/lib$kdelibsuff /usr/local /usr/share $kde_extra_libs"
+ AC_FIND_FILE(libpython$version.so, $python_libdirs, python_libdir)
+ if test ! -r $python_libdir/libpython$version.so; then
+   AC_FIND_FILE(libpython$version.a, $python_libdirs, python_libdir)
+diff -ur org/filters/kpresenter/Makefile.am mod/filters/kpresenter/Makefile.am
+--- org/filters/kpresenter/Makefile.am	2006-10-07 15:33:06.000000000 +0200
++++ mod/filters/kpresenter/Makefile.am	2006-11-12 15:33:37.645747250 +0100
+@@ -1 +1 @@
+-SUBDIRS = libimageexport png bmp xbm xpm mng svg jpeg kword ooimpress
++SUBDIRS = libimageexport png bmp xbm xpm mng svg jpeg kword ooimpress powerpoint
+diff -ur org/kexi/kexidb/drivers/configure.in.in mod/kexi/kexidb/drivers/configure.in.in
+--- org/kexi/kexidb/drivers/configure.in.in	2006-10-07 15:28:55.000000000 +0200
++++ mod/kexi/kexidb/drivers/configure.in.in	2006-11-12 15:33:37.645747250 +0100
+@@ -54,8 +54,8 @@
+ 
+     AC_MSG_CHECKING([for MySQL libraries])
+     mysql_libdirs="$ac_mysql_libdir /usr/local/lib$kdelibsuff /usr/lib$kdelibsuff"
+-    AC_FIND_FILE(mysql/libmysqlclient.so, $mysql_libdirs, mysql_libdir)
+-    if test -r $mysql_libdir/mysql/libmysqlclient.so; then
++    AC_FIND_FILE(libmysqlclient.so, $mysql_libdirs, mysql_libdir)
++    if test -r $mysql_libdir/libmysqlclient.so; then
+       MYSQL_LIBS=$mysql_libdir
+       AC_MSG_RESULT([$MYSQL_LIBS])
+       AC_SUBST(MYSQL_LIBS)
