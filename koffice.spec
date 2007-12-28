@@ -485,7 +485,14 @@ sed -i -e 's#.*koffice-apidocs.*##g' *.lang
 rm $RPM_BUILD_ROOT%{_datadir}/locale/pl/LC_MESSAGES/kexi_add_column_gui_transl_pl.sh
 rm $RPM_BUILD_ROOT%{_datadir}/locale/pl/LC_MESSAGES/kexi_delete_column_gui_transl_pl.sh
 
-rm -rf $RPM_BUILD_ROOT%{_datadir}/icons/locolor
+# there are only locolor kudesigner icons in this version.
+for a in $RPM_BUILD_ROOT%{_datadir}/icons/locolor/*/apps/kudesigner.png; do
+	l=$(echo $a | sed -e 's,locolor,hicolor,')
+	mv $a $l
+done
+
+# no dir for locolor in pld
+rm -rfv $RPM_BUILD_ROOT%{_datadir}/icons/locolor
 
 %clean
 rm -rf $RPM_BUILD_ROOT
