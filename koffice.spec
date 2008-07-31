@@ -15,7 +15,7 @@ Summary(uk.UTF-8):	Набір офісних програм для KDE
 Summary(zh_CN.UTF-8):	KDE 的办公应用软件集。
 Name:		koffice
 Version:	%{_ver}
-Release:	10
+Release:	11
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
