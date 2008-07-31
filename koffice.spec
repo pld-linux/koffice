@@ -15,7 +15,7 @@ Summary(uk.UTF-8):	Набір офісних програм для KDE
 Summary(zh_CN.UTF-8):	KDE 的办公应用软件集。
 Name:		koffice
 Version:	%{_ver}
-Release:	9
+Release:	10
 Epoch:		5
 License:	GPL/LGPL
 Group:		X11/Applications
@@ -25,6 +25,7 @@ Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-build.patch
 Patch2:		%{name}-python25-64bit.patch
 Patch3:		kde-ac260-lt.patch
+Patch4:		%{name}-gcc.patch
 URL:		http://www.koffice.org/
 BuildRequires:	GraphicsMagick-devel >= 1.1.7
 BuildRequires:	ImageMagick-c++-devel >= 1:6.2.4.0
@@ -394,6 +395,7 @@ Zawiera:
 %patch1 -p1
 #%patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %{__sed} -i 's/Categories=Qt;KDE;Office/Categories=Qt;KDE;Office;X-Misc;/' \
 	tools/kthesaurus/KThesaurus.desktop
