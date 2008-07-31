@@ -1,5 +1,6 @@
---- koffice-1.6.3/krita/core/kis_perspective_math.cpp~	2007-05-30 23:40:31.000000000 +0200
-+++ koffice-1.6.3/krita/core/kis_perspective_math.cpp	2008-07-31 14:23:13.192501015 +0200
+diff -Nrua koffice-1.6.3/krita/core/kis_perspective_math.cpp koffice/krita/core/kis_perspective_math.cpp
+--- koffice-1.6.3/krita/core/kis_perspective_math.cpp	2007-05-30 23:40:31.000000000 +0200
++++ koffice/krita/core/kis_perspective_math.cpp	2008-03-12 00:56:21.000000000 +0100
 @@ -24,7 +24,7 @@
  
  #if 1
@@ -9,13 +10,15 @@
  #include <stdlib.h>
  #include <math.h>
  //#define NDEBUG // uncomment to remove checking of assert()
---- koffice-1.6.3/krita/core/kis_perspective_math.cpp.org	2008-07-31 14:26:45.472462096 +0200
-+++ koffice-1.6.3/krita/core/kis_perspective_math.cpp	2008-07-31 14:28:44.875575943 +0200
-@@ -59,7 +59,7 @@
+@@ -57,9 +57,9 @@
+         void  rprint()const;  //print entries on a single line
+         void resize(int n);
          int operator==(const vector<ElType>& v)const;
-         friend   vector<ElType> operator*(ElType c,vector<ElType>& v );
-         friend   vector<ElType> operator*(vector<ElType>& v,ElType c );
+-        friend   vector<ElType> operator*(ElType c,vector<ElType>& v );
+-        friend   vector<ElType> operator*(vector<ElType>& v,ElType c );
 -        friend ostream& operator<<(ostream& s,vector<ElType>& v);
++        friend vector<ElType> operator* (ElType c,vector<ElType>& v );
++        friend vector<ElType> operator*(vector<ElType>& v,ElType c );
 +        friend std::ostream& operator<<(std::ostream& s,vector<ElType>& v);
  };
  template <class ElType>
@@ -71,3 +74,48 @@
              vv[i]=1.0/big;
      }
      for (j=0;j<n;j++)
+diff -Nrua koffice-1.6.3/kspread/plugins/scripting/kspreadcore/krs_cell.cpp koffice/kspread/plugins/scripting/kspreadcore/krs_cell.cpp
+--- koffice-1.6.3/kspread/plugins/scripting/kspreadcore/krs_cell.cpp	2007-05-30 23:43:20.000000000 +0200
++++ koffice/kspread/plugins/scripting/kspreadcore/krs_cell.cpp	2008-03-12 00:59:07.000000000 +0100
+@@ -174,12 +174,7 @@
+ 	return m_cell->text();
+ }
+ 
+-bool Cell::setText(const QString& text, bool asString) {
+-
+-	//FIXME: there is some problem with asString parameter, when it's set
+-	//to true KSpread says: ASSERT: "f" in Dependencies.cpp (621)
+-	//kspread: Cell at row 6, col 1 marked as formula, but formula is NULL
+-
++bool Cell::setText(const QString& text) {
+ 	KSpread::ProtectedCheck prot;
+ 	prot.setSheet (m_sheet);
+ 	prot.add (QPoint (m_col, m_row));
+@@ -189,7 +184,7 @@
+ 	KSpread::DataManipulator *dm = new KSpread::DataManipulator ();
+ 	dm->setSheet (m_sheet);
+ 	dm->setValue (text);
+-	dm->setParsing (!asString);
++	dm->setParsing (true);
+ 	dm->add (QPoint (m_col, m_row));
+ 	dm->execute ();
+ 
+diff -Nrua koffice-1.6.3/kspread/plugins/scripting/kspreadcore/krs_cell.h koffice/kspread/plugins/scripting/kspreadcore/krs_cell.h
+--- koffice-1.6.3/kspread/plugins/scripting/kspreadcore/krs_cell.h	2007-05-30 23:43:20.000000000 +0200
++++ koffice/kspread/plugins/scripting/kspreadcore/krs_cell.h	2008-03-12 00:59:07.000000000 +0100
+@@ -131,11 +131,10 @@
+ 		*/
+ 		const QString text() const;
+ 		/**
+-		* Set the text of the cell. If asString is true, the text
+-		* will be handled as string else we try to parse the
+-		* string to the expected value.
++		* Set the text of the cell. the text
++		* will be handled as string
+ 		*/
+-		bool setText(const QString& text, bool asString = false);
++		bool setText(const QString& text);
+ 
+ 		/**
+ 		* Return the textcolor as RGB-value in the format "#RRGGBB".
+
