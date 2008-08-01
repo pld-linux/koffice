@@ -119,3 +119,47 @@ diff -Nrua koffice-1.6.3/kspread/plugins/scripting/kspreadcore/krs_cell.h koffic
  		/**
  		* Return the textcolor as RGB-value in the format "#RRGGBB".
 
+--- koffice-1.6.3/kexi/kexidb/drivers/pqxx/pqxxcursor.cpp~	2007-05-30 23:35:49.000000000 +0200
++++ koffice-1.6.3/kexi/kexidb/drivers/pqxx/pqxxcursor.cpp	2008-07-31 23:33:53.128971589 +0200
+@@ -27,6 +27,8 @@
+ #include <klocale.h>
+ #include <kdebug.h>
+ 
++#include <stdlib.h>
++
+ using namespace KexiDB;
+ 
+ 
+--- koffice-1.6.3/filters/kword/wordperfect/import/TableStyle.cxx~	2007-05-30 23:39:02.000000000 +0200
++++ koffice-1.6.3/filters/kword/wordperfect/import/TableStyle.cxx	2008-08-01 00:13:43.372064696 +0200
+@@ -27,6 +27,7 @@
+ /* "This product is not manufactured, approved, or supported by 
+  * Corel Corporation or Corel Corporation Limited."
+  */
++#include <string.h>
+ #include <math.h>
+ #include "FilterInternal.hxx"
+ #include "TableStyle.hxx"
+--- koffice-1.6.3/filters/kword/wordperfect/import/TextRunStyle.cxx~	2007-05-30 23:39:02.000000000 +0200
++++ koffice-1.6.3/filters/kword/wordperfect/import/TextRunStyle.cxx	2008-08-01 00:25:21.368662495 +0200
+@@ -28,6 +28,9 @@
+ /* "This product is not manufactured, approved, or supported by
+  * Corel Corporation or Corel Corporation Limited."
+  */
++
++#include <string.h>
++
+ #include "FilterInternal.hxx"
+ #include "TextRunStyle.hxx"
+ #include "WriterProperties.hxx"
+--- koffice-1.6.3/filters/kpresenter/powerpoint/libppt/pole.cpp~	2007-05-30 23:38:58.000000000 +0200
++++ koffice-1.6.3/filters/kpresenter/powerpoint/libppt/pole.cpp	2008-08-01 00:39:33.888577648 +0200
+@@ -26,6 +26,8 @@
+    THE POSSIBILITY OF SUCH DAMAGE.
+ */
+ 
++#include <string.h>
++
+ #include <fstream>
+ #include <iostream>
+ #include <list>
