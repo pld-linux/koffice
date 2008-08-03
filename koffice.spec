@@ -31,6 +31,7 @@ URL:		http://www.koffice.org/
 BuildRequires:	GraphicsMagick-devel >= 1.1.7
 BuildRequires:	ImageMagick-c++-devel >= 1:6.2.4.0
 BuildRequires:	OpenEXR-devel
+BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
 BuildRequires:	aspell-devel >= 2:0.50.2
 BuildRequires:	autoconf
@@ -441,13 +442,14 @@ cp -f /usr/share/automake/config.sub admin
 	--enable-libsuffix=64 \
 %endif
 	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
-	--with-pgsqlincdir=%{_includedir} \
-	--with-pgsqllibdir=%{_libdir} \
-	--with-pqxxincdir=%{_includedir}/pqxx \
-	--with-pqxxlibdir=%{_libdir} \
+	--with-pgsql-includes=%{_includedir} \
+	--with-pgsql-libraries=%{_libdir} \
+	--with-pqxx-includes=%{_includedir}/pqxx \
+	--with-pqxx-libraries=%{_libdir} \
 	--with-qt-libraries=%{_libdir} \
 	--disable-rpath \
-	--disable-final
+	--disable-final \
+	--enable-pch
 
 %{__make}
 
