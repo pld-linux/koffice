@@ -557,36 +557,52 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkdeinit_koshell.so
 %{_libdir}/libkdchart.la
 %attr(755,root,root) %{_libdir}/libkdchart.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkdchart.so.0
 %{_libdir}/libkformulalib.la
 %attr(755,root,root) %{_libdir}/libkformulalib.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkformulalib.so.4
 %{_libdir}/libkochart.la
 %attr(755,root,root) %{_libdir}/libkochart.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkochart.so.1
 %{_libdir}/libkofficecore.la
 %attr(755,root,root) %{_libdir}/libkofficecore.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkofficecore.so.3
 %{_libdir}/libkofficeui.la
 %attr(755,root,root) %{_libdir}/libkofficeui.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkofficeui.so.3
 %{_libdir}/libkopainter.la
 %attr(755,root,root) %{_libdir}/libkopainter.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopainter.so.2
 %{_libdir}/libkopalette.la
 %attr(755,root,root) %{_libdir}/libkopalette.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkopalette.so.1
 %{_libdir}/libkoproperty.la
 %attr(755,root,root) %{_libdir}/libkoproperty.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkoproperty.so.2
 %{_libdir}/libkotext.la
 %attr(755,root,root) %{_libdir}/libkotext.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkotext.so.3
 %{_libdir}/libkowmf.la
 %attr(755,root,root) %{_libdir}/libkowmf.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkowmf.so.2
 %{_libdir}/libkross*.la
 %attr(755,root,root) %{_libdir}/libkross*.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkrossapi.so.1
+%attr(755,root,root) %ghost %{_libdir}/libkrossmain.so.1
 %{_libdir}/libkstore.la
 %attr(755,root,root) %{_libdir}/libkstore.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkstore.so.3
 %{_libdir}/libkugarlib.la
 %attr(755,root,root) %{_libdir}/libkugarlib.so.*.*.*
 %{_libdir}/libkwmailmerge_interface.la
 %attr(755,root,root) %{_libdir}/libkwmailmerge_interface.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkwmailmerge_interface.so.4
 %{_libdir}/libkwmf.la
 %attr(755,root,root) %{_libdir}/libkwmf.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkwmf.so.3
 %{_libdir}/libkwordexportfilters.la
 %attr(755,root,root) %{_libdir}/libkwordexportfilters.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkwordexportfilters.so.1
 %{_libdir}/kde3/clipartthumbnail.la
 %attr(755,root,root) %{_libdir}/kde3/clipartthumbnail.so
 %{_libdir}/kde3/kfile_koffice.la
@@ -635,6 +651,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/karbon
 %{_libdir}/libkarbon*.la
 %attr(755,root,root) %{_libdir}/libkarbon*.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkarboncommon.so.0
 %{_libdir}/libkdeinit_karbon.la
 %attr(755,root,root) %{_libdir}/libkdeinit_karbon.so
 %{_libdir}/kde3/liboodrawimport.la
@@ -657,8 +674,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kchart
 %{_libdir}/libkchartcommon.la
 %attr(755,root,root) %{_libdir}/libkchartcommon.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkchartcommon.so.2
 %{_libdir}/libkchartimageexport.la
 %attr(755,root,root) %{_libdir}/libkchartimageexport.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkchartimageexport.so.4
 %{_libdir}/libkdeinit_kchart.la
 %attr(755,root,root) %{_libdir}/libkdeinit_kchart.so
 %{_libdir}/kde3/kchart.la
@@ -681,8 +700,22 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkdeinit_kexi.so
 %{_libdir}/libkformdesigner.la
 %attr(755,root,root) %{_libdir}/libkformdesigner.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkformdesigner.so.2
 %{_libdir}/libkexi*.la
 %attr(755,root,root) %{_libdir}/libkexi*.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkexicore.so.2
+%attr(755,root,root) %ghost %{_libdir}/libkexidatatable.so.2
+%attr(755,root,root) %ghost %{_libdir}/libkexidb.so.2
+%attr(755,root,root) %ghost %{_libdir}/libkexidbparser.so.2
+%attr(755,root,root) %ghost %{_libdir}/libkexiextendedwidgets.so.2
+%attr(755,root,root) %ghost %{_libdir}/libkexiformutils.so.2
+%attr(755,root,root) %ghost %{_libdir}/libkexiguiutils.so.2
+%attr(755,root,root) %ghost %{_libdir}/libkeximain.so.2
+%attr(755,root,root) %ghost %{_libdir}/libkeximigrate.so.2
+%attr(755,root,root) %ghost %{_libdir}/libkexirelationsview.so.2
+%attr(755,root,root) %ghost %{_libdir}/libkexisql2.so.2
+%attr(755,root,root) %ghost %{_libdir}/libkexisql3.so.3
+%attr(755,root,root) %ghost %{_libdir}/libkexiutils.so.2
 %{_libdir}/kde3/*kexi*.la
 %attr(755,root,root) %{_libdir}/kde3/*kexi*.so
 %{_libdir}/kde3/kformdesigner_containers.la
@@ -739,6 +772,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kivio
 %{_libdir}/libkiviocommon.la
 %attr(755,root,root) %{_libdir}/libkiviocommon.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkiviocommon.so.0
 %{_libdir}/libkdeinit_kivio.la
 %attr(755,root,root) %{_libdir}/libkdeinit_kivio.so
 %{_libdir}/kde3/*kivio*.la
@@ -772,8 +806,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kprconverter.pl
 %{_libdir}/libkpresenterimageexport.la
 %attr(755,root,root) %{_libdir}/libkpresenterimageexport.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkpresenterimageexport.so.4
 %{_libdir}/libkpresenterprivate.la
 %attr(755,root,root) %{_libdir}/libkpresenterprivate.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkpresenterprivate.so.4
 %{_libdir}/libkdeinit_kpresenter.la
 %attr(755,root,root) %{_libdir}/libkdeinit_kpresenter.so
 %{_libdir}/kde3/kpresenter.la
@@ -800,6 +836,21 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/krita
 %{_libdir}/libkrita*.la
 %attr(755,root,root) %{_libdir}/libkrita*.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkrita_cmyk_u16.so.0
+%attr(755,root,root) %ghost %{_libdir}/libkrita_gray_u16.so.0
+%attr(755,root,root) %ghost %{_libdir}/libkrita_lms_f32.so.0
+%attr(755,root,root) %ghost %{_libdir}/libkrita_rgb_f16half.so.0
+%attr(755,root,root) %ghost %{_libdir}/libkrita_rgb_f32.so.0
+%attr(755,root,root) %ghost %{_libdir}/libkrita_rgb_u16.so.0
+%attr(755,root,root) %ghost %{_libdir}/libkrita_ycbcr_u16.so.0
+%attr(755,root,root) %ghost %{_libdir}/libkrita_ycbcr_u8.so.0
+%attr(755,root,root) %ghost %{_libdir}/libkritacolor.so.1
+%attr(755,root,root) %ghost %{_libdir}/libkritacommon.so.1
+%attr(755,root,root) %ghost %{_libdir}/libkritagrayscale.so.0
+%attr(755,root,root) %ghost %{_libdir}/libkritaimage.so.1
+%attr(755,root,root) %ghost %{_libdir}/libkritargb.so.0
+%attr(755,root,root) %ghost %{_libdir}/libkritascripting.so.0
+%attr(755,root,root) %ghost %{_libdir}/libkritaui.so.1
 %{_libdir}/libkdeinit_krita.la
 %attr(755,root,root) %{_libdir}/libkdeinit_krita.so
 %{_libdir}/kde3/*krita*.la
@@ -831,6 +882,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkdeinit_kspread.so
 %{_libdir}/libkspreadcommon.la
 %attr(755,root,root) %{_libdir}/libkspreadcommon.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkspreadcommon.so.0
 %{_libdir}/kde3/kspread.la
 %attr(755,root,root) %{_libdir}/kde3/kspread.so
 %{_libdir}/kde3/krosskspreadcore.la
@@ -875,6 +927,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkdeinit_kudesigner.so
 %{_libdir}/libkugarlib.la
 %attr(755,root,root) %{_libdir}/libkugarlib.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkugarlib.so.1
 %{_libdir}/libkdeinit_kugar.la
 %attr(755,root,root) %{_libdir}/libkdeinit_kugar.so
 %{_libdir}/libkudesignercore.la
@@ -901,8 +954,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkdeinit_kword.so
 %{_libdir}/libkwordprivate.la
 %attr(755,root,root) %{_libdir}/libkwordprivate.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkwordprivate.so.4
 %{_libdir}/libkword*export*.la
 %attr(755,root,root) %{_libdir}/libkword*export*.so
+%attr(755,root,root) %ghost %{_libdir}/libkwordexportfilters.so.1
 %{_libdir}/libkdeinit_kthesaurus.la
 %attr(755,root,root) %{_libdir}/libkdeinit_kthesaurus.so
 %{_libdir}/kde3/kthesaurus.la
