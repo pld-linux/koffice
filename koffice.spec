@@ -589,6 +589,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libkross*.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkrossapi.so.1
 %attr(755,root,root) %ghost %{_libdir}/libkrossmain.so.1
+%{_libdir}/libkspreadcommon.la
+%attr(755,root,root) %{_libdir}/libkspreadcommon.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libkspreadcommon.so.0
 %{_libdir}/libkstore.la
 %attr(755,root,root) %{_libdir}/libkstore.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libkstore.so.3
@@ -880,9 +883,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/kspread
 %{_libdir}/libkdeinit_kspread.la
 %attr(755,root,root) %{_libdir}/libkdeinit_kspread.so
-%{_libdir}/libkspreadcommon.la
-%attr(755,root,root) %{_libdir}/libkspreadcommon.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libkspreadcommon.so.0
 %{_libdir}/kde3/kspread.la
 %attr(755,root,root) %{_libdir}/kde3/kspread.so
 %{_libdir}/kde3/krosskspreadcore.la
