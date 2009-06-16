@@ -42,6 +42,7 @@ BuildRequires:	kdelibs-devel >= 9:3.2
 BuildRequires:	lcms-devel >= 1.15
 BuildRequires:	libexif-devel >= 0.6.12
 BuildRequires:	libjpeg-devel
+BuildRequires:	libpaper-devel
 BuildRequires:	libpng-devel
 BuildRequires:	libpqxx-devel
 BuildRequires:	libtiff-devel
