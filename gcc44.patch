@@ -1,0 +1,47 @@
+--- koffice-1.6.3/filters/kword/pdf/xpdf/goo/gfile.cc~	2009-08-25 02:39:40.000000000 +0300
++++ koffice-1.6.3/filters/kword/pdf/xpdf/goo/gfile.cc	2009-08-25 02:40:01.601199662 +0300
+@@ -277,7 +277,7 @@
+ GString *grabPath(const char *fileName) {
+ #ifdef VMS
+   //---------- VMS ----------
+-  char *p;
++  const char *p;
+ 
+   if ((p = strrchr(fileName, ']')))
+     return new GString(fileName, p + 1 - fileName);
+@@ -287,7 +287,7 @@
+ 
+ #elif defined(__EMX__) || defined(WIN32)
+   //---------- OS/2+EMX and Win32 ----------
+-  char *p;
++  const char *p;
+ 
+   if ((p = strrchr(fileName, '/')))
+     return new GString(fileName, p - fileName);
+@@ -299,7 +299,7 @@
+ 
+ #elif defined(ACORN)
+   //---------- RISCOS ----------
+-  char *p;
++  const char *p;
+ 
+   if ((p = strrchr(fileName, '.')))
+     return new GString(fileName, p - fileName);
+@@ -307,7 +307,7 @@
+ 
+ #elif defined(MACOS)
+   //---------- MacOS ----------
+-  char *p;
++  const char *p;
+ 
+   if ((p = strrchr(fileName, ':')))
+     return new GString(fileName, p - fileName);
+@@ -315,7 +315,7 @@
+ 
+ #else
+   //---------- Unix ----------
+-  char *p;
++  const char *p;
+ 
+   if ((p = strrchr(fileName, '/')))
+     return new GString(fileName, p - fileName);

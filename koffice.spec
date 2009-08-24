@@ -29,6 +29,7 @@ Patch4:		%{name}-gcc.patch
 Patch5:		%{name}-gmagick.patch
 Patch6:		kde-am.patch
 Patch7:		typo.patch
+Patch8:		gcc44.patch
 URL:		http://www.koffice.org/
 BuildRequires:	GraphicsMagick-devel >= 1.1.7
 BuildRequires:	ImageMagick-c++-devel >= 1:6.2.4.0
@@ -404,6 +405,7 @@ Zawiera:
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %{__sed} -i 's/Categories=Qt;KDE;Office/Categories=Qt;KDE;Office;X-Misc;/' \
 	tools/kthesaurus/KThesaurus.desktop
