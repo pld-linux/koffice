@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -x
-prog=koffice
+pkg=koffice
 ver=1.6.3
 branch=1.6
 
@@ -16,6 +16,16 @@ filter() {
 }
 
 svn diff \
-	svn://anonsvn.kde.org/home/kde/tags/$prog/$ver/$prog \
-	svn://anonsvn.kde.org/home/kde/branches/$prog/$branch/$prog \
-	| filter > $prog-branch.diff
+	svn://anonsvn.kde.org/home/kde/tags/$pkg/$ver/$pkg \
+	svn://anonsvn.kde.org/home/kde/branches/$pkg/$branch/$pkg \
+	| filter > $pkg-branch.diff.tmp
+
+d=$(interdiff $pkg-branch.diff{,.tmp} | wc -l)
+if [ "$d" = 0 ]; then
+	echo >&2 "$pkg-branch.diff: no new changes, skip"
+	rm $pkg-branch.diff.tmp
+	exit
+fi
+
+mv $pkg-branch.diff.tmp $pkg-branch.diff
+echo >&2 "Updated $pkg-branch.diff"
