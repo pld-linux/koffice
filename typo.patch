@@ -1,5 +1,5 @@
---- /home/users/glen/rpm/BUILD.x86_64-linux/koffice-1.6.3/kspread/digest.cc~	2007-05-31 00:43:29.000000000 +0300
-+++ /home/users/glen/rpm/BUILD.x86_64-linux/koffice-1.6.3/kspread/digest.cc	2009-08-25 01:55:12.571468602 +0300
+--- koffice-1.6.3/kspread/digest.cc~	2007-05-31 00:43:29.000000000 +0300
++++ koffice-1.6.3/kspread/digest.cc	2009-08-25 01:55:12.571468602 +0300
 @@ -50,7 +50,7 @@
  
  #if  SIZEOF_INT == 4
