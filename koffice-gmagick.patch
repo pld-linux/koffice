@@ -6,15 +6,15 @@
          }
 -        for(int i = 0; i < src->generic_profiles; i++)
 -        {
-+	const char *profile_name;
-+	size_t profile_length;
-+	const unsigned char * profile_info;
-+	ImageProfileIterator profile_iterator;
++        const char *profile_name;
++        size_t profile_length;
++        const unsigned char * profile_info;
++        ImageProfileIterator profile_iterator;
 +
-+	profile_iterator=AllocateImageProfileIterator(src);
-+	while(NextImageProfile(profile_iterator,&profile_name,&profile_info,
-+				&profile_length) != MagickFail)
-+	{
++        profile_iterator=AllocateImageProfileIterator(src);
++        while(NextImageProfile(profile_iterator,&profile_name,&profile_info,
++                              &profile_length) != MagickFail)
++        {
              QByteArray rawdata;
              rawdata.resize(length);
 -            memcpy(rawdata.data(), src->generic_profile[i].info, src->generic_profile[i].length);
@@ -26,7 +26,7 @@
  
              image -> addAnnotation(annotation);
          }
-+	DeallocateImageProfileIterator(profile_iterator);
++        DeallocateImageProfileIterator(profile_iterator);
          
          const ImageAttribute* imgAttr = GetImageAttribute(src, NULL);
          while(imgAttr)
