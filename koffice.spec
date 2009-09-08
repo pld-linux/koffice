@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_with	gmagick		# build with graphicsmagick
+
 # TODO:
 #	- move libkexidb*.so to -common package? i.e. kspread needs them.
 #	- remove /usr/share/doc/kde/HTML/en/koffice-apidocs parts from non-apidoc packages.
@@ -21,6 +25,7 @@ License:	GPL/LGPL
 Group:		X11/Applications
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/koffice-%{version}/src/%{name}-%{version}.tar.bz2
 # Source0-md5:	386d388094734f9759977c3267098e30
+Patch100:	%{name}-branch.diff
 Patch0:		kde-common-PLD.patch
 Patch1:		%{name}-build.patch
 Patch2:		%{name}-python25-64bit.patch
@@ -28,11 +33,14 @@ Patch3:		kde-ac260-lt.patch
 Patch4:		%{name}-gcc.patch
 Patch5:		%{name}-gmagick.patch
 Patch6:		kde-am.patch
-Patch7:		typo.patch
-Patch8:		gcc44.patch
+Patch7:		gcc44.patch
+Patch8:		bug-155852.patch
+Patch9:		ImageMagick.patch
+Patch10:	ac264.patch
 URL:		http://www.koffice.org/
-BuildRequires:	GraphicsMagick-devel >= 1.1.7
+%{?with_gmagick:BuildRequires:	GraphicsMagick-devel >= 1.1.7}
 BuildRequires:	ImageMagick-c++-devel >= 1:6.2.4.0
+BuildRequires:	ImageMagick-devel >= 1:6.5.5.7-2
 BuildRequires:	OpenEXR-devel
 BuildRequires:	OpenGL-GLU-devel
 BuildRequires:	arts-qt-devel >= %{artsver}
@@ -64,6 +72,7 @@ BuildRequires:	sed >= 4.0
 BuildRequires:	which
 BuildRequires:	wv2-devel >= 0.1.9
 BuildRequires:	zlib-devel
+%{!?with_gmagick:BuildConflicts:	GraphicsMagick-devel}
 Requires:	wv2 >= 0.1.9
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -294,8 +303,8 @@ LMS, in 8 and 16 bits per channel
 
 %description krita -l pl.UTF-8
 Krita jest aplikacją do edycji grafiki bitmapowej. Wspiera różne
-przestrzenie barw, jak np. RGB, skala szarości, CMYK, Lab, YCBCR
-oraz LMS - zarówno w trybie 8 jak i 16 bitowym na kanał.
+przestrzenie barw, jak np. RGB, skala szarości, CMYK, Lab, YCBCR oraz
+LMS - zarówno w trybie 8 jak i 16 bitowym na kanał.
 
 %package kross-python
 Summary:	KOffice - Kross Python
@@ -397,15 +406,19 @@ Zawiera:
 
 %prep
 %setup -q
+(find kexi/3rdparty -name '*.[ch]'; echo filters/kword/mswrite/structures_generated.h) | xargs grep -Fl '$''Id' | xargs %{__sed} -i -e 's/$''Id:.*$/$''Id$/'
+%patch100 -p0
 %patch0 -p1
 %patch1 -p1
 #%patch2 -p1
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
+%{?with_gmagick:%patch5 -p1}
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 %{__sed} -i 's/Categories=Qt;KDE;Office/Categories=Qt;KDE;Office;X-Misc;/' \
 	tools/kthesaurus/KThesaurus.desktop

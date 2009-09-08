@@ -1,0 +1,24 @@
+--- koffice-1.6.3/admin/configure.in.min~	2007-05-31 00:50:22.000000000 +0300
++++ koffice-1.6.3/admin/configure.in.min	2009-09-08 02:21:01.730812762 +0300
+@@ -44,6 +44,9 @@
+ AM_CONFIG_HEADER(config.h) dnl at the distribution this done
+ 
+ dnl Checks for programs.
++AC_PROG_CC
++AC_PROG_CXX
++
+ AC_CHECK_COMPILERS
+ AC_ENABLE_SHARED(yes)
+ AC_ENABLE_STATIC(no)
+--- koffice-1.6.3/configure.in.in~	2009-09-08 02:13:38.000000000 +0300
++++ koffice-1.6.3/configure.in.in	2009-09-08 02:22:09.490806965 +0300
+@@ -3,6 +3,9 @@
+ # Remember to synchronize the version number with the file koffice/lib/kofficecore/kofficeversion.h
+ AM_INIT_AUTOMAKE(koffice, "1.6.3")
+ 
++AC_PROG_CC
++AC_PROG_CXX
++
+ CXXFLAGS="$CXXFLAGS $KDE_DEFAULT_CXXFLAGS"
+ 
+ AC_CHECK_HEADERS(unistd.h sys/param.h floatingpoint.h paths.h)

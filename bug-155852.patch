@@ -1,0 +1,11 @@
+--- koffice-1.6.3/filters/krita/tiff/kis_tiff_converter.cc~	2009-09-08 09:13:56.000000000 +0300
++++ koffice-1.6.3/filters/krita/tiff/kis_tiff_converter.cc	2009-09-08 09:17:39.014978963 +0300
+@@ -242,7 +242,7 @@
+     // Read image profile
+     kdDebug() << "Reading profile" << endl;
+     KisProfile* profile = 0;
+-    quint32 EmbedLen;
++    DWORD EmbedLen;
+     LPBYTE EmbedBuffer;
+ 
+     if (TIFFGetField(image, TIFFTAG_ICCPROFILE, &EmbedLen, &EmbedBuffer)) {
