@@ -47,7 +47,7 @@ BuildRequires:	arts-qt-devel >= %{artsver}
 BuildRequires:	aspell-devel >= 2:0.50.2
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	kdebindings-kjsembed-devel
 BuildRequires:	kdelibs-devel >= 9:3.2
 BuildRequires:	lcms-devel >= 1.15
